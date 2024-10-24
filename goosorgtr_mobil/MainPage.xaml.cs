@@ -1,4 +1,6 @@
-﻿namespace goosorgtr_mobil
+﻿using goosorgtr_mobil.Views;
+
+namespace goosorgtr_mobil
 {
     public partial class MainPage : ContentPage
     {
@@ -11,15 +13,9 @@
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            Application.Current.MainPage = new Login();
         }
+       
     }
 
 }
