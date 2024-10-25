@@ -11,10 +11,7 @@ namespace goosorgtr_mobil
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            Application.Current.MainPage = new Login();
-        }
+       
        
     }
 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.Views.FirstView"
+             xmlns:models="clr-namespace:goosorgtr_mobil.Models"
+             Title="FirstView">
+    
+    
+    
+    <Grid>
+        <Image Source="back17.png" 
+               Aspect="AspectFill" 
+               HorizontalOptions="FillAndExpand" 
+               VerticalOptions="FillAndExpand"/>
+        <Grid Padding="20" RowDefinitions=".4*,.2*,.6*" >
+            <VerticalStackLayout Margin="0,75,0,0" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label   FontFamily="NexaHeavy"
+                         FontSize="65"
+                         Text="GOOS"
+                         HorizontalTextAlignment="Center"
+                         VerticalTextAlignment="Center"
+                         TextColor="#113167"/>
+                <Label Margin="5,0,0,0" FontFamily="NexaLight"
+                       FontAttributes="Bold"
+                           FontSize="20"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Text="Güvenli Okul Otomasyon Sistemi"
+                           TextColor="#113167"/>
+            </VerticalStackLayout>
+            <Grid Grid.Row="1">
+                <VerticalStackLayout Margin="0,25,0,5">
+                    <Grid Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Kart 1 -->
+                        <Border BackgroundColor="#fff" 
+                                 Stroke="#fff"
+                              StrokeShape="RoundRectangle 15"
+                              StrokeThickness="2"
+                                Padding="10"
+                                   Margin="0,0,10,10"
+                                   Grid.Row="0" Grid.Column="0">
+                            <Border.Shadow>
+                                <Shadow Brush="#ccc" Offset="5,0" Radius="60" Opacity="1"/>
+                            </Border.Shadow>
+                            <StackLayout>
+                                <Label Text="Kart 1" 
+                                   Margin="5,0,0,0" 
+                                   FontFamily="NexaHeavy"
+                                   FontSize="22"    
+                                   TextColor="#113167"
+                                   HorizontalOptions="StartAndExpand"/>
+                                <Label Text="Açıklama 1" 
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   FontFamily="NexaLight"
+                                   Margin="5,3,0,0"
+                                    TextColor="#A5A5A5"
+                                   HorizontalOptions="StartAndExpand"/>
+                                <Label FontFamily="FaSolid"
+                                   Text="{x:Static models:FaSolidIcons.Plus}"
+                                     FontSize="15"
+                                    Margin="5,10,0,0"
+                                   TextColor="#113167"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+            <Grid Grid.Row="2">
+                <VerticalStackLayout Margin="0,25,0,5">
+                    <Grid Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Kart 1 -->
+                        <Border BackgroundColor="#fff" 
+                     Stroke="#fff"
+                  StrokeShape="RoundRectangle 15"
+                  StrokeThickness="2"
+                    Padding="10"
+                       Margin="0,0,10,10"
+                       Grid.Row="0" Grid.Column="0">
+                            <Border.Shadow>
+                                <Shadow Brush="#ccc" Offset="5,0" Radius="60" Opacity="1"/>
+                            </Border.Shadow>
+                            <StackLayout>
+                                <Label Text="Kart 1" 
+                       Margin="5,0,0,0" 
+                       FontFamily="NexaHeavy"
+                       FontSize="22"    
+                       TextColor="#113167"
+                       HorizontalOptions="StartAndExpand"/>
+                                <Label Text="Açıklama 1" 
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       FontFamily="NexaLight"
+                       Margin="5,3,0,0"
+                        TextColor="#A5A5A5"
+                       HorizontalOptions="StartAndExpand"/>
+                                <Label FontFamily="FaSolid"
+                       Text="{x:Static models:FaSolidIcons.Plus}"
+                         FontSize="15"
+                        Margin="5,10,0,0"
+                       TextColor="#113167"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
+
+

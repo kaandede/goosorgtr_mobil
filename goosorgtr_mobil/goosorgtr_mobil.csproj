@@ -61,6 +61,29 @@
 	  <None Remove="Resources\Fonts\fa-solid-900.ttf" />
 	  <None Remove="Resources\Fonts\Nexa-ExtraLight.ttf" />
 	  <None Remove="Resources\Fonts\Nexa-Heavy.ttf" />
+	  <None Remove="Resources\Images\back1.png" />
+	  <None Remove="Resources\Images\back10.png" />
+	  <None Remove="Resources\Images\back11.png" />
+	  <None Remove="Resources\Images\back12.png" />
+	  <None Remove="Resources\Images\back13.png" />
+	  <None Remove="Resources\Images\back14.png" />
+	  <None Remove="Resources\Images\back15.png" />
+	  <None Remove="Resources\Images\back16.png" />
+	  <None Remove="Resources\Images\back17.png" />
+	  <None Remove="Resources\Images\back18.png" />
+	  <None Remove="Resources\Images\back19.png" />
+	  <None Remove="Resources\Images\back2.png" />
+	  <None Remove="Resources\Images\back20.png" />
+	  <None Remove="Resources\Images\back21.png" />
+	  <None Remove="Resources\Images\back22.png" />
+	  <None Remove="Resources\Images\back23.png" />
+	  <None Remove="Resources\Images\back3.png" />
+	  <None Remove="Resources\Images\back4.png" />
+	  <None Remove="Resources\Images\back5.png" />
+	  <None Remove="Resources\Images\back6.png" />
+	  <None Remove="Resources\Images\back7.png" />
+	  <None Remove="Resources\Images\back8.png" />
+	  <None Remove="Resources\Images\back9.png" />
 	  <None Remove="Resources\Images\gooslogo.png" />
 	  <None Remove="Resources\Images\gooslogoicon.png" />
 	  <None Remove="Resources\Images\loginpx.png" />
@@ -74,6 +97,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="ParentViews\ParentMainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FirstView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Login.xaml">

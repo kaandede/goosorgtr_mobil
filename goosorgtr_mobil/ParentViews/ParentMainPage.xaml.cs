@@ -1,4 +1,5 @@
 using goosorgtr_mobil.Models;
+using goosorgtr_mobil.Views;
 using System.Collections.ObjectModel;
 
 namespace goosorgtr_mobil.ParentViews;
@@ -39,7 +40,10 @@ public partial class ParentMainPage : ContentPage
 				}
             }
         };
+    }
 
-
+    private void OnCounterClicked(object sender, EventArgs e)
+    {
+        Application.Current.MainPage = new Login();
     }
 }

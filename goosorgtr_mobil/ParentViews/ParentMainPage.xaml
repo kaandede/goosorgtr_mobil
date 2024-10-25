@@ -165,9 +165,10 @@
                               HorizontalOptions="Center"
                               VerticalOptions="Center"
                              TextColor="#8a8f9f"/>
-                    <Image Aspect="AspectFill"
+                    <ImageButton Aspect="AspectFill"
                             Margin="0,36,0,0"
-                            Grid.Column="2"
+                            Grid.Column="2" 
+                            Clicked="OnCounterClicked"
                             HeightRequest="55"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
