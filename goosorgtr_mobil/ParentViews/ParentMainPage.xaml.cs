@@ -18,15 +18,28 @@ public partial class ParentMainPage : ContentPage
 
     private void LoadData()
     {
-		Profiles = new ObservableCollection<Profile>
-		{
-			new Profile
-			{
-				Name = "Name",
-				ProfileImage="dotnet_bot.png",
-				NoPhotos= 12
-			}
-		};
+        Profiles = new ObservableCollection<Profile>
+        {
+            new Profile
+            {
+                Name = "Öðrenci 1",
+                ProfileImage="back14.png",
+                NoPhotos= 12
+            },
+
+            new Profile
+            {
+                Name = "Öðrenci 2",
+                ProfileImage="back13.png",
+                NoPhotos= 13
+            },
+             new Profile
+            {
+                Name = "Öðrenci 3",
+                ProfileImage="back3.png",
+                NoPhotos= 14
+            }
+        };
 
         GeneratedImages = new ObservableCollection<GeneratedImage>
         {

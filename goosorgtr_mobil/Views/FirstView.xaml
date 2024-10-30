@@ -4,12 +4,74 @@
              x:Class="goosorgtr_mobil.Views.FirstView"
              xmlns:models="clr-namespace:goosorgtr_mobil.Models"
              Title="FirstView">
-    
-    
-    
     <Grid>
-        <Image Source="back17.png" 
-               Aspect="AspectFill" 
+        <Image Source="back31.png" 
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand" 
+               VerticalOptions="FillAndExpand"/>
+
+        <StackLayout Padding="20" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+             <StackLayout Margin="20,0,20,0">
+                <Image HorizontalOptions="Center" 
+               VerticalOptions="Start" Source="gooslogoicon.png" Aspect="AspectFill" Margin="0"/>
+            </StackLayout>
+            <VerticalStackLayout Margin="0,50,0,80" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label   FontFamily="NexaHeavy"
+              FontSize="60"
+              Text="GOOS"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              TextColor="#1E2124"/>
+                <Label Margin="25,18,0,0" FontFamily="NexaLight"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                Text="Güvenli Okul Otomasyon Sistemi"
+                TextColor="#1E2124"/>
+                <Label Margin="25,10,0,0" FontFamily="NexaLight"
+                 FontAttributes="Bold"
+                 FontSize="15"
+                 HorizontalTextAlignment="Start"
+                 VerticalTextAlignment="Center"
+                 Text="Lütfen giriş yapın veya yeni bir hesap oluşturun."
+                 TextColor="#666376"/>
+            </VerticalStackLayout>
+
+            <!-- Butonlar -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Frame BorderColor="#fff" BackgroundColor="Transparent" CornerRadius="10" Padding="0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="Kayıt Ol" 
+                        FontFamily="NexaHeavy"
+                        FontSize="15"
+                        BackgroundColor="#fff"
+                        TextColor="#423D52"
+                        HeightRequest="50"
+                        WidthRequest="120"
+                        Margin="0,0"/>
+                        <Button 
+                        Text="Giriş" 
+                        FontSize="15"
+                        HeightRequest="50"
+                        WidthRequest="120"
+                        FontFamily="NexaHeavy"
+                        Clicked="First_Button_Clicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#423D52"
+                        Margin="5,0"/>
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+            
+        </StackLayout>
+        
+    </Grid>
+    
+    <!--<Grid>
+        <Image Source="back24.png" 
+               Aspect="AspectFill"
                HorizontalOptions="FillAndExpand" 
                VerticalOptions="FillAndExpand"/>
         <Grid Padding="20" RowDefinitions=".4*,.2*,.6*" >
@@ -38,7 +100,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Kart 1 -->
+                        --><!-- Kart 1 --><!--
                         <Border BackgroundColor="#fff" 
                                  Stroke="#fff"
                               StrokeShape="RoundRectangle 15"
@@ -83,7 +145,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Kart 1 -->
+                        --><!-- Kart 1 --><!--
                         <Border BackgroundColor="#fff" 
                      Stroke="#fff"
                   StrokeShape="RoundRectangle 15"
@@ -119,7 +181,7 @@
                 </VerticalStackLayout>
             </Grid>
         </Grid>
-    </Grid>
+    </Grid>-->
 </ContentPage>
 
 

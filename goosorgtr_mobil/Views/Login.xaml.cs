@@ -14,6 +14,13 @@ public partial class Login : ContentPage
          Application.Current.MainPage = new ParentMainPage();
     }
 
+    private async void OnLabelTapped(object sender, EventArgs e)
+    {
+        // Action to perform when the label is tapped
+        await DisplayAlert("Týklandý!", "Giriþ Sayfasýna Yönlendiriliyorsunuz.", "Tamam");
+        Application.Current.MainPage = new FirstView();
+    }
+
     private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
     {
 

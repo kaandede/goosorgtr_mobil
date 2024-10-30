@@ -4,11 +4,18 @@
              x:Class="goosorgtr_mobil.ParentViews.ParentMainPage"
              xmlns:models="clr-namespace:goosorgtr_mobil.Models"
              Title="ParentMainPage"
-             BackgroundColor="#fff">
+             BackgroundColor="#EEF2F6">
     <Grid Margin="0,10,0,0" RowDefinitions=".1*,.1*,.15*,.70*,.1*">
         <Grid Margin="25,0,25,0" ColumnDefinitions="*,*">
-            <VerticalStackLayout VerticalOptions="Center">
-                <Rectangle Fill="#1B1B1B"
+            <Frame BorderColor="#fff" CornerRadius="30" BackgroundColor="#fff" Padding="12" VerticalOptions="Center" HorizontalOptions="Start">
+                <Label FontFamily="FaSolid"
+                       Text="{x:Static models:FaSolidIcons.Bars}"
+                       FontSize="22"
+                       Margin="0,0,0,0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="#393A3B"/>
+                <!--<Rectangle Fill="#1B1B1B"
                            HeightRequest="2"
                            HorizontalOptions="Start"
                            WidthRequest="25"/>
@@ -21,72 +28,83 @@
                            Margin="0,5,0,0"
                            HeightRequest="2"
                            HorizontalOptions="StartAndExpand"
-                           WidthRequest="15"/>
-            </VerticalStackLayout>
+                           WidthRequest="15"/>-->
+            </Frame>
+            <Frame Grid.Column="1"
+                    HeightRequest="60"
+                    CornerRadius="30"
+                    BorderColor="#fff"
+                    HorizontalOptions="End"
+                    WidthRequest="60">
+                            <Image Aspect="AspectFill"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    Source="gooslogoicon.png"
+                    WidthRequest="50"/>
+             </Frame>
         </Grid>
-        <Grid Margin="25,0,25,0" ColumnDefinitions="*,*" Grid.Row="1" VerticalOptions="Center">
+        <Grid Margin="30,0,25,0" ColumnDefinitions="*,*" Grid.Row="1" VerticalOptions="Center">
             <VerticalStackLayout VerticalOptions="Center">
-                <Label FontSize="Subtitle"
-                        FontFamily="NexaLight" 
-                        FontAttributes="Bold"
-                        Text="GOOS"
-                        TextColor="#1B1B1B"/>
+
                 <Label FontSize="Small"
                        FontFamily="NexaHeavy" 
-                       FontAttributes="Bold"
                        Text="Merhaba, Kaan DEDE"
-                       TextColor="#1B1B1B"/>
+                       TextColor="#1B1B1B"
+                       Margin="0,15,0,0"/>
+                <Label FontSize="Subtitle"
+                       Margin="0,15,0,0"
+                     FontFamily="NexaLight" 
+                     FontAttributes="Bold"
+                     Text="Öğrenci Listesi"
+                     TextColor="#1B1B1B"/>
             </VerticalStackLayout>
-            <Border Grid.Column="1"
-             HeightRequest="60"
-             HorizontalOptions="End"
-             StrokeShape="RoundRectangle 80,80,80,80"
-             WidthRequest="60">
-                <Image Aspect="AspectFill"
-             HeightRequest="50"
-             HorizontalOptions="Center"
-             Source="gooslogoicon.png"
-             WidthRequest="50"/>
-            </Border>
-
         </Grid>
+        <!--<Grid Margin="30,0,25,0" ColumnDefinitions="*,*" Grid.Row="1" VerticalOptions="Center">
+            <VerticalStackLayout VerticalOptions="Center">
+                <Rectangle Fill="#E7E7EA"
+              Margin="0,18,0,0"
+              HeightRequest="2"
+              HorizontalOptions="StartAndExpand"
+              WidthRequest="335"/>
+            </VerticalStackLayout>
+        </Grid>-->
         <CollectionView
             Grid.Row="2"
-            Margin="25,0,25,0"
+            Margin="25,-30,25,0"
             ItemsSource="{Binding Profiles}"
             VerticalOptions="Center">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal"/>
             </CollectionView.ItemsLayout>
-
+            
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid ColumnDefinitions=".35*,.65*"
-                          HeightRequest="60"
+                          HeightRequest="50"
                           WidthRequest="160">
                         <RoundRectangle Grid.ColumnSpan="2"
                                     CornerRadius="45"
-                                    Fill="#F5F5FF"/>
+                                    Fill="#fff"/>
                         <Border Grid.RowSpan="2"
-                                Margin="5,0,0,0"
-                                HeightRequest="50"
+                                Margin="8,0,0,0"
+                                HeightRequest="40"
                                 HorizontalOptions="Start"
                                 StrokeShape="RoundRectangle 80,80,80,80"
                                 StrokeThickness="0"
-                                WidthRequest="50">
-                            <Image HeightRequest="50" Source="{Binding ProfileImage}"/>
+                                WidthRequest="40">
+                            <Image HeightRequest="40" Source="{Binding ProfileImage}"/>
                         </Border>
                         <VerticalStackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                             <Label Margin="10,0,0,0"
-                                   FontFamily="NexaHeavy"
+                                   FontFamily="Nexalight"
                                    HorizontalTextAlignment="Start"
                                    Text="{Binding Name}"
                                    TextColor="#1B1B1B"
                                    VerticalTextAlignment="Center"/>
                             <Label Grid.Column="1"
                                    Margin="10,0,0,0"
-                                   FontFamily="NexaHeavy"
+                                   FontFamily="Nexalight"
                                    FontSize="12"
                                    Text="{Binding NoPhotos, StringFormat='{0} pictures'}"
                                    TextColor="#1B1B1B"
@@ -98,14 +116,14 @@
         </CollectionView>
         <Grid Grid.Row="5"
               Margin="0,0,0,0"
-              HeightRequest="90"
+              HeightRequest="70"
               VerticalOptions="End">
-            <Border BackgroundColor="#fff"
-                    Stroke="#fff"
-                    StrokeShape="RoundRectangle 0,0,0,0"
+            <Border BackgroundColor="#1E2124"
+                    Stroke="#1E2124"
+                    StrokeShape="RoundRectangle 10,10,0,0"
                     StrokeThickness="2">
                 <Border.Shadow>
-                    <Shadow Brush="#1B1B1B" Offset="20,20" Radius="40" Opacity="0.8"/>
+                    <Shadow Brush="#1E2124" Offset="20,20" Radius="40" Opacity="0.8"/>
                 </Border.Shadow>
                 <Grid Margin="20,0,20,0" ColumnDefinitions="*,*,*,*,*"
                       RowDefinitions="*,*"
@@ -145,7 +163,7 @@
                             HeightRequest="55"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           TextColor="#5161FF"/>
+                           TextColor="#FAFAFA"/>
                     <Label FontFamily="FaSolid"
                             Grid.Column="1"
                             Text="{x:Static models:FaSolidIcons.LocationDot}"
@@ -154,7 +172,7 @@
                             HeightRequest="55"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
-                            TextColor="#8a8f9f"/>
+                            TextColor="#FAFAFA"/>
                 
                     <Label FontFamily="FaSolid"
                              Grid.Column="3"
@@ -164,7 +182,7 @@
                             HeightRequest="55"
                               HorizontalOptions="Center"
                               VerticalOptions="Center"
-                             TextColor="#8a8f9f"/>
+                             TextColor="#FAFAFA"/>
                     <ImageButton Aspect="AspectFill"
                             Margin="0,36,0,0"
                             Grid.Column="2" 
@@ -182,7 +200,7 @@
                              FontSize="25"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
-                            TextColor="#8a8f9f"/>
+                            TextColor="#FAFAFA"/>
 
                 </Grid>
             </Border>
