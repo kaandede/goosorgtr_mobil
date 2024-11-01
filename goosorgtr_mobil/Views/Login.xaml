@@ -80,24 +80,24 @@
             <StackLayout WidthRequest="300" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                 <Frame BackgroundColor="#FAFAFC" BorderColor="#fff" Padding="0" Margin="0,40,0,0" HorizontalOptions="FillAndExpand" CornerRadius="10">
                     <StackLayout Orientation="Horizontal">
-                        <local:BorderlessEntry Text="Admin" Placeholder="Kullanıcı Adı veya E-Posta" PlaceholderColor="#908E9A" TextColor="#1E2124" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
+                        <local:BorderlessEntry Text="Admin" Placeholder="Kullanıcı Adı veya E-Posta" PlaceholderColor="#908E9A" TextColor="#040404" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
                     </StackLayout>
                 </Frame>
                 <Frame  BackgroundColor="#FAFAFC" BorderColor="#fff" Padding="0" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" CornerRadius="10">
                     <StackLayout Orientation="Horizontal">
 
-                        <local:BorderlessEntry Text="1q2w3E*" IsPassword="True" Placeholder="Parola" PlaceholderColor="#908E9A" TextColor="#1E2124" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
+                        <local:BorderlessEntry Text="1q2w3E*" IsPassword="True" Placeholder="Parola" PlaceholderColor="#908E9A" TextColor="#040404" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
                     </StackLayout>
                 </Frame>
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0" Padding="0">
 
                     <CheckBox IsChecked="False" Color="#383348"/>
-                    <Label Text="Beni Hatırla" FontFamily="NexaLight" FontAttributes="Bold" TextColor="#1E2124" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Label Text="Beni Hatırla" FontFamily="NexaLight" FontAttributes="Bold" TextColor="#040404" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                     <Label Text="Şifremi Unuttum" TextDecorations="Underline" TextColor="#408CF1" FontFamily="NexaLight" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
-                <Button Text="Giriş" FontSize="18" BackgroundColor="#1E2124" FontFamily="NexaHeavy" TextColor="#fff" HeightRequest="50" CornerRadius="10" Margin="5,25,0,0" Clicked="Login_Button_Clicked"/>
+                <Button Text="Giriş" FontSize="18" BackgroundColor="#040404" FontFamily="NexaHeavy" TextColor="#fff" HeightRequest="50" CornerRadius="10" Margin="5,25,0,0" Clicked="Login_Button_Clicked"/>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,40,0,0" Padding="0">
-                    <Label Text="Yeni Kullanıcı mısın?"  FontFamily="NexaLight" FontAttributes="Bold" TextColor="#1E2124" FontSize="Small"/>
+                    <Label Text="Yeni Kullanıcı mısın?"  FontFamily="NexaLight" FontAttributes="Bold" TextColor="#040404" FontSize="Small"/>
                     <Label Text="Kayıt Ol" TextColor="#408CF1"  FontFamily="NexaHeavy" FontSize="Small" Margin="8,0,0,0">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnLabelTapped" />

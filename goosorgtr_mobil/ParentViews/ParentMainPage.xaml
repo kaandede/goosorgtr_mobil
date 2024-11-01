@@ -4,8 +4,1388 @@
              x:Class="goosorgtr_mobil.ParentViews.ParentMainPage"
              xmlns:models="clr-namespace:goosorgtr_mobil.Models"
              Title="ParentMainPage"
-             BackgroundColor="#EEF2F6">
-    <Grid Margin="0,10,0,0" RowDefinitions=".1*,.1*,.15*,.70*,.1*">
+             BackgroundColor="#F2F2F7">
+
+    <ScrollView>
+
+
+        <Grid Margin="0,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Margin="25,0,25,0" ColumnDefinitions="*,*">
+                <Frame BorderColor="#fff" CornerRadius="30" BackgroundColor="#fff" Padding="12" VerticalOptions="Center" HorizontalOptions="Start">
+                    <Label FontFamily="FaSolid"
+                       Text="{x:Static models:FaSolidIcons.Bars}"
+                       FontSize="22"
+                       Margin="0,0,0,0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="#393A3B"/>
+                    <!--<Rectangle Fill="#1B1B1B"
+                           HeightRequest="2"
+                           HorizontalOptions="Start"
+                           WidthRequest="25"/>
+                        <Rectangle Fill="#1B1B1B"
+                           Margin="0,5,0,0"
+                           HeightRequest="2"
+                           HorizontalOptions="Start"
+                           WidthRequest="35"/>
+                        <Rectangle Fill="#1B1B1B"
+                           Margin="0,5,0,0"
+                           HeightRequest="2"
+                           HorizontalOptions="StartAndExpand"
+                           WidthRequest="15"/>-->
+                </Frame>
+                <Frame Grid.Column="1"
+                    HeightRequest="60"
+                    CornerRadius="30"
+                    BorderColor="#fff"
+                    HorizontalOptions="End"
+                    WidthRequest="60">
+                    <Image Aspect="AspectFill"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    Source="gooslogoicon.png"
+                    WidthRequest="50"/>
+                </Frame>
+            </Grid>
+            <Grid Margin="30,0,25,0" ColumnDefinitions="*,*" Grid.Row="1" VerticalOptions="Center">
+                <VerticalStackLayout VerticalOptions="Center">
+
+                    <Label FontSize="Small"
+                       FontFamily="NexaHeavy" 
+                       Text="Merhaba, Kaan DEDE"
+                       TextColor="#040404"
+                       Margin="0,15,0,0"/>
+                    <Label FontSize="Subtitle"
+                       Margin="0,15,0,0"
+                     FontFamily="NexaLight" 
+                     FontAttributes="Bold"
+                     Text="Öğrenci Listesi"
+                     TextColor="#040404"/>
+                </VerticalStackLayout>
+            </Grid>
+            <CollectionView
+                Grid.Row="2"
+                Margin="25,10,25,0"
+                ItemsSource="{Binding Profiles}"
+                VerticalOptions="Center">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions=".35*,.65*"
+                          HeightRequest="50"
+                          WidthRequest="160">
+                            <!--<Border BackgroundColor="#fff"
+                       Stroke="#E7E9ED"
+                       StrokeShape="RoundRectangle 45"
+                       StrokeThickness="1">
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center">
+                                <Label Margin="0,0,0,0"
+                           FontFamily="NexaLight" 
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Start"
+                           Text="{Binding Name}"
+                           TextColor="#040404"
+                           FontSize="14"
+                           VerticalTextAlignment="Center"/>-->
+                            <RoundRectangle Grid.ColumnSpan="2"
+                                    CornerRadius="45"
+                                    Fill="#fff"/>
+                            <Border Grid.RowSpan="2"
+                                Margin="8,0,0,0"
+                                HeightRequest="40"
+                                HorizontalOptions="Start"
+                                StrokeShape="RoundRectangle 80,80,80,80"
+                                StrokeThickness="0"
+                                WidthRequest="40">
+                                <Image HeightRequest="40" Source="{Binding ProfileImage}"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center">
+                                <Label Margin="10,0,0,0"
+                                   FontFamily="Nexalight"
+                                   HorizontalTextAlignment="Start"
+                                   Text="{Binding Name}"
+                                   TextColor="#040404"
+                                   VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="1"
+                                   Margin="10,0,0,0"
+                                   FontFamily="Nexalight"
+                                   FontSize="12"
+                                   Text="{Binding NoPhotos, StringFormat='{0} pictures'}"
+                                   TextColor="#7F7F85"
+                                   VerticalOptions="Start"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid Grid.Row="3"
+                    Margin="0,0,0,0"
+                    VerticalOptions="Start">
+                <Border BackgroundColor="Transparent"
+                 Stroke="Transparent"
+                 StrokeShape="RoundRectangle 10"
+                 StrokeThickness="2">
+                    <Border.Shadow>
+                        <Shadow Brush="#ddd" Offset="20,20" Radius="40" Opacity="0.8"/>
+                    </Border.Shadow>
+                    <Grid Margin="20,0,20,0" ColumnDefinitions="*,*,*"
+                        RowDefinitions="*,*"
+                        RowSpacing="3">
+                        <Label FontFamily="FaSolid"
+                         Text="{x:Static models:FaSolidIcons.Folder}"
+                         FontSize="100"
+                          Margin="0,60,0,0"
+                          HeightRequest="150"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         TextColor="#FAFAFA">
+
+                        </Label>
+                        <Label FontFamily="FaSolid"
+                          Grid.Column="1"
+                          Text="{x:Static models:FaSolidIcons.Folder}"
+                          FontSize="100"
+                          Margin="0,60,0,0"
+                          HeightRequest="150"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"
+                          TextColor="#FAFAFA"/>
+                        <Label FontFamily="FaSolid"
+                          Grid.Column="2"
+                          Text="{x:Static models:FaSolidIcons.Folder}"
+                          FontSize="100"
+                          Margin="0,60,0,0"
+                          HeightRequest="150"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"
+                          TextColor="#FAFAFA"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="3"
+                      Margin="25,120,25,0"
+                      VerticalOptions="Start">
+                <Border BackgroundColor="Transparent"
+                           Stroke="Transparent"
+                           StrokeShape="RoundRectangle 10"
+                           StrokeThickness="2">
+                    <Border.Shadow>
+                        <Shadow Brush="#ddd" Offset="20,20" Radius="40" Opacity="0.8"/>
+                    </Border.Shadow>
+
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Not Ortalaması -->
+
+                        <Frame Grid.Column="0" HeightRequest="100" BorderColor="#eef0f2" CornerRadius="10" Padding="12" VerticalOptions="Center" HorizontalOptions="Center"
+                               BackgroundColor="#FAFAFA">
+                            <StackLayout Spacing="8">
+                                <Label Text="85.4" 
+                                       FontSize="16"
+                                       FontFamily="NexaHeavy"
+                                       HeightRequest="25"
+                                       TextColor="#1976D2"/>
+                                <Label Text="Not Ortalaması" FontFamily="NexaLight"
+                                        FontAttributes="Bold" FontSize="14"/>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <Frame Grid.Column="1" HeightRequest="100" BorderColor="#eef0f2" CornerRadius="10" Padding="12" VerticalOptions="Center" HorizontalOptions="Center"
+                               BackgroundColor="#FAFAFA">
+                            <StackLayout Spacing="8">
+                                <Label Text="2 Gün" 
+                                       FontSize="16"
+                                       FontFamily="NexaHeavy"
+                                       HeightRequest="25"
+                                       TextColor="#F57C00"/>
+                                <Label FontFamily="NexaLight"
+                                        FontAttributes="Bold" Text="Devamsızlık" FontSize="14"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Column="2" HeightRequest="100"
+                                BorderColor="#eef0f2" CornerRadius="10" Padding="12" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#FAFAFA">
+                            <StackLayout Spacing="8">
+                                <Label Text="12." 
+                                        FontSize="16"
+                                        FontFamily="NexaHeavy"
+                                        HeightRequest="25"
+                                        TextColor="#388E3C"/>
+                                <Label FontFamily="NexaLight"
+                                        FontAttributes="Bold" Text="Sınıf Sırası" FontSize="14"/>
+                            </StackLayout>
+                        </Frame>
+
+                    </Grid>
+                </Border>
+            </Grid>
+
+
+            <Grid Grid.Row="5"
+              Margin="0,0,0,0"
+              HeightRequest="70"
+              VerticalOptions="End">
+                <Border BackgroundColor="#040404"
+                    Stroke="#040404"
+                    StrokeShape="RoundRectangle 10,10,0,0"
+                    StrokeThickness="2">
+                    <Border.Shadow>
+                        <Shadow Brush="#040404" Offset="20,20" Radius="40" Opacity="0.8"/>
+                    </Border.Shadow>
+                    <Grid Margin="20,0,20,0" ColumnDefinitions="*,*,*,*,*"
+                      RowDefinitions="*,*"
+                      RowSpacing="3">
+
+                        <!--<Label Grid.Row="1"
+                           FontFamily="NexaHeavy"
+                           FontSize="12"
+                           HorizontalOptions="Center"
+                           Text="Ana Sayfa"
+                           TextColor="#5161FF"/>
+                        <Label Grid.Row="1"
+                           Grid.Column="1"
+                             FontFamily="NexaHeavy"
+                             FontSize="12"
+                             HorizontalOptions="Center"
+                             Text="Konum"
+                             TextColor="#8a8f9f"/>
+
+                        <Label Grid.Row="1"
+                          Grid.Column="3"
+                            FontFamily="NexaHeavy"
+                            FontSize="12"
+                            HorizontalOptions="Center"
+                            Text="Bildirim"
+                            TextColor="#8a8f9f"/>
+                        <Label Grid.Row="1"
+                        Grid.Column="4"
+                          FontFamily="NexaHeavy"
+                         FontSize="12"
+                          HorizontalOptions="Center"
+                          Text="Öğrenci"
+                          TextColor="#8a8f9f"/>-->
+                        <Label FontFamily="FaSolid"
+                           Text="{x:Static models:FaSolidIcons.House}"
+                           FontSize="25"
+                            Margin="0,60,0,0"
+                            HeightRequest="55"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="#FAFAFA"/>
+                        <Label FontFamily="FaSolid"
+                            Grid.Column="1"
+                            Text="{x:Static models:FaSolidIcons.LocationDot}"
+                            FontSize="25"
+                            Margin="0,60,0,0"
+                            HeightRequest="55"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            TextColor="#FAFAFA"/>
+
+                        <Label FontFamily="FaSolid"
+                             Grid.Column="3"
+                             Text="{x:Static models:FaSolidIcons.Bell}"
+                               FontSize="25"
+                              Margin="0,60,0,0"
+                            HeightRequest="55"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center"
+                             TextColor="#FAFAFA"/>
+                        <ImageButton Aspect="AspectFill"
+                            Margin="0,36,0,0"
+                            Grid.Column="2" 
+                            Clicked="OnCounterClicked"
+                            HeightRequest="55"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Source="gooslogoicon.png"
+                            WidthRequest="55"/>
+                        <Label FontFamily="FaSolid"
+                            Margin="0,60,0,0"
+                            Grid.Column="4"
+                            Text="{x:Static models:FaSolidIcons.User}"
+                            HeightRequest="55"
+                             FontSize="25"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            TextColor="#FAFAFA"/>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        <!--<Grid Padding="16" RowSpacing="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Row="0" Style="{StaticResource MainCardStyle}">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    -->
+        <!-- Profil Resmi -->
+        <!--
+                    <Frame Grid.Column="0" 
+                           HeightRequest="60" 
+                           WidthRequest="60"
+                           CornerRadius="30"
+                           Padding="0"
+                           IsClippedToBounds="True">
+                        <Image Source="student_avatar.png" 
+                               Aspect="AspectFill"/>
+                    </Frame>
+
+                    -->
+        <!-- Öğrenci Bilgileri -->
+        <!--
+                    <StackLayout Grid.Column="1" 
+                                Spacing="4"
+                                VerticalOptions="Center">
+                        <Label Text="Ahmet Yılmaz" 
+                               Style="{StaticResource SubHeaderStyle}"/>
+                        <Label Text="9-A Sınıfı • No: 1234" 
+                               Style="{StaticResource BodyTextStyle}"/>
+                    </StackLayout>
+
+                    -->
+        <!-- Bildirim İkonu -->
+        <!--
+                    <Frame Grid.Column="2" 
+                           Style="{StaticResource IconFrameStyle}"
+                           BackgroundColor="#FFE4E4">
+                        <Image Source="back1.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShowNotificationsCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Anlık Durum Kartı -->
+        <!--
+            <Frame Grid.Row="1" Style="{StaticResource MainCardStyle}">
+                <Grid ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    -->
+        <!-- Not Ortalaması -->
+        <!--
+                    <Frame Grid.Column="0" Style="{StaticResource SubCardStyle}"
+                           BackgroundColor="#E3F2FD">
+                        <StackLayout Spacing="8">
+                            <Label Text="85.4" 
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#1976D2"/>
+                            <Label Text="Not Ortalaması" 
+                                   Style="{StaticResource BodyTextStyle}"/>
+                        </StackLayout>
+                    </Frame>
+
+                    -->
+        <!-- Devamsızlık -->
+        <!--
+                    <Frame Grid.Column="1" Style="{StaticResource SubCardStyle}"
+                           BackgroundColor="#FFF3E0">
+                        <StackLayout Spacing="8">
+                            <Label Text="2 Gün" 
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#F57C00"/>
+                            <Label Text="Devamsızlık" 
+                                   Style="{StaticResource BodyTextStyle}"/>
+                        </StackLayout>
+                    </Frame>
+
+                    -->
+        <!-- Başarı Sırası -->
+        <!--
+                    <Frame Grid.Column="2" Style="{StaticResource SubCardStyle}"
+                           BackgroundColor="#E8F5E9">
+                        <StackLayout Spacing="8">
+                            <Label Text="12." 
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#388E3C"/>
+                            <Label Text="Sınıf Sırası" 
+                                   Style="{StaticResource BodyTextStyle}"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Konum Takip Kartı -->
+        <!--
+            <Frame Grid.Row="2" Style="{StaticResource MainCardStyle}">
+                <StackLayout Spacing="16">
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Spacing="4">
+                            <Label Text="Canlı Konum" 
+                                   Style="{StaticResource SubHeaderStyle}"/>
+                            <Label Text="Son güncelleme: 2 dk önce" 
+                                   Style="{StaticResource BodyTextStyle}"/>
+                        </StackLayout>
+
+                        <Button Grid.Column="1"
+                                Text="Haritada Gör"
+                                Style="{StaticResource PrimaryButtonStyle}"/>
+                    </Grid>
+
+                    <Frame Style="{StaticResource SubCardStyle}">
+                        <Grid RowSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <StackLayout Grid.Row="0" Orientation="Horizontal" Spacing="8">
+                                <Image Source="location_pin.png" HeightRequest="20"/>
+                                <Label Text="Şu an:" Style="{StaticResource BodyTextStyle}"/>
+                            </StackLayout>
+
+                            <Label Grid.Row="1" 
+                                   Text="Atatürk Ortaokulu - Spor Salonu"
+                                   Style="{StaticResource SubHeaderStyle}"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+
+            -->
+        <!-- Günlük Program -->
+        <!--
+            <Frame Grid.Row="3" Style="{StaticResource MainCardStyle}">
+                <StackLayout Spacing="16">
+                    <Label Text="Bugünkü Program" 
+                           Style="{StaticResource SubHeaderStyle}"/>
+
+                    <CollectionView ItemsSource="{Binding Profiles}"
+                                  HeightRequest="200">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Style="{StaticResource SubCardStyle}"
+                                       Margin="0,0,0,8">
+                                    <Grid ColumnSpacing="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Style="{StaticResource IconFrameStyle}"
+                                               BackgroundColor="{Binding ProfileImage}">
+                                            <Image Source="{Binding ProfileImage}"/>
+                                        </Frame>
+
+                                        <StackLayout Grid.Column="1" Spacing="4">
+                                            <Label Text="{Binding Name}"
+                                                   Style="{StaticResource SubHeaderStyle}"/>
+                                            <Label Text="{Binding Name}"
+                                                   Style="{StaticResource BodyTextStyle}"/>
+                                            <Label Text="{Binding Name}"
+                                                   Style="{StaticResource BodyTextStyle}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+
+            -->
+        <!-- Duyurular ve Etkinlikler -->
+        <!--
+            <Frame Grid.Row="4" Style="{StaticResource MainCardStyle}">
+                <StackLayout Spacing="16">
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Duyurular ve Etkinlikler" 
+                               Style="{StaticResource SubHeaderStyle}"/>
+                        <Label Grid.Column="1" 
+                               Text="Tümünü Gör >"
+                               TextColor="#007AFF">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShowAllAnnouncementsCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <CollectionView ItemsSource="{Binding Profiles}"
+                                  HeightRequest="150">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Style="{StaticResource SubCardStyle}"
+                                       Margin="0,0,0,8">
+                                    <StackLayout Spacing="8">
+                                        <Label Text="{Binding Name}"
+                                               Style="{StaticResource SubHeaderStyle}"/>
+                                        <Label Text="{Binding Name}"
+                                               Style="{StaticResource BodyTextStyle}"/>
+                                        <Label Text="{Binding Name}"
+                                               FontSize="12"
+                                               TextColor="#999999"/>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+
+            -->
+        <!-- Hızlı Erişim Menüsü -->
+        <!--
+            <Frame Grid.Row="5" Style="{StaticResource MainCardStyle}">
+                <Grid RowSpacing="16" ColumnSpacing="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    -->
+        <!-- Notlar -->
+        <!--
+                    <Frame Grid.Row="0" Grid.Column="0" 
+                           Style="{StaticResource SubCardStyle}"
+                           BackgroundColor="#E3F2FD">
+                        <StackLayout Spacing="8">
+                            <Image Source="grades_icon.png" 
+                                   HeightRequest="32"/>
+                            <Label Text="Notlar"
+                                   Style="{StaticResource BodyTextStyle}"/>
+                        </StackLayout>
+                    </Frame>
+
+                    -->
+        <!-- Karne -->
+        <!--
+                    <Frame Grid.Row="0" Grid.Column="1" 
+                           Style="{StaticResource SubCardStyle}"
+                           BackgroundColor="#E8F5E9">
+                        <StackLayout Spacing="8">
+                            <Image Source="report_card_icon.png" 
+                                   HeightRequest="32"></Image>
+                            <Label Text="Karne"
+                                   Style="{StaticResource BodyTextStyle}"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Frame>
+        </Grid>-->
+
+        <!--<ContentPage.Resources>
+        <Style x:Key="CardStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+            <Setter Property="HasShadow" Value="True"/>
+            <Setter Property="BorderColor" Value="Transparent"/>
+            -->
+        <!-- iOS style shadow -->
+        <!--
+            <Setter Property="Shadow">
+                <Shadow Brush="#20000000"
+                        Offset="0,4"
+                        Radius="12"
+                        Opacity="0.15"/>
+            </Setter>
+        </Style>
+
+        <Style x:Key="StatCardStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#F8FAFC"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="HasShadow" Value="False"/>
+            <Setter Property="BorderColor" Value="Transparent"/>
+        </Style>
+
+        <Style x:Key="IconFrameStyle" TargetType="Frame">
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="WidthRequest" Value="50"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BackgroundColor" Value="#F0F9FF"/>
+            <Setter Property="BorderColor" Value="Transparent"/>
+            <Setter Property="HasShadow" Value="False"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid Padding="16" RowSpacing="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            -->
+        <!-- Hoşgeldiniz Kartı -->
+        <!--
+            <Frame Grid.Row="0" Style="{StaticResource CardStyle}">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Style="{StaticResource IconFrameStyle}">
+                        <Image Source="parent_avatar.png" 
+                               Aspect="AspectFill"/>
+                    </Frame>
+
+                    <StackLayout Grid.Column="1" 
+                               Spacing="4" 
+                               VerticalOptions="Center">
+                        <Label Text="Hoş Geldiniz" 
+                               TextColor="#8E8E93"
+                               FontSize="14"/>
+                        <Label Text="Ahmet Yılmaz" 
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="#1C1C1E"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Öğrenci Kartı -->
+        <!--
+            <Frame Grid.Row="1" Style="{StaticResource CardStyle}">
+                <Grid RowSpacing="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Frame HeightRequest="70" 
+                               WidthRequest="70" 
+                               CornerRadius="35"
+                               Padding="0"
+                               IsClippedToBounds="True"
+                               BorderColor="Transparent"
+                               BackgroundColor="#F2F2F7">
+                            <Image Source="student_avatar.png" 
+                                   Aspect="AspectFill"/>
+                        </Frame>
+
+                        <StackLayout Grid.Column="1" 
+                                   VerticalOptions="Center" 
+                                   Spacing="4">
+                            <Label Text="Ayşe Yılmaz"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="#1C1C1E"/>
+                            <Label Text="9-A Sınıfı • Öğrenci No: 1234"
+                                   TextColor="#8E8E93"
+                                   FontSize="14"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid Grid.Row="1" 
+                          ColumnSpacing="16"
+                          ColumnDefinitions="*,*,*">
+
+                        -->
+        <!-- Not Ortalaması -->
+        <!--
+                        <Frame Grid.Column="0" 
+                               Style="{StaticResource StatCardStyle}">
+                            <StackLayout Spacing="4">
+                                <Label Text="85.5"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#007AFF"/>
+                                <Label Text="Ortalama"
+                                       FontSize="12"
+                                       TextColor="#8E8E93"/>
+                            </StackLayout>
+                        </Frame>
+
+                        -->
+        <!-- Devamsızlık -->
+        <!--
+                        <Frame Grid.Column="1" 
+                               Style="{StaticResource StatCardStyle}">
+                            <StackLayout Spacing="4">
+                                <Label Text="2"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#FF3B30"/>
+                                <Label Text="Devamsızlık"
+                                       FontSize="12"
+                                       TextColor="#8E8E93"/>
+                            </StackLayout>
+                        </Frame>
+
+                        -->
+        <!-- Başarı Sırası -->
+        <!--
+                        <Frame Grid.Column="2" 
+                               Style="{StaticResource StatCardStyle}">
+                            <StackLayout Spacing="4">
+                                <Label Text="12."
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#34C759"/>
+                                <Label Text="Sınıf Sırası"
+                                       FontSize="12"
+                                       TextColor="#8E8E93"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Konum Takip Kartı -->
+        <!--
+            <Frame Grid.Row="2" Style="{StaticResource CardStyle}">
+                <Grid RowSpacing="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Spacing="4">
+                            <Label Text="Konum Takibi"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#1C1C1E"/>
+                            <Label Text="Son güncelleme: 5 dk önce"
+                                   FontSize="13"
+                                   TextColor="#8E8E93"/>
+                        </StackLayout>
+
+                        <Frame Grid.Column="1" 
+                               Style="{StaticResource IconFrameStyle}"
+                               BackgroundColor="#E6F7FF">
+                            <Image Source="location_icon.png"
+                                   HeightRequest="24"
+                                   WidthRequest="24"/>
+                        </Frame>
+                    </Grid>
+
+                    <Frame Grid.Row="1"
+                           BackgroundColor="#F2F2F7"
+                           CornerRadius="16"
+                           Padding="16"
+                           HasShadow="False">
+                        <StackLayout Spacing="8">
+                            <Label Text="Şu an burada:"
+                                   FontSize="13"
+                                   TextColor="#8E8E93"/>
+                            <Label Text="Atatürk Ortaokulu"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="#1C1C1E"/>
+                            <Label Text="Cumhuriyet Mah. 1234 Sok. No:5"
+                                   FontSize="15"
+                                   TextColor="#3A3A3C"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Button Grid.Row="2"
+                            Text="Haritada Görüntüle"
+                            BackgroundColor="#007AFF"
+                            TextColor="White"
+                            CornerRadius="12"
+                            HeightRequest="44"
+                            FontAttributes="Bold"/>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Hızlı Erişim -->
+        <!--
+            <Frame Grid.Row="3" Style="{StaticResource CardStyle}">
+                <Grid RowSpacing="16" ColumnSpacing="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    -->
+        <!-- Sınav Sonuçları -->
+        <!--
+                    <Frame Grid.Row="0" Grid.Column="0"
+                           Style="{StaticResource StatCardStyle}"
+                           BackgroundColor="#E3F2FD">
+                        <StackLayout Spacing="12">
+                            <Frame Style="{StaticResource IconFrameStyle}"
+                                   BackgroundColor="White">
+                                <Image Source="exam_icon.png"
+                                       HeightRequest="24"/>
+                            </Frame>
+                            <Label Text="Sınav&#x0a;Sonuçları"
+                                   TextColor="#0A84FF"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+
+                    -->
+        <!-- Ödevler -->
+        <!--
+                    <Frame Grid.Row="0" Grid.Column="1"
+                           Style="{StaticResource StatCardStyle}"
+                           BackgroundColor="#E8F5E9">
+                        <StackLayout Spacing="12">
+                            <Frame Style="{StaticResource IconFrameStyle}"
+                                   BackgroundColor="White">
+                                <Image Source="homework_icon.png"
+                                       HeightRequest="24"/>
+                            </Frame>
+                            <Label Text="Ödevler"
+                                   TextColor="#34C759"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+
+                    -->
+        <!-- Devamsızlık -->
+        <!--
+                    <Frame Grid.Row="1" Grid.Column="0"
+                           Style="{StaticResource StatCardStyle}"
+                           BackgroundColor="#FFF3E0">
+                        <StackLayout Spacing="12">
+                            <Frame Style="{StaticResource IconFrameStyle}"
+                                   BackgroundColor="White">
+                                <Image Source="attendance_icon.png"
+                                       HeightRequest="24"/>
+                            </Frame>
+                            <Label Text="Devamsızlık"
+                                   TextColor="#FF9500"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+
+                    -->
+        <!-- Duyurular -->
+        <!--
+                    <Frame Grid.Row="1" Grid.Column="1"
+                           Style="{StaticResource StatCardStyle}"
+                           BackgroundColor="#F2E7FE">
+                        <StackLayout Spacing="12">
+                            <Frame Style="{StaticResource IconFrameStyle}"
+                                   BackgroundColor="White">
+                                <Image Source="announcement_icon.png"
+                                       HeightRequest="24"/>
+                            </Frame>
+                            <Label Text="Duyurular"
+                                   TextColor="#AF52DE"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Son Aktiviteler -->
+        <!--
+            <Frame Grid.Row="4" Style="{StaticResource CardStyle}">
+                <StackLayout Spacing="16">
+                    <Label Text="Son Aktiviteler"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#1C1C1E"/>
+
+                    <StackLayout Spacing="12">
+                        -->
+        <!-- Aktivite 1 -->
+        <!--
+                        <Frame Style="{StaticResource StatCardStyle}">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Style="{StaticResource IconFrameStyle}">
+                                    <Image Source="math_icon.png"
+                                           HeightRequest="24"/>
+                                </Frame>
+
+                                <StackLayout Grid.Column="1" Spacing="4">
+                                    <Label Text="Matematik Sınavı"
+                                           FontAttributes="Bold"
+                                           TextColor="#1C1C1E"/>
+                                    <Label Text="90 puan aldı"
+                                           TextColor="#34C759"/>
+                                    <Label Text="25.10.2024"
+                                           FontSize="12"
+                                           TextColor="#8E8E93"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+
+                        -->
+        <!-- Aktivite 2 -->
+        <!--
+                        <Frame Style="{StaticResource StatCardStyle}">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Style="{StaticResource IconFrameStyle}">
+                                    <Image Source="physics_icon.png"
+                                           HeightRequest="24"/>
+                                </Frame>
+
+                                <StackLayout Grid.Column="1" Spacing="4">
+                                    <Label Text="Fizik Ödevi"
+                                           FontAttributes="Bold"
+                                           TextColor="#1C1C1E"/>
+                                    <Label Text="Teslim edildi"
+                                           TextColor="#0A84FF"/>
+                                    <Label Text="24.10.2024"
+                                           FontSize="12"
+                                           TextColor="#8E8E93"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>-->
+
+        <!--<ScrollView>
+        <Grid RowSpacing="16" Padding="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            -->
+        <!-- Hoşgeldiniz ve Profil Kartı -->
+        <!--
+            <Frame Grid.Row="0" 
+                   BackgroundColor="White"
+                   BorderColor="Transparent"
+                   CornerRadius="16"
+                   HasShadow="True"
+                   Padding="20">
+                <Grid ColumnSpacing="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Column="0"
+                           HeightRequest="60"
+                           WidthRequest="60"
+                           CornerRadius="30"
+                           Padding="0"
+                           IsClippedToBounds="True">
+                        <Image Source="back1.png" 
+                               Aspect="AspectFill"/>
+                    </Frame>
+
+                    <VerticalStackLayout Grid.Column="1" 
+                                       Spacing="4"
+                                       VerticalOptions="Center">
+                        <Label Text="Hoş Geldiniz" 
+                               TextColor="#94A3B8"
+                               FontSize="14"/>
+                        <Label Text="Ahmet Yılmaz" 
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="#1E293B"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Öğrenci Özet Kartı -->
+        <!--
+            <Frame Grid.Row="1" 
+                   BackgroundColor="White"
+                   BorderColor="Transparent"
+                   CornerRadius="16"
+                   HasShadow="True"
+                   Padding="20">
+                <Grid ColumnSpacing="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Column="0"
+                           HeightRequest="80"
+                           WidthRequest="80"
+                           CornerRadius="40"
+                           BorderColor="#E2E8F0"
+                           Padding="0"
+                           IsClippedToBounds="True">
+                        <Image Source="back1.png" 
+                               Aspect="AspectFill"/>
+                    </Frame>
+
+                    <Grid Grid.Column="1" RowSpacing="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" 
+                               Text="Ayşe Yılmaz"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#1E293B"/>
+
+                        <Label Grid.Row="1" 
+                               Text="9-A Sınıfı • Öğrenci No: 1234"
+                               TextColor="#64748B"/>
+
+                        <FlexLayout Grid.Row="2" 
+                                  Wrap="Wrap"
+                                  JustifyContent="SpaceBetween"
+                                  BindableLayout.ItemsSource="{Binding StudentStats}">
+                            <Frame BackgroundColor="#F1F5F9"
+                                   Padding="12,8"
+                                   CornerRadius="8"
+                                   BorderColor="Transparent">
+                                <StackLayout Spacing="2">
+                                    <Label Text="85.5"
+                                           FontAttributes="Bold"
+                                           TextColor="#0EA5E9"/>
+                                    <Label Text="Not Ortalaması"
+                                           FontSize="12"
+                                           TextColor="#64748B"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame BackgroundColor="#F1F5F9"
+                                   Padding="12,8"
+                                   CornerRadius="8"
+                                   BorderColor="Transparent">
+                                <StackLayout Spacing="2">
+                                    <Label Text="2"
+                                           FontAttributes="Bold"
+                                           TextColor="#F97316"/>
+                                    <Label Text="Devamsızlık"
+                                           FontSize="12"
+                                           TextColor="#64748B"/>
+                                </StackLayout>
+                            </Frame>
+                        </FlexLayout>
+                    </Grid>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Konum Takip Kartı -->
+        <!--
+            <Frame Grid.Row="2"
+                   BackgroundColor="White"
+                   BorderColor="Transparent"
+                   CornerRadius="16"
+                   HasShadow="True"
+                   Padding="20">
+                <StackLayout Spacing="12">
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Konum Takibi"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E293B"/>
+                            <Label Text="Son güncelleme: 5 dk önce"
+                                   FontSize="12"
+                                   TextColor="#64748B"/>
+                        </StackLayout>
+
+                        <Button Grid.Column="1"
+                                Text="Haritada Gör"
+                                BackgroundColor="#3B82F6"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Padding="16,8"/>
+                    </Grid>
+
+                    <Frame BackgroundColor="#F1F5F9"
+                           BorderColor="Transparent"
+                           CornerRadius="12"
+                           Padding="16">
+                        <Grid RowSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+                                   Text="Şu an burada:"
+                                   FontSize="14"
+                                   TextColor="#64748B"/>
+
+                            <Label Grid.Row="1"
+                                   Text="Atatürk Ortaokulu, Cumhuriyet Mah. 1234 Sok. No:5"
+                                   TextColor="#1E293B"
+                                   FontAttributes="Bold"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+
+            -->
+        <!-- Hızlı Erişim Menüsü -->
+        <!--
+            <Frame Grid.Row="3"
+                   BackgroundColor="White"
+                   BorderColor="Transparent"
+                   CornerRadius="16"
+                   HasShadow="True"
+                   Padding="20">
+                <Grid ColumnSpacing="16" RowSpacing="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Row="0" Grid.Column="0"
+                           BackgroundColor="#EFF6FF"
+                           BorderColor="Transparent"
+                           CornerRadius="12"
+                           Padding="16">
+                        <StackLayout>
+                            <Image Source="back1.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"/>
+                            <Label Text="Sınav&#x0a;Sonuçları"
+                                   TextColor="#2563EB"
+                                   FontAttributes="Bold"
+                                   Margin="0,8,0,0"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Grid.Row="0" Grid.Column="1"
+                           BackgroundColor="#F0FDF4"
+                           BorderColor="Transparent"
+                           CornerRadius="12"
+                           Padding="16">
+                        <StackLayout>
+                            <Image Source="back1.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"/>
+                            <Label Text="Ödevler"
+                                   TextColor="#16A34A"
+                                   FontAttributes="Bold"
+                                   Margin="0,8,0,0"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="0"
+                           BackgroundColor="#FFF7ED"
+                           BorderColor="Transparent"
+                           CornerRadius="12"
+                           Padding="16">
+                        <StackLayout>
+                            <Image Source="back1.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"/>
+                            <Label Text="Devamsızlık&#x0a;Bilgisi"
+                                   TextColor="#EA580C"
+                                   FontAttributes="Bold"
+                                   Margin="0,8,0,0"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="1"
+                           BackgroundColor="#FAE8FF"
+                           BorderColor="Transparent"
+                           CornerRadius="12"
+                           Padding="16">
+                        <StackLayout>
+                            <Image Source="back1.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"/>
+                            <Label Text="Duyurular"
+                                   TextColor="#C026D3"
+                                   FontAttributes="Bold"
+                                   Margin="0,8,0,0"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Frame>
+
+            -->
+        <!-- Son Aktiviteler -->
+        <!--
+            <Frame Grid.Row="4"
+                   BackgroundColor="White"
+                   BorderColor="Transparent"
+                   CornerRadius="16"
+                   HasShadow="True"
+                   Padding="20">
+                <StackLayout Spacing="16">
+                    <Label Text="Son Aktiviteler"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#1E293B"/>
+
+                    <StackLayout Spacing="12">
+                        <Frame BorderColor="Transparent"
+                               BackgroundColor="#F8FAFC"
+                               CornerRadius="12"
+                               Padding="16">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="#EFF6FF"
+                                       BorderColor="Transparent"
+                                       CornerRadius="8"
+                                       HeightRequest="40"
+                                       WidthRequest="40">
+                                    <Image Source="back1.png"
+                                           HeightRequest="24"
+                                           WidthRequest="24"/>
+                                </Frame>
+
+                                <StackLayout Grid.Column="1" Spacing="4">
+                                    <Label Text="Matematik Sınavı"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E293B"/>
+                                    <Label Text="90 puan aldı"
+                                           TextColor="#16A34A"/>
+                                    <Label Text="25.10.2024"
+                                           FontSize="12"
+                                           TextColor="#64748B"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BorderColor="Transparent"
+                               BackgroundColor="#F8FAFC"
+                               CornerRadius="12"
+                               Padding="16">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="#F0FDF4"
+                                       BorderColor="Transparent"
+                                       CornerRadius="8"
+                                       HeightRequest="40"
+                                       WidthRequest="40">
+                                    <Image Source="back1.png"
+                                           HeightRequest="24"
+                                           WidthRequest="24"/>
+                                </Frame>
+
+                                <StackLayout Grid.Column="1" Spacing="4">
+                                    <Label Text="Fizik Ödevi"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E293B"/>
+                                    <Label Text="Teslim edildi"
+                                           TextColor="#2563EB"/>
+                                    <Label Text="24.10.2024"
+                                           FontSize="12"
+                                           TextColor="#64748B"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>-->
+        <!--<Grid Margin="0,10,0,0" RowDefinitions=".1*,.1*,.15*,.70*,.1*">
         <Grid Margin="25,0,25,0" ColumnDefinitions="*,*">
             <Frame BorderColor="#fff" CornerRadius="30" BackgroundColor="#fff" Padding="12" VerticalOptions="Center" HorizontalOptions="Start">
                 <Label FontFamily="FaSolid"
@@ -15,7 +1395,8 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        TextColor="#393A3B"/>
-                <!--<Rectangle Fill="#1B1B1B"
+                -->
+        <!--<Rectangle Fill="#1B1B1B"
                            HeightRequest="2"
                            HorizontalOptions="Start"
                            WidthRequest="25"/>
@@ -29,6 +1410,7 @@
                            HeightRequest="2"
                            HorizontalOptions="StartAndExpand"
                            WidthRequest="15"/>-->
+        <!--
             </Frame>
             <Frame Grid.Column="1"
                     HeightRequest="60"
@@ -36,12 +1418,12 @@
                     BorderColor="#fff"
                     HorizontalOptions="End"
                     WidthRequest="60">
-                            <Image Aspect="AspectFill"
+                <Image Aspect="AspectFill"
                     HeightRequest="50"
                     HorizontalOptions="Center"
                     Source="gooslogoicon.png"
                     WidthRequest="50"/>
-             </Frame>
+            </Frame>
         </Grid>
         <Grid Margin="30,0,25,0" ColumnDefinitions="*,*" Grid.Row="1" VerticalOptions="Center">
             <VerticalStackLayout VerticalOptions="Center">
@@ -49,16 +1431,17 @@
                 <Label FontSize="Small"
                        FontFamily="NexaHeavy" 
                        Text="Merhaba, Kaan DEDE"
-                       TextColor="#1B1B1B"
+                       TextColor="#040404"
                        Margin="0,15,0,0"/>
                 <Label FontSize="Subtitle"
                        Margin="0,15,0,0"
                      FontFamily="NexaLight" 
                      FontAttributes="Bold"
                      Text="Öğrenci Listesi"
-                     TextColor="#1B1B1B"/>
+                     TextColor="#040404"/>
             </VerticalStackLayout>
         </Grid>
+        -->
         <!--<Grid Margin="30,0,25,0" ColumnDefinitions="*,*" Grid.Row="1" VerticalOptions="Center">
             <VerticalStackLayout VerticalOptions="Center">
                 <Rectangle Fill="#E7E7EA"
@@ -68,21 +1451,42 @@
               WidthRequest="335"/>
             </VerticalStackLayout>
         </Grid>-->
+        <!--
+      
         <CollectionView
             Grid.Row="2"
             Margin="25,-30,25,0"
             ItemsSource="{Binding Profiles}"
             VerticalOptions="Center">
+
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal"/>
             </CollectionView.ItemsLayout>
-            
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid ColumnDefinitions=".35*,.65*"
                           HeightRequest="50"
                           WidthRequest="160">
-                        <RoundRectangle Grid.ColumnSpan="2"
+                        -->
+        <!--<Border BackgroundColor="#fff"
+                       Stroke="#E7E9ED"
+                       StrokeShape="RoundRectangle 45"
+                       StrokeThickness="1">
+                                        </Border>
+                                        <VerticalStackLayout Grid.Column="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center">
+                                            <Label Margin="0,0,0,0"
+                           FontFamily="NexaLight" 
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Start"
+                           Text="{Binding Name}"
+                           TextColor="#040404"
+                           FontSize="14"
+                           VerticalTextAlignment="Center"/>-->
+        <!--
+                            <RoundRectangle Grid.ColumnSpan="2"
                                     CornerRadius="45"
                                     Fill="#fff"/>
                         <Border Grid.RowSpan="2"
@@ -100,35 +1504,73 @@
                                    FontFamily="Nexalight"
                                    HorizontalTextAlignment="Start"
                                    Text="{Binding Name}"
-                                   TextColor="#1B1B1B"
+                                   TextColor="#040404"
                                    VerticalTextAlignment="Center"/>
                             <Label Grid.Column="1"
                                    Margin="10,0,0,0"
                                    FontFamily="Nexalight"
                                    FontSize="12"
                                    Text="{Binding NoPhotos, StringFormat='{0} pictures'}"
-                                   TextColor="#1B1B1B"
+                                   TextColor="#7F7F85"
                                    VerticalOptions="Start"/>
                         </VerticalStackLayout>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Grid Grid.Row="3"
+              Margin="0,-15,0,0"
+              VerticalOptions="Start">
+            <Border BackgroundColor="Transparent"
+           Stroke="Transparent"
+           StrokeShape="RoundRectangle 10"
+           StrokeThickness="2">
+                <Border.Shadow>
+                    <Shadow Brush="#ddd" Offset="20,20" Radius="40" Opacity="0.8"/>
+                </Border.Shadow>
+                <Grid Margin="20,0,20,0" ColumnDefinitions="*,*"
+                      RowDefinitions="*,*"
+                      RowSpacing="3">
+                    <Label FontFamily="FaSolid"
+                       Text="{x:Static models:FaSolidIcons.Folder}"
+                       FontSize="150"
+                        Margin="0,60,0,0"
+                        HeightRequest="150"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="#FAFAFA">
+                       
+                    </Label>
+                    <Label FontFamily="FaSolid"
+                        Grid.Column="1"
+                        Text="{x:Static models:FaSolidIcons.Folder}"
+                        FontSize="150"
+                        Margin="0,60,0,0"
+                        HeightRequest="150"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="#FAFAFA"/>
+                </Grid>
+            </Border>
+        </Grid>
+
         <Grid Grid.Row="5"
               Margin="0,0,0,0"
               HeightRequest="70"
               VerticalOptions="End">
-            <Border BackgroundColor="#1E2124"
-                    Stroke="#1E2124"
+            <Border BackgroundColor="#040404"
+                    Stroke="#040404"
                     StrokeShape="RoundRectangle 10,10,0,0"
                     StrokeThickness="2">
                 <Border.Shadow>
-                    <Shadow Brush="#1E2124" Offset="20,20" Radius="40" Opacity="0.8"/>
+                    <Shadow Brush="#040404" Offset="20,20" Radius="40" Opacity="0.8"/>
                 </Border.Shadow>
                 <Grid Margin="20,0,20,0" ColumnDefinitions="*,*,*,*,*"
                       RowDefinitions="*,*"
                       RowSpacing="3">
-                    <!--<Label Grid.Row="1"
+                    -->
+        <!--<Label Grid.Row="1"
                            FontFamily="NexaHeavy"
                            FontSize="12"
                            HorizontalOptions="Center"
@@ -156,6 +1598,7 @@
                           HorizontalOptions="Center"
                           Text="Öğrenci"
                           TextColor="#8a8f9f"/>-->
+        <!--
                     <Label FontFamily="FaSolid"
                            Text="{x:Static models:FaSolidIcons.House}"
                            FontSize="25"
@@ -173,7 +1616,7 @@
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             TextColor="#FAFAFA"/>
-                
+
                     <Label FontFamily="FaSolid"
                              Grid.Column="3"
                              Text="{x:Static models:FaSolidIcons.Bell}"
@@ -205,5 +1648,7 @@
                 </Grid>
             </Border>
         </Grid>
-    </Grid>
+    </Grid>-->
+    </ScrollView>
 </ContentPage>
+

@@ -64,6 +64,8 @@
 	  <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
 	  <None Remove="Resources\Fonts\Nexa-ExtraLight.ttf" />
 	  <None Remove="Resources\Fonts\Nexa-Heavy.ttf" />
+	  <None Remove="Resources\Images\announcement_icon.png" />
+	  <None Remove="Resources\Images\attendance_icon.png" />
 	  <None Remove="Resources\Images\back1.png" />
 	  <None Remove="Resources\Images\back10.png" />
 	  <None Remove="Resources\Images\back11.png" />
@@ -95,9 +97,16 @@
 	  <None Remove="Resources\Images\back7.png" />
 	  <None Remove="Resources\Images\back8.png" />
 	  <None Remove="Resources\Images\back9.png" />
+	  <None Remove="Resources\Images\exam_icon.png" />
 	  <None Remove="Resources\Images\gooslogo.png" />
 	  <None Remove="Resources\Images\gooslogoicon.png" />
+	  <None Remove="Resources\Images\homework_icon.png" />
+	  <None Remove="Resources\Images\location_icon.png" />
 	  <None Remove="Resources\Images\loginpx.png" />
+	  <None Remove="Resources\Images\math_icon.png" />
+	  <None Remove="Resources\Images\parent_avatar.png" />
+	  <None Remove="Resources\Images\physics_icon.png" />
+	  <None Remove="Resources\Images\student_avatar.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -116,24 +125,6 @@
 	  <MauiXaml Update="Views\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
-	  <PackageReference Include="CardsView.Maui">
-	    <Version>0.0.1</Version>
-	  </PackageReference>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
-	  <PackageReference Include="CardsView.Maui">
-	    <Version>0.0.1</Version>
-	  </PackageReference>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-maccatalyst'">
-	  <PackageReference Include="CardsView.Maui">
-	    <Version>0.0.1</Version>
-	  </PackageReference>
 	</ItemGroup>
 
 </Project>

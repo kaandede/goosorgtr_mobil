@@ -1,4 +1,5 @@
-﻿using goosorgtr_mobil.Views;
+﻿using goosorgtr_mobil.ParentViews;
+using goosorgtr_mobil.Views;
 using Microsoft.Maui.Handlers;
 
 namespace goosorgtr_mobil
@@ -9,7 +10,7 @@ namespace goosorgtr_mobil
         {
             InitializeComponent();
 
-            MainPage = new FirstView();
+            MainPage = new ParentMainPage();
                
 
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(BorderlessEntry), (handler, view) =>

@@ -21,14 +21,14 @@
               Text="GOOS"
               HorizontalTextAlignment="Center"
               VerticalTextAlignment="Center"
-              TextColor="#1E2124"/>
+              TextColor="#040404"/>
                 <Label Margin="25,18,0,0" FontFamily="NexaLight"
                 FontAttributes="Bold"
                 FontSize="18"
                 HorizontalTextAlignment="Start"
                 VerticalTextAlignment="Center"
                 Text="Güvenli Okul Otomasyon Sistemi"
-                TextColor="#1E2124"/>
+                TextColor="#040404"/>
                 <Label Margin="25,10,0,0" FontFamily="NexaLight"
                  FontAttributes="Bold"
                  FontSize="15"
