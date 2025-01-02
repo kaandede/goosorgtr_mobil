@@ -3,70 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:goosorgtr_mobil.Models"
              x:Class="goosorgtr_mobil.Views.Login"
-             xmlns:local="clr-namespace:goosorgtr_mobil"
-             Title="Login">
-
-    <!--<Grid BackgroundColor="#fff">
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="220"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        <Image Source="loginpx.png" Aspect="AspectFill" Margin="0"/>
-        --><!--<Path Stroke="#fff" Data="m0.30001,0l449,0l0,148.48327c-122.5,94.30167 -352.5,65.89076 -449,7.2429c0,-45.25313 0,-90.47304 0,-135.72617z" Fill="#F0F4F7"/>--><!--
-        <StackLayout Margin="0,100,0,0" HorizontalOptions="Center">
-            <Image Source="gooslogo.png" Aspect="AspectFill" Margin="0"/>
-        </StackLayout>
-        <Grid RowSpacing="5" Grid.Row="1" Margin="0,20,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="45"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="1" Text="Hoşgeldiniz" FontFamily="NexaHeavy" HorizontalOptions="Center" FontSize="Title" Padding="0" Margin="0"/>
-            <Label Grid.Row="2" Text="Lütfen Giriş Yapınız" FontFamily="NexaLight" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Subtitle"/>
-
-            <StackLayout WidthRequest="320" Grid.Row="3" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                <Label Text="Kullanıcı Adı veya E-Posta" FontFamily="NexaHeavy" FontSize="Caption" Margin="5,15,20,8"/>
-                <Frame BackgroundColor="#FAFAFC" BorderColor="#e8eaeb" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="10">
-
-                    <StackLayout Orientation="Horizontal">
-                       
-                        <local:BorderlessEntry Text="Admin" TextColor="#062A44" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,0,20,0"/>
-                    </StackLayout>
-                </Frame>
-                <Label Text="Parola" FontFamily="NexaHeavy" FontSize="Caption" Margin="5,25,0,8"/>
-                <Frame  BackgroundColor="#FAFAFC" BorderColor="#e8eaeb" Padding="0" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" CornerRadius="10">
-                    <StackLayout Orientation="Horizontal">
-                       
-                        <local:BorderlessEntry Text="1q2w3E*" IsPassword="True" TextColor="#062A44" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,0,20,0"/>
-                    </StackLayout>
-                </Frame>
-                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Padding="0">
-                  
-                    <CheckBox IsChecked="False" Color="#5161FF"/>
-                    <Label Text="Beni Hatırla" FontFamily="NexaLight" FontAttributes="Bold" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                    <Label Text="Şifremi Unuttum" TextDecorations="Underline" TextColor="#5161FF" FontFamily="NexaLight" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-                <Button Text="Giriş" BackgroundColor="#5161FF" FontFamily="NexaHeavy" TextColor="#fff" CornerRadius="30" WidthRequest="200" Margin="0,40,0,0" Clicked="Login_Button_Clicked"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,40,0,0" Padding="0">
-                    <Label Text="Yeni Kullanıcı mısın?" TextColor="DarkGray" FontSize="Small"/>
-                    <Label Text="Kayıt Ol" TextColor="#5161FF" FontSize="Small" FontAttributes="Bold" Margin="8,0,0,0">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnLabelTapped" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
-            
-            </StackLayout>
-        </Grid>
-    </Grid>-->
-
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             xmlns:local="clr-namespace:goosorgtr_mobil">
 
     <Grid>
         <Image Source="back31.png" 
@@ -96,15 +35,7 @@
                     <Label Text="Şifremi Unuttum" TextDecorations="Underline" TextColor="#408CF1" FontFamily="NexaLight" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
                 <Button Text="Giriş" FontSize="18" BackgroundColor="#040404" FontFamily="NexaHeavy" TextColor="#fff" HeightRequest="50" CornerRadius="10" Margin="5,25,0,0" Clicked="Login_Button_Clicked"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,40,0,0" Padding="0">
-                    <Label Text="Yeni Kullanıcı mısın?"  FontFamily="NexaLight" FontAttributes="Bold" TextColor="#040404" FontSize="Small"/>
-                    <Label Text="Kayıt Ol" TextColor="#408CF1"  FontFamily="NexaHeavy" FontSize="Small" Margin="8,0,0,0">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnLabelTapped" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
-
+         
             </StackLayout>
         </StackLayout>
        

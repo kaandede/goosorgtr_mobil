@@ -1,5 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
+using goosorgtr_mobil.Models;
+using goosorgtr_mobil.ParentViews;
+using goosorgtr_mobil.Views;
 using Microsoft.Extensions.Logging;
 
 namespace goosorgtr_mobil
@@ -31,10 +34,23 @@ namespace goosorgtr_mobil
                     fonts.AddFont("fa-solid-900.ttf", "FaSolid");
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
 
+            builder.Services.AddTransient<ParentViewModel>();
+            builder.Services.AddTransient<ParentMainPage>();
+            builder.Services.AddTransient<ParentUser>();
+            builder.Services.AddTransient<ParentNotification>();
+            builder.Services.AddTransient<ParentStudentHomeWork>();
+            builder.Services.AddTransient<ParentStudentLocation>();
+            builder.Services.AddTransient<Login>();
+            builder.Services.AddTransient<FirstView>();
+            builder.Services.AddTransient<Profile>();
+            builder.Services.AddTransient<GeneratedImage>();
+
+
+#if DEBUG
+            builder.Logging.AddDebug();
+#endif
+            DevExpress.Maui.Controls.Initializer.Init();
             return builder.Build();
         }
     }

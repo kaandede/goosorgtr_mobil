@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.Views.FirstView"
-             xmlns:models="clr-namespace:goosorgtr_mobil.Models"
-             Title="FirstView">
-    <Grid>
+             Shell.NavBarIsVisible="False">
+
+   
+  <Grid>
         <Image Source="back31.png" 
                Aspect="AspectFill"
                HorizontalOptions="FillAndExpand" 
@@ -38,7 +39,7 @@
                  TextColor="#666376"/>
             </VerticalStackLayout>
 
-            <!-- Butonlar -->
+      
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Frame BorderColor="#fff" BackgroundColor="Transparent" CornerRadius="10" Padding="0">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">

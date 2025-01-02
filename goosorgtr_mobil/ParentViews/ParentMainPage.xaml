@@ -3,13 +3,155 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentMainPage"
              xmlns:models="clr-namespace:goosorgtr_mobil.Models"
-             Title="ParentMainPage"
-             BackgroundColor="#F2F2F7">
+             x:DataType="models:ParentViewModel"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="#F3F2F7">
 
-    <ScrollView>
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#F3F2F7" StatusBarStyle="DarkContent"/>
+    </Page.Behaviors>
+    <ScrollView VerticalScrollBarVisibility="Never">
+
+        <StackLayout>
+            <Border BackgroundColor="#F3F2F7"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 0,0,30,30">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="15,10,15,0">
+                        <Grid VerticalOptions="CenterAndExpand">
+                            <Grid Margin="0,0,0,0" ColumnDefinitions="*,Auto,*">
+                                <Frame Margin="0,0,0,0"
+                     Grid.Column="0"
+                     BorderColor="#fff"
+                     CornerRadius="30"
+                     BackgroundColor="#fff"
+                     Padding="12"
+                     VerticalOptions="StartAndExpand"
+                     HorizontalOptions="StartAndExpand">
+                                    <ImageButton Source="bars_ince.png" 
+                    HeightRequest="18"
+                    WidthRequest="18" 
+                    VerticalOptions="Center" 
+                    Margin="0,0,0,0" 
+                    HorizontalOptions="Center"/>
+                                </Frame>
+                                <Frame BorderColor="Transparent"
+                     BackgroundColor="Transparent"
+                     Margin="0,0,0,0"
+                     Grid.Column="1"
+                     Padding="0"
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="StartAndExpand">
+                                    <Label FontSize="14"
+                     FontFamily="NexaHeavy" 
+                     Text="Merhaba, Kaan DEDE"
+                     TextColor="#011612"/>
+                                </Frame>
+                                <Border Grid.Column="2"
+                      Padding="12"
+                      StrokeShape="RoundRectangle 30"
+                      Stroke="#fff"
+                      Margin="0,0,0,0"
+                      BackgroundColor="#fff"
+                      HorizontalOptions="EndAndExpand"
+                      VerticalOptions="StartAndExpand">
+                                    <ImageButton Source="user_ince.png" 
+                       HeightRequest="20"
+                       WidthRequest="20" 
+                       Clicked="User_Clicked"
+                       VerticalOptions="CenterAndExpand"  
+                       Margin="0,0,0,0" 
+                       HorizontalOptions="CenterAndExpand"/>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Grid>
 
 
-        <Grid Margin="0,10,0,0">
+
+
+                    <Grid Grid.Row="1" 
+                         Padding="20"
+                         Margin="5,5,20,0"
+                         BackgroundColor="Transparent">
+                        <StackLayout Spacing="15">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="Öğrenci Listesi"
+                                   Grid.Row="0"
+                                 FontSize="14"
+                                 Margin="0,0,0,0"
+                                 FontFamily="NexaHeavy"
+                                 FontAttributes="Bold"
+                                 VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="StartAndExpand"
+                                 TextColor="#1F252A"/>
+                                <CollectionView Grid.Row="1"
+                                                Margin="0,15,25,0"
+                                                ItemsSource="{Binding Profiles}"
+                                                VerticalOptions="Center">
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal"/>
+                                    </CollectionView.ItemsLayout>
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:Profile">
+                                            <Grid ColumnDefinitions=".35*,.65*"
+                                                  HeightRequest="60"
+                                                  WidthRequest="160">
+                                                <RoundRectangle Grid.ColumnSpan="2"
+                                                                CornerRadius="45"
+                                                                BackgroundColor="Transparent"
+                                                                Fill="#fff" />
+                                                <Border Grid.RowSpan="2"
+                                                        Margin="5,0,0,0"
+                                                        HeightRequest="50"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        StrokeShape="RoundRectangle 80,80,80,80"
+                                                        StrokeThickness="0"
+                                                        WidthRequest="50">
+                                                    <Image HeightRequest="50"  Source="{Binding ProfileImage}"/>
+                                                </Border>
+                                                <VerticalStackLayout Grid.Column="1"
+                                                                     VerticalOptions="Center">
+                                                    <Label Margin="10,0,0,0" FontFamily="NexaHeavy"
+                                                           HorizontalOptions="Start"
+                                                           Text="{Binding Name}"
+                                                           TextColor="#1F252A"
+                                                           VerticalTextAlignment="Center"/>
+                                                    <Label Grid.Column="1"
+                                                           Margin="10,0,0,0"
+                                                           FontFamily="NexaHeavy"
+                                                           FontSize="12"
+                                                           Text="{Binding NoPhotos, StringFormat='{0} pictures'}"
+                                                           TextColor="#62666a"
+                                                           VerticalOptions="Start"/>
+                                                </VerticalStackLayout>
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                            </Grid>
+
+
+                        </StackLayout>
+                    </Grid>
+
+                </Grid>
+            </Border>
+
+        </StackLayout>
+
+        <!--<Grid Margin="0,10,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -27,7 +169,8 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        TextColor="#393A3B"/>
-                    <!--<Rectangle Fill="#1B1B1B"
+                    -->
+        <!--<Rectangle Fill="#1B1B1B"
                            HeightRequest="2"
                            HorizontalOptions="Start"
                            WidthRequest="25"/>
@@ -41,6 +184,7 @@
                            HeightRequest="2"
                            HorizontalOptions="StartAndExpand"
                            WidthRequest="15"/>-->
+        <!--
                 </Frame>
                 <Frame Grid.Column="1"
                     HeightRequest="60"
@@ -71,7 +215,8 @@
                      TextColor="#040404"/>
                 </VerticalStackLayout>
             </Grid>
-            <CollectionView
+            -->
+        <!--<CollectionView
                 Grid.Row="2"
                 Margin="25,10,25,0"
                 ItemsSource="{Binding Profiles}"
@@ -82,11 +227,11 @@
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="models:Profile">
                         <Grid ColumnDefinitions=".35*,.65*"
                           HeightRequest="50"
                           WidthRequest="160">
-                            <!--<Border BackgroundColor="#fff"
+                            <Border BackgroundColor="#fff"
                        Stroke="#E7E9ED"
                        StrokeShape="RoundRectangle 45"
                        StrokeThickness="1">
@@ -101,87 +246,45 @@
                            Text="{Binding Name}"
                            TextColor="#040404"
                            FontSize="14"
-                           VerticalTextAlignment="Center"/>-->
-                            <RoundRectangle Grid.ColumnSpan="2"
+                           VerticalTextAlignment="Center"/>
+                                <RoundRectangle Grid.ColumnSpan="2"
                                     CornerRadius="45"
                                     Fill="#fff"/>
-                            <Border Grid.RowSpan="2"
+                                <Border Grid.RowSpan="2"
                                 Margin="8,0,0,0"
                                 HeightRequest="40"
                                 HorizontalOptions="Start"
                                 StrokeShape="RoundRectangle 80,80,80,80"
                                 StrokeThickness="0"
                                 WidthRequest="40">
-                                <Image HeightRequest="40" Source="{Binding ProfileImage}"/>
-                            </Border>
-                            <VerticalStackLayout Grid.Column="1"
+                                    <Image HeightRequest="40" Source="{Binding ProfileImage}"/>
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1"
                                              VerticalOptions="Center">
-                                <Label Margin="10,0,0,0"
+                                    <Label Margin="10,0,0,0"
                                    FontFamily="Nexalight"
                                    HorizontalTextAlignment="Start"
                                    Text="{Binding Name}"
                                    TextColor="#040404"
                                    VerticalTextAlignment="Center"/>
-                                <Label Grid.Column="1"
+                                    <Label Grid.Column="1"
                                    Margin="10,0,0,0"
                                    FontFamily="Nexalight"
                                    FontSize="12"
                                    Text="{Binding NoPhotos, StringFormat='{0} pictures'}"
                                    TextColor="#7F7F85"
                                    VerticalOptions="Start"/>
-                            </VerticalStackLayout>
+                                </VerticalStackLayout>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-            </CollectionView>
+            </CollectionView>-->
+        <!--
+
+
 
             <Grid Grid.Row="3"
-                    Margin="0,0,0,0"
-                    VerticalOptions="Start">
-                <Border BackgroundColor="Transparent"
-                 Stroke="Transparent"
-                 StrokeShape="RoundRectangle 10"
-                 StrokeThickness="2">
-                    <Border.Shadow>
-                        <Shadow Brush="#ddd" Offset="20,20" Radius="40" Opacity="0.8"/>
-                    </Border.Shadow>
-                    <Grid Margin="20,0,20,0" ColumnDefinitions="*,*,*"
-                        RowDefinitions="*,*"
-                        RowSpacing="3">
-                        <Label FontFamily="FaSolid"
-                         Text="{x:Static models:FaSolidIcons.Folder}"
-                         FontSize="100"
-                          Margin="0,60,0,0"
-                          HeightRequest="150"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                         TextColor="#FAFAFA">
-
-                        </Label>
-                        <Label FontFamily="FaSolid"
-                          Grid.Column="1"
-                          Text="{x:Static models:FaSolidIcons.Folder}"
-                          FontSize="100"
-                          Margin="0,60,0,0"
-                          HeightRequest="150"
-                          HorizontalOptions="Center"
-                          VerticalOptions="Center"
-                          TextColor="#FAFAFA"/>
-                        <Label FontFamily="FaSolid"
-                          Grid.Column="2"
-                          Text="{x:Static models:FaSolidIcons.Folder}"
-                          FontSize="100"
-                          Margin="0,60,0,0"
-                          HeightRequest="150"
-                          HorizontalOptions="Center"
-                          VerticalOptions="Center"
-                          TextColor="#FAFAFA"/>
-                    </Grid>
-                </Border>
-            </Grid>
-
-            <Grid Grid.Row="3"
-                      Margin="25,120,25,0"
+                      Margin="25,0,25,0"
                       VerticalOptions="Start">
                 <Border BackgroundColor="Transparent"
                            Stroke="Transparent"
@@ -198,7 +301,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Not Ortalaması -->
+                        -->
+        <!-- Not Ortalaması -->
+        <!--
 
                         <Frame Grid.Column="0" HeightRequest="100" BorderColor="#eef0f2" CornerRadius="10" Padding="12" VerticalOptions="Center" HorizontalOptions="Center"
                                BackgroundColor="#FAFAFA">
@@ -245,7 +350,8 @@
             </Grid>
 
 
-            <Grid Grid.Row="5"
+            -->
+        <!--<Grid Grid.Row="5"
               Margin="0,0,0,0"
               HeightRequest="70"
               VerticalOptions="End">
@@ -259,35 +365,6 @@
                     <Grid Margin="20,0,20,0" ColumnDefinitions="*,*,*,*,*"
                       RowDefinitions="*,*"
                       RowSpacing="3">
-
-                        <!--<Label Grid.Row="1"
-                           FontFamily="NexaHeavy"
-                           FontSize="12"
-                           HorizontalOptions="Center"
-                           Text="Ana Sayfa"
-                           TextColor="#5161FF"/>
-                        <Label Grid.Row="1"
-                           Grid.Column="1"
-                             FontFamily="NexaHeavy"
-                             FontSize="12"
-                             HorizontalOptions="Center"
-                             Text="Konum"
-                             TextColor="#8a8f9f"/>
-
-                        <Label Grid.Row="1"
-                          Grid.Column="3"
-                            FontFamily="NexaHeavy"
-                            FontSize="12"
-                            HorizontalOptions="Center"
-                            Text="Bildirim"
-                            TextColor="#8a8f9f"/>
-                        <Label Grid.Row="1"
-                        Grid.Column="4"
-                          FontFamily="NexaHeavy"
-                         FontSize="12"
-                          HorizontalOptions="Center"
-                          Text="Öğrenci"
-                          TextColor="#8a8f9f"/>-->
                         <Label FontFamily="FaSolid"
                            Text="{x:Static models:FaSolidIcons.House}"
                            FontSize="25"
@@ -336,8 +413,9 @@
 
                     </Grid>
                 </Border>
-            </Grid>
-        </Grid>
+            </Grid>-->
+        <!--
+        </Grid>-->
         <!--<Grid Padding="16" RowSpacing="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

@@ -4,12 +4,55 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:goosorgtr_mobil"
+    xmlns:views="clr-namespace:goosorgtr_mobil.ParentViews"
+    xmlns:views_login="clr-namespace:goosorgtr_mobil.Views"
     Shell.FlyoutBehavior="Disabled"
-    Title="goosorgtr_mobil">
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="True">
+
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="#fff" />
+                <Setter Property="Shell.ForegroundColor" Value="#fff" />
+                <Setter Property="Shell.TitleColor" Value="#fff" />
+                <Setter Property="Shell.DisabledColor" Value="#fff" />
+                <Setter Property="Shell.UnselectedColor" Value="#fff" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#000" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="#fff"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#b3b3b3"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="#fff"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+                  ContentTemplate="{DataTemplate views_login:FirstView}"
+                  Route="FirstView"
+                  Shell.FlyoutBehavior="Disabled"
+                  Shell.TabBarIsVisible="False"
+                  Shell.FlyoutItemIsVisible="False"/>
 
+    <ShellContent 
+              ContentTemplate="{DataTemplate views_login:Login}"
+              Route="Login"
+              Shell.FlyoutBehavior="Disabled"
+              Shell.TabBarIsVisible="False"
+              Shell.FlyoutItemIsVisible="False"/>
+    
+    <TabBar>
+
+        <ShellContent Icon="home_ince_beyaz.png" Route="ParentMainPage" ContentTemplate="{DataTemplate views:ParentMainPage}"/>
+        <ShellContent Icon="location.png" Route="ParentStudentLocation" ContentTemplate="{DataTemplate views:ParentStudentLocation}"/>
+        <ShellContent Icon="bell.png" Route="ParentNotification" ContentTemplate="{DataTemplate views:ParentNotification}"/>
+        <ShellContent Icon="file.png" Route="ParentStudentHomeWork" ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"/>
+
+
+
+    </TabBar>
+    
 </Shell>

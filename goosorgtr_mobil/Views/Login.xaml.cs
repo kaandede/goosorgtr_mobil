@@ -1,28 +1,33 @@
+using goosorgtr_mobil.Models;
 using goosorgtr_mobil.ParentViews;
 
 namespace goosorgtr_mobil.Views;
 
 public partial class Login : ContentPage
 {
-	public Login()
+    ParentViewModel parentViewModel = new ParentViewModel();    
+
+    public Login(ParentViewModel parentViewModel)
 	{
 		InitializeComponent();
-	}
+        BindingContext = parentViewModel;
+    }
+
+
+   private bool LoginIsSuccessful()
+    {
+        return true;
+    }
 
     private void Login_Button_Clicked(object sender, EventArgs e)
     {
-         Application.Current.MainPage = new ParentMainPage();
+         
+        if (LoginIsSuccessful())
+        {
+            Shell.Current.GoToAsync($"//{nameof(ParentMainPage)}");
+
+        }
     }
 
-    private async void OnLabelTapped(object sender, EventArgs e)
-    {
-        // Action to perform when the label is tapped
-        await DisplayAlert("Týklandý!", "Giriþ Sayfasýna Yönlendiriliyorsunuz.", "Tamam");
-        Application.Current.MainPage = new FirstView();
-    }
 
-    private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
-    {
-
-    }
 }
