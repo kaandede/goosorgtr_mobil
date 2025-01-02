@@ -43,7 +43,12 @@
               Shell.FlyoutBehavior="Disabled"
               Shell.TabBarIsVisible="False"
               Shell.FlyoutItemIsVisible="False"/>
-    
+
+
+
+
+
+
     <TabBar>
 
         <ShellContent Icon="home_ince_beyaz.png" Route="ParentMainPage" ContentTemplate="{DataTemplate views:ParentMainPage}"/>
