@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using DevExpress.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace goosorgtr_mobil
 {
@@ -8,7 +10,14 @@ namespace goosorgtr_mobil
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiApp<App>()
+               .UseMauiApp<App>()
+                .UseDevExpress()
+                .UseMauiCommunityToolkit()
+                .UseDevExpress(useLocalization: false)
+                .UseDevExpressControls()
+                .UseDevExpressCollectionView()
+                .UseDevExpressDataGrid()
+                .UseDevExpressEditors()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
