@@ -276,7 +276,7 @@
                                 <VerticalStackLayout Spacing="10">
                                     <!-- Başlık -->
                                     <Grid>
-                                        <Label Text="Genel Not Ortalaması"
+                                        <Label Text="Not Ortalaması"
                                 FontSize="14" 
                                  FontFamily="NexaHeavy"
                                 TextColor="#1F252A"
