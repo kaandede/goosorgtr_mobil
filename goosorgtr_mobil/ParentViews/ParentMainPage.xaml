@@ -7,6 +7,10 @@
              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              BackgroundColor="#F3F2F7">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="User_Clicked" IconImageSource="user_64.png" Priority="1" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+   
     <Page.Behaviors>
         <mct:StatusBarBehavior StatusBarColor="#F3F2F7" StatusBarStyle="DarkContent"/>
     </Page.Behaviors>
@@ -18,12 +22,11 @@
                     StrokeShape="RoundRectangle 0,0,30,30">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="70" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="15,10,15,0">
+                    <!--<Grid Grid.Row="0" Margin="15,10,15,0">
                         <Grid VerticalOptions="CenterAndExpand">
                             <Grid Margin="0,0,0,0" ColumnDefinitions="*,Auto,*">
                                 <Frame Margin="0,0,0,0"
@@ -64,34 +67,42 @@
                                     <ImageButton Source="user_ince.png" 
                        HeightRequest="20"
                        WidthRequest="20" 
-                       Clicked="User_Clicked"
                        VerticalOptions="CenterAndExpand"  
                        Margin="0,0,0,0" 
                        HorizontalOptions="CenterAndExpand"/>
                                 </Border>
                             </Grid>
                         </Grid>
-                    </Grid>
-                    <Grid Grid.Row="1" 
+                    </Grid>-->
+                    <Grid Grid.Row="0" 
                          Padding="20"
-                         Margin="5,5,20,0"
+                         Margin="5,10,20,0"
                          BackgroundColor="Transparent">
                         <StackLayout Spacing="15">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <Label Text="Öğrenci Listesi"
+                                <Label Text="Merhaba, Kaan DEDE"
                                    Grid.Row="0"
                                  FontSize="14"
+                                 FontFamily="NexaHeavy" 
+                                 Margin="0,0,0,5"
+                                 VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="StartAndExpand"
+                                 TextColor="#1F252A"/> 
+                                <Label Text="Öğrenci Listesi"
+                                   Grid.Row="1"
+                                 FontSize="14"
                                  Margin="0,0,0,0"
-                                 FontFamily="NexaHeavy"
+                                 FontFamily="NexaLight"
                                  FontAttributes="Bold"
                                  VerticalOptions="CenterAndExpand"
                                  HorizontalOptions="StartAndExpand"
                                  TextColor="#1F252A"/>
-                                <CollectionView Grid.Row="1"
+                                <CollectionView Grid.Row="2"
                                                 Margin="0,15,0,0"
                                                 ItemsSource="{Binding Profiles}"
                                                 VerticalOptions="CenterAndExpand">
@@ -143,8 +154,8 @@
 
                         </StackLayout>
                     </Grid>
-                    <Grid Grid.Row="2"
-                      Margin="0,10,0,0"
+                    <Grid Grid.Row="1"
+                      Margin="0,20,0,0"
                       HorizontalOptions="CenterAndExpand"
                       VerticalOptions="CenterAndExpand">
                         <Grid ColumnDefinitions="*,*"
@@ -353,8 +364,8 @@
                             </Frame>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Row="3"
-                  Margin="5,10,5,0"
+                    <Grid Grid.Row="2"
+                  Margin="5,20,5,0"
                   HorizontalOptions="CenterAndExpand"
                   VerticalOptions="CenterAndExpand">
                                     <Grid ColumnDefinitions="*,*,*"

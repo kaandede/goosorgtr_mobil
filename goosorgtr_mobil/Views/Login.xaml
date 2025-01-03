@@ -12,34 +12,37 @@
           Aspect="AspectFill"
           HorizontalOptions="FillAndExpand" 
           VerticalOptions="FillAndExpand"/>
-        <StackLayout Margin="0,150,0,0" HorizontalOptions="CenterAndExpand">
-            <Image Source="gooslogo.png" Aspect="AspectFill"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Grid.Row="0" Margin="0,200,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Image Source="gooslogo.png" Aspect="AspectFill"/>
+            </VerticalStackLayout>
 
-
-            <StackLayout WidthRequest="300" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                <Frame BackgroundColor="#FAFAFC" BorderColor="#fff" Padding="0" Margin="0,40,0,0" HorizontalOptions="FillAndExpand" CornerRadius="10">
+            <VerticalStackLayout Grid.Row="1" WidthRequest="300" Margin="0,40,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                <Frame BackgroundColor="#FAFAFC" BorderColor="#fff" Padding="0" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" CornerRadius="10">
                     <StackLayout Orientation="Horizontal">
-                        <local:BorderlessEntry Text="Admin" Placeholder="Kullanıcı Adı veya E-Posta" PlaceholderColor="#908E9A" TextColor="#040404" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
+                        <local:BorderlessEntry Text="Admin" Placeholder="Kullanıcı Adı veya E-Posta" PlaceholderColor="#908E9A" TextColor="#1F252A" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
                     </StackLayout>
                 </Frame>
                 <Frame  BackgroundColor="#FAFAFC" BorderColor="#fff" Padding="0" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" CornerRadius="10">
                     <StackLayout Orientation="Horizontal">
 
-                        <local:BorderlessEntry Text="1q2w3E*" IsPassword="True" Placeholder="Parola" PlaceholderColor="#908E9A" TextColor="#040404" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
+                        <local:BorderlessEntry Text="1q2w3E*" IsPassword="True" Placeholder="Parola" PlaceholderColor="#908E9A" TextColor="#1F252A" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
                     </StackLayout>
                 </Frame>
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0" Padding="0">
 
                     <CheckBox IsChecked="False" Color="#383348"/>
-                    <Label Text="Beni Hatırla" FontFamily="NexaLight" FontAttributes="Bold" TextColor="#040404" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Label Text="Beni Hatırla" FontFamily="NexaLight" FontAttributes="Bold" TextColor="#1F252A" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                     <Label Text="Şifremi Unuttum" TextDecorations="Underline" TextColor="#408CF1" FontFamily="NexaLight" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
-                <Button Text="Giriş" FontSize="18" BackgroundColor="#040404" FontFamily="NexaHeavy" TextColor="#fff" HeightRequest="50" CornerRadius="10" Margin="5,25,0,0" Clicked="Login_Button_Clicked"/>
-         
-            </StackLayout>
-        </StackLayout>
-       
+                <Button Text="Giriş" FontSize="18" BackgroundColor="#1F252A" FontFamily="NexaHeavy" TextColor="#fff" HeightRequest="50" CornerRadius="10" Margin="5,25,0,0" Clicked="Login_Button_Clicked"/>
+
+            </VerticalStackLayout>
+
+        </Grid>
     </Grid>
-
-
 </ContentPage>

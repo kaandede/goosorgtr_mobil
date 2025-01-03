@@ -6,22 +6,21 @@
     xmlns:local="clr-namespace:goosorgtr_mobil"
     xmlns:views="clr-namespace:goosorgtr_mobil.ParentViews"
     xmlns:views_login="clr-namespace:goosorgtr_mobil.Views"
-    
-    Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="True"
     Shell.TabBarIsVisible="True">
 
 
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="#fff" />
+                <Setter Property="Shell.BackgroundColor" Value="#1F252A" />
                 <Setter Property="Shell.ForegroundColor" Value="#fff" />
                 <Setter Property="Shell.TitleColor" Value="#fff" />
                 <Setter Property="Shell.DisabledColor" Value="#fff" />
                 <Setter Property="Shell.UnselectedColor" Value="#fff" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="#000" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="#fff"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#F3F2F7" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="#1F252A"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#b3b3b3"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="#fff"/>
             </Style>
@@ -43,20 +42,11 @@
               Shell.TabBarIsVisible="False"
               Shell.FlyoutItemIsVisible="False"/>
 
-
-
-
-
-
     <TabBar>
-
         <ShellContent Icon="home_ince_beyaz.png" Route="ParentMainPage" ContentTemplate="{DataTemplate views:ParentMainPage}"/>
         <ShellContent Icon="location.png" Route="ParentStudentLocation" ContentTemplate="{DataTemplate views:ParentStudentLocation}"/>
         <ShellContent Icon="bell.png" Route="ParentNotification" ContentTemplate="{DataTemplate views:ParentNotification}"/>
         <ShellContent Icon="file.png" Route="ParentStudentHomeWork" ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"/>
-
-
-
     </TabBar>
     
 </Shell>
