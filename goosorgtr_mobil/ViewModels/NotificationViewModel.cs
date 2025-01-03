@@ -20,6 +20,12 @@ namespace goosorgtr_mobil.ViewModels
                 new NotificationItem("Brochure Design Review"),
                 new NotificationItem("Create Sales Report"),
                 new NotificationItem("Deliver R&D Plans"),
+                new NotificationItem("Deliver R&D Plans"),
+                new NotificationItem("Deliver R&D Plans"),
+                new NotificationItem("Deliver R&D Plans"),
+                new NotificationItem("Deliver R&D Plans"),
+                new NotificationItem("Deliver R&D Plans"),
+                new NotificationItem("Deliver R&D Plans"),
             };
         }
     }

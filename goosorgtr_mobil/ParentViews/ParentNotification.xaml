@@ -1,14 +1,18 @@
-
-
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-            xmlns:local="clr-namespace:goosorgtr_mobil.ViewModels"
+            xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
+            xmlns:views="clr-namespace:goosorgtr_mobil.ParentViews"
+              xmlns:dx="http://schemas.devexpress.com/maui"
+              xmlns:local="clr-namespace:goosorgtr_mobil"
+              Style="{StaticResource pageStyle}"
         x:Class="goosorgtr_mobil.ParentViews.ParentNotification">
     <ContentPage.BindingContext>
-        <local:NotificationViewModel/>
+        <vm:NotificationViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
+      
+
         <Style TargetType="dxcv:SwipeItem">
             <Setter Property="FontColor" Value="White"/>
             <Setter Property="FontSize" Value="Medium"/>
@@ -17,34 +21,68 @@
             <Setter Property="Color" Value="DarkGray"/>
             <Setter Property="HeightRequest" Value="1"/>
         </Style>
+        <views:IsFilterEmptyConverter x:Key="isFilterEmptyConverter"/>
     </ContentPage.Resources>
+    <ContentPage.Behaviors>
+        <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Surface}" />
+    </ContentPage.Behaviors>
 
-    <dxcv:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Data}">
-        <dxcv:DXCollectionView.ItemTemplate>
-            <DataTemplate>
-                <dxcv:SwipeContainer>
-                    <dxcv:SwipeContainer.ItemView>
-                        <StackLayout Margin="0" Spacing="0" BackgroundColor="{Binding ItemColor}">
-                            <Label Margin="20" Text="{Binding Description}"/>
-                            <BoxView Style="{StaticResource SeparatorStyle}"/>
-                        </StackLayout>
-                    </dxcv:SwipeContainer.ItemView>
+    <Grid RowDefinitions="Auto, *">
+        
+        <dxcv:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Data}" Grid.Row="1">
+            <dxcv:DXCollectionView.ItemTemplate>
+                <DataTemplate>
+                    <dxcv:SwipeContainer>
+                        <dxcv:SwipeContainer.ItemView>
+                            <StackLayout Margin="0" Spacing="0" BackgroundColor="{Binding ItemColor}">
+                                <Label Margin="20" Text="{Binding Description}"/>
+                                <BoxView Style="{StaticResource SeparatorStyle}"/>
+                            </StackLayout>
+                        </dxcv:SwipeContainer.ItemView>
 
-                    <dxcv:SwipeContainer.StartSwipeItems>
-                        <dxcv:SwipeContainerItem Caption="{Binding ActionText}"
-                                        BackgroundColor="Green"
-                                        Image="{Binding ActionIcon}"
-                                        Command="{Binding ChangeStateCommand}"/>
-                    </dxcv:SwipeContainer.StartSwipeItems>
+                        <dxcv:SwipeContainer.StartSwipeItems>
+                            <dxcv:SwipeContainerItem Caption="{Binding ActionText}"
+                                     BackgroundColor="Green"
+                                     Image="{Binding ActionIcon}"
+                                     Command="{Binding ChangeStateCommand}"/>
+                        </dxcv:SwipeContainer.StartSwipeItems>
 
-                    <dxcv:SwipeContainer.EndSwipeItems>
-                        <dxcv:SwipeContainerItem Caption="Delete"
-                                        BackgroundColor="Red"
-                                        Image="deletetask"
-                                        Tap="SwipeItem_Tapped"/>
-                    </dxcv:SwipeContainer.EndSwipeItems>
-                </dxcv:SwipeContainer>
-            </DataTemplate>
-        </dxcv:DXCollectionView.ItemTemplate>
-    </dxcv:DXCollectionView>
+                        <dxcv:SwipeContainer.EndSwipeItems>
+                            <dxcv:SwipeContainerItem Caption="Delete"
+                                     BackgroundColor="Red"
+                                     Image="deletetask"
+                                     Tap="SwipeItem_Tapped"/>
+                        </dxcv:SwipeContainer.EndSwipeItems>
+                    </dxcv:SwipeContainer>
+                </DataTemplate>
+            </dxcv:DXCollectionView.ItemTemplate>
+        </dxcv:DXCollectionView>
+        <dx:BottomSheet x:Name="filterBottomSheet">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*">
+                <Label Text="test" Grid.Row="0"></Label>
+                <dx:DXButton Content="Reset" Command="{Binding Source={x:Reference collectionView}, Path=FilteringContext.ResetFilterCommand}" HorizontalOptions="End" Style="{StaticResource bottomSheetButton}" Margin="0,20,20,20" Grid.Column="1"/>
+                <dx:TabView x:Name="filterTabView" HeaderPanelBackgroundColor="Blue" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0" ItemHeaderTapped="filterTabView_ItemHeaderTapped" HeaderPanelPadding="0" ItemHeaderPadding="0" HeaderPanelMinHeight="30">
+                    <dx:TabViewItem HeaderText="Description" HeaderWidth="*" HeaderPadding="0,0,0,20">
+                        <Grid RowDefinitions="Auto,*">
+                            <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000"/>
+                            <dx:FilterRadioListItem x:Name="subjectRadioListItem" Context="{Binding Source={x:Reference collectionView}, Path=FilteringContext}" Margin="0,-12,0,0" FieldName="Description" ShowSearchPanel="True" Grid.Row="1" />
+                        </Grid>
+                    </dx:TabViewItem>
+                    <!--<dx:TabViewItem HeaderText="City" HeaderWidth="*" HeaderPadding="0,0,0,20">
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*" >
+                            <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000" />
+                            <dx:FilterCheckedListItem x:Name="cityCheckedListItem" Context="{Binding Source={x:Reference collectionView}, Path=FilteringContext}" FieldName="City" ShowSearchPanel="False" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
+                        </Grid>
+                    </dx:TabViewItem>
+                    <dx:TabViewItem HeaderText="Tutor" HeaderWidth="*" HeaderPadding="0,0,0,20">
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*" >
+                            <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000" />
+                            <dx:FilterCheckedListItem x:Name="tutorCheckedListItem" Context="{Binding Source={x:Reference collectionView}, Path=FilteringContext}" FieldName="FullName" ShowSearchPanel="True" ShowValueCounts="False" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
+                        </Grid>
+                    </dx:TabViewItem>-->
+                </dx:TabView>
+            </Grid>
+        </dx:BottomSheet>
+    </Grid>
+
 </ContentPage>

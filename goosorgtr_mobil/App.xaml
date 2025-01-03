@@ -2,6 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:goosorgtr_mobil"
+              xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="goosorgtr_mobil.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +10,19 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="bottomSheetButton" TargetType="dx:DXButton">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="ButtonType" Value="Text"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="MinimumHeightRequest" Value="0"/>
+            </Style>
+            <Style x:Key="pageStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor Surface}"/>
+            </Style>
         </ResourceDictionary>
+        
     </Application.Resources>
 </Application>
