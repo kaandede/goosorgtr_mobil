@@ -12,7 +12,7 @@
     </ContentPage.ToolbarItems>
    
     <Page.Behaviors>
-        <mct:StatusBarBehavior StatusBarColor="#F3F2F7" StatusBarStyle="DarkContent"/>
+        <mct:StatusBarBehavior StatusBarColor="#1F252A" StatusBarStyle="LightContent"/>
     </Page.Behaviors>
     <ScrollView VerticalScrollBarVisibility="Never">
 

@@ -13,9 +13,4 @@ public partial class ParentUser : ContentPage
 
         Shell.Current.GoToAsync($"//{nameof(Login)}");
     }
-
-    private void geributon_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync($"//{nameof(ParentMainPage)}");
-    }
 }

@@ -4,7 +4,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
             xmlns:local="clr-namespace:goosorgtr_mobil.ViewModels"
-        x:Class="goosorgtr_mobil.ParentViews.ParentNotification">
+            x:Class="goosorgtr_mobil.ParentViews.ParentNotification"
+             BackgroundColor="#F3F2F7">
     <ContentPage.BindingContext>
         <local:NotificationViewModel/>
     </ContentPage.BindingContext>
