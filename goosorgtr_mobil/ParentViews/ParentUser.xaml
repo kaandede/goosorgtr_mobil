@@ -3,8 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentUser"
              Shell.TabBarIsVisible="False">
-    <VerticalStackLayout Padding="25" Spacing="10">
-        <Button Text="Çıkış"
-                Clicked="Button_Clicked"/>
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto, 0.5, auto" Padding="25">
+
+        <!-- Geri Butonu -->
+        <Frame Margin="0"
+               BorderColor="#fff"
+               CornerRadius="30"
+               BackgroundColor="#fff"
+               Padding="2"
+               VerticalOptions="Start"
+               HorizontalOptions="Start">
+            <ImageButton Source="geri_icon.png" 
+                         HeightRequest="28"
+                         WidthRequest="28" 
+                         VerticalOptions="Center" 
+                         HorizontalOptions="Center"
+                         Clicked="geributon_Clicked"/>
+        </Frame>
+
+        
+        <VerticalStackLayout Grid.Row="1" Spacing="20" Padding="10" VerticalOptions="Center">
+            <!-- Profil Resmi -->
+            <Frame BorderColor="#ccc"
+                   CornerRadius="100"
+                   Padding="5"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   HorizontalOptions="Center">
+                <Image Source="parent_avatar.png" 
+                       Aspect="AspectFill" 
+                       HeightRequest="140" 
+                       WidthRequest="140"/>
+            </Frame>
+
+            <!-- Kullanıcı Bilgi Alanı -->
+            <Label 
+                   Text="Ad Soyad: Ahmet Yılmaz" 
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+
+            <Label Text="Email: ahmet.yilmaz@example.com" 
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   TextColor="Gray"/>
+
+            <Label Text="Telefon: +90 555 123 4567"
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   TextColor="Gray"/>
+        </VerticalStackLayout>
+
+        <!-- Çıkış Butonu -->
+       
+    </Grid>
 </ContentPage>

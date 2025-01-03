@@ -7,10 +7,13 @@ namespace goosorgtr_mobil
     public partial class AppShell : Shell
     {
         ParentViewModel parentViewModel = new ParentViewModel();
+
         public AppShell(ParentViewModel parentViewModel)
         {
             InitializeComponent();
             BindingContext = parentViewModel;
+
+          
 
             Routing.RegisterRoute(nameof(ParentMainPage), typeof(ParentMainPage));
             Routing.RegisterRoute(nameof(ParentUser), typeof(ParentUser));

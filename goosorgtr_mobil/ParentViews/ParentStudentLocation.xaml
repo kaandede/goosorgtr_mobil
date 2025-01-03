@@ -2,11 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentLocation"
-             Title="ParentStudentLocation">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Kargo Takip Merkezi">
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="10" Spacing="15">
+
+
+            <Frame BackgroundColor="#1976D2" Padding="10" CornerRadius="10">
+                <Label Text="Bulunduğu Konum"
+                       FontSize="20"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Frame>
+            <Grid Padding="10" RowDefinitions="Auto,auto,auto">
+              
+                <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                    <!-- Okul -->
+                    <Frame BackgroundColor="#FF8800" CornerRadius="30" Padding="10" WidthRequest="150">
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                            <Label Text="OKUL" FontSize="16" HorizontalOptions="Center" />
+                            <Button Text="✔" BackgroundColor="Green" WidthRequest="40" HeightRequest="40" CornerRadius="20" Clicked="OnOkulClicked"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Servis -->
+                    <Frame BackgroundColor="#FF8800" CornerRadius="30" Padding="10" WidthRequest="150">
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                            <Label Text="SERVİS" FontSize="16" HorizontalOptions="Center" />
+                            <Button Text="✔" BackgroundColor="Green" WidthRequest="40" HeightRequest="40" CornerRadius="20" Clicked="OnServisClicked"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </HorizontalStackLayout>
+
+                <Frame BackgroundColor="#E0E0E0" CornerRadius="10" Padding="10" Grid.Row="1">
+                    <Label x:Name="KonumLabel" Text="Bulunduğun Konum: -" FontSize="16" HorizontalOptions="Center" />
+                </Frame>
+            </Grid>
+            
+            <Frame BackgroundColor="#E0E0E0" Padding="10" CornerRadius="10">
+                <Label x:Name="ZamanLabel" Text="Okulsa: Saat 10:30'a giriş yapıldı." FontSize="14" TextColor="Gray" HorizontalOptions="Center" />
+            </Frame>
+
+        </VerticalStackLayout>
+    </ContentPage.Content>
 </ContentPage>

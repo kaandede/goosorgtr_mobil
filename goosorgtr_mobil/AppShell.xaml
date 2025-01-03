@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:goosorgtr_mobil"
     xmlns:views="clr-namespace:goosorgtr_mobil.ParentViews"
     xmlns:views_login="clr-namespace:goosorgtr_mobil.Views"
+    
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False"
     Shell.TabBarIsVisible="True">
@@ -29,14 +30,12 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-
     <ShellContent
                   ContentTemplate="{DataTemplate views_login:FirstView}"
                   Route="FirstView"
                   Shell.FlyoutBehavior="Disabled"
                   Shell.TabBarIsVisible="False"
                   Shell.FlyoutItemIsVisible="False"/>
-
     <ShellContent 
               ContentTemplate="{DataTemplate views_login:Login}"
               Route="Login"
