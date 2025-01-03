@@ -22,6 +22,6 @@ public partial class ParentMainPage : ContentPage
 
     private void User_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new ParentUser());
+        Navigation.PushAsync(new ParentUser(parentViewModel));
     }
 }

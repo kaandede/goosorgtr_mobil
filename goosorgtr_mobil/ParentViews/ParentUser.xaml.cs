@@ -1,16 +1,15 @@
+using goosorgtr_mobil.Models;
 using goosorgtr_mobil.Views;
 
 namespace goosorgtr_mobil.ParentViews;
 
 public partial class ParentUser : ContentPage
 {
-	public ParentUser()
+	public ParentUser(ParentViewModel parentViewModel)
 	{
 		InitializeComponent();
-	}
-    private void Button_Clicked(object sender, EventArgs e)
-    {
+		BindingContext = parentViewModel;
 
-        Shell.Current.GoToAsync($"//{nameof(Login)}");
     }
+  
 }

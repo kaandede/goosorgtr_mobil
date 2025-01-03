@@ -115,6 +115,7 @@
 		<PackageReference Include="DevExpress.Maui.CollectionView" Version="24.1.7" />
 		<PackageReference Include="DevExpress.Maui.Controls" Version="24.1.7" />
 		<PackageReference Include="DevExpress.Maui.DataGrid" Version="24.1.7" />
+		<PackageReference Include="DevExpress.Maui.TreeView" Version="24.1.7" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />

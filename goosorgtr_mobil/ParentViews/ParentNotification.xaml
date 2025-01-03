@@ -21,7 +21,7 @@
             <Setter Property="Color" Value="DarkGray"/>
             <Setter Property="HeightRequest" Value="1"/>
         </Style>
-        <views:IsFilterEmptyConverter x:Key="isFilterEmptyConverter"/>
+        <!--<views:IsFilterEmptyConverter x:Key="isFilterEmptyConverter"/>-->
     </ContentPage.Resources>
     <ContentPage.Behaviors>
         <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Surface}" />

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentMainPage"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:models="clr-namespace:goosorgtr_mobil.Models"
              x:DataType="models:ParentViewModel"
              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"

@@ -20,6 +20,7 @@ namespace goosorgtr_mobil
                 .UseDevExpressControls()
                 .UseDevExpressCollectionView()
                 .UseDevExpressDataGrid()
+                .UseDevExpressTreeView()
                 .UseDevExpressEditors()
                 .ConfigureFonts(fonts =>
                 {

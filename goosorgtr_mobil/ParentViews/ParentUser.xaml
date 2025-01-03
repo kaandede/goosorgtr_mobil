@@ -2,8 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentUser"
+             xmlns:dx="http://schemas.devexpress.com/maui"
+             xmlns:local="clr-namespace:goosorgtr_mobil.Models"
              Shell.TabBarIsVisible="False"
              BackgroundColor="#fff">
+
+    <ContentPage.BindingContext>
+        <local:ParentViewModel/>
+    </ContentPage.BindingContext>
 
     <Grid RowDefinitions="Auto, Auto" Padding="25">
         
