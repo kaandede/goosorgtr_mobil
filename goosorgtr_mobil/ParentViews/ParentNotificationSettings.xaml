@@ -1,13 +1,95 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="goosorgtr_mobil.ParentViews.ParentNotificationSettings"
-             Title="ParentNotificationSettings">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button x:Name="geribtn" Text="Geri" Clicked="geribtn_Clicked" HorizontalOptions="Center" VerticalOptions="Center"/>
-    </VerticalStackLayout>
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:goosorgtr_mobil.ViewModels"
+      x:Class="goosorgtr_mobil.ParentViews.ParentNotificationSettings"
+             x:DataType="viewmodel:NotificationSettingsViewModel"
+             Title="Notification Settings">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <!-- General Notifications Section -->
+            <Label Text="General Notifications"
+                   FontSize="Large"
+                   FontAttributes="Bold"/>
+
+            <Border Stroke="LightGray"
+                    StrokeThickness="1"
+                    Padding="15">
+                <VerticalStackLayout Spacing="15">
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                        <VerticalStackLayout>
+                            <Label Text="Push Notifications"
+                                   FontAttributes="Bold"/>
+                            <Label Text="Receive notifications on your device"
+                                   TextColor="Gray"
+                                   FontSize="Small"/>
+                        </VerticalStackLayout>
+                        <Switch IsToggled="{Binding IsPushNotificationsEnabled}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                        <VerticalStackLayout>
+                            <Label Text="Email Notifications"
+                                   FontAttributes="Bold"/>
+                            <Label Text="Receive notifications via email"
+                                   TextColor="Gray"
+                                   FontSize="Small"/>
+                        </VerticalStackLayout>
+                        <Switch IsToggled="{Binding IsEmailNotificationsEnabled}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Specific Notifications Section -->
+            <Label Text="Notification Types"
+                   FontSize="Large"
+                   FontAttributes="Bold"/>
+
+            <Border Stroke="LightGray"
+                    StrokeThickness="1"
+                    Padding="15">
+                <VerticalStackLayout Spacing="15"
+                                   IsEnabled="{Binding IsPushNotificationsEnabled}">
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                        <VerticalStackLayout>
+                            <Label Text="News Updates"
+                                   FontAttributes="Bold"/>
+                            <Label Text="Latest news and announcements"
+                                   TextColor="Gray"
+                                   FontSize="Small"/>
+                        </VerticalStackLayout>
+                        <Switch IsToggled="{Binding IsNewsNotificationsEnabled}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                        <VerticalStackLayout>
+                            <Label Text="Promotions"
+                                   FontAttributes="Bold"/>
+                            <Label Text="Special offers and promotions"
+                                   TextColor="Gray"
+                                   FontSize="Small"/>
+                        </VerticalStackLayout>
+                        <Switch IsToggled="{Binding IsPromotionsEnabled}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                        <VerticalStackLayout>
+                            <Label Text="Account Activity"
+                                   FontAttributes="Bold"/>
+                            <Label Text="Login attempts and security alerts"
+                                   TextColor="Gray"
+                                   FontSize="Small"/>
+                        </VerticalStackLayout>
+                        <Switch IsToggled="{Binding IsAccountActivityEnabled}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Save Changes"
+                    Command="{Binding SaveCommand}"
+                    HorizontalOptions="Fill"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

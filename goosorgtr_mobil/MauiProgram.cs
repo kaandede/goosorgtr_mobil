@@ -2,6 +2,7 @@
 using DevExpress.Maui;
 using goosorgtr_mobil.Models;
 using goosorgtr_mobil.ParentViews;
+using goosorgtr_mobil.ViewModels;
 using goosorgtr_mobil.Views;
 using Microsoft.Extensions.Logging;
 
@@ -47,6 +48,10 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<Profile>();
             builder.Services.AddTransient<GeneratedImage>();
             builder.Services.AddTransient<ParentNotificationSettings>();
+            builder.Services.AddTransient<NotificationSettingsViewModel>();
+            builder.Services.AddTransient<ParentNotificationSettings>();
+            builder.Services.AddTransient<INotificationService, NotificationService>();
+            builder.Services.AddTransient<IPreferencesService, PreferencesService>();
           
 
 #if DEBUG
