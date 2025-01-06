@@ -40,7 +40,7 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<ParentMainPage>();
             builder.Services.AddTransient<ParentUser>();
             builder.Services.AddTransient<ParentNotification>();
-            builder.Services.AddTransient<ParentStudentHomeWork>();
+            builder.Services.AddTransient<ParentStudentHomeWorkDetails>();
             builder.Services.AddTransient<ParentStudentLocation>();
             builder.Services.AddTransient<Login>();
             builder.Services.AddTransient<FirstView>();

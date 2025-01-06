@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.ParentViews.ParentStudentHomeWorkDetails"
+             Title="Dersler">
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Üst Bilgi -->
+            <Frame BackgroundColor="#FF9800" Padding="10" CornerRadius="10">
+                <Label Text="Dersler"
+                       FontSize="24"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Frame>
+
+            <!-- Ders Listesi -->
+            <VerticalStackLayout>
+                <Frame BackgroundColor="#E0E0E0" CornerRadius="10" Padding="10">
+                    <VerticalStackLayout>
+                        <!-- Ders Başlığı -->
+                        <Label Text="Türkçe" FontSize="20" TextColor="Black" />
+                        <!-- Alt Seçenekler -->
+                        
+                        <Button Text="Ödevler" BackgroundColor="#FF9800" TextColor="White" Clicked="OnOdevlerClicked" />
+                        <Button Text="Ders Notları" BackgroundColor="#FF9800" TextColor="White" Clicked="OnDersNotlariClicked" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#E0E0E0" CornerRadius="10" Padding="10">
+                    <VerticalStackLayout>
+                        <!-- Ders Başlığı -->
+                        <Label Text="Matematik" FontSize="20" TextColor="Black" />
+                        <!-- Alt Seçenekler -->
+                      
+                        <Button Text="Ödevler" BackgroundColor="#FF9800" TextColor="White" Clicked="OnOdevlerClicked" />
+                        <Button Text="Ders Notları" BackgroundColor="#FF9800" TextColor="White" Clicked="OnDersNotlariClicked" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#E0E0E0" CornerRadius="10" Padding="10">
+                    <VerticalStackLayout>
+                        <!-- Ders Başlığı -->
+                        <Label Text="Fen" FontSize="20" TextColor="Black" />
+                        <!-- Alt Seçenekler -->
+                       
+                        <Button Text="Ödevler" BackgroundColor="#FF9800" TextColor="White" Clicked="OnOdevlerClicked" />
+                        <Button Text="Ders Notları" BackgroundColor="#FF9800" TextColor="White" Clicked="OnDersNotlariClicked" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

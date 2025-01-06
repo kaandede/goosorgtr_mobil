@@ -122,6 +122,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="ParentViews\ParentStudentHomeWorkDetails.xaml.cs">
+	    <DependentUpon>ParentStudentHomeWorkDetails.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="ParentViews\ParentMainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -129,6 +135,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ParentViews\ParentStudentHomeWork.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ParentViews\ParentStudentHomeWorkDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ParentViews\ParentStudentLocation.xaml">
