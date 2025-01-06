@@ -19,20 +19,20 @@ namespace goosorgtr_mobil.Models
             {
                 Name = "Öğrenci 1",
                 ProfileImage = "back14.png",
-                NoPhotos = 12
+                NoPhotos = 3
             });
               
             Profiles.Add(new Profile()
             {
                 Name = "Öğrenci 2",
                 ProfileImage = "back13.png",
-                NoPhotos = 13
+                NoPhotos = 9
             });   
             Profiles.Add(new Profile()
             {
                 Name = "Öğrenci 3",
                 ProfileImage = "back3.png",
-                NoPhotos = 14
+                NoPhotos = 11
             });
 
             GeneratedImages.Add(new GeneratedImage()
