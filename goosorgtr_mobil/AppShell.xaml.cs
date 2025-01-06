@@ -21,11 +21,11 @@ namespace goosorgtr_mobil
             Routing.RegisterRoute(nameof(FirstView), typeof(FirstView));
             Routing.RegisterRoute(nameof(Login), typeof(Login));
         }
-      
-        //private void Button_Clicked(object sender, EventArgs e)
-        //{
 
-        //    Shell.Current.GoToAsync($"//{nameof(Login)}");
-        //}
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+            Shell.Current.GoToAsync($"//{nameof(Login)}");
+        }
     }
 }

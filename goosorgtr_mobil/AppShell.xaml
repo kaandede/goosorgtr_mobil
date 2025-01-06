@@ -7,6 +7,7 @@
     xmlns:views="clr-namespace:goosorgtr_mobil.ParentViews"
     xmlns:views_login="clr-namespace:goosorgtr_mobil.Views"
     xmlns:dx="http://schemas.devexpress.com/maui"
+    xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
     Shell.FlyoutBehavior="Flyout"
     Shell.NavBarIsVisible="True"
     Shell.TabBarIsVisible="True"
@@ -132,6 +133,7 @@
             <ImageButton Grid.Row="1" Source="shutdown.png" 
                    HeightRequest="50" 
                    WidthRequest="50" 
+                   Clicked="Button_Clicked"
                    HorizontalOptions="Center"/>
         </Grid>
     </Shell.FlyoutFooter>

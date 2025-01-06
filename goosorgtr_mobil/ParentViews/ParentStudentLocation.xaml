@@ -2,48 +2,238 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentLocation"
-             Title="Öğrenci Takip Merkezi"
+             xmlns:local="clr-namespace:goosorgtr_mobil.Models"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              BackgroundColor="#F3F2F7">
-    <ContentPage.Content>
-        <VerticalStackLayout Padding="10" Spacing="15">
 
+    <ContentPage.BindingContext>
+        <local:ParentViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Renk Şeması -->
+            <Color x:Key="PrimaryColor">#2563EB</Color>
+            <Color x:Key="SecondaryColor">#16A34A</Color>
+            <Color x:Key="WarningColor">#F59E0B</Color>
+            <Color x:Key="DangerColor">#DC2626</Color>
+            <Color x:Key="GrayColor">#6B7280</Color>
 
-            <Frame BackgroundColor="#1976D2" Padding="10" CornerRadius="10">
-                <Label Text="Bulunduğu Konum"
-                       FontSize="20"
-                       TextColor="White"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
-            </Frame>
-            <Grid Padding="10" RowDefinitions="Auto,auto,auto">
-              
-                <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
-                    <!-- Okul -->
-                    <Frame BackgroundColor="#FF8800" CornerRadius="30" Padding="10" WidthRequest="150">
-                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                            <Label Text="OKUL" FontSize="16" HorizontalOptions="Center" />
-                            <Button Text="✔" BackgroundColor="Green" WidthRequest="40" HeightRequest="40" CornerRadius="20" Clicked="OnOkulClicked"/>
-                        </VerticalStackLayout>
-                    </Frame>
+            <!-- Kart Stili -->
+            <Style x:Key="LocationCardStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="Padding" Value="16"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="BorderColor" Value="#E5E7EB"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-                    <!-- Servis -->
-                    <Frame BackgroundColor="#FF8800" CornerRadius="30" Padding="10" WidthRequest="150">
-                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                            <Label Text="SERVİS" FontSize="16" HorizontalOptions="Center" />
-                            <Button Text="✔" BackgroundColor="Green" WidthRequest="40" HeightRequest="40" CornerRadius="20" Clicked="OnServisClicked"/>
-                        </VerticalStackLayout>
-                    </Frame>
-                </HorizontalStackLayout>
+    <Grid RowDefinitions="Auto,*">
+        <!-- Üst Bilgi Kartı -->
+        <Frame Style="{StaticResource LocationCardStyle}"
+               Margin="16,16,16,0">
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                <!-- Öğrenci Fotoğrafı -->
+                <Frame HeightRequest="50" 
+                       WidthRequest="50"
+                       CornerRadius="25"
+                       Padding="0"
+                       IsClippedToBounds="True">
+                    <Image Source="user_pro.png"
+                           Aspect="AspectFill"/>
+                </Frame>
 
-                <Frame BackgroundColor="#E0E0E0" CornerRadius="10" Padding="10" Grid.Row="1">
-                    <Label x:Name="KonumLabel" Text="Bulunduğun Konum: -" FontSize="16" HorizontalOptions="Center" />
+                <!-- Öğrenci Bilgileri -->
+                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                    <Label Text="Ahmet Yılmaz"
+                           FontAttributes="Bold"
+                           FontSize="18"/>
+                    <Label Text="9-A Sınıfı"
+                           TextColor="{StaticResource GrayColor}"
+                           FontSize="14"/>
+                </VerticalStackLayout>
+
+                <!-- Durum İndikatörü -->
+                <Frame Grid.Column="2"
+                       BackgroundColor="#ECFDF5"
+                       Padding="12,6"
+                       CornerRadius="12">
+                    <Label Text="Okulda"
+                           TextColor="{StaticResource SecondaryColor}"
+                           FontAttributes="Bold"
+                           FontSize="14"/>
                 </Frame>
             </Grid>
-            
-            <Frame BackgroundColor="#E0E0E0" Padding="10" CornerRadius="10">
-                <Label x:Name="ZamanLabel" Text="Okulsa: Saat 10:30'a giriş yapıldı." FontSize="14" TextColor="Gray" HorizontalOptions="Center" />
-            </Frame>
+        </Frame>
 
-        </VerticalStackLayout>
-    </ContentPage.Content>
+        <!-- Ana İçerik -->
+        <ScrollView Grid.Row="1">
+            <Grid RowDefinitions="Auto,Auto,*" Padding="16">
+                <!-- Harita -->
+                <Frame Style="{StaticResource LocationCardStyle}"
+                       HeightRequest="200"
+                       Padding="0">
+                    <Grid>
+                        <!--<maps:Map  />-->
+
+                        <!-- Harita Kontrolleri -->
+                        <VerticalStackLayout HorizontalOptions="End"
+                                           Spacing="8"
+                                           Margin="0,0,16,16"
+                                           VerticalOptions="End">
+                            <Button Text="deneme"
+                                    FontFamily="FontAwesome"
+                                    BackgroundColor="White"
+                                    TextColor="{StaticResource PrimaryColor}"
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    CornerRadius="20"
+                                    FontSize="18"/>
+                            <Button Text="22"
+                                    FontFamily="FontAwesome"
+                                    BackgroundColor="{StaticResource PrimaryColor}"
+                                    TextColor="White"
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    CornerRadius="20"
+                                    FontSize="18"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- Konum Detayları -->
+                <Frame Grid.Row="1" 
+                       Style="{StaticResource LocationCardStyle}"
+                       Margin="0,16">
+                    <Grid RowSpacing="16" RowDefinitions="*,*">
+                        <!-- Başlık -->
+                        <Label Text="Konum Detayları"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+                        <!-- Detay Kartları -->
+                        <ScrollView Grid.Row="1" 
+                                   Orientation="Horizontal"
+                                   HorizontalScrollBarVisibility="Never">
+                            <HorizontalStackLayout Spacing="12">
+                                <!-- Bina -->
+                                <Frame BackgroundColor="#EFF6FF"
+                                       WidthRequest="120"
+                                       Padding="12">
+                                    <VerticalStackLayout>
+                                        <Label Text="saf"
+                                               FontFamily="FontAwesome"
+                                               TextColor="{StaticResource PrimaryColor}"
+                                               FontSize="24"/>
+                                        <Label Text="A Blok"
+                                               FontAttributes="Bold"
+                                               Margin="0,8,0,4"/>
+                                        <Label Text="2. Kat"
+                                               TextColor="{StaticResource GrayColor}"
+                                               FontSize="12"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <!-- Sınıf/Alan -->
+                                <Frame BackgroundColor="#ECFDF5"
+                                       WidthRequest="120"
+                                       Padding="12">
+                                    <VerticalStackLayout>
+                                        <Label Text="afa"
+                                               FontFamily="FontAwesome"
+                                               TextColor="{StaticResource SecondaryColor}"
+                                               FontSize="24"/>
+                                        <Label Text="9-A Sınıfı"
+                                               FontAttributes="Bold"
+                                               Margin="0,8,0,4"/>
+                                        <Label Text="Ders"
+                                               TextColor="{StaticResource GrayColor}"
+                                               FontSize="12"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <!-- Süre -->
+                                <Frame BackgroundColor="#FEF3C7"
+                                       WidthRequest="120"
+                                       Padding="12">
+                                    <VerticalStackLayout>
+                                        <Label Text="asfa"
+                                               FontFamily="FontAwesome"
+                                               TextColor="{StaticResource WarningColor}"
+                                               FontSize="24"/>
+                                        <Label Text="2 Saat"
+                                               FontAttributes="Bold"
+                                               Margin="0,8,0,4"/>
+                                        <Label Text="Bu Konumda"
+                                               TextColor="{StaticResource GrayColor}"
+                                               FontSize="12"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </HorizontalStackLayout>
+                        </ScrollView>
+                    </Grid>
+                </Frame>
+
+                <!-- Geçmiş Hareketler -->
+                <Frame Grid.Row="2" 
+                       Style="{StaticResource LocationCardStyle}">
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="Konum Geçmişi"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+                        <CollectionView HeightRequest="300" ItemsSource="{Binding Profiles}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="0,8" ColumnSpacing="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Zaman İkonu -->
+                                        <Frame WidthRequest="40"
+                                               HeightRequest="40"
+                                               CornerRadius="20"
+                                               Padding="0"
+                                               BackgroundColor="#EFF6FF">
+                                            <Label Text="afa"
+                                                   FontFamily="FontAwesome"
+                                                   TextColor="{StaticResource PrimaryColor}"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"
+                                                   FontSize="18"/>
+                                        </Frame>
+
+                                        <!-- Konum Bilgisi -->
+                                        <VerticalStackLayout Grid.Column="1" 
+                                                           Spacing="4">
+                                            <Label Text="Yemekhane"
+                                                   FontAttributes="Bold"/>
+                                            <Label Text="Öğle Yemeği Molası"
+                                                   TextColor="{StaticResource GrayColor}"
+                                                   FontSize="12"/>
+                                        </VerticalStackLayout>
+
+                                        <!-- Süre -->
+                                        <Label Grid.Column="2"
+                                               Text="12:30"
+                                               TextColor="{StaticResource GrayColor}"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
+
+        <!-- Servis Modu İçin Alternatif Görünüm -->
+        <Grid Grid.Row="1" IsVisible="False">
+            <!-- Benzer yapıda ancak servis rotası ve durağa varış süresini gösteren tasarım -->
+        </Grid>
+    </Grid>
 </ContentPage>
