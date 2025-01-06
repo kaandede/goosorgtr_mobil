@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentLocation"
-             Title="Kargo Takip Merkezi"
+             Title="Öğrenci Takip Merkezi"
              BackgroundColor="#F3F2F7">
     <ContentPage.Content>
         <VerticalStackLayout Padding="10" Spacing="15">

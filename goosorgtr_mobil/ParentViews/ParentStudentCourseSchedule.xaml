@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.ParentViews.ParentStudentCourseSchedule"
+                 xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
+             Title="Ders Programı">
+    <ContentPage.BindingContext>
+        <vm:CourseScheduleViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="10" Spacing="15">
+            <!-- Başlık -->
+            <Label Text="Ders Programı" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <!-- CarouselView: Günlere göre kaydırma -->
+            <CarouselView x:Name="DersProgramiCarousel" 
+                          IndicatorView="DaysIndicator" 
+                          ItemsSource="{Binding Days}"
+                          Loop="false" 
+                          HeightRequest="400">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="20">
+                            <!-- Gün İsmi -->
+                            <Label Text="{Binding DayName}" 
+                                   FontSize="20" 
+                                   FontAttributes="Bold" 
+                                   TextColor="Black" 
+                                   HorizontalOptions="Center" />
+
+                            <!-- Dersler Listesi -->
+                            <ListView ItemsSource="{Binding Lessons}" 
+                                      HasUnevenRows="True"
+                                      SeparatorVisibility="Default">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <HorizontalStackLayout Padding="10" Spacing="10">
+                                                <Label Text="{Binding Name}" 
+                                                       FontSize="16" 
+                                                       TextColor="DarkBlue" 
+                                                       VerticalOptions="Center" />
+                                                <Label Text="{Binding Time}" 
+                                                       FontSize="14" 
+                                                       TextColor="Gray" 
+                                                       VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <!-- IndicatorView -->
+            <IndicatorView x:Name="DaysIndicator" 
+                           IndicatorColor="LightGray" 
+                           SelectedIndicatorColor="Orange" 
+                           HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
