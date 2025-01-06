@@ -25,10 +25,10 @@ namespace goosorgtr_mobil
             Routing.RegisterRoute(nameof(Login), typeof(Login));
         }
 
-        //private void Button_Clicked(object sender, EventArgs e)
-        //{
+        private void Button_Clicked(object sender, EventArgs e)
+        {
 
-        //    Shell.Current.GoToAsync($"//{nameof(Login)}");
-        //}
+            Shell.Current.GoToAsync($"//{nameof(Login)}");
+        }
     }
 }

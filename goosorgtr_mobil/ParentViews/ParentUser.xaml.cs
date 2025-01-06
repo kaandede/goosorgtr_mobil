@@ -9,11 +9,5 @@ public partial class ParentUser : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = parentViewModel;
-
-    }
-
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync($"//{nameof(Login)}");
     }
 }
