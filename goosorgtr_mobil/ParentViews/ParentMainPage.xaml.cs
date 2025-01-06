@@ -31,4 +31,18 @@ public partial class ParentMainPage : ContentPage
         await Shell.Current.GoToAsync(nameof(ParentUser));
         //await Navigation.PushAsync(new ParentUser());
     }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+       Navigation.PushAsync(new service());
+    }
+
+    private void Tapduyuru_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PushAsync(new Duyuru());
+    }
+    private void Tapharcama_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PushAsync(new harcama());
+    }
 }

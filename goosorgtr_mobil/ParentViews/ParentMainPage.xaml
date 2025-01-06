@@ -382,7 +382,9 @@
                            BorderColor="Transparent"
                            BackgroundColor="#FFFFFF"
                            CornerRadius="15"
-                           HasShadow="True">
+
+                                HasShadow="True">
+                              
                                 <VerticalStackLayout Spacing="10" Margin="0,5,0,10">
                                     <!-- Görsel -->
                                     <Image Source="bus.png"
@@ -397,7 +399,11 @@
                                    FontSize="16"
                                    FontFamily="NexaHeavy"
                                    TextColor="#1F252A"
-                                   HorizontalOptions="Center"/>
+                                   HorizontalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                        </Label.GestureRecognizers>                                            
+                                    </Label>
                                     <!-- Ayraç -->
                                 
                                 </VerticalStackLayout>
@@ -425,7 +431,12 @@
                             FontSize="16"
                              FontFamily="NexaHeavy"
                             TextColor="#1F252A"
-                            HorizontalOptions="Center"/>
+                            HorizontalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Tapduyuru_Tapped"/>
+                                            </Label.GestureRecognizers>
+
+                                    </Label>
 
                                 </VerticalStackLayout>
                             </Frame>
@@ -453,8 +464,12 @@
                        FontSize="16"
                         FontFamily="NexaHeavy"
                        TextColor="#1F252A"
-                       HorizontalOptions="Center"/>
-                                    <!-- Ayraç -->
+                       HorizontalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Tapharcama_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                        <!-- Ayraç -->
                                  
                                  
                                 </VerticalStackLayout>
