@@ -14,11 +14,12 @@ namespace goosorgtr_mobil
             BindingContext = parentViewModel;
 
           
-
+      
             Routing.RegisterRoute(nameof(ParentMainPage), typeof(ParentMainPage));
             Routing.RegisterRoute(nameof(ParentUser), typeof(ParentUser));
             Routing.RegisterRoute(nameof(ParentNotification), typeof(ParentNotification));
             Routing.RegisterRoute(nameof(ParentStudentHomeWork), typeof(ParentStudentHomeWork));
+            Routing.RegisterRoute(nameof(ParentStudentHomeWorkDetails), typeof(ParentStudentHomeWorkDetails));
           
             Routing.RegisterRoute(nameof(ParentStudentLocation), typeof(ParentStudentLocation));
             Routing.RegisterRoute(nameof(FirstView), typeof(FirstView));

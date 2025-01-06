@@ -11,12 +11,15 @@ public partial class ParentStudentHomeWork : ContentPage
     private async void OnDerslerButtonClicked(object sender, EventArgs e)
     {
      
-        await Navigation.PushAsync(new ParentStudentHomeWorkDetails());
+        //await Navigation.PushAsync(new ParentStudentHomeWorkDetails());
+        await Shell.Current.GoToAsync(nameof(ParentStudentHomeWorkDetails));
+
     }
 
     private async void OnDersProgramiButtonClicked(object sender, EventArgs e)
     {
         // Ders Programý sayfasýna yönlendirme
         await Navigation.PushAsync(new ParentStudentCourseSchedule());
+  
     }
 }

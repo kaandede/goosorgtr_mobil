@@ -12,14 +12,18 @@ public partial class ParentNotification : ContentPage
     
     }
 
-    
-    void SwipeItem_Tapped(System.Object sender, SwipeItemTapEventArgs e)
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
-        this.collectionView.DeleteItem(e.ItemHandle);
+        if (BindingContext is NotificationViewModel viewModel)
+        {
+            viewModel.SearchText = searchBar.Text;
+            viewModel.FilterNotificationsCommand.Execute(null);
+        }
     }
 
-    private void btnNotificationSetting_Clicked(object sender, EventArgs e)
+    private void FilterButton_Clicked(object sender, EventArgs e)
     {
-
+        // Unfocus the search bar when filter button is clicked
+        searchBar.Unfocus();
     }
 }
