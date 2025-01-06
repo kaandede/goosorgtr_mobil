@@ -6,12 +6,18 @@ namespace goosorgtr_mobil.ParentViews;
 
 public partial class ParentMainPage : ContentPage
 {
-    ParentViewModel parentViewModel = new ParentViewModel();
 
-    public ParentMainPage(ParentViewModel parentViewModel)
+
+    public ParentMainPage()
 	{
 		InitializeComponent();
-        BindingContext = parentViewModel;
+        BindingContext = new ParentViewModel();
+    }
+    protected async override void OnAppearing()
+    {
+
+        base.OnAppearing();
+        await Navigation.PopToRootAsync(false);
     }
 
     private async void OnCounterClicked(object sender, EventArgs e)
@@ -20,8 +26,23 @@ public partial class ParentMainPage : ContentPage
         await Shell.Current.GoToAsync($"//{nameof(Login)}");
     }
 
-    private void User_Clicked(object sender, EventArgs e)
+    private async void User_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new ParentUser(parentViewModel));
+        await Shell.Current.GoToAsync(nameof(ParentUser));
+        //await Navigation.PushAsync(new ParentUser());
+    }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+       Navigation.PushAsync(new service());
+    }
+
+    private void Tapduyuru_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PushAsync(new Duyuru());
+    }
+    private void Tapharcama_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PushAsync(new harcama());
     }
 }

@@ -2,6 +2,7 @@
 using DevExpress.Maui;
 using goosorgtr_mobil.Models;
 using goosorgtr_mobil.ParentViews;
+using goosorgtr_mobil.ViewModels;
 using goosorgtr_mobil.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Maps.Handlers;
@@ -40,7 +41,7 @@ namespace goosorgtr_mobil
                 });
 
 
-            builder.Services.AddTransient<ParentViewModel>();
+            builder.Services.AddSingleton<ParentViewModel>();
             builder.Services.AddTransient<ParentMainPage>();
             builder.Services.AddTransient<ParentUser>();
             builder.Services.AddTransient<ParentNotification>();
@@ -50,6 +51,11 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<FirstView>();
             builder.Services.AddTransient<Profile>();
             builder.Services.AddTransient<GeneratedImage>();
+            builder.Services.AddTransient<ParentNotificationSettings>();
+            builder.Services.AddTransient<NotificationSettingsViewModel>();
+            builder.Services.AddTransient<ParentNotificationSettings>();
+            builder.Services.AddTransient<INotificationService, NotificationService>();
+            builder.Services.AddTransient<IPreferencesService, PreferencesService>();
           
 
 #if DEBUG

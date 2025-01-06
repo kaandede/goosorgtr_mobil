@@ -479,9 +479,16 @@
                                    HeightRequest="20"/>
                         </Frame>
                         <Label Grid.Column="1"
+                              
                                Text="Bildirim Ayarları"
                                VerticalOptions="Center"
-                               FontAttributes="Bold"/>
+                               FontAttributes="Bold">
+                            <Label.GestureRecognizers >
+                                <TapGestureRecognizer Tapped="lblBildirimAyar_Tapped"/>
+                            </Label.GestureRecognizers>
+                            
+                            
+                        </Label>
                         <Image Grid.Column="2"
                                Source="right.png"
                                HeightRequest="20"
