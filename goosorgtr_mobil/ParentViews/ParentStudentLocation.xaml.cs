@@ -8,6 +8,12 @@ namespace goosorgtr_mobil.ParentViews
         {
             InitializeComponent();
         }
+        protected async override void OnAppearing()
+        {
+
+            base.OnAppearing();
+            await Navigation.PopToRootAsync(false);
+        }
 
         // Okul butonuna týklandýðýnda
         private void OnOkulClicked(object sender, EventArgs e)

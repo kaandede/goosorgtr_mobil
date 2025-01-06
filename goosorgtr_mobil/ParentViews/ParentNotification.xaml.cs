@@ -11,7 +11,12 @@ public partial class ParentNotification : ContentPage
 		BindingContext = new NotificationViewModel();
     
     }
+    protected async override void OnAppearing()
+    {
 
+        base.OnAppearing();
+        await Navigation.PopToRootAsync(false);
+    }
     private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (BindingContext is NotificationViewModel viewModel)

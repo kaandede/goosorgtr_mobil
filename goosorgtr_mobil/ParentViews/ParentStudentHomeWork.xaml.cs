@@ -7,6 +7,12 @@ public partial class ParentStudentHomeWork : ContentPage
     {
         InitializeComponent();
     }
+    protected async override void OnAppearing()
+    {
+
+        base.OnAppearing();
+        await Navigation.PopToRootAsync(false);
+    }
 
     private async void OnDerslerButtonClicked(object sender, EventArgs e)
     {

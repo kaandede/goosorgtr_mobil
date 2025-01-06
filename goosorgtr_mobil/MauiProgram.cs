@@ -36,7 +36,7 @@ namespace goosorgtr_mobil
                 });
 
 
-            builder.Services.AddTransient<ParentViewModel>();
+            builder.Services.AddSingleton<ParentViewModel>();
             builder.Services.AddTransient<ParentMainPage>();
             builder.Services.AddTransient<ParentUser>();
             builder.Services.AddTransient<ParentNotification>();
@@ -46,6 +46,7 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<FirstView>();
             builder.Services.AddTransient<Profile>();
             builder.Services.AddTransient<GeneratedImage>();
+            builder.Services.AddTransient<ParentNotificationSettings>();
           
 
 #if DEBUG
