@@ -24,4 +24,18 @@ public partial class ParentMainPage : ContentPage
     {
         Navigation.PushAsync(new ParentUser(parentViewModel));
     }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+       Navigation.PushAsync(new service());
+    }
+
+    private void Tapduyuru_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PushAsync(new Duyuru());
+    }
+    private void Tapharcama_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PushAsync(new harcama());
+    }
 }

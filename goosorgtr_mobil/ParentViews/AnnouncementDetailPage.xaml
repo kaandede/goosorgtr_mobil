@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.ParentViews.AnnouncementDetailPage"
+             Title="Duyuru Detayı">
+    <VerticalStackLayout Padding="20">
+        <!-- Seçilen duyurunun başlığını göster -->
+        <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="20" />
+        <!-- Seçilen duyurunun tarihini göster -->
+        <Label Text="{Binding Date}" FontSize="16" TextColor="Gray" />
+        <!-- Seçilen duyurunun detaylarını göster -->
+        <Label Text="{Binding Details}" FontSize="14" />
+    </VerticalStackLayout>
+</ContentPage>
