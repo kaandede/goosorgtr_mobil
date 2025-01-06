@@ -132,7 +132,6 @@
             <ImageButton Grid.Row="1" Source="shutdown.png" 
                    HeightRequest="50" 
                    WidthRequest="50" 
-                   Clicked="Button_Clicked"
                    HorizontalOptions="Center"/>
         </Grid>
     </Shell.FlyoutFooter>

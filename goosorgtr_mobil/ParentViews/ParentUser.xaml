@@ -149,16 +149,16 @@
                     CornerRadius="15"
                     HasShadow="True">
                         <VerticalStackLayout Spacing="10" Margin="0,5,0,10">
-                          <!-- Görsel -->
-                          <Image Source="bus.png"
+                            <!-- Görsel -->
+                            <Image Source="bus.png"
                                 HeightRequest="60"
                                 WidthRequest="60"
                                 HorizontalOptions="Center"/>
-                         <BoxView HeightRequest="1"
+                            <BoxView HeightRequest="1"
                          Color="#1F252A"
                          Opacity="0.3"/>
-                                                <!-- Başlık -->
-                          <Label Text="Servis"
+                            <!-- Başlık -->
+                            <Label Text="Servis"
                             FontSize="16"
                             FontFamily="NexaHeavy"
                             TextColor="#1F252A"
@@ -231,27 +231,27 @@
                     BackgroundColor="#FFFFFF"
                     CornerRadius="15"
                     HasShadow="True">
-                                    <VerticalStackLayout Spacing="10" Margin="0,5,0,10">
-                                        <!-- Görsel -->
-                                        <Image Source="map.png"
+                        <VerticalStackLayout Spacing="10" Margin="0,5,0,10">
+                            <!-- Görsel -->
+                            <Image Source="map.png"
                                 HeightRequest="60"
                                 WidthRequest="60"
                                 HorizontalOptions="Center"/>
-                                        <BoxView HeightRequest="1"
+                            <BoxView HeightRequest="1"
                          Color="#1F252A"
                          Opacity="0.3"/>
-                                        <!-- Başlık -->
-                                        <Label Text="Konum"
+                            <!-- Başlık -->
+                            <Label Text="Konum"
                             FontSize="16"
                             FontFamily="NexaHeavy"
                             TextColor="#1F252A"
                             HorizontalOptions="Center"/>
-                                        <!-- Ayraç -->
+                            <!-- Ayraç -->
 
                         </VerticalStackLayout>
                     </Frame>
 
-              
+
                 </Grid>
             </Frame>
 
@@ -382,7 +382,7 @@
                                  HeightRequest="40"
                                  CornerRadius="30"
                                  Padding="10">
-                                  <Image Source="meeting.png" 
+                                    <Image Source="meeting.png" 
                                           WidthRequest="20"
                                           HeightRequest="20"/>
                                 </Frame>
@@ -416,7 +416,7 @@
                             HeightRequest="40"
                             CornerRadius="30"
                             Padding="10">
-                                     <Image Source="payment.png" 
+                                    <Image Source="payment.png" 
                                      WidthRequest="20"
                                      HeightRequest="20"/>
                                 </Frame>
@@ -538,6 +538,7 @@
                             TextColor="White"
                             CornerRadius="25"
                             HeightRequest="50"
+                            Clicked="Button_Clicked"
                             Margin="0,10,0,0">
                         <Button.Shadow>
                             <Shadow Brush="#FF5252"
@@ -550,194 +551,4 @@
             </Frame>
         </Grid>
     </ScrollView>
-    <!--<ScrollView>
-        <Grid RowSpacing="20" Padding="20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            --><!-- Profil Başlığı ve Fotoğraf --><!--
-            <Frame Grid.Row="0" 
-                  BackgroundColor="White" 
-                  CornerRadius="15" 
-                  HasShadow="True" 
-                  Padding="20">
-                <Grid ColumnSpacing="15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Frame HeightRequest="100" 
-                          WidthRequest="100" 
-                          CornerRadius="50" 
-                          IsClippedToBounds="True" 
-                          Padding="0">
-                        <Image Source="default_profile.png"
-                              Aspect="AspectFill"/>
-                    </Frame>
-
-                    <VerticalStackLayout Grid.Column="1" 
-                                      Spacing="5" 
-                                      VerticalOptions="Center">
-                        <Label Text="Ahmet Yılmaz"
-                              FontSize="24"
-                              FontAttributes="Bold"/>
-                        <Label Text="ahmet.yilmaz@email.com"
-                              TextColor="Gray"/>
-                        <Label Text="Tel: 0555 555 55 55"
-                              TextColor="Gray"/>
-                    </VerticalStackLayout>
-                </Grid>
-            </Frame>
-
-            --><!-- Hızlı Erişim Menüsü --><!--
-            <Frame Grid.Row="1" 
-                  BackgroundColor="White" 
-                  CornerRadius="15" 
-                  HasShadow="True">
-                <Grid ColumnSpacing="10" RowSpacing="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Button Grid.Column="0" Grid.Row="0"
-                           Text="Öğrenci Takibi"
-                           BackgroundColor="#4CAF50"
-                           TextColor="White"
-                           CornerRadius="10"/>
-
-                    <Button Grid.Column="1" Grid.Row="0"
-                           Text="Harcama Geçmişi"
-                           BackgroundColor="#2196F3"
-                           TextColor="White"
-                           CornerRadius="10"/>
-
-                    <Button Grid.Column="0" Grid.Row="1"
-                           Text="Not Durumu"
-                           BackgroundColor="#FF9800"
-                           TextColor="White"
-                           CornerRadius="10"/>
-
-                    <Button Grid.Column="1" Grid.Row="1"
-                           Text="Konum Bilgisi"
-                           BackgroundColor="#9C27B0"
-                           TextColor="White"
-                           CornerRadius="10"/>
-                </Grid>
-            </Frame>
-
-            --><!-- Öğrenci Listesi --><!--
-            <Frame Grid.Row="2" 
-                  BackgroundColor="White" 
-                  CornerRadius="15" 
-                  HasShadow="True">
-                <VerticalStackLayout Spacing="10">
-                    <Label Text="Öğrencilerim"
-                          FontSize="20"
-                          FontAttributes="Bold"
-                          Margin="0,0,0,10"/>
-
-                    <CollectionView>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame Margin="0,5" 
-                                      Padding="10" 
-                                      BorderColor="#EEEEEE">
-                                    <Grid ColumnSpacing="10">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Frame HeightRequest="50" 
-                                              WidthRequest="50" 
-                                              CornerRadius="25" 
-                                              IsClippedToBounds="True" 
-                                              Padding="0">
-                                            <Image Source="student_avatar.png"
-                                                  Aspect="AspectFill"/>
-                                        </Frame>
-
-                                        <VerticalStackLayout Grid.Column="1" 
-                                                          Spacing="5">
-                                            <Label Text="Mehmet Yılmaz"
-                                                  FontAttributes="Bold"/>
-                                            <Label Text="9-A Sınıfı"
-                                                  TextColor="Gray"
-                                                  FontSize="14"/>
-                                        </VerticalStackLayout>
-
-                                        <Button Grid.Column="2"
-                                               Text="Detay"
-                                               BackgroundColor="#E0E0E0"
-                                               TextColor="Black"
-                                               CornerRadius="15"
-                                               HeightRequest="30"
-                                               WidthRequest="70"
-                                               FontSize="12"/>
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
-            </Frame>
-
-            --><!-- Ayarlar Butonu --><!--
-            <Button Grid.Row="3"
-                   Text="Profil Ayarları"
-                   BackgroundColor="#757575"
-                   TextColor="White"
-                   CornerRadius="10"
-                   Margin="0,0,0,20"/>
-        </Grid>
-    </ScrollView>-->
-
-    <!--<Grid RowDefinitions="Auto, Auto" Padding="25">
-        
-        <VerticalStackLayout Grid.Row="0" Spacing="20" Padding="10" VerticalOptions="Center">
-            --><!-- Profil Resmi --><!--
-            <Frame BorderColor="Transparent"
-                   CornerRadius="100"
-                   Padding="5"
-                   HeightRequest="150"
-                   WidthRequest="150"
-                   HorizontalOptions="Center">
-                <Image Source="user_pro.png" 
-                       Aspect="AspectFill" 
-                       HeightRequest="150" 
-                       WidthRequest="150"/>
-            </Frame>
-
-            --><!-- Kullanıcı Bilgi Alanı --><!--
-            <Label 
-                   Text="Ahmet Yılmaz" 
-                   FontSize="18"
-                   HorizontalOptions="Center"
-                   TextColor="Black"/>
-
-            <Label Text="ahmet.yilmaz@gmail.com" 
-                   FontSize="16"
-                   HorizontalOptions="Center"
-                   TextColor="Gray"/>
-
-            <Label Text="+90 555 123 4567"
-                   FontSize="16"
-                   HorizontalOptions="Center"
-                   TextColor="Gray"/>
-        </VerticalStackLayout>
-
-        --><!-- Çıkış Butonu --><!--
-       
-    </Grid>-->
 </ContentPage>
