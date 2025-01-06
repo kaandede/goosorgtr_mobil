@@ -1,63 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-            xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
-            xmlns:views="clr-namespace:goosorgtr_mobil.ParentViews"
-              xmlns:dx="http://schemas.devexpress.com/maui"
-              xmlns:local="clr-namespace:goosorgtr_mobil"
-              Style="{StaticResource pageStyle}"
-        x:Class="goosorgtr_mobil.ParentViews.ParentNotification">
-    <ContentPage.BindingContext>
-        <vm:NotificationViewModel/>
-    </ContentPage.BindingContext>
-    <ContentPage.Resources>
-      
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
+             x:Class="goosorgtr_mobil.ParentViews.ParentNotification"
+             x:DataType="vm:NotificationViewModel"
+             Title="Notifications">
 
-        <Style TargetType="dxcv:SwipeItem">
-            <Setter Property="FontColor" Value="White"/>
-            <Setter Property="FontSize" Value="Medium"/>
-        </Style>
-        <Style x:Key="SeparatorStyle" TargetType="BoxView">
-            <Setter Property="Color" Value="DarkGray"/>
-            <Setter Property="HeightRequest" Value="1"/>
-        </Style>
-   
-    </ContentPage.Resources>
     <ContentPage.Behaviors>
-        <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Surface}" />
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadNotificationsCommand}" />
     </ContentPage.Behaviors>
 
-    <Grid RowDefinitions="Auto, *">
-        
-        <dxcv:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Data}" Grid.Row="0">
-            <dxcv:DXCollectionView.ItemTemplate>
-                <DataTemplate>
-                    <dxcv:SwipeContainer>
-                        <dxcv:SwipeContainer.ItemView>
-                            <StackLayout Margin="0" Spacing="0" BackgroundColor="{Binding ItemColor}">
-                                <Label Margin="20" Text="{Binding Description}"/>
-                                <BoxView Style="{StaticResource SeparatorStyle}"/>
-                            </StackLayout>
-                        </dxcv:SwipeContainer.ItemView>
+    <Grid RowDefinitions="Auto,Auto,*">
+        <!-- Search Bar -->
+        <SearchBar Grid.Row="0"
+                   Placeholder="Search notifications..."
+                   Text="{Binding SearchText}"
+                   SearchCommand="{Binding FilterNotificationsCommand}"
+                   TextChanged="SearchBar_TextChanged"
+                   x:Name="searchBar"/>
 
-                        <dxcv:SwipeContainer.StartSwipeItems>
-                            <dxcv:SwipeContainerItem Caption="{Binding ActionText}"
-                                     BackgroundColor="Green"
-                                     Image="{Binding ActionIcon}"
-                                     Command="{Binding ChangeStateCommand}"/>
-                        </dxcv:SwipeContainer.StartSwipeItems>
+        <!-- Filter Buttons -->
+        <ScrollView Grid.Row="1" 
+                   Orientation="Horizontal" 
+                   Margin="10,0,10,10">
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="All"
+                        Command="{Binding FilterByTypeCommand}"
+                        CommandParameter="All"
+                        BackgroundColor="{Binding AllFilterColor}"
+                        TextColor="White"
+                        Clicked="FilterButton_Clicked"/>
+                <Button Text="Unread"
+                        Command="{Binding FilterByTypeCommand}"
+                        CommandParameter="Unread"
+                        BackgroundColor="{Binding UnreadFilterColor}"
+                        TextColor="White"
+                         Clicked="FilterButton_Clicked"/>
+                <Button Text="System"
+                        Command="{Binding FilterByTypeCommand}"
+                        CommandParameter="System"
+                        BackgroundColor="{Binding SystemFilterColor}"
+                        TextColor="White"
+                         Clicked="FilterButton_Clicked"/>
+                <Button Text="Messages"
+                        Command="{Binding FilterByTypeCommand}"
+                        CommandParameter="Messages"
+                        BackgroundColor="{Binding MessagesFilterColor}"
+                        TextColor="White"
+                         Clicked="FilterButton_Clicked"/>
+            </HorizontalStackLayout>
+        </ScrollView>
 
-                        <dxcv:SwipeContainer.EndSwipeItems>
-                            <dxcv:SwipeContainerItem Caption="Delete"
-                                     BackgroundColor="Red"
-                                     Image="deletetask"
-                                     Tap="SwipeItem_Tapped"/>
-                        </dxcv:SwipeContainer.EndSwipeItems>
-                    </dxcv:SwipeContainer>
-                </DataTemplate>
-            </dxcv:DXCollectionView.ItemTemplate>
-        </dxcv:DXCollectionView>
-        <Button Text="button" Grid.Row="1"></Button>
+        <!-- Notifications List -->
+        <RefreshView Grid.Row="2"
+                     Command="{Binding RefreshCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding FilteredNotifications}"
+                           EmptyView="No notifications match your filters">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:NotificationItem">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                              BackgroundColor="Red"
+                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NotificationViewModel}}, Path=DeleteNotificationCommand}"
+                                              CommandParameter="{Binding .}" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Grid Padding="10" RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0"
+                                       Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       LineBreakMode="TailTruncation" />
+
+                                <Label Grid.Row="1"
+                                       Text="{Binding Message}"
+                                       LineBreakMode="WordWrap" />
+
+                                <HorizontalStackLayout Grid.Row="2" 
+                                                     Spacing="10">
+                                    <Label Text="{Binding TimeAgo}"
+                                           FontSize="Small"
+                                           TextColor="Gray" />
+
+                                    <Label Text="{Binding Type}"
+                                           FontSize="Small"
+                                           TextColor="Gray" />
+
+                                    <Image IsVisible="{Binding IsUnread}"
+                                           Source="unread_dot.png"
+                                           HeightRequest="8"
+                                           WidthRequest="8"
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </Grid>
-
 </ContentPage>

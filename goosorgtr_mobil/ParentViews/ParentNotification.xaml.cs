@@ -11,15 +11,24 @@ public partial class ParentNotification : ContentPage
 		BindingContext = new NotificationViewModel();
     
     }
-
-    
-    void SwipeItem_Tapped(System.Object sender, SwipeItemTapEventArgs e)
+    protected async override void OnAppearing()
     {
-        this.collectionView.DeleteItem(e.ItemHandle);
+
+        base.OnAppearing();
+        await Navigation.PopToRootAsync(false);
+    }
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (BindingContext is NotificationViewModel viewModel)
+        {
+            viewModel.SearchText = searchBar.Text;
+            viewModel.FilterNotificationsCommand.Execute(null);
+        }
     }
 
-    private void btnNotificationSetting_Clicked(object sender, EventArgs e)
+    private void FilterButton_Clicked(object sender, EventArgs e)
     {
-
+        // Unfocus the search bar when filter button is clicked
+        searchBar.Unfocus();
     }
 }

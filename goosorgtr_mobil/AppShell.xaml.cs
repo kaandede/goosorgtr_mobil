@@ -12,19 +12,21 @@ namespace goosorgtr_mobil
         {
             InitializeComponent();
             BindingContext = parentViewModel;
-
+       
           
-
+      
             Routing.RegisterRoute(nameof(ParentMainPage), typeof(ParentMainPage));
             Routing.RegisterRoute(nameof(ParentUser), typeof(ParentUser));
             Routing.RegisterRoute(nameof(ParentNotification), typeof(ParentNotification));
             Routing.RegisterRoute(nameof(ParentStudentHomeWork), typeof(ParentStudentHomeWork));
+            Routing.RegisterRoute(nameof(ParentStudentHomeWorkDetails), typeof(ParentStudentHomeWorkDetails));
+            Routing.RegisterRoute(nameof(ParentNotificationSettings), typeof(ParentNotificationSettings));
           
             Routing.RegisterRoute(nameof(ParentStudentLocation), typeof(ParentStudentLocation));
             Routing.RegisterRoute(nameof(FirstView), typeof(FirstView));
             Routing.RegisterRoute(nameof(Login), typeof(Login));
         }
-
+      
         //private void Button_Clicked(object sender, EventArgs e)
         //{
 
