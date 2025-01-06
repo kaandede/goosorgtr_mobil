@@ -15,9 +15,9 @@ public partial class ParentMainPage : ContentPage
     }
     protected async override void OnAppearing()
     {
-
-        base.OnAppearing();
         await Navigation.PopToRootAsync(false);
+        base.OnAppearing();
+    
     }
 
     private async void OnCounterClicked(object sender, EventArgs e)

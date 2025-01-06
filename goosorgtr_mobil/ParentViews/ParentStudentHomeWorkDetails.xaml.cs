@@ -7,6 +7,12 @@ public partial class ParentStudentHomeWorkDetails : ContentPage
         InitializeComponent();
         BindingContext = new ParentStudentHomeWorkViewModel();
     }
+
+    protected async override void OnAppearing()
+    {
+        await Navigation.PopToRootAsync();
+        base.OnAppearing();
+    }
     private async void OnDersProgramiClicked(object sender, EventArgs e)
     {
         await DisplayAlert("Ders Programý", "Ders Programý detaylarý gösterilecek.", "Tamam");

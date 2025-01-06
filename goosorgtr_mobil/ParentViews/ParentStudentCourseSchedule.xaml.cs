@@ -9,4 +9,9 @@ public partial class ParentStudentCourseSchedule : ContentPage
         InitializeComponent();
         BindingContext = new CourseScheduleViewModel();
     }
+    protected async override void OnAppearing()
+    {
+        await Navigation.PopToRootAsync();
+        base.OnAppearing();
+    }
 }

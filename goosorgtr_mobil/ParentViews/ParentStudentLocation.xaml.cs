@@ -10,9 +10,9 @@ namespace goosorgtr_mobil.ParentViews
         }
         protected async override void OnAppearing()
         {
-
-            base.OnAppearing();
             await Navigation.PopToRootAsync(false);
+            base.OnAppearing();
+
         }
 
         // Okul butonuna týklandýðýnda

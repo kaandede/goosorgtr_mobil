@@ -13,9 +13,9 @@ public partial class ParentNotification : ContentPage
     }
     protected async override void OnAppearing()
     {
-
-        base.OnAppearing();
         await Navigation.PopToRootAsync(false);
+        base.OnAppearing();
+
     }
     private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
