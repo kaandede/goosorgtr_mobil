@@ -46,7 +46,7 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<FirstView>();
             builder.Services.AddTransient<Profile>();
             builder.Services.AddTransient<GeneratedImage>();
-
+          
 
 #if DEBUG
             builder.Logging.AddDebug();
