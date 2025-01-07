@@ -5,12 +5,12 @@
              xmlns:viewmodel="clr-namespace:goosorgtr_mobil.ViewModels"
       x:Class="goosorgtr_mobil.ParentViews.ParentNotificationSettings"
              x:DataType="viewmodel:NotificationSettingsViewModel"
-             Title="Notification Settings">
+             Title="Bildirim Ayarları">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="20">
+        <VerticalStackLayout Spacing="20" Padding="20"  >
             <!-- General Notifications Section -->
-            <Label Text="General Notifications"
+            <Label Text="Genel bildirimler "
                    FontSize="Large"
                    FontAttributes="Bold"/>
 
@@ -18,24 +18,24 @@
                     StrokeThickness="1"
                     Padding="15">
                 <VerticalStackLayout Spacing="15">
-                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                        <VerticalStackLayout>
-                            <Label Text="Push Notifications"
+                    <HorizontalStackLayout >
+                        <VerticalStackLayout >
+                            <Label Text="Anlık Bildirimler"
                                    FontAttributes="Bold"/>
-                            <Label Text="Receive notifications on your device"
+                            <Label Text="Cihazınızda bildirimler alın"
                                    TextColor="Gray"
-                                   FontSize="Small"/>
+                                   FontSize="Small" HorizontalOptions="Start"/>
                         </VerticalStackLayout>
                         <Switch IsToggled="{Binding IsPushNotificationsEnabled}"/>
                     </HorizontalStackLayout>
 
-                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <HorizontalStackLayout HorizontalOptions="StartAndExpand">
                         <VerticalStackLayout>
-                            <Label Text="Email Notifications"
-                                   FontAttributes="Bold"/>
-                            <Label Text="Receive notifications via email"
+                            <Label Text="E-posta Bildirimleri"
+                                   FontAttributes="Bold" HorizontalOptions="Start"/>
+                            <Label Text="E-posta yoluyla bildirimler alın "
                                    TextColor="Gray"
-                                   FontSize="Small"/>
+                                   FontSize="Small" HorizontalOptions="Start" VerticalOptions="Start"/>
                         </VerticalStackLayout>
                         <Switch IsToggled="{Binding IsEmailNotificationsEnabled}"/>
                     </HorizontalStackLayout>
@@ -43,7 +43,7 @@
             </Border>
 
             <!-- Specific Notifications Section -->
-            <Label Text="Notification Types"
+            <Label Text="Bildirim Türleri"
                    FontSize="Large"
                    FontAttributes="Bold"/>
 
@@ -51,34 +51,34 @@
                     StrokeThickness="1"
                     Padding="15">
                 <VerticalStackLayout Spacing="15"
-                                   IsEnabled="{Binding IsPushNotificationsEnabled}">
-                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                                   IsEnabled="{Binding IsPushNotificationsEnabled}" HorizontalOptions="Start">
+                    <HorizontalStackLayout HorizontalOptions="Start">
                         <VerticalStackLayout>
-                            <Label Text="News Updates"
+                            <Label Text="Haber Güncellemeleri"
                                    FontAttributes="Bold"/>
-                            <Label Text="Latest news and announcements"
+                            <Label Text="Son haberler ve duyurular"
                                    TextColor="Gray"
                                    FontSize="Small"/>
                         </VerticalStackLayout>
                         <Switch IsToggled="{Binding IsNewsNotificationsEnabled}"/>
                     </HorizontalStackLayout>
 
-                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <HorizontalStackLayout HorizontalOptions="Start">
                         <VerticalStackLayout>
-                            <Label Text="Promotions"
+                            <Label Text="Promosyonlar"
                                    FontAttributes="Bold"/>
-                            <Label Text="Special offers and promotions"
+                            <Label Text="Özel teklifler ve promosyonlar"
                                    TextColor="Gray"
                                    FontSize="Small"/>
                         </VerticalStackLayout>
                         <Switch IsToggled="{Binding IsPromotionsEnabled}"/>
                     </HorizontalStackLayout>
 
-                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <HorizontalStackLayout HorizontalOptions="Start">
                         <VerticalStackLayout>
-                            <Label Text="Account Activity"
+                            <Label Text="Hesap Etkinliği"
                                    FontAttributes="Bold"/>
-                            <Label Text="Login attempts and security alerts"
+                            <Label Text="Giriş denemeleri ve güvenlik uyarıları"
                                    TextColor="Gray"
                                    FontSize="Small"/>
                         </VerticalStackLayout>
@@ -87,7 +87,10 @@
                 </VerticalStackLayout>
             </Border>
 
-            <Button Text="Save Changes"
+            <Button Text="Kaydet"
+                    FontAttributes="None"
+                   FontFamily="NexaHeav"
+                    FontSize="20"
                     Command="{Binding SaveCommand}"
                     HorizontalOptions="Fill"/>
         </VerticalStackLayout>

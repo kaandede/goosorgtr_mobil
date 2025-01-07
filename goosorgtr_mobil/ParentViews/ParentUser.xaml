@@ -63,7 +63,7 @@
                                IsClippedToBounds="True" 
                                Padding="0"
                                BorderColor="Transparent">
-                            <Image Source="user_pro.png"
+                            <Image Source="https://png.pngtree.com/png-vector/20231019/ourlarge/pngtree-user-profile-avatar-png-image_10211467.png"
                                    Aspect="AspectFill">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ChangeProfilePhotoCommand}"/>

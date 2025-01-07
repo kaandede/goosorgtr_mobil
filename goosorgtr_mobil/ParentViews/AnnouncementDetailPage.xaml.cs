@@ -7,7 +7,7 @@ namespace goosorgtr_mobil.ParentViews
         public AnnouncementDetailPage(Announcement selectedAnnouncement)
         {
             InitializeComponent();
-            BindingContext = selectedAnnouncement; // Seçilen duyuru objesini baðla
+            BindingContext = selectedAnnouncement;
         }
     }
 }

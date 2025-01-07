@@ -132,7 +132,7 @@
                                        WidthRequest="120"
                                        Padding="12">
                                     <VerticalStackLayout>
-                                        <Label Text="Öğrenci 1"
+                                        <Label Text="Burak"
                                                FontFamily="NexaHeavy"
                                                TextColor="{StaticResource PrimaryColor}"
                                                FontSize="18"/>
@@ -150,7 +150,7 @@
                                        WidthRequest="120"
                                        Padding="12">
                                     <VerticalStackLayout>
-                                        <Label Text="Öğrenci 2"
+                                        <Label Text="Kazım"
                                                FontFamily="NexaHeavy"
                                                TextColor="{StaticResource SecondaryColor}"
                                                FontSize="18"/>
@@ -168,7 +168,7 @@
                                        WidthRequest="120"
                                        Padding="12">
                                     <VerticalStackLayout>
-                                        <Label Text="Öğrenci 3"
+                                        <Label Text="Ebru"
                                                FontFamily="NexaHeavy"
                                                TextColor="{StaticResource WarningColor}"
                                                FontSize="18"/>

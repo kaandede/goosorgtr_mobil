@@ -54,36 +54,36 @@ namespace goosorgtr_mobil.ViewModels
                     new NotificationItem
                     {
                         Id = 1,
-                        Title = "New Message",
-                        Message = "You have received a new message from John",
-                        TimeAgo = "2 minutes ago",
+                        Title = "Tatil Hakkında Bilgilendirme",
+                        Message = "15 Ocak 2025 - 20 Ocak 2025 tarihleri arasında okulumuzda yarıyıl tatili olacaktır. ",
+                        TimeAgo = "2 dakika önce",
                         IsUnread = true,
                         Type = "Messages"
                     },
                     new NotificationItem
                     {
                         Id = 2,
-                        Title = "System Update",
-                        Message = "A new version of the app is available",
-                        TimeAgo = "1 hour ago",
+                        Title = "Okul Gezisi - Doğa Yürüyüşü",
+                        Message = "Okulumuzun 7. sınıf öğrencileri için düzenlediği \"Doğa Yürüyüşü\" etkinliği, 18 Ocak 2025 tarihinde gerçekleştirilecektir. ",
+                        TimeAgo = "1 saat önce",
                         IsUnread = false,
                         Type = "System"
                     },
                     new NotificationItem
                     {
                         Id = 3,
-                        Title = "Reminder",
-                        Message = "Your meeting starts in 15 minutes",
-                        TimeAgo = "15 minutes ago",
+                        Title = "Aidat Ödeme Hatırlatması",
+                        Message = "Ocak ayına ait okul aidat ödemenizin son günü 15 Ocak 2025’tir. Ödemenizi zamanında gerçekleştirmenizi rica ederiz. Teşekkürler.",
+                        TimeAgo = "15 dakika önce",
                         IsUnread = true,
                         Type = "System"
                     },
                     new NotificationItem
                     {
                         Id = 4,
-                        Title = "Message from Support",
-                        Message = "Your ticket has been resolved",
-                        TimeAgo = "3 hours ago",
+                        Title = "Öğrenci Başarı Bildirimi",
+                        Message = "Öğrencimiz Ali Yılmaz, Matematik Olimpiyatları'nda okulumuzu başarıyla temsil ederek ilçe birincisi olmuştur. Öğrencimizin başarılarından dolayı kendisini tebrik eder, destekleriniz için teşekkür ederiz.",
+                        TimeAgo = "3 saat önce",
                         IsUnread = false,
                         Type = "Messages"
                     }
@@ -159,9 +159,9 @@ namespace goosorgtr_mobil.ViewModels
                 return;
 
             var shouldDelete = await Shell.Current.DisplayAlert(
-                "Delete Notification",
-                "Are you sure you want to delete this notification?",
-                "Yes", "No");
+                "Uyarı",
+                "Bu bildirimi silmek istediğinizden emin misiniz?",
+                "Evet", "Hayır");
 
             if (shouldDelete)
             {
