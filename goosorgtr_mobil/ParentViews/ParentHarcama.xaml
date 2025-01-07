@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="goosorgtr_mobil.ParentViews.ParentHarcama">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20">
+        <VerticalStackLayout Grid.Row="0" Spacing="10">
+            <Label Text="Harcama Listesi" 
+                   FontSize="24" 
+                   HorizontalOptions="Center"/>
+            <DatePicker Date="{Binding SelectedDate}"
+                        Format="dd/MM/yyyy"/>
+            <Button Text="Filtrele" 
+                    Command="{Binding FilterCommand}"/>
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1" 
+                        ItemsSource="{Binding Expenses}"
+                        Margin="0,20,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5" Padding="15">
+                        <Grid RowDefinitions="Auto,Auto">
+                            <!-- Üst satır - Ürün adı ve Tarih -->
+                            <Grid Grid.Row="0" 
+                                  ColumnDefinitions="*,Auto" 
+                                  Margin="0,0,0,10">
+                                <Label Grid.Column="0" 
+                                       Text="{Binding ProductName}" 
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"/>
+                                <Label Grid.Column="1" 
+                                       Text="{Binding PurchaseDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" 
+                                       TextColor="Gray"
+                                       VerticalOptions="Center"/>
+                            </Grid>
+
+                            <!-- Alt satır - Adet, Fiyat ve Toplam -->
+                            <Grid Grid.Row="1" 
+                                  ColumnDefinitions="Auto,Auto,*">
+                                <Label Grid.Column="0" 
+                                       Text="{Binding Quantity, StringFormat='Adet: {0}'}"
+                                       VerticalOptions="Center"/>
+                                <Label Grid.Column="1" 
+                                       Text="{Binding Price, StringFormat='Fiyat: {0:C}'}"
+                                       VerticalOptions="Center"
+                                       Margin="15,0"/>
+                                <Label Grid.Column="2" 
+                                       Text="{Binding TotalAmount, StringFormat='Toplam: {0:C}'}"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="End"
+                                       FontAttributes="Bold"/>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Günlük Toplam Tutar -->
+        <Frame Grid.Row="2" 
+               Margin="0,10,0,0" 
+               Padding="15"
+               BackgroundColor="#f0f0f0">
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0"
+                       Text="Günlük Toplam Tutar:"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Label Grid.Column="1"
+                       Text="{Binding DailyTotalAmount, StringFormat='{0:C}'}"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#2b5797"
+                       VerticalOptions="Center"/>
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>

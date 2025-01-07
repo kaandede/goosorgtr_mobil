@@ -135,7 +135,7 @@
 	  <MauiXaml Update="ParentViews\duyuru.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ParentViews\harcama.xaml">
+	  <MauiXaml Update="ParentViews\ParentHarcama.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ParentViews\ParentMainPage.xaml">

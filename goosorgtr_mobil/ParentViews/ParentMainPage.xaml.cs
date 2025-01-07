@@ -43,6 +43,6 @@ public partial class ParentMainPage : ContentPage
     }
     private void Tapharcama_Tapped(object sender, TappedEventArgs e)
     {
-        Navigation.PushAsync(new harcama());
+        Navigation.PushAsync(new ParentHarcama());
     }
 }
