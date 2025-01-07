@@ -5,7 +5,6 @@ using goosorgtr_mobil.ParentViews;
 using goosorgtr_mobil.ViewModels;
 using goosorgtr_mobil.Views;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Maps.Handlers;
 
 namespace goosorgtr_mobil
 {
