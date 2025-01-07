@@ -30,70 +30,93 @@
     </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto,*">
-        
-        
-        <!-- Üst Bilgi Kartı -->
         <Frame Style="{StaticResource LocationCardStyle}"
-               Margin="16,16,16,0">
-            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                <!-- Öğrenci Fotoğrafı -->
-                <Frame HeightRequest="50" 
+               Margin="16,10,16,0">
+            <StackLayout>
+                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                    <!-- Öğrenci Fotoğrafı -->
+                    <Frame HeightRequest="50" 
                        WidthRequest="50"
                        CornerRadius="25"
                        BorderColor="Transparent"
                        Padding="0"
                        IsClippedToBounds="True">
-                    <Image Source="user_pro.png"
+                        <Image Source="user_pro.png"
                            Aspect="AspectFill"/>
-                </Frame>
+                    </Frame>
 
-                <!-- Öğrenci Bilgileri -->
-                <VerticalStackLayout Grid.Column="1" Spacing="4">
-                    <Label Text="Ahmet Yılmaz"
+                    <!-- Öğrenci Bilgileri -->
+                    <VerticalStackLayout Grid.Column="1" Spacing="4">
+                        <Label Text="Ahmet Yılmaz"
                            FontAttributes="Bold"
                            FontSize="18"/>
-                    <Label Text="9-A Sınıfı"
+                        <Label Text="9-A Sınıfı"
                            TextColor="{StaticResource GrayColor}"
                            FontSize="14"/>
-                </VerticalStackLayout>
+                    </VerticalStackLayout>
 
-                <!-- Durum İndikatörü -->
-                <Frame Grid.Column="2"
+                    <!-- Durum İndikatörü -->
+                    <Frame Grid.Column="2"
                        BorderColor="Transparent"
                        BackgroundColor="#ECFDF5"
                        Padding="12,6"
                        CornerRadius="12">
-                    <Label Text="Okulda"
+                        <Label Text="Okulda"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            TextColor="{StaticResource SecondaryColor}"
                            FontAttributes="Bold"
                            FontSize="14"/>
-                </Frame>
-            </Grid>
-        </Frame>
-
-        <!-- Ana İçerik -->
-        <ScrollView Grid.Row="1">
-            <Grid RowDefinitions="Auto,Auto,*" Padding="16">
-                <!-- Harita -->
-                <Grid>
-                    <Frame BorderColor="Transparent" Padding="15" HeightRequest="250">
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <Frame BorderColor="Transparent" Padding="2" HeightRequest="250">
                         <maps:Map x:Name="GoogleMap"
                     MapType="Hybrid"
-                    IsShowingUser="True"
+                    IsShowingUser="False"
                     IsTrafficEnabled="True"
-                    VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand">
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand">
+                            <maps:Map.ItemTemplate>
+                                <DataTemplate x:DataType="maps:Pin">
+                                    <maps:Pin Location="{Binding Location}" Address="{Binding Address}" Label="{Binding Label}"/>
+
+                                </DataTemplate>
+                            </maps:Map.ItemTemplate>
                         </maps:Map>
                     </Frame>
                 </Grid>
+            </StackLayout>
+            
+        </Frame>
+      
+        <!-- Ana İçerik -->
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <Grid Margin="16,10,16,0" RowDefinitions="Auto,Auto,*" Padding="0">
+                <!-- Harita -->
+                <!--<Grid>
+                    <Frame BorderColor="Transparent" Padding="15" HeightRequest="250">
+                        <maps:Map x:Name="GoogleMap"
+                    MapType="Hybrid"
+                    IsShowingUser="False"
+                    IsTrafficEnabled="True"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand">
+                            <maps:Map.ItemTemplate>
+                                <DataTemplate x:DataType="maps:Pin">
+                                    <maps:Pin Location="{Binding Location}" Address="{Binding Address}" Label="{Binding Label}"/>
+
+                                </DataTemplate>
+                            </maps:Map.ItemTemplate>
+                        </maps:Map>
+                    </Frame>
+                </Grid>-->
 
                 <!-- Konum Detayları -->
                 <Frame Grid.Row="1" 
                        Style="{StaticResource LocationCardStyle}"
-                       Margin="0,16">
-                    <Grid RowSpacing="16" RowDefinitions="*,*">
+                       Margin="0,10">
+                    <Grid RowSpacing="10" RowDefinitions="*,*">
                         <!-- Başlık -->
                         <Label Text="Konum Detayları"
                                FontAttributes="Bold"
@@ -170,7 +193,7 @@
                                FontAttributes="Bold"
                                FontSize="18"/>
 
-                        <CollectionView HeightRequest="300" ItemsSource="{Binding Profiles}">
+                        <CollectionView HeightRequest="200" ItemsSource="{Binding Profiles}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Padding="0,8" ColumnSpacing="12">
