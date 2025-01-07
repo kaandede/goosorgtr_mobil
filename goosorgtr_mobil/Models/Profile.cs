@@ -11,5 +11,8 @@ namespace goosorgtr_mobil.Models
         public string? ProfileImage { get; set; }
         public string? Name { get; set; }
         public int? NoPhotos { get; set; }
+        public string? Konum { get; set; }
+        public string? Saat { get; set; }
+        public string? Descreption { get; set; }
     }
 }

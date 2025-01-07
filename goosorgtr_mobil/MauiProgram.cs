@@ -24,8 +24,11 @@ namespace goosorgtr_mobil
                 .UseDevExpressDataGrid()
                 .UseDevExpressTreeView()
                 .UseDevExpressEditors()
-  
-
+                .ConfigureMauiHandlers(handlers =>
+                {
+                    handlers.AddHandler(typeof(Microsoft.Maui.Controls.Maps.Map),
+                        typeof(Microsoft.Maui.Maps.Handlers.MapHandler));
+                })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -61,8 +64,14 @@ namespace goosorgtr_mobil
    
             builder.Services.AddTransient<INotificationService, NotificationService>();
             builder.Services.AddTransient<IPreferencesService, PreferencesService>();
-          
 
+//#if ANDROID
+//    builder.ConfigureMauiHandlers(handlers =>
+//    {
+//        handlers.AddHandler(typeof(Microsoft.Maui.Controls.Maps.Map),
+//            typeof(Microsoft.Maui.Maps.Handlers.MapHandler));
+//    });
+//#endif
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

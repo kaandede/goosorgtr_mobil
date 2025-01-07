@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentLocation"
-             xmlns:local="clr-namespace:goosorgtr_mobil.Models"
-             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:local="clr-namespace:goosorgtr_mobil.Models" 
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              BackgroundColor="#F3F2F7">
 
     <ContentPage.BindingContext>
@@ -24,12 +24,14 @@
                 <Setter Property="CornerRadius" Value="20"/>
                 <Setter Property="Padding" Value="16"/>
                 <Setter Property="HasShadow" Value="True"/>
-                <Setter Property="BorderColor" Value="#E5E7EB"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto,*">
+        
+        
         <!-- Üst Bilgi Kartı -->
         <Frame Style="{StaticResource LocationCardStyle}"
                Margin="16,16,16,0">
@@ -38,6 +40,7 @@
                 <Frame HeightRequest="50" 
                        WidthRequest="50"
                        CornerRadius="25"
+                       BorderColor="Transparent"
                        Padding="0"
                        IsClippedToBounds="True">
                     <Image Source="user_pro.png"
@@ -56,10 +59,13 @@
 
                 <!-- Durum İndikatörü -->
                 <Frame Grid.Column="2"
+                       BorderColor="Transparent"
                        BackgroundColor="#ECFDF5"
                        Padding="12,6"
                        CornerRadius="12">
                     <Label Text="Okulda"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
                            TextColor="{StaticResource SecondaryColor}"
                            FontAttributes="Bold"
                            FontSize="14"/>
@@ -71,36 +77,17 @@
         <ScrollView Grid.Row="1">
             <Grid RowDefinitions="Auto,Auto,*" Padding="16">
                 <!-- Harita -->
-                <Frame Style="{StaticResource LocationCardStyle}"
-                       HeightRequest="200"
-                       Padding="0">
-                    <Grid>
-                        <!--<maps:Map  />-->
-
-                        <!-- Harita Kontrolleri -->
-                        <VerticalStackLayout HorizontalOptions="End"
-                                           Spacing="8"
-                                           Margin="0,0,16,16"
-                                           VerticalOptions="End">
-                            <Button Text="deneme"
-                                    FontFamily="FontAwesome"
-                                    BackgroundColor="White"
-                                    TextColor="{StaticResource PrimaryColor}"
-                                    WidthRequest="40"
-                                    HeightRequest="40"
-                                    CornerRadius="20"
-                                    FontSize="18"/>
-                            <Button Text="22"
-                                    FontFamily="FontAwesome"
-                                    BackgroundColor="{StaticResource PrimaryColor}"
-                                    TextColor="White"
-                                    WidthRequest="40"
-                                    HeightRequest="40"
-                                    CornerRadius="20"
-                                    FontSize="18"/>
-                        </VerticalStackLayout>
-                    </Grid>
-                </Frame>
+                <Grid>
+                    <Frame BorderColor="Transparent" Padding="15" HeightRequest="250">
+                        <maps:Map x:Name="GoogleMap"
+                    MapType="Hybrid"
+                    IsShowingUser="True"
+                    IsTrafficEnabled="True"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                        </maps:Map>
+                    </Frame>
+                </Grid>
 
                 <!-- Konum Detayları -->
                 <Frame Grid.Row="1" 
@@ -118,14 +105,14 @@
                                    HorizontalScrollBarVisibility="Never">
                             <HorizontalStackLayout Spacing="12">
                                 <!-- Bina -->
-                                <Frame BackgroundColor="#EFF6FF"
+                                <Frame BorderColor="Transparent" BackgroundColor="#EFF6FF"
                                        WidthRequest="120"
                                        Padding="12">
                                     <VerticalStackLayout>
-                                        <Label Text="saf"
-                                               FontFamily="FontAwesome"
+                                        <Label Text="Öğrenci 1"
+                                               FontFamily="NexaHeavy"
                                                TextColor="{StaticResource PrimaryColor}"
-                                               FontSize="24"/>
+                                               FontSize="18"/>
                                         <Label Text="A Blok"
                                                FontAttributes="Bold"
                                                Margin="0,8,0,4"/>
@@ -136,14 +123,14 @@
                                 </Frame>
 
                                 <!-- Sınıf/Alan -->
-                                <Frame BackgroundColor="#ECFDF5"
+                                <Frame BorderColor="Transparent" BackgroundColor="#ECFDF5"
                                        WidthRequest="120"
                                        Padding="12">
                                     <VerticalStackLayout>
-                                        <Label Text="afa"
-                                               FontFamily="FontAwesome"
+                                        <Label Text="Öğrenci 2"
+                                               FontFamily="NexaHeavy"
                                                TextColor="{StaticResource SecondaryColor}"
-                                               FontSize="24"/>
+                                               FontSize="18"/>
                                         <Label Text="9-A Sınıfı"
                                                FontAttributes="Bold"
                                                Margin="0,8,0,4"/>
@@ -154,15 +141,15 @@
                                 </Frame>
 
                                 <!-- Süre -->
-                                <Frame BackgroundColor="#FEF3C7"
+                                <Frame BorderColor="Transparent" BackgroundColor="#FEF3C7"
                                        WidthRequest="120"
                                        Padding="12">
                                     <VerticalStackLayout>
-                                        <Label Text="asfa"
-                                               FontFamily="FontAwesome"
+                                        <Label Text="Öğrenci 3"
+                                               FontFamily="NexaHeavy"
                                                TextColor="{StaticResource WarningColor}"
-                                               FontSize="24"/>
-                                        <Label Text="2 Saat"
+                                               FontSize="18"/>
+                                        <Label Text="Yemekhane"
                                                FontAttributes="Bold"
                                                Margin="0,8,0,4"/>
                                         <Label Text="Bu Konumda"
@@ -194,32 +181,30 @@
                                         </Grid.ColumnDefinitions>
 
                                         <!-- Zaman İkonu -->
-                                        <Frame WidthRequest="40"
+                                        <Frame BorderColor="Transparent" WidthRequest="40"
                                                HeightRequest="40"
                                                CornerRadius="20"
                                                Padding="0"
                                                BackgroundColor="#EFF6FF">
-                                            <Label Text="afa"
-                                                   FontFamily="FontAwesome"
-                                                   TextColor="{StaticResource PrimaryColor}"
-                                                   HorizontalOptions="Center"
-                                                   VerticalOptions="Center"
-                                                   FontSize="18"/>
+                                            <Image Source="clock.png"
+                                                   Aspect="AspectFill"
+                                                   WidthRequest="20"
+                                                   HeightRequest="20"/>
                                         </Frame>
 
                                         <!-- Konum Bilgisi -->
                                         <VerticalStackLayout Grid.Column="1" 
                                                            Spacing="4">
-                                            <Label Text="Yemekhane"
+                                            <Label Text="{Binding Konum}"
                                                    FontAttributes="Bold"/>
-                                            <Label Text="Öğle Yemeği Molası"
+                                            <Label Text="{Binding Descreption}"
                                                    TextColor="{StaticResource GrayColor}"
                                                    FontSize="12"/>
                                         </VerticalStackLayout>
 
                                         <!-- Süre -->
                                         <Label Grid.Column="2"
-                                               Text="12:30"
+                                               Text="{Binding Saat}"
                                                TextColor="{StaticResource GrayColor}"
                                                VerticalOptions="Center"/>
                                     </Grid>

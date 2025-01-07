@@ -1,4 +1,6 @@
 ﻿using Foundation;
+using UIKit;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 
 namespace goosorgtr_mobil
 {
@@ -7,4 +9,7 @@ namespace goosorgtr_mobil
     {
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
+
+      
+    
 }
