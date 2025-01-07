@@ -20,6 +20,9 @@ namespace goosorgtr_mobil
             Routing.RegisterRoute(nameof(ParentNotificationSettings), typeof(ParentNotificationSettings));            
             Routing.RegisterRoute(nameof(FirstView), typeof(FirstView));
             Routing.RegisterRoute(nameof(Login), typeof(Login));
+            Routing.RegisterRoute(nameof(ChatListPage), typeof(ChatListPage));
+            Routing.RegisterRoute(nameof(ChatPage), typeof(ChatPage));
+            Routing.RegisterRoute(nameof(NewChatPage), typeof(NewChatPage));
         }
 
         private void Button_Clicked(object sender, EventArgs e)

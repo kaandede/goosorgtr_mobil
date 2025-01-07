@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   x:Class="goosorgtr_mobil.ParentViews.ChatPage">
+    <Grid RowDefinitions="*, Auto">
+        <CollectionView ItemsSource="{Binding Messages}"
+                       Grid.Row="0"
+                       Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Frame Padding="10"
+                               Margin="5"
+                               BackgroundColor="{Binding IsMine, Converter={StaticResource BoolToColorConverter}}"
+                               HorizontalOptions="{Binding IsMine, Converter={StaticResource BoolToHorizontalOptionsConverter}}">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Content}"
+                                       TextColor="{Binding IsMine, Converter={StaticResource BoolToTextColorConverter}}"/>
+                                <Label Text="{Binding Timestamp, StringFormat='{0:HH:mm}'}"
+                                       FontSize="Micro"
+                                       TextColor="Gray"
+                                       HorizontalOptions="End"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, Auto"
+              Padding="10">
+            <Frame Grid.Column="0"
+                   BorderColor="Gray"
+                   Padding="5">
+                <Entry Placeholder="Mesaj yaz..."
+                       Text="{Binding NewMessage}"
+                       ReturnCommand="{Binding SendMessageCommand}"/>
+            </Frame>
+            <Button Grid.Column="1"
+                    Text="Gönder"
+                    Command="{Binding SendMessageCommand}"
+                    Margin="5,0,0,0"/>
+        </Grid>
+    </Grid>
+</ContentPage>

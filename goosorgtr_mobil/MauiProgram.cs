@@ -53,6 +53,11 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<ParentNotificationSettings>();
             builder.Services.AddTransient<NotificationSettingsViewModel>();
             builder.Services.AddTransient<ParentNotificationSettings>();
+            builder.Services.AddTransient<ChatListPage>();
+            builder.Services.AddTransient<ChatPage>();
+            builder.Services.AddTransient<ChatConversation>();
+            builder.Services.AddTransient<ChatMessage>();
+           
    
             builder.Services.AddTransient<INotificationService, NotificationService>();
             builder.Services.AddTransient<IPreferencesService, PreferencesService>();
