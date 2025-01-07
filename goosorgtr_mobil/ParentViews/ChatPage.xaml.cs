@@ -4,7 +4,7 @@ namespace goosorgtr_mobil.ParentViews;
 
 public partial class ChatPage : ContentPage
 {
-	public ChatPage()
+	public ChatPage(string ChatId)
 	{
 		InitializeComponent();
 		BindingContext = new MesajViewModel();
