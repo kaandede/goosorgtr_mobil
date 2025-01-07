@@ -19,20 +19,29 @@ namespace goosorgtr_mobil.Models
             {
                 Name = "Öğrenci 1",
                 ProfileImage = "back14.png",
-                NoPhotos = 3
+                NoPhotos = 3,
+                Konum = "Yemekhane",
+                Descreption = "Öğle Yemeği Molası",
+                Saat = "12:30"
             });
               
             Profiles.Add(new Profile()
             {
                 Name = "Öğrenci 2",
                 ProfileImage = "back13.png",
-                NoPhotos = 9
+                NoPhotos = 9,
+                Konum = "Sınıf",
+                Descreption = "Ders İşleniyor",
+                Saat = "09:30"
             });   
             Profiles.Add(new Profile()
             {
                 Name = "Öğrenci 3",
                 ProfileImage = "back3.png",
-                NoPhotos = 11
+                NoPhotos = 11,
+                Konum = "Okula Giriş Yapıldı",
+                Descreption = "Servisten İndi",
+                Saat = "08:30"
             });
 
             GeneratedImages.Add(new GeneratedImage()
