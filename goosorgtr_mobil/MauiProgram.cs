@@ -5,7 +5,6 @@ using goosorgtr_mobil.ParentViews;
 using goosorgtr_mobil.ViewModels;
 using goosorgtr_mobil.Views;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Maps.Handlers;
 
 namespace goosorgtr_mobil
 {
@@ -57,6 +56,12 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<ParentNotificationSettings>();
             builder.Services.AddTransient<NotificationSettingsViewModel>();
             builder.Services.AddTransient<ParentNotificationSettings>();
+            builder.Services.AddTransient<ChatListPage>();
+            builder.Services.AddTransient<ChatPage>();
+            builder.Services.AddTransient<ChatConversation>();
+            builder.Services.AddTransient<ChatMessage>();
+           
+   
             builder.Services.AddTransient<INotificationService, NotificationService>();
             builder.Services.AddTransient<IPreferencesService, PreferencesService>();
 

@@ -1,8 +1,8 @@
 namespace goosorgtr_mobil.ParentViews;
 
-public partial class harcama : ContentPage
+public partial class NewChatPage : ContentPage
 {
-	public harcama()
+	public NewChatPage()
 	{
 		InitializeComponent();
 	}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="goosorgtr_mobil.ParentViews.ChatListPage"
+             Title="Sohbetler">
+    <Grid RowDefinitions="Auto,*">
+        <SearchBar Placeholder="Sohbet ara..."
+                   Margin="10" />
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Conversations}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding OpenChatCommand}"
+                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Sil"
+                                          BackgroundColor="Red"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="10"
+                              ColumnDefinitions="Auto,*,Auto"
+                              RowDefinitions="Auto,Auto">
+                            <Frame HeightRequest="50"
+                                   WidthRequest="50"
+                                   CornerRadius="25"
+                                   Padding="0"
+                                   IsClippedToBounds="True">
+                                <Image Source="{Binding ProfileImage}"
+                                       Aspect="AspectFill"/>
+                            </Frame>
+
+                            <VerticalStackLayout Grid.Column="1"
+                                               Margin="10,0">
+                                <Label Text="{Binding ContactName}"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding LastMessage}"
+                                       TextColor="Gray"
+                                       LineBreakMode="TailTruncation"/>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="2"
+                                               HorizontalOptions="End">
+                                <Label Text="{Binding LastMessageTime, StringFormat='{0:HH:mm}'}"
+                                       TextColor="Gray"
+                                       FontSize="Small"/>
+                                <Frame IsVisible="{Binding HasUnreadMessages}"
+                                       BackgroundColor="Green"
+                                       HeightRequest="20"
+                                       WidthRequest="20"
+                                       CornerRadius="10"
+                                       Padding="0"
+                                       HorizontalOptions="End">
+                                    <Label Text="1"
+                                           TextColor="White"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="1"
+                Text="+"
+                FontSize="30"
+                HeightRequest="60"
+                WidthRequest="60"
+                CornerRadius="30"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="20"
+                Command="{Binding NewChatCommand}"/>
+    </Grid>
+</ContentPage>

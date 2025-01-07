@@ -486,15 +486,42 @@
                             <Label.GestureRecognizers >
                                 <TapGestureRecognizer Tapped="lblBildirimAyar_Tapped"/>
                             </Label.GestureRecognizers>
-                            
-                            
+
+
                         </Label>
                         <Image Grid.Column="2"
                                Source="right.png"
                                HeightRequest="20"
                                WidthRequest="20"/>
                     </Grid>
+                    <!-- Mesajlar -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" 
+       ColumnSpacing="15">
+                        <Frame BorderColor="Transparent" BackgroundColor="#F3F2F7"
+        WidthRequest="40"
+        HeightRequest="40"
+        CornerRadius="30"
+        Padding="5">
+                            <Image Source="settings_notifications.png" 
+                WidthRequest="20"
+                HeightRequest="20"/>
+                        </Frame>
+                        <Label Grid.Column="1"
+           
+            Text="Mesajlar"
+            VerticalOptions="Center"
+            FontAttributes="Bold">
+                            <Label.GestureRecognizers >
+                                <TapGestureRecognizer x:Name="mesajlarlbl" Tapped="mesajlarlbl_Tapped"/>
+                            </Label.GestureRecognizers>
 
+
+                        </Label>
+                        <Image Grid.Column="2"
+            Source="right.png"
+            HeightRequest="20"
+            WidthRequest="20"/>
+                    </Grid>
                     <!-- Gizlilik ve Güvenlik -->
                     <Grid ColumnDefinitions="Auto,*,Auto" 
                           ColumnSpacing="15">

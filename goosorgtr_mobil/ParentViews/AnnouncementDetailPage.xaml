@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
              x:Class="goosorgtr_mobil.ParentViews.AnnouncementDetailPage"
              Title="Duyuru Detayı">
+    <ContentPage.BindingContext>
+        <vm:AnnouncementViewModel/>
+    </ContentPage.BindingContext>
     <VerticalStackLayout Padding="20">
         <!-- Seçilen duyurunun başlığını göster -->
         <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="20" />

@@ -1,6 +1,5 @@
 using goosorgtr_mobil.Models;
 using goosorgtr_mobil.Views;
-using System.Collections.ObjectModel;
 
 namespace goosorgtr_mobil.ParentViews;
 
@@ -32,17 +31,17 @@ public partial class ParentMainPage : ContentPage
         //await Navigation.PushAsync(new ParentUser());
     }
 
-    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-       Navigation.PushAsync(new service());
+       await Navigation.PushAsync(new service());
     }
 
-    private void Tapduyuru_Tapped(object sender, TappedEventArgs e)
+    private async void Tapduyuru_Tapped(object sender, TappedEventArgs e)
     {
-        Navigation.PushAsync(new Duyuru());
+        await Navigation.PushAsync(new Duyuru());
     }
-    private void Tapharcama_Tapped(object sender, TappedEventArgs e)
+    private async void Tapharcama_Tapped(object sender, TappedEventArgs e)
     {
-        Navigation.PushAsync(new harcama());
+        await Navigation.PushAsync(new ParentHarcama());
     }
 }
