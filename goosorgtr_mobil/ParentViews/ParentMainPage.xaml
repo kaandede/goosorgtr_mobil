@@ -197,7 +197,7 @@
                                        BorderColor="#F5F5F5"
                                        CornerRadius="8">
                                             <Grid VerticalOptions="CenterAndExpand" ColumnDefinitions="Auto,*">
-                                                <Label Text="Öğrenci 1"
+                                                <Label Text="Burak YILMAZ"
                                                    FontSize="12"
                                                    WidthRequest="80"
                                                    HorizontalOptions="StartAndExpand"
@@ -220,7 +220,7 @@
                                         BorderColor="#F5F5F5"
                                         CornerRadius="8">
                                              <Grid VerticalOptions="CenterAndExpand" ColumnDefinitions="Auto,*">
-                                             <Label Text="Öğrenci 2"
+                                             <Label Text="Kazım YILMAZ"
                                                     FontSize="12"
                                                     WidthRequest="80"
                                                     HorizontalOptions="StartAndExpand"
@@ -243,7 +243,7 @@
                                         BorderColor="#F5F5F5"
                                         CornerRadius="8">
                                             <Grid VerticalOptions="CenterAndExpand" ColumnDefinitions="Auto,*">
-                                                <Label Text="Öğrenci 3"
+                                                <Label Text="Ebru YILMAZ"
                                                     FontSize="12"
                                                     WidthRequest="80"
                                                     HorizontalOptions="StartAndExpand"
@@ -297,7 +297,7 @@
                                     BorderColor="#F5F5F5"
                                     CornerRadius="8">
                                             <Grid VerticalOptions="CenterAndExpand" ColumnDefinitions="Auto,*">
-                                                <Label Text="Öğrenci 1"
+                                                <Label Text="Burak YILMAZ"
                                         FontSize="12"
                                         WidthRequest="80"
                                         HorizontalOptions="StartAndExpand"
@@ -320,7 +320,7 @@
                                      BorderColor="#F5F5F5"
                                      CornerRadius="8">
                                             <Grid VerticalOptions="CenterAndExpand" ColumnDefinitions="Auto,*">
-                                                <Label Text="Öğrenci 2"
+                                                <Label Text="Kazım YILMAZ"
                                      FontSize="12"
                                      WidthRequest="80"
                                      HorizontalOptions="StartAndExpand"
@@ -343,7 +343,7 @@
                                  BorderColor="#F5F5F5"
                                  CornerRadius="8">
                                             <Grid VerticalOptions="CenterAndExpand" ColumnDefinitions="Auto,*">
-                                                <Label Text="Öğrenci 3"
+                                                <Label Text="Ebru YILMAZ"
                                              FontSize="12"
                                              WidthRequest="80"
                                              HorizontalOptions="StartAndExpand"
