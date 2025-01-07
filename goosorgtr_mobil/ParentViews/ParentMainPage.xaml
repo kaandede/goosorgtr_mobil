@@ -86,7 +86,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <Label Text="Merhaba, Kaan DEDE"
+                                <Label Text="Merhaba, Ahmet YILMAZ"
                                    Grid.Row="0"
                                  FontSize="14"
                                  FontFamily="NexaHeavy" 

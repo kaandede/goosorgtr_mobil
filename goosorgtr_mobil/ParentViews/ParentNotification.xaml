@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
              x:Class="goosorgtr_mobil.ParentViews.ParentNotification"
              x:DataType="vm:NotificationViewModel"
-             Title="Notifications">
+             Title="Bildirim Sayfası">
 
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
@@ -16,7 +16,7 @@
     <Grid RowDefinitions="Auto,Auto,*">
         <!-- Search Bar -->
         <SearchBar Grid.Row="0"
-                   Placeholder="Search notifications..."
+                   Placeholder="Bildirim ara"
                    Text="{Binding SearchText}"
                    SearchCommand="{Binding FilterNotificationsCommand}"
                    TextChanged="SearchBar_TextChanged"
@@ -27,25 +27,25 @@
                    Orientation="Horizontal" 
                    Margin="10,0,10,10">
             <HorizontalStackLayout Spacing="10">
-                <Button Text="All"
+                <Button Text="Hepsi"
                         Command="{Binding FilterByTypeCommand}"
                         CommandParameter="All"
                         BackgroundColor="{Binding AllFilterColor}"
                         TextColor="White"
                         Clicked="FilterButton_Clicked"/>
-                <Button Text="Unread"
+                <Button Text="Okunmamış"
                         Command="{Binding FilterByTypeCommand}"
                         CommandParameter="Unread"
                         BackgroundColor="{Binding UnreadFilterColor}"
                         TextColor="White"
                          Clicked="FilterButton_Clicked"/>
-                <Button Text="System"
+                <Button Text="Genel"
                         Command="{Binding FilterByTypeCommand}"
                         CommandParameter="System"
                         BackgroundColor="{Binding SystemFilterColor}"
                         TextColor="White"
                          Clicked="FilterButton_Clicked"/>
-                <Button Text="Messages"
+                <Button Text="Mesajlar"
                         Command="{Binding FilterByTypeCommand}"
                         CommandParameter="Messages"
                         BackgroundColor="{Binding MessagesFilterColor}"
@@ -65,7 +65,7 @@
                         <SwipeView>
                             <SwipeView.RightItems>
                                 <SwipeItems>
-                                    <SwipeItem Text="Delete"
+                                    <SwipeItem Text="Sil"
                                               BackgroundColor="Red"
                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NotificationViewModel}}, Path=DeleteNotificationCommand}"
                                               CommandParameter="{Binding .}" />
