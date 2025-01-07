@@ -41,16 +41,16 @@
                        BorderColor="Transparent"
                        Padding="0"
                        IsClippedToBounds="True">
-                        <Image Source="user_pro.png"
+                        <Image Source="https://cdn.pixabay.com/photo/2024/08/14/17/34/ai-generated-8969238_640.jpg"
                            Aspect="AspectFill"/>
                     </Frame>
 
                     <!-- Öğrenci Bilgileri -->
                     <VerticalStackLayout Grid.Column="1" Spacing="4">
-                        <Label Text="Ahmet Yılmaz"
+                        <Label Text="Burak Yılmaz"
                            FontAttributes="Bold"
                            FontSize="18"/>
-                        <Label Text="9-A Sınıfı"
+                        <Label Text="3-A Sınıfı"
                            TextColor="{StaticResource GrayColor}"
                            FontSize="14"/>
                     </VerticalStackLayout>

@@ -20,16 +20,7 @@ namespace goosorgtr_mobil.ParentViews
             await Navigation.PopToRootAsync(false);
             base.OnAppearing();
 
-            var mevkolej = new Location(39.89783152118657, 32.686864328835384);
-            GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(mevkolej, Distance.FromKilometers(0.1)));
-
-            Pins.Add(new Pin
-            {
-                Address = "MEV Koleji",
-                Location = mevkolej,
-                Type = PinType.Place,
-                Label = "Öðrenci Þuan Okulda"
-            });
+           
 
 
             var zaferkolej = new Location(39.8975372596863, 32.67921761534151);
@@ -43,7 +34,16 @@ namespace goosorgtr_mobil.ParentViews
                 Label = "Öðrenci Þuan Okulda"
             });
 
+            var mevkolej = new Location(39.89783152118657, 32.686864328835384);
+            GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(mevkolej, Distance.FromKilometers(0.1)));
 
+            Pins.Add(new Pin
+            {
+                Address = "MEV Koleji",
+                Location = mevkolej,
+                Type = PinType.Place,
+                Label = "Öðrenci Þuan Okulda"
+            });
             //var pin = new Pin
             //{
             //    Address = "MEV Koleji",

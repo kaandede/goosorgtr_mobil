@@ -23,9 +23,12 @@
                    x:Name="searchBar"/>
 
         <!-- Filter Buttons -->
-        <ScrollView Grid.Row="1" 
+        <ScrollView Grid.Row="1"
+                    Padding="2"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
                    Orientation="Horizontal" 
-                   Margin="10,0,10,10">
+                   Margin="10,15,10,10">
             <HorizontalStackLayout Spacing="10">
                 <Button Text="Hepsi"
                         Command="{Binding FilterByTypeCommand}"
@@ -55,11 +58,11 @@
         </ScrollView>
 
         <!-- Notifications List -->
-        <RefreshView Grid.Row="2"
+        <RefreshView Grid.Row="2" Margin="15,0,10,0"
                      Command="{Binding RefreshCommand}"
                      IsRefreshing="{Binding IsRefreshing}">
             <CollectionView ItemsSource="{Binding FilteredNotifications}"
-                           EmptyView="No notifications match your filters">
+                           EmptyView="Bildirim Bulunmamaktadır.">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="vm:NotificationItem">
                         <SwipeView>

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using Microsoft.Maui.Graphics;
 
 
 namespace goosorgtr_mobil.ViewModels
@@ -24,7 +25,7 @@ namespace goosorgtr_mobil.ViewModels
 
         // Filter button colors
         [ObservableProperty]
-        private Color allFilterColor = Colors.Blue;
+        private Color allFilterColor = Color.FromRgb(37, 99, 235);
 
         [ObservableProperty]
         private Color unreadFilterColor = Colors.Gray;
@@ -58,7 +59,7 @@ namespace goosorgtr_mobil.ViewModels
                         Message = "15 Ocak 2025 - 20 Ocak 2025 tarihleri arasında okulumuzda yarıyıl tatili olacaktır. ",
                         TimeAgo = "2 dakika önce",
                         IsUnread = true,
-                        Type = "Messages"
+                        Type = "Mesaj"
                     },
                     new NotificationItem
                     {
@@ -67,7 +68,7 @@ namespace goosorgtr_mobil.ViewModels
                         Message = "Okulumuzun 7. sınıf öğrencileri için düzenlediği \"Doğa Yürüyüşü\" etkinliği, 18 Ocak 2025 tarihinde gerçekleştirilecektir. ",
                         TimeAgo = "1 saat önce",
                         IsUnread = false,
-                        Type = "System"
+                        Type = "Sistem"
                     },
                     new NotificationItem
                     {
@@ -76,7 +77,7 @@ namespace goosorgtr_mobil.ViewModels
                         Message = "Ocak ayına ait okul aidat ödemenizin son günü 15 Ocak 2025’tir. Ödemenizi zamanında gerçekleştirmenizi rica ederiz. Teşekkürler.",
                         TimeAgo = "15 dakika önce",
                         IsUnread = true,
-                        Type = "System"
+                        Type = "Sistem"
                     },
                     new NotificationItem
                     {
@@ -85,7 +86,7 @@ namespace goosorgtr_mobil.ViewModels
                         Message = "Öğrencimiz Ali Yılmaz, Matematik Olimpiyatları'nda okulumuzu başarıyla temsil ederek ilçe birincisi olmuştur. Öğrencimizin başarılarından dolayı kendisini tebrik eder, destekleriniz için teşekkür ederiz.",
                         TimeAgo = "3 saat önce",
                         IsUnread = false,
-                        Type = "Messages"
+                        Type = "Mesaj"
                     }
                 };
 
@@ -101,13 +102,13 @@ namespace goosorgtr_mobil.ViewModels
         [RelayCommand]
         private async Task FilterByType(string filterType)
         {
+           
             CurrentFilter = filterType;
-
             // Update button colors
-            AllFilterColor = filterType == "All" ? Colors.Blue : Colors.Gray;
-            UnreadFilterColor = filterType == "Unread" ? Colors.Blue : Colors.Gray;
-            SystemFilterColor = filterType == "System" ? Colors.Blue : Colors.Gray;
-            MessagesFilterColor = filterType == "Messages" ? Colors.Blue : Colors.Gray;
+            AllFilterColor = filterType == "All" ? Color.FromRgb(37, 99, 235) : Colors.Gray;
+            UnreadFilterColor = filterType == "Unread" ? Color.FromRgb(37, 99, 235) : Colors.Gray;
+            SystemFilterColor = filterType == "System" ? Color.FromRgb(37, 99, 235) : Colors.Gray;
+            MessagesFilterColor = filterType == "Messages" ? Color.FromRgb(37, 99, 235) : Colors.Gray;
 
             await FilterNotifications();
         }

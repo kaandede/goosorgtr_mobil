@@ -289,8 +289,12 @@
                                                IsClippedToBounds="True" 
                                                Padding="0"
                                                BorderColor="Transparent">
-                                            <Image Source="user_pro.png"
-                                                   Aspect="AspectFill"/>
+                                            <Image  Source="{Binding ProfileImage}"
+                                                   HeightRequest="60"  
+                                                           AbsoluteLayout.LayoutBounds="10, 15, AutoSize, AutoSize"
+                                                           AbsoluteLayout.LayoutFlags="PositionProportional" 
+                                                           WidthRequest="60" 
+                                                           Aspect="AspectFill"/>
                                         </Frame>
 
                                         <VerticalStackLayout Grid.Column="1" 

@@ -122,12 +122,17 @@
                                                                 Fill="#fff" />
                                                 <Border Grid.RowSpan="2"
                                                         Margin="5,0,0,0"
-                                                        HeightRequest="50"
+                                                        HeightRequest="60"
                                                         HorizontalOptions="CenterAndExpand"
                                                         StrokeShape="RoundRectangle 80,80,80,80"
                                                         StrokeThickness="0"
-                                                        WidthRequest="50">
-                                                    <Image HeightRequest="50"  Source="{Binding ProfileImage}"/>
+                                                        WidthRequest="60">
+                                                    <Image HeightRequest="60"  
+                                                           AbsoluteLayout.LayoutBounds="10, 15, AutoSize, AutoSize"
+                                                           AbsoluteLayout.LayoutFlags="PositionProportional" 
+                                                           WidthRequest="60" 
+                                                           Aspect="AspectFill" 
+                                                           Source="{Binding ProfileImage}"/>
                                                 </Border>
                                                 <VerticalStackLayout Grid.Column="1"
                                                                      VerticalOptions="Center">
@@ -140,7 +145,7 @@
                                                            Margin="10,0,0,0"
                                                            FontFamily="NexaHeavy"
                                                            FontSize="12"
-                                                           Text="{Binding NoPhotos, StringFormat='{0} pictures'}"
+                                                           Text="{Binding NoPhotos, StringFormat='{0} .Sınıf'}"
                                                            TextColor="#62666a"
                                                            VerticalOptions="Start"/>
                                                 </VerticalStackLayout>
