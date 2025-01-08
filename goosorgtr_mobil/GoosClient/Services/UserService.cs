@@ -1,5 +1,6 @@
 ﻿using GoosClient.InputModels;
 using GoosClient.Models;
+using GoosClient.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
@@ -59,6 +60,7 @@ namespace GoosClient.Services
                 }
                 var jsonResult = await response.Content.ReadAsStringAsync();
                 var token = JsonConvert.DeserializeObject<Token>(jsonResult);
+             
                 if (token == null)
                 {
                     return false;
@@ -124,23 +126,7 @@ namespace GoosClient.Services
             }
 
         }
-        public static async Task<List<AnnouncementModel>> GetAnnouncementsAsync()
-        {
-            var endpoint = "/api/app/Announcement";
-            var token = Preferences.Get("token", string.Empty);
-
-            using (var client = new HttpClient(GetHttpClientHandler()))
-            {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
-
-                var response = await client.GetStringAsync(BaseUrl + endpoint);
-
-                var objeccs = JsonConvert.DeserializeObject<ListedResult<AnnouncementModel>>(response).Items;
-
-                return objeccs;
-            }
-
-        }
+ 
         public static async Task<List<SemesterModel>> GetSemestersAsync()
         {
             var endpoint = "/api/app/Semester";
@@ -184,6 +170,11 @@ namespace GoosClient.Services
         }
 
 
+
+
+
+
+
         private static HttpClientHandler GetHttpClientHandler()
         {
             // EXCEPTION: Javax.Net.Ssl.SSLHandshakeException: 'java.security.cert.CertPathValidatorException:
@@ -197,6 +188,25 @@ namespace GoosClient.Services
             };
 
             return httpClientHandler;
+        }
+
+
+        public static async Task<List<DuyuruModel>> GetDuyurularAsync()
+        {
+            var endpoint = "/api/app/announcement";
+            var token = Preferences.Get("token", string.Empty);
+
+            using (var client = new HttpClient(GetHttpClientHandler()))
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
+
+                var response = await client.GetStringAsync(BaseUrl + endpoint);
+
+                var objeccs = JsonConvert.DeserializeObject<ListedResult<DuyuruModel>>(response).Items;
+
+                return objeccs;
+            }
+
         }
 
 

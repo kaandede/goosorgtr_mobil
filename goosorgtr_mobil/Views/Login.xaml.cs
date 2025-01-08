@@ -25,6 +25,8 @@ public partial class Login : ContentPage
         var sonuc = await UserService.Login(txtKullaniciAdi.Text, txtParola.Text);
         if (sonuc)
         {
+            Preferences.Set("username", txtKullaniciAdi.Text);
+
             await Shell.Current.GoToAsync($"//{nameof(ParentMainPage)}");
         }
         else

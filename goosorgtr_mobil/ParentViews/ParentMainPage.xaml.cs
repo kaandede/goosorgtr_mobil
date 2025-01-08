@@ -1,5 +1,6 @@
 using goosorgtr_mobil.Models;
 using goosorgtr_mobil.Views;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace goosorgtr_mobil.ParentViews;
 
@@ -13,7 +14,7 @@ public partial class ParentMainPage : ContentPage
         _parentViewModel = new ParentViewModel();
         BindingContext = _parentViewModel;
 
-
+        mrbKullaniciMesaj.Text = $"Merhaba, {Preferences.Get("username",string.Empty)}";
     }
     protected async override void OnAppearing()
     {

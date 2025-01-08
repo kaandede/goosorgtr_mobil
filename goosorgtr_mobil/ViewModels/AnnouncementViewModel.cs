@@ -4,14 +4,17 @@ using System.ComponentModel;
 using goosorgtr_mobil.Models;
 using System.Windows.Input;
 using goosorgtr_mobil.ParentViews;
+using GoosClient.Services;
+using GoosClient.Models;
 
 namespace goosorgtr_mobil.ViewModels
 {
     public class AnnouncementViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Announcement> Announcements { get; set; }
+
+        public ObservableCollection<DuyuruModel> Announcements { get; set; }
         public ObservableCollection<string> Categories { get; set; }
-        private ObservableCollection<Announcement> allAnnouncements;
+    
         public ICommand ItemTappedCommand { get; }
         private string selectedCategory;
         public string SelectedCategory
@@ -30,31 +33,34 @@ namespace goosorgtr_mobil.ViewModels
 
         public AnnouncementViewModel()
         {
-            // Örnek duyurular
-            allAnnouncements = new ObservableCollection<Announcement>
-            {
-                new Announcement { Title = "Spor Etkinliği", Date = "2025-01-10", Category = "Spor", Details = "Bu etkinlik stadyumda yapılacaktır." },
-                new Announcement { Title = "Eğitim Semineri", Date = "2025-01-15", Category = "Eğitim", Details = "Seminer çevrimiçi yapılacaktır." },
-                new Announcement { Title = "Tiyatro Gösterisi", Date = "2025-01-20", Category = "Kültür", Details = "Tiyatro salonunda gösterilecektir." },
-            };
+            //// Örnek duyurular
+            //allAnnouncements = new ObservableCollection<Announcement>
+            //{
+            //    new Announcement { Title = "Spor Etkinliği", Date = "2025-01-10", Category = "Spor", Details = "Bu etkinlik stadyumda yapılacaktır." },
+            //    new Announcement { Title = "Eğitim Semineri", Date = "2025-01-15", Category = "Eğitim", Details = "Seminer çevrimiçi yapılacaktır." },
+            //    new Announcement { Title = "Tiyatro Gösterisi", Date = "2025-01-20", Category = "Kültür", Details = "Tiyatro salonunda gösterilecektir." },
+            //};
 
-            Announcements = new ObservableCollection<Announcement>(allAnnouncements);
+
+            //Announcements = new ObservableCollection<DuyuruModel>(allAnnouncements);
 
             Categories = new ObservableCollection<string> { "Tümü", "Spor", "Eğitim", "Kültür" };
             SelectedCategory = "Tümü";
 
-            ItemTappedCommand = new Command<Announcement>(OnItemTapped);
+            ItemTappedCommand = new Command<DuyuruModel>(OnItemTapped);
+
+            DuyurulariDoldur();
         }
 
         private void FilterAnnouncements()
         {
-            if (SelectedCategory == "Tümü")
-                Announcements = new ObservableCollection<Announcement>(allAnnouncements);
-            else
-                Announcements = new ObservableCollection<Announcement>(
-                    allAnnouncements.Where(a => a.Category == SelectedCategory));
+            //if (SelectedCategory == "Tümü")
+            //    Announcements = new ObservableCollection<Announcement>(allAnnouncements);
+            //else
+            //    Announcements = new ObservableCollection<Announcement>(
+            //        allAnnouncements.Where(a => a.Category == SelectedCategory));
 
-            OnPropertyChanged(nameof(Announcements));
+            //OnPropertyChanged(nameof(Announcements));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -64,12 +70,20 @@ namespace goosorgtr_mobil.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private async void OnItemTapped(Announcement selectedAnnouncement)
+        private async void OnItemTapped(DuyuruModel selectedAnnouncement)
         {
             if (selectedAnnouncement != null)
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new AnnouncementDetailPage(selectedAnnouncement));
             }
         }
+
+        private async void DuyurulariDoldur()
+        {
+            var duyurular = await UserService.GetDuyurularAsync();
+            Announcements = new ObservableCollection<DuyuruModel>(duyurular);
+            OnPropertyChanged(nameof(Announcements));
+        }
+
     }
 }

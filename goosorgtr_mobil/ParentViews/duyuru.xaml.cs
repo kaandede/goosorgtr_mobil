@@ -1,4 +1,6 @@
+using GoosClient.Models;
 using goosorgtr_mobil.Models;
+using goosorgtr_mobil.ViewModels;
 
 namespace goosorgtr_mobil.ParentViews
 {
@@ -7,13 +9,14 @@ namespace goosorgtr_mobil.ParentViews
         public Duyuru()
         {
             InitializeComponent();
+            BindingContext = new AnnouncementViewModel();
         }
 
         private async void OnAnnouncementSelected(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection.Count > 0)
             {
-                var selectedAnnouncement = e.CurrentSelection[0] as Announcement;
+                var selectedAnnouncement = e.CurrentSelection[0] as DuyuruModel;
                 if (selectedAnnouncement != null)
                 {
                     await Navigation.PushAsync(new AnnouncementDetailPage(selectedAnnouncement));

@@ -2,12 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.AnnouncementDetailPage"
-             Title="Duyuru Detayı">
+             Title="Duyuru Detayı"
+             xmlns:models="clr-namespace:GoosClient.Models"
+             x:DataType="models:DuyuruModel"
+            >
 
     <VerticalStackLayout Padding="20">
-        <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="20" />
-        <Label Text="{Binding Date}" FontSize="16" TextColor="Gray" />
-        <Label Text="{Binding Category}" FontSize="14" TextColor="Gray" />
-        <Label Text="{Binding Details}" FontSize="14" />
+        <Label Text="{Binding AnnouncementTitle}" FontAttributes="Bold" FontSize="20" />
+        <Label Text="{Binding AnnouncementDate}" FontSize="16" TextColor="Gray" />
+
+        <Label Text="{Binding AnnouncementSummary}" FontSize="14" />
     </VerticalStackLayout>
 </ContentPage>
