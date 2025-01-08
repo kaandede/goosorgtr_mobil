@@ -1,6 +1,5 @@
 ﻿using GoosClient.InputModels;
 using GoosClient.Models;
-using goosorgtr_mobil.Views;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;

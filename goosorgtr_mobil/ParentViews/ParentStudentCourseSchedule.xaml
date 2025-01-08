@@ -66,6 +66,33 @@
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
                 </CarouselView>
+                            <!-- Dersler Listesi -->
+                            <ListView ItemsSource="{Binding Lessons}" 
+                                      HasUnevenRows="True"
+                                      SeparatorVisibility="Default" Margin="0,10,0,30">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <HorizontalStackLayout Padding="10" Spacing="10">
+                                                <Label Text="{Binding Name}" 
+                                                       FontSize="20" 
+                                                     
+                                                       TextColor="DarkBlue" 
+                                                       VerticalOptions="Center" />
+                                                <Label Text="{Binding Time}" 
+                                                       FontSize="14" 
+                                                       TextColor="Gray" 
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
 
                 <!-- IndicatorView -->
                 <IndicatorView Grid.Row="1" Margin="0,10,0,0" x:Name="DaysIndicator" 
