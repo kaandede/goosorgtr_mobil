@@ -5,7 +5,9 @@
              xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
              x:Class="goosorgtr_mobil.ParentViews.ParentNotification"
              x:DataType="vm:NotificationViewModel"
-             Title="Bildirim Sayfası">
+             Title="Bildirim Sayfası"
+             BackgroundColor="#F3F2F7"
+             >
 
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
@@ -13,7 +15,7 @@
             Command="{Binding LoadNotificationsCommand}" />
     </ContentPage.Behaviors>
 
-    <Grid RowDefinitions="Auto,Auto,*">
+    <Grid RowDefinitions="Auto,Auto,*" >
         <!-- Search Bar -->
         <SearchBar Grid.Row="0"
                    Placeholder="Bildirim ara"
@@ -62,7 +64,7 @@
                      Command="{Binding RefreshCommand}"
                      IsRefreshing="{Binding IsRefreshing}">
             <CollectionView ItemsSource="{Binding FilteredNotifications}"
-                           EmptyView="Bildirim Bulunmamaktadır.">
+                           EmptyView="Bildirim Bulunmamaktadır." BackgroundColor="White">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="vm:NotificationItem">
                         <SwipeView>

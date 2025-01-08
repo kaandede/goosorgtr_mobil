@@ -1,31 +1,35 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="goosorgtr_mobil.ParentViews.ParentStudentHomeWork"
-             Title="Dersler">
-    <ContentPage.Content>
-        <VerticalStackLayout Padding="20" Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
+            
+            x:Class="goosorgtr_mobil.ParentViews.ParentStudentHomeWork" 
+             Title="Ders sayfası"
+             >
+   
+        
+        <VerticalStackLayout Padding="20" Spacing="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
 
-            <!-- Dersler Butonu -->
-            <Button Text="Dersler"
+           
+            <Frame HasShadow="True" CornerRadius="25" Padding="0" WidthRequest="200" HeightRequest="50" >
+                <Button Text="Dersler"
                     FontSize="18"
+                    TextColor="White"
                     BackgroundColor="#FF9800"
-                    TextColor="White"
-                    CornerRadius="10"
-                    WidthRequest="200"
-                    HeightRequest="50"
-                    Clicked="OnDerslerButtonClicked" />
+                    CornerRadius="25" 
+                    Clicked="OnDerslerButtonClicked"
+                    />
+            </Frame>
 
-            <!-- Ders Programı Butonu -->
-            <Button Text="Ders Programı"
+         
+            <Frame HasShadow="True" CornerRadius="25" Padding="0" WidthRequest="200" HeightRequest="50">
+                <Button Text="Ders Programı"
                     FontSize="18"
-                    BackgroundColor="#3F51B5"
                     TextColor="White"
-                    CornerRadius="10"
-                    WidthRequest="200"
-                    HeightRequest="50"
-                    Clicked="OnDersProgramiButtonClicked" />
+                    BackgroundColor="#3F51B5"
+                    CornerRadius="25" 
+                    Clicked="OnDersProgramiButtonClicked"
+                    />
+            </Frame>
 
         </VerticalStackLayout>
-    </ContentPage.Content>
+  
 </ContentPage>

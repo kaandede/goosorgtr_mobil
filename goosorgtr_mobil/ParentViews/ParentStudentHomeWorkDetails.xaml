@@ -2,54 +2,241 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentHomeWorkDetails"
-             Title="Dersler">
-    <ContentPage.Content>
-        <VerticalStackLayout Padding="20" Spacing="15">
+             Title="Dersler"
+             BackgroundColor="#F3F2F7">
 
-            <!-- Üst Bilgi -->
-            <Frame BackgroundColor="#FF9800" Padding="10" CornerRadius="10">
-                <Label Text="Dersler"
-                       FontSize="24"
-                       TextColor="White"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="20">
+            <!-- Başlık Kartı -->
+            <Frame BackgroundColor="#FF9800" 
+                   Padding="20" 
+                   CornerRadius="15"
+                   HasShadow="True">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Image Source="book.png" 
+                           HeightRequest="32" 
+                           WidthRequest="32"
+                           VerticalOptions="Center"/>
+                    <Label Grid.Column="1"
+                           Text="Dersler"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           Margin="15,0,0,0"/>
+                </Grid>
             </Frame>
 
-            <!-- Ders Listesi -->
-            <VerticalStackLayout>
-                <Frame BackgroundColor="#E0E0E0" CornerRadius="10" Padding="10">
+            <!-- Dersler -->
+            <VerticalStackLayout Spacing="15">
+                <!-- Türkçe -->
+                <Frame BackgroundColor="White" 
+                       CornerRadius="15" 
+                       Padding="0"
+                       HasShadow="True">
                     <VerticalStackLayout>
                         <!-- Ders Başlığı -->
-                        <Label Text="Türkçe" FontSize="20" TextColor="Black" />
-                        <!-- Alt Seçenekler -->
+                        <Grid BackgroundColor="#f8f9fa" 
+                              Padding="20,15">
+                            <Label Text="Türkçe" 
+                                   FontSize="22" 
+                                   TextColor="#2c3e50"
+                                   FontAttributes="Bold"/>
+                        </Grid>
+
+                        <!-- Butonlar -->
+                        <VerticalStackLayout Padding="15">
+                            <Frame BackgroundColor="SkyBlue" 
+                                   CornerRadius="10" 
+                                   Padding="0" 
+                                   Margin="0,0,0,10"
+                                   HasShadow="False">
+                                <Button Text="Ödevler" 
+                                        TextColor="White"
+                                        BackgroundColor="Transparent"
+                                        Clicked="OnOdevlerClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="#40000000"
+                                                Offset="0,4"
+                                                Radius="4"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Frame>
+
+                            <Frame BackgroundColor="#FF9800" 
+                                   CornerRadius="10" 
+                                   Padding="0"
+                                   HasShadow="False">
+                                <Button Text="Ders Notları" 
+                                        TextColor="White"
+                                        BackgroundColor="Transparent"
+                                        Clicked="OnDersNotlariClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="#40000000"
+                                                Offset="0,4"
+                                                Radius="4"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Matematik -->
+                <Frame BackgroundColor="White" 
+                       CornerRadius="15" 
+                       Padding="0"
+                       HasShadow="True">
+                    <VerticalStackLayout>
+                        <Grid BackgroundColor="#f8f9fa" 
+                              Padding="20,15">
+                            <Label Text="Matematik" 
+                                   FontSize="22" 
+                                   TextColor="#2c3e50"
+                                   FontAttributes="Bold"/>
+                        </Grid>
+
+                        <VerticalStackLayout Padding="15">
+                            <Frame BackgroundColor="SkyBlue" 
+                                   CornerRadius="10" 
+                                   Padding="0" 
+                                   Margin="0,0,0,10"
+                                   HasShadow="False">
+                                <Button Text="Ödevler" 
+                                        TextColor="White"
+                                        BackgroundColor="Transparent"
+                                        Clicked="OnOdevlerClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="#40000000"
+                                                Offset="0,4"
+                                                Radius="4"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Frame>
+
+                            <Frame BackgroundColor="#FF9800" 
+                                   CornerRadius="10" 
+                                   Padding="0"
+                                   HasShadow="False">
+                                <Button Text="Ders Notları" 
+                                        TextColor="White"
+                                        BackgroundColor="Transparent"
+                                        Clicked="OnDersNotlariClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="#40000000"
+                                                Offset="0,4"
+                                                Radius="4"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Fen -->
+                <Frame BackgroundColor="White" 
+                       CornerRadius="15" 
+                       Padding="0"
+                       HasShadow="True">
+                    <VerticalStackLayout>
+                        <Grid BackgroundColor="#f8f9fa" 
+                              Padding="20,15">
+                            <Label Text="Fen" 
+                                   FontSize="22" 
+                                   TextColor="#2c3e50"
+                                   FontAttributes="Bold"/>
+                        </Grid>
+
+                        <VerticalStackLayout Padding="15">
+                            <Frame BackgroundColor="SkyBlue" 
+                                   CornerRadius="10" 
+                                   Padding="0" 
+                                   Margin="0,0,0,10"
+                                   HasShadow="False">
+                                <Button Text="Ödevler" 
+                                        TextColor="White"
+                                        BackgroundColor="Transparent"
+                                        Clicked="OnOdevlerClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="#40000000"
+                                                Offset="0,4"
+                                                Radius="4"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Frame>
+
+                            <Frame BackgroundColor="#FF9800" 
+                                   CornerRadius="10" 
+                                   Padding="0"
+                                   HasShadow="False">
+                                <Button Text="Ders Notları" 
+                                        TextColor="White"
+                                        BackgroundColor="Transparent"
+                                        Clicked="OnDersNotlariClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="#40000000"
+                                                Offset="0,4"
+                                                Radius="4"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Frame>
+                        </VerticalStackLayout>
                         
-                        <Button Text="Ödevler" BackgroundColor="#FF9800" TextColor="White" Clicked="OnOdevlerClicked" />
-                        <Button Text="Ders Notları" BackgroundColor="#FF9800" TextColor="White" Clicked="OnDersNotlariClicked" />
                     </VerticalStackLayout>
                 </Frame>
-
-                <Frame BackgroundColor="#E0E0E0" CornerRadius="10" Padding="10">
+                <Frame BackgroundColor="White" 
+       CornerRadius="15" 
+       Padding="0"
+       HasShadow="True">
+                    
+                     <!--hayat bilgisi-->
                     <VerticalStackLayout>
-                        <!-- Ders Başlığı -->
-                        <Label Text="Matematik" FontSize="20" TextColor="Black" />
-                        <!-- Alt Seçenekler -->
-                      
-                        <Button Text="Ödevler" BackgroundColor="#FF9800" TextColor="White" Clicked="OnOdevlerClicked" />
-                        <Button Text="Ders Notları" BackgroundColor="#FF9800" TextColor="White" Clicked="OnDersNotlariClicked" />
-                    </VerticalStackLayout>
-                </Frame>
+                        <Grid BackgroundColor="#f8f9fa" 
+              Padding="20,15">
+                            <Label Text =" Hayat bilgisi" 
+                   FontSize="22" 
+                   TextColor="#2c3e50"
+                   FontAttributes="Bold"/>
+                        </Grid>
 
-                <Frame BackgroundColor="#E0E0E0" CornerRadius="10" Padding="10">
-                    <VerticalStackLayout>
-                        <!-- Ders Başlığı -->
-                        <Label Text="Fen" FontSize="20" TextColor="Black" />
-                        <!-- Alt Seçenekler -->
-                       
-                        <Button Text="Ödevler" BackgroundColor="#FF9800" TextColor="White" Clicked="OnOdevlerClicked" />
-                        <Button Text="Ders Notları" BackgroundColor="#FF9800" TextColor="White" Clicked="OnDersNotlariClicked" />
+                        <VerticalStackLayout Padding="15">
+                            <Frame BackgroundColor="SkyBlue" 
+                   CornerRadius="10" 
+                   Padding="0" 
+                   Margin="0,0,0,10"
+                   HasShadow="False">
+                                <Button Text="Ödevler" 
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        Clicked="OnOdevlerClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="#40000000"
+                                Offset="0,4"
+                                Radius="4"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Frame>
+
+                            <Frame BackgroundColor="#FF9800" 
+                   CornerRadius="10" 
+                   Padding="0"
+                   HasShadow="False">
+                                <Button Text="Ders Notları" 
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        Clicked="OnDersNotlariClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="#40000000"
+                                Offset="0,4"
+                                Radius="4"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Frame>
+                        </VerticalStackLayout>
+
                     </VerticalStackLayout>
                 </Frame>
             </VerticalStackLayout>
         </VerticalStackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

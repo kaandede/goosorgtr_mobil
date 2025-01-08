@@ -8,19 +8,18 @@
         <vm:CourseScheduleViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <VerticalStackLayout Padding="10" Spacing="15">
+        <VerticalStackLayout Padding="10" Spacing="15" Background="#F3F2F7">
             <!-- Başlık -->
-            <Label Text="Ders Programı" 
-                   FontSize="24" 
-                   FontAttributes="Bold" 
-                   HorizontalOptions="Center" />
+           
 
             <!-- CarouselView: Günlere göre kaydırma -->
             <CarouselView x:Name="DersProgramiCarousel" 
                           IndicatorView="DaysIndicator" 
                           ItemsSource="{Binding Days}"
                           Loop="false" 
-                          HeightRequest="400">
+                          HeightRequest="450"
+                          HorizontalOptions="FillAndExpand"
+                          Margin="0,20,0,-70">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Padding="20">
@@ -29,23 +28,27 @@
                                    FontSize="20" 
                                    FontAttributes="Bold" 
                                    TextColor="Black" 
+                                   FontFamily="NexaLight"
+                                   Margin="0,0,0,20"
                                    HorizontalOptions="Center" />
 
                             <!-- Dersler Listesi -->
                             <ListView ItemsSource="{Binding Lessons}" 
                                       HasUnevenRows="True"
-                                      SeparatorVisibility="Default">
+                                      SeparatorVisibility="Default" Margin="0,10,0,30">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <HorizontalStackLayout Padding="10" Spacing="10">
                                                 <Label Text="{Binding Name}" 
-                                                       FontSize="16" 
+                                                       FontSize="20" 
+                                                       FontFamily="FaSolid"
                                                        TextColor="DarkBlue" 
                                                        VerticalOptions="Center" />
                                                 <Label Text="{Binding Time}" 
                                                        FontSize="14" 
                                                        TextColor="Gray" 
+                                                       HorizontalOptions="Center"
                                                        VerticalOptions="Center" />
                                             </HorizontalStackLayout>
                                         </ViewCell>
