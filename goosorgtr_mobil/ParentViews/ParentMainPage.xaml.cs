@@ -5,16 +5,20 @@ namespace goosorgtr_mobil.ParentViews;
 
 public partial class ParentMainPage : ContentPage
 {
-
+    public ParentViewModel _parentViewModel;
 
     public ParentMainPage()
 	{
 		InitializeComponent();
-        BindingContext = new ParentViewModel();
+        _parentViewModel = new ParentViewModel();
+        BindingContext = _parentViewModel;
+
+
     }
     protected async override void OnAppearing()
     {
         await Navigation.PopToRootAsync(false);
+        _parentViewModel.OgrenciGetir();
         base.OnAppearing();
     
     }
