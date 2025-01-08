@@ -464,6 +464,7 @@
                                Text="Profil Ayarları"
                                VerticalOptions="Center"
                                FontAttributes="Bold"/>
+
                         <Image Grid.Column="2"
                                Source="right.png"
                                HeightRequest="20"

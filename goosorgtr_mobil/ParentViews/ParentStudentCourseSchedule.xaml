@@ -42,7 +42,7 @@
                                             <HorizontalStackLayout Padding="10" Spacing="10">
                                                 <Label Text="{Binding Name}" 
                                                        FontSize="20" 
-                                                       FontFamily="FaSolid"
+                                                     
                                                        TextColor="DarkBlue" 
                                                        VerticalOptions="Center" />
                                                 <Label Text="{Binding Time}" 
