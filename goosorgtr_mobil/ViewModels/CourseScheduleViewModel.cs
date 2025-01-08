@@ -21,6 +21,12 @@ public class CourseScheduleViewModel
                     new Lesson { Name = "Fen Bilgisi", Time = "11:30 - 12:30" },
                      new Lesson { Name = "Müzik", Time = "12:45 - 13:45" },
                     new Lesson { Name = "Din Kültürü", Time = "14:00 - 15:00" },
+                    new Lesson { Name = "Felsefe", Time = "15:15 - 16:15" },
+                     new Lesson { Name = "Matematik", Time = "09:00 - 10:00" },
+                    new Lesson { Name = "Türkçe", Time = "10:15 - 11:15" },
+                    new Lesson { Name = "Fen Bilgisi", Time = "11:30 - 12:30" },
+                     new Lesson { Name = "Müzik", Time = "12:45 - 13:45" },
+                    new Lesson { Name = "Din Kültürü", Time = "14:00 - 15:00" },
                     new Lesson { Name = "Felsefe", Time = "15:15 - 16:15" }
                 }
             },
@@ -53,7 +59,7 @@ public class CourseScheduleViewModel
             new DaySchedule
             {
                 DayName = "Perşembe",
-              
+
                 Lessons = new List<Lesson>
                 {
                     new Lesson { Name = "Beden Eğitimi", Time = "09:00 - 10:00" },
