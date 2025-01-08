@@ -1,11 +1,15 @@
+using goosorgtr_mobil.Models;
+
 namespace goosorgtr_mobil.ParentViews;
 
 public partial class ParentStudentHomeWorkDetails : ContentPage
 {
+    public ParentStudentHomeWorkViewModel _parentStudentHomeWorkViewModel;
+
     public ParentStudentHomeWorkDetails()
     {
         InitializeComponent();
-        BindingContext = new ParentStudentHomeWorkViewModel();
+        BindingContext = _parentStudentHomeWorkViewModel;
     }
 
     protected async override void OnAppearing()

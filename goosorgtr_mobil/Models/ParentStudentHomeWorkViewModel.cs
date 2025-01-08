@@ -1,11 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace goosorgtr_mobil.ParentViews
+namespace goosorgtr_mobil.Models
 {
     public class ParentStudentHomeWorkViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Ders> Dersler { get; set; }
+        public ObservableCollection<Ders> Dersler { get; set; } = new();
 
         public ParentStudentHomeWorkViewModel()
         {
@@ -22,7 +22,7 @@ namespace goosorgtr_mobil.ParentViews
 
     public class Ders : INotifyPropertyChanged
     {
-        public string Adi { get; set; }
+        public string? Adi { get; set; }
 
         private bool isExpanded;
         public bool IsExpanded
