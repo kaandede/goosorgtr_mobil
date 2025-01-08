@@ -1,10 +1,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentHomeWork"
+             xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
              BackgroundColor="#F3F2F7"
              Title="Dersler">
 
-
+    <ContentPage.BindingContext>
+        <vm:CourseScheduleViewModel/>
+    </ContentPage.BindingContext>
     <ScrollView>
         <Grid RowDefinitions="Auto,Auto"
               Padding="20"
