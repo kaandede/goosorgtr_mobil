@@ -1,9 +1,8 @@
-
-    
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
               x:Class="goosorgtr_mobil.ParentViews.Duyuru"
+             BackgroundColor="#F3F2F7"
              Title="Duyurular">
 
     <ContentPage.BindingContext>
@@ -11,9 +10,9 @@
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="10">
-        <!-- Filtreleme -->
+        <!-- Filtreleme --><!--
         <Picker Title="Kategori Seçin" ItemsSource="{Binding Categories}" 
-                SelectedItem="{Binding SelectedCategory}" />
+                SelectedItem="{Binding SelectedCategory}" />-->
 
         <!-- Duyuru Listesi -->
         <CollectionView ItemsSource="{Binding Announcements}" 
@@ -21,22 +20,50 @@
                 SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    
-                        <Frame Padding="20" Margin="10" BackgroundColor="PeachPuff">
+
+                    <Frame Padding="5" Margin="5,10,5,5" BorderColor="Transparent" BackgroundColor="Transparent">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding BindingContext.ItemTappedCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
                                           CommandParameter="{Binding .}" />
                         </Frame.GestureRecognizers>
 
                         <!-- InputTransparent kaldırıldı, tıklanabilirlik sağlandı -->
-                            <StackLayout  >
-                                <Label Text="{Binding AnnouncementTitle}" FontAttributes="Bold" FontSize="16" />
-                                <Label Text="{Binding AnnouncementDate}" FontSize="14" TextColor="Gray" />
-                               
-                            </StackLayout>
-                        </Frame>
-                    
-              
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border  
+                                   Grid.Column="0"
+                                   Grid.Row="0"
+                                   Stroke="Transparent" 
+                                   BackgroundColor="Transparent" 
+                                   StrokeShape="RoundRectangle 30" 
+                                   Padding="5"
+                                   Margin="0,0,0,0"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="CenterAndExpand">
+                                     <Image Source="right.png"
+                                       HeightRequest="20"
+                                       WidthRequest="20"/>
+                                </Border>
+                                <Label  Grid.Column="1" Grid.Row="0" Margin="0,0,0,5" VerticalTextAlignment="Center" TextColor="#011612" Text="{Binding AnnouncementTitle}" FontSize="16" />
+                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding AnnouncementDate}" VerticalTextAlignment="Center" FontSize="11" TextColor="#273935" />
+                           
+                            </Grid>
+                            
+                           
+                        </StackLayout>
+                        
+                    </Frame>
+
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
