@@ -25,7 +25,7 @@ namespace goosorgtr_mobil.ViewModels
 
         // Filter button colors
         [ObservableProperty]
-        private Color allFilterColor = Color.FromRgb(37, 99, 235);
+        private Color allFilterColor = Color.FromRgb(31, 37, 42);
 
         [ObservableProperty]
         private Color unreadFilterColor = Colors.Gray;
@@ -105,10 +105,10 @@ namespace goosorgtr_mobil.ViewModels
            
             CurrentFilter = filterType;
             // Update button colors
-            AllFilterColor = filterType == "All" ? Color.FromRgb(37, 99, 235) : Colors.Gray;
-            UnreadFilterColor = filterType == "Unread" ? Color.FromRgb(37, 99, 235) : Colors.Gray;
-            SystemFilterColor = filterType == "System" ? Color.FromRgb(37, 99, 235) : Colors.Gray;
-            MessagesFilterColor = filterType == "Messages" ? Color.FromRgb(37, 99, 235) : Colors.Gray;
+            AllFilterColor = filterType == "All" ? Color.FromRgb(31, 37, 42) : Colors.Gray;
+            UnreadFilterColor = filterType == "Unread" ? Color.FromRgb(31, 37, 42) : Colors.Gray;
+            SystemFilterColor = filterType == "System" ? Color.FromRgb(31, 37, 42) : Colors.Gray;
+            MessagesFilterColor = filterType == "Messages" ? Color.FromRgb(31, 37, 42) : Colors.Gray;
 
             await FilterNotifications();
         }
