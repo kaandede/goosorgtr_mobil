@@ -63,8 +63,8 @@
         <RefreshView Grid.Row="2" Margin="15,0,10,0"
                      Command="{Binding RefreshCommand}"
                      IsRefreshing="{Binding IsRefreshing}">
-            <CollectionView ItemsSource="{Binding FilteredNotifications}"
-                           EmptyView="Bildirim Bulunmamaktadır." BackgroundColor="White">
+            <CollectionView ItemsSource="{Binding FilteredNotifications}" 
+                           EmptyView="Bildirim Bulunmamaktadır." BackgroundColor="Transparent">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="vm:NotificationItem">
                         <SwipeView>
@@ -77,38 +77,49 @@
                                 </SwipeItems>
                             </SwipeView.RightItems>
 
-                            <Grid Padding="10" RowSpacing="5">
+                            <Grid Padding="3" RowSpacing="3">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-
-                                <Label Grid.Row="0"
+                                <Border Grid.Row="0"
+                            StrokeShape="RoundRectangle 16"
+                            Stroke="Transparent"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                            BackgroundColor="White">
+                                    <Grid RowDefinitions="Auto,Auto,Auto" 
+                                  Padding="20" 
+                                  RowSpacing="12">
+                                        <Label Grid.Row="0"
                                        Text="{Binding Title}"
-                                       FontAttributes="Bold"
-                                       LineBreakMode="TailTruncation" />
-
-                                <Label Grid.Row="1"
+                                     FontAttributes="Bold"
+                                     LineBreakMode="TailTruncation"
+                                       TextColor="#1a1a1a"/>
+                                        <Label Grid.Row="1"
                                        Text="{Binding Message}"
-                                       LineBreakMode="WordWrap" />
+                                        LineBreakMode="WordWrap"/>
+                                        <HorizontalStackLayout Grid.Row="2" 
+                                                Spacing="10">
+                                            <Label Text="{Binding TimeAgo}"
+                                      FontSize="Small"
+                                      TextColor="Gray" />
 
-                                <HorizontalStackLayout Grid.Row="2" 
-                                                     Spacing="10">
-                                    <Label Text="{Binding TimeAgo}"
-                                           FontSize="Small"
-                                           TextColor="Gray" />
+                                            <Label Text="{Binding Type}"
+                                      FontSize="Small"
+                                      TextColor="Gray" />
 
-                                    <Label Text="{Binding Type}"
-                                           FontSize="Small"
-                                           TextColor="Gray" />
+                                            <Image IsVisible="{Binding IsUnread}"
+                                      Source="unread_dot.png"
+                                      HeightRequest="8"
+                                      WidthRequest="8"
+                                      VerticalOptions="Center" />
+                                        </HorizontalStackLayout>
 
-                                    <Image IsVisible="{Binding IsUnread}"
-                                           Source="unread_dot.png"
-                                           HeightRequest="8"
-                                           WidthRequest="8"
-                                           VerticalOptions="Center" />
-                                </HorizontalStackLayout>
+                                    </Grid>
+                                </Border>
+
                             </Grid>
                         </SwipeView>
                     </DataTemplate>

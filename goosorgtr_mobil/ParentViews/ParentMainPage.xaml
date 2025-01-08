@@ -145,7 +145,7 @@
                                                            Margin="10,0,0,0"
                                                            FontFamily="NexaHeavy"
                                                            FontSize="12"
-                                                           Text="{Binding NoPhotos, StringFormat='{0} .Sınıf'}"
+                                                           Text="{Binding NoPhotos, StringFormat='{0} Okul No'}"
                                                            TextColor="#62666a"
                                                            VerticalOptions="Start"/>
                                                 </VerticalStackLayout>
