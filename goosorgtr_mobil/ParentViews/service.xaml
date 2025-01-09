@@ -1,9 +1,132 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
-             x:Class="goosorgtr_mobil.ParentViews.service"
-             Title="Servis Haritası">
-    <maps:Map x:Name="ServiceMap" 
-              MapType="Street" 
-              IsShowingUser="True" />
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="goosorgtr_mobil.ParentViews.Service"
+             Title="Servis Takip"
+             BackgroundColor="#F3F2F7">
+
+    <Grid RowDefinitions="Auto,*,Auto" 
+          RowSpacing="16" 
+          Padding="16">
+
+        <!-- Üst Bilgi Kartı -->
+        <Border Grid.Row="0"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 16"
+                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                Padding="16">
+
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                <!-- Öğrenci Profil Resmi -->
+                <Border Grid.Column="0"
+                        HeightRequest="80"
+                        WidthRequest="80"
+                        StrokeShape="RoundRectangle 40"
+                        Stroke="Transparent">
+                    <Image Source="kiz_ogrenci_1.jpg"
+                           Aspect="AspectFill"/>
+                </Border>
+
+                <!-- Öğrenci ve Servis Detayları -->
+                <VerticalStackLayout Grid.Column="1" Spacing="8">
+                    <Label Text="Öğrenci 1"
+                           FontSize="20"
+                           FontAttributes="Bold"/>
+
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="16" RowSpacing="8">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Servis:" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="Yiğit Tur "/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Şoför:" FontAttributes="Bold"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="Şoför 1"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- Harita -->
+        <Border Grid.Row="1"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 16"
+                Margin="0,8">
+            <Grid>
+                <Frame BorderColor="Transparent" Padding="16">
+                    <maps:Map x:Name="GoogleMap"
+                         MapType="Hybrid"
+                         IsShowingUser="False"
+                         IsTrafficEnabled="True"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="CenterAndExpand">
+                        <maps:Map.ItemTemplate>
+                            <DataTemplate x:DataType="maps:Pin">
+                                <maps:Pin Location="{Binding Location}" Address="{Binding Address}" Label="{Binding Label}"/>
+
+                            </DataTemplate>
+                        </maps:Map.ItemTemplate>
+                    </maps:Map>
+                </Frame>
+
+            </Grid>
+        </Border>
+
+        <!-- Alt Bilgi Kartları -->
+        <ScrollView Grid.Row="2" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout Spacing="10">
+                <!-- Zaman Kartı -->
+                <Border StrokeShape="RoundRectangle 16"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                        Stroke="Transparent"
+                        WidthRequest="130"
+                        Padding="16">
+                    <VerticalStackLayout>
+                        <Image Source="binis_time" WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HeightRequest="30"/>
+                        <Label Text="Biniş Saati"
+                               FontSize="14"
+                               Margin="0,8,0,4"/>
+                        <Label Text="14:30"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Hız Kartı -->
+                <Border StrokeShape="RoundRectangle 16"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                        Stroke="Transparent"
+                        WidthRequest="130"
+                        Padding="16">
+                    <VerticalStackLayout>
+                        <Image Source="ort_hiz" WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HeightRequest="30"/>
+                        <Label Text="Anlık Hız"
+                               FontSize="14"
+                               Margin="0,8,0,4"/>
+                        <Label Text="40 km/s"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Varış Kartı -->
+                <Border StrokeShape="RoundRectangle 16"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
+                        Stroke="Transparent"
+                        WidthRequest="130"
+                        Padding="16">
+                    <VerticalStackLayout>
+                        <Image Source="tahmini_varis" WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HeightRequest="30"/>
+                        <Label Text="Tahmini Varış"
+                               FontSize="14"
+                               Margin="0,8,0,4"/>
+                        <Label Text="15:00"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+                </Border>
+            </HorizontalStackLayout>
+        </ScrollView>
+    </Grid>
+
+
+
 </ContentPage>

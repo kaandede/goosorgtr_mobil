@@ -6,8 +6,7 @@
              x:Class="goosorgtr_mobil.ParentViews.ParentNotification"
              x:DataType="vm:NotificationViewModel"
              Title="Bildirim Sayfası"
-             BackgroundColor="#F3F2F7"
-             >
+             BackgroundColor="#F3F2F7">
 
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior

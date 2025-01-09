@@ -38,7 +38,7 @@ public partial class ParentMainPage : ContentPage
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-       await Navigation.PushAsync(new service());
+       await Navigation.PushAsync(new Service());
     }
 
     private async void Tapduyuru_Tapped(object sender, TappedEventArgs e)

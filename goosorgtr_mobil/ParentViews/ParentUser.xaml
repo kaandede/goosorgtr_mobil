@@ -129,7 +129,7 @@
             </Frame>
 
             <!-- Hızlı Erişim Menüsü -->
-            <Frame BorderColor="Transparent" Grid.Row="1" Style="{StaticResource CardStyle}">
+            <!--<Frame BorderColor="Transparent" Grid.Row="1" Style="{StaticResource CardStyle}">
                 <Grid ColumnSpacing="15" RowSpacing="15">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -149,7 +149,7 @@
                     CornerRadius="15"
                     HasShadow="True">
                         <VerticalStackLayout Spacing="10" Margin="0,5,0,10">
-                            <!-- Görsel -->
+                            --><!-- Görsel --><!--
                             <Image Source="bus.png"
                                 HeightRequest="60"
                                 WidthRequest="60"
@@ -157,13 +157,13 @@
                             <BoxView HeightRequest="1"
                          Color="#1F252A"
                          Opacity="0.3"/>
-                            <!-- Başlık -->
+                            --><!-- Başlık --><!--
                             <Label Text="Servis"
                             FontSize="16"
                             FontFamily="NexaHeavy"
                             TextColor="#1F252A"
                             HorizontalOptions="Center"/>
-                            <!-- Ayraç -->
+                            --><!-- Ayraç --><!--
 
                         </VerticalStackLayout>
                     </Frame>
@@ -178,7 +178,7 @@
                     CornerRadius="15"
                     HasShadow="True">
                         <VerticalStackLayout Spacing="10" Margin="0,5,0,10">
-                            <!-- Görsel -->
+                            --><!-- Görsel --><!--
                             <Image Source="harcama.png"
                                 HeightRequest="60"
                                 WidthRequest="60"
@@ -186,13 +186,13 @@
                             <BoxView HeightRequest="1"
                          Color="#1F252A"
                          Opacity="0.3"/>
-                            <!-- Başlık -->
+                            --><!-- Başlık --><!--
                             <Label Text="Harcamalar"
                             FontSize="16"
                             FontFamily="NexaHeavy"
                             TextColor="#1F252A"
                             HorizontalOptions="Center"/>
-                            <!-- Ayraç -->
+                            --><!-- Ayraç --><!--
 
                         </VerticalStackLayout>
                     </Frame>
@@ -205,7 +205,7 @@
                       CornerRadius="15"
                       HasShadow="True">
                         <VerticalStackLayout Spacing="10" Margin="0,5,0,10">
-                            <!-- Görsel -->
+                            --><!-- Görsel --><!--
                             <Image Source="courses.png"
                                   HeightRequest="60"
                                   WidthRequest="60"
@@ -213,13 +213,13 @@
                             <BoxView HeightRequest="1"
                            Color="#1F252A"
                            Opacity="0.3"/>
-                            <!-- Başlık -->
+                            --><!-- Başlık --><!--
                             <Label Text="Dersler"
                               FontSize="16"
                               FontFamily="NexaHeavy"
                               TextColor="#1F252A"
                               HorizontalOptions="Center"/>
-                            <!-- Ayraç -->
+                            --><!-- Ayraç --><!--
 
                         </VerticalStackLayout>
                     </Frame>
@@ -232,7 +232,7 @@
                     CornerRadius="15"
                     HasShadow="True">
                         <VerticalStackLayout Spacing="10" Margin="0,5,0,10">
-                            <!-- Görsel -->
+                            --><!-- Görsel --><!--
                             <Image Source="map.png"
                                 HeightRequest="60"
                                 WidthRequest="60"
@@ -240,20 +240,20 @@
                             <BoxView HeightRequest="1"
                          Color="#1F252A"
                          Opacity="0.3"/>
-                            <!-- Başlık -->
+                            --><!-- Başlık --><!--
                             <Label Text="Konum"
                             FontSize="16"
                             FontFamily="NexaHeavy"
                             TextColor="#1F252A"
                             HorizontalOptions="Center"/>
-                            <!-- Ayraç -->
+                            --><!-- Ayraç --><!--
 
                         </VerticalStackLayout>
                     </Frame>
 
 
                 </Grid>
-            </Frame>
+            </Frame>-->
 
             <!-- Öğrenci Özeti -->
             <Frame BorderColor="Transparent" Grid.Row="2" Style="{StaticResource CardStyle}">

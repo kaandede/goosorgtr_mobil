@@ -60,6 +60,7 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<ChatPage>();
             builder.Services.AddTransient<ChatConversation>();
             builder.Services.AddTransient<ChatMessage>();
+            builder.Services.AddTransient<Service>();
            
    
             builder.Services.AddTransient<INotificationService, NotificationService>();

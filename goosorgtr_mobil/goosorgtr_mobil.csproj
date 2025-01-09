@@ -115,6 +115,9 @@
 	  <Compile Update="ParentViews\ParentStudentHomeWorkDetails.xaml.cs">
 	    <DependentUpon>ParentStudentHomeWorkDetails.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="ParentViews\service.xaml.cs">
+	    <DependentUpon>Service.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -160,7 +163,7 @@
 	  <MauiXaml Update="ParentViews\ParentUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ParentViews\service.xaml">
+	  <MauiXaml Update="ParentViews\Service.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\FirstView.xaml">
