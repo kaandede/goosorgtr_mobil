@@ -1,6 +1,6 @@
 workflows:
   build-and-deploy:
-    name: Build and Deploy MAUI App
+    name: Güvenli Okul Otomasyon Sistemi Mobil Uygulamasý
     max_build_duration: 120
     instance_type: mac_mini_m2
     scripts:
@@ -16,8 +16,8 @@ workflows:
 
       - name: Build the app
         script: |
-          $CM_BUILD_DIR/dotnet/dotnet build YourProject.csproj -c Release
+          $CM_BUILD_DIR/dotnet/dotnet build goosorgtr_mobil.csproj -c Release
 
       - name: Publish the app
         script: |
-          $CM_BUILD_DIR/dotnet/dotnet publish YourProject.csproj -c Release -o output_directory
+          $CM_BUILD_DIR/dotnet/dotnet publish goosorgtr_mobil.csproj -c Release -o output_directory
