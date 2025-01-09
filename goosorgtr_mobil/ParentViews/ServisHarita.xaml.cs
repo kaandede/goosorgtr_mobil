@@ -4,12 +4,12 @@ using goosorgtr_mobil.Models;
 
 namespace goosorgtr_mobil.ParentViews
 {
-    public partial class Service : ContentPage
+    public partial class ServisHarita : ContentPage
     {
         public ParentViewModel _parentViewModel;
         private readonly RouteDrawingService _routeService;
         public List<Pin> Pins { get; set; } = new List<Pin>();
-        public Service()
+        public ServisHarita()
         {
             InitializeComponent();
             _parentViewModel = new ParentViewModel();

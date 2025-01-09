@@ -63,7 +63,7 @@ namespace goosorgtr_mobil
             builder.Services.AddScoped<ChatMessage>();
             builder.Services.AddScoped<MesajlasmaViewModel>();
             builder.Services.AddScoped<MesajViewModel>();
-      
+            builder.Services.AddTransient<ServisHarita>();
 
 
             builder.Services.AddScoped<INotificationService, NotificationService>();
