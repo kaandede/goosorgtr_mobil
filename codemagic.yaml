@@ -26,7 +26,7 @@ workflows:
       
       - name: Build Android APK
         script: |
-          $CM_BUILD_DIR/dotnet/dotnet publish goosorgtr_mobil.csproj -f:net7.0-android -c:Release
+          $CM_BUILD_DIR/dotnet/dotnet publish goosorgtr_mobil.csproj -f:net8.0-android -c:Release
 
     artifacts:
       - bin/Release/**/goosorgtr_mobil*.apk
