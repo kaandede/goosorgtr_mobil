@@ -7,6 +7,11 @@ workflows:
       vars:
         DOTNET_VERSION: "8.0"
     scripts:
+      - name: List Directory Structure
+        script: |
+          pwd
+          ls -la
+      
       - name: Install .NET SDK
         script: |
           wget https://dot.net/v1/dotnet-install.sh
@@ -28,7 +33,16 @@ workflows:
 
       - name: Build Android APK
         script: |
-          $CM_BUILD_DIR/dotnet/dotnet publish goosorgtr_mobil.csproj -f:net8.0-android -c:Release -v:diagnostic
+          # Proje dosyasının tam yolunu bulalım
+          PROJECT_FILE=$(find . -name "*.csproj" -type f)
+          echo "Found project file: $PROJECT_FILE"
+          
+          if [ -n "$PROJECT_FILE" ]; then
+            $CM_BUILD_DIR/dotnet/dotnet publish "$PROJECT_FILE" -f:net8.0-android -c:Release -v:diagnostic
+          else
+            echo "No .csproj file found!"
+            exit 1
+          fi
 
     artifacts:
-      - bin/Release/**/goosorgtr_mobil*.apk
+      - bin/Release/**/**.apk
