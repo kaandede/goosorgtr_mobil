@@ -63,8 +63,9 @@ namespace goosorgtr_mobil
             builder.Services.AddScoped<ChatMessage>();
             builder.Services.AddScoped<MesajlasmaViewModel>();
             builder.Services.AddScoped<MesajViewModel>();
-           
-   
+      
+
+
             builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<IPreferencesService, PreferencesService>();
 

@@ -22,6 +22,7 @@ namespace goosorgtr_mobil
             Routing.RegisterRoute(nameof(Login), typeof(Login));
             Routing.RegisterRoute(nameof(ChatListPage), typeof(ChatListPage));
             Routing.RegisterRoute(nameof(ChatPage), typeof(ChatPage));
+            Routing.RegisterRoute(nameof(Service), typeof(Service));
             Routing.RegisterRoute(nameof(NewChatPage), typeof(NewChatPage));
         }
 
