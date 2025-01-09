@@ -4,14 +4,18 @@ namespace goosorgtr_mobil.ParentViews;
 
 public partial class ParentStudentCourseSchedule : ContentPage
 {
+    public CourseScheduleViewModel _model;
     public ParentStudentCourseSchedule()
     {
         InitializeComponent();
-        BindingContext = new CourseScheduleViewModel();
+        _model = new CourseScheduleViewModel();
+        BindingContext = _model;
+
     }
     protected async override void OnAppearing()
     {
         await Navigation.PopToRootAsync();
+        _model.DersProgramiDoldur();
         base.OnAppearing();
     }
 }
