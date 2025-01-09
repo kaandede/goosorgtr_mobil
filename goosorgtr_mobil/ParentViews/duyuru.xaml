@@ -9,37 +9,42 @@
         <vm:AnnouncementViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout Padding="10">
-        <!-- Filtreleme --><!--
+    <Grid ColumnSpacing="1" RowSpacing="1" Padding="5">
+        <!-- Filtreleme -->
+        <!--
         <Picker Title="Kategori Seçin" ItemsSource="{Binding Categories}" 
                 SelectedItem="{Binding SelectedCategory}" />-->
 
-        <!-- Duyuru Listesi -->
-        <CollectionView ItemsSource="{Binding Announcements}" 
+        <RefreshView Grid.Row="0"
+                   Command="{Binding DuyurulariDoldurCommand}" 
+                   IsRefreshing="{Binding IsRefreshing}">
+
+            <!-- Duyuru Listesi -->
+            <CollectionView ItemsSource="{Binding Announcements}" 
                 
                 SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
 
-                    <Frame Padding="5" Margin="5,10,5,5" BorderColor="Transparent" BackgroundColor="Transparent">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.ItemTappedCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                        <Frame Padding="5" Margin="5,10,5,5" BorderColor="Transparent" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.ItemTappedCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
                                           CommandParameter="{Binding .}" />
-                        </Frame.GestureRecognizers>
+                            </Frame.GestureRecognizers>
 
-                        <!-- InputTransparent kaldırıldı, tıklanabilirlik sağlandı -->
-                        <StackLayout>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
+                            <!-- InputTransparent kaldırıldı, tıklanabilirlik sağlandı -->
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
 
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border  
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border  
                                    Grid.Column="0"
                                    Grid.Row="0"
                                    Stroke="Transparent" 
@@ -49,24 +54,25 @@
                                    Margin="0,0,0,0"
                                    VerticalOptions="StartAndExpand"
                                    HorizontalOptions="CenterAndExpand">
-                                     <Image Source="right.png"
+                                        <Image Source="right.png"
                                        HeightRequest="20"
                                        WidthRequest="20"/>
-                                </Border>
-                                <Label  Grid.Column="1" Grid.Row="0" Margin="0,0,0,5" VerticalTextAlignment="Center" TextColor="#011612" Text="{Binding AnnouncementTitle}" FontSize="16" />
-                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding AnnouncementDate}" VerticalTextAlignment="Center" FontSize="11" TextColor="#273935" />
-                           
-                            </Grid>
-                            
-                           
-                        </StackLayout>
-                        
-                    </Frame>
+                                    </Border>
+                                    <Label  Grid.Column="1" Grid.Row="0" Margin="0,0,0,5" VerticalTextAlignment="Center" TextColor="#011612" Text="{Binding AnnouncementTitle}" FontSize="16" />
+                                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding AnnouncementDate}" VerticalTextAlignment="Center" FontSize="11" TextColor="#273935" />
+
+                                </Grid>
 
 
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            </StackLayout>
 
-    </VerticalStackLayout>
+                        </Frame>
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
 </ContentPage>

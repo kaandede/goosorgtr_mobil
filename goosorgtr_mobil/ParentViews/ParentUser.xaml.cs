@@ -13,10 +13,7 @@ public partial class ParentUser : ContentPage
        
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync($"//{nameof(Login)}");
-    }
+ 
 
     private async void lblBildirimAyar_Tapped(object sender, TappedEventArgs e)
     {
@@ -31,7 +28,11 @@ public partial class ParentUser : ContentPage
         await Shell.Current.GoToAsync(nameof(ChatListPage));
     }
 
-   
-
-    
+    private void btnCikis_Clicked(object sender, EventArgs e)
+    {
+        Preferences.Set("token",string.Empty);
+        Preferences.Set("username", string.Empty);
+  
+        Shell.Current.GoToAsync($"//{nameof(Login)}");
+    }
 }

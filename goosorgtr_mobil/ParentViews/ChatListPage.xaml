@@ -2,10 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="goosorgtr_mobil.ParentViews.ChatListPage"
-             Title="Sohbetler">
+             Title="Sohbetler"
+             xmlns:views="clr-namespace:goosorgtr_mobil.ViewModels"
+             x:DataType="views:MesajlasmaViewModel"
+             >
     <Grid RowDefinitions="Auto,*">
         <SearchBar Placeholder="Sohbet ara..."
-                   Margin="10" />
+                   Margin="10" 
+                   />
 
         <CollectionView Grid.Row="1"
                         ItemsSource="{Binding Conversations}"
@@ -24,7 +28,7 @@
 
                         <Grid Padding="10"
                               ColumnDefinitions="Auto,*,Auto"
-                              RowDefinitions="Auto,Auto">
+                              RowDefinitions="Auto,Auto" x:DataType="views:ChatConversation">
                             <Frame HeightRequest="50"
                                    WidthRequest="50"
                                    CornerRadius="25"

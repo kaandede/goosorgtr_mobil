@@ -6,10 +6,18 @@ namespace goosorgtr_mobil.ParentViews
 {
     public partial class Duyuru : ContentPage
     {
+        public AnnouncementViewModel _model;
         public Duyuru()
         {
             InitializeComponent();
-            BindingContext = new AnnouncementViewModel();
+            _model = new AnnouncementViewModel();
+            BindingContext =_model;
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await _model.DuyurulariDoldur();
         }
 
         private async void OnAnnouncementSelected(object sender, SelectionChangedEventArgs e)

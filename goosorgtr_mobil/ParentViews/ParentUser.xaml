@@ -577,7 +577,10 @@
                             TextColor="White"
                             CornerRadius="25"
                             HeightRequest="50"
-                            Margin="0,10,0,0">
+                            Margin="0,10,0,0"
+                            x:Name="btnCikis"
+                            Clicked="btnCikis_Clicked"
+                            >
                         <Button.Shadow>
                             <Shadow Brush="#FF5252"
                                    Offset="0,3"

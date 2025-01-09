@@ -6,13 +6,17 @@ using System.Windows.Input;
 using goosorgtr_mobil.ParentViews;
 using GoosClient.Services;
 using GoosClient.Models;
+using CommunityToolkit.Mvvm.Input;
+using System.Diagnostics;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace goosorgtr_mobil.ViewModels
 {
-    public class AnnouncementViewModel : INotifyPropertyChanged
+    public partial class AnnouncementViewModel : BaseViewModel
     {
 
-        public ObservableCollection<DuyuruModel> Announcements { get; set; }
+
+        public ObservableCollection<DuyuruModel> Announcements { get; set; } = new();
         public ObservableCollection<string> Categories { get; set; }
     
         public ICommand ItemTappedCommand { get; }
@@ -33,23 +37,14 @@ namespace goosorgtr_mobil.ViewModels
 
         public AnnouncementViewModel()
         {
-            //// Örnek duyurular
-            //allAnnouncements = new ObservableCollection<Announcement>
-            //{
-            //    new Announcement { Title = "Spor Etkinliği", Date = "2025-01-10", Category = "Spor", Details = "Bu etkinlik stadyumda yapılacaktır." },
-            //    new Announcement { Title = "Eğitim Semineri", Date = "2025-01-15", Category = "Eğitim", Details = "Seminer çevrimiçi yapılacaktır." },
-            //    new Announcement { Title = "Tiyatro Gösterisi", Date = "2025-01-20", Category = "Kültür", Details = "Tiyatro salonunda gösterilecektir." },
-            //};
-
-
-            //Announcements = new ObservableCollection<DuyuruModel>(allAnnouncements);
+       
 
             Categories = new ObservableCollection<string> { "Tümü", "Spor", "Eğitim", "Kültür" };
             SelectedCategory = "Tümü";
 
             ItemTappedCommand = new Command<DuyuruModel>(OnItemTapped);
 
-            DuyurulariDoldur();
+        
         }
 
         private void FilterAnnouncements()
@@ -63,12 +58,6 @@ namespace goosorgtr_mobil.ViewModels
             //OnPropertyChanged(nameof(Announcements));
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         private async void OnItemTapped(DuyuruModel selectedAnnouncement)
         {
@@ -78,11 +67,33 @@ namespace goosorgtr_mobil.ViewModels
             }
         }
 
-        private async void DuyurulariDoldur()
+        [RelayCommand]
+        public async Task DuyurulariDoldur()
         {
-            var duyurular = await UserService.GetDuyurularAsync();
-            Announcements = new ObservableCollection<DuyuruModel>(duyurular);
-            OnPropertyChanged(nameof(Announcements));
+            if (IsLoading) return;
+            try
+            {
+                IsLoading = true;
+                if (Announcements.Any()) Announcements.Clear();
+                var duyurular = await UserService.GetDuyurularAsync();
+                foreach (var duyuru in duyurular) Announcements.Add(duyuru);
+
+                OnPropertyChanged(nameof(Announcements));
+           
+            }
+            catch (Exception ex)
+            {
+               
+                await Shell.Current.DisplayAlert("Hata", "Sistemde bir hata oluştu", "Tamam");
+            }
+            finally
+            {
+                IsLoading = false;
+                IsRefreshing = false;
+            }
+
+         
+           
         }
 
     }

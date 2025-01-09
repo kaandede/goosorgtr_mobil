@@ -44,26 +44,29 @@ namespace goosorgtr_mobil
 
 
             builder.Services.AddSingleton<ParentViewModel>();
-            builder.Services.AddTransient<ParentMainPage>();
-            builder.Services.AddTransient<ParentUser>();
-            builder.Services.AddTransient<ParentNotification>();
-            builder.Services.AddTransient<ParentStudentHomeWorkDetails>();
-            builder.Services.AddTransient<ParentStudentLocation>();
-            builder.Services.AddTransient<Login>();
-            builder.Services.AddTransient<FirstView>();
-            builder.Services.AddTransient<Profile>();
-            builder.Services.AddTransient<GeneratedImage>();
-            builder.Services.AddTransient<ParentNotificationSettings>();
-            builder.Services.AddTransient<NotificationSettingsViewModel>();
-            builder.Services.AddTransient<ParentNotificationSettings>();
-            builder.Services.AddTransient<ChatListPage>();
-            builder.Services.AddTransient<ChatPage>();
-            builder.Services.AddTransient<ChatConversation>();
-            builder.Services.AddTransient<ChatMessage>();
+            builder.Services.AddSingleton<AnnouncementViewModel>();
+            builder.Services.AddScoped<ParentMainPage>();
+            builder.Services.AddScoped<ParentUser>();
+            builder.Services.AddScoped<ParentNotification>();
+            builder.Services.AddScoped<ParentStudentHomeWorkDetails>();
+            builder.Services.AddScoped<ParentStudentLocation>();
+            builder.Services.AddScoped<Login>();
+            builder.Services.AddScoped<FirstView>();
+            builder.Services.AddScoped<Profile>();
+            builder.Services.AddScoped<GeneratedImage>();
+            builder.Services.AddScoped<ParentNotificationSettings>();
+            builder.Services.AddScoped<NotificationSettingsViewModel>();
+            builder.Services.AddScoped<ParentNotificationSettings>();
+            builder.Services.AddScoped<ChatListPage>();
+            builder.Services.AddScoped<ChatPage>();
+            builder.Services.AddScoped<ChatConversation>();
+            builder.Services.AddScoped<ChatMessage>();
+            builder.Services.AddScoped<MesajlasmaViewModel>();
+            builder.Services.AddScoped<MesajViewModel>();
            
    
-            builder.Services.AddTransient<INotificationService, NotificationService>();
-            builder.Services.AddTransient<IPreferencesService, PreferencesService>();
+            builder.Services.AddScoped<INotificationService, NotificationService>();
+            builder.Services.AddScoped<IPreferencesService, PreferencesService>();
 
 //#if ANDROID
 //    builder.ConfigureMauiHandlers(handlers =>

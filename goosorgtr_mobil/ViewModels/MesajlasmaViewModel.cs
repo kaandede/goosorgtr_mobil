@@ -1,11 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace goosorgtr_mobil.ViewModels
 {
-   
+
     // Models/ChatMessage.cs
     public class ChatMessage
     {
@@ -27,19 +28,10 @@ namespace goosorgtr_mobil.ViewModels
         public bool HasUnreadMessages { get; set; }
     }
 
-    // ViewModels/BaseViewModel.cs
-    public class BaseViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
 
     // ViewModels/ChatListViewModel.cs
-    public class MesajlasmaViewModel : BaseViewModel
+    public partial class MesajlasmaViewModel : BaseViewModel
     {
         private ObservableCollection<ChatConversation> _conversations;
         public ObservableCollection<ChatConversation> Conversations
@@ -52,14 +44,12 @@ namespace goosorgtr_mobil.ViewModels
             }
         }
 
-        public ICommand NewChatCommand { get; }
-        public ICommand OpenChatCommand { get; }
+
 
         public MesajlasmaViewModel()
         {
             LoadSampleData();
-            NewChatCommand = new Command(OnNewChat);
-            OpenChatCommand = new Command<ChatConversation>(OnOpenChat);
+
         }
 
         private void LoadSampleData()
@@ -85,12 +75,14 @@ namespace goosorgtr_mobil.ViewModels
         };
         }
 
-        private async void OnNewChat()
+        [RelayCommand]
+        public async void OnNewChat()
         {
             await Shell.Current.GoToAsync("NewChatPage");
         }
 
-        private async void OnOpenChat(ChatConversation conversation)
+        [RelayCommand]
+        public async void OnOpenChat(ChatConversation conversation)
         {
             var parameters = new Dictionary<string, object>
         {

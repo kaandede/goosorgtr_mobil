@@ -27,7 +27,8 @@ namespace goosorgtr_mobil
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-
+            Preferences.Set("token", string.Empty);
+            Preferences.Set("username", string.Empty);
             Shell.Current.GoToAsync($"//{nameof(Login)}");
         }
     }
