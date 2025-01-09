@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                x:Class="goosorgtr_mobil.ParentViews.ParentHarcama">
+             x:Class="goosorgtr_mobil.ParentViews.ParentHarcama">
     <Grid RowDefinitions="Auto,*,Auto" Padding="20">
         <VerticalStackLayout Grid.Row="0" Spacing="10">
             <Label Text="Harcama Listesi" 
@@ -10,6 +10,12 @@
             <DatePicker Date="{Binding SelectedDate}"
                         Format="dd/MM/yyyy"/>
             <Button Text="Filtrele" 
+                    BackgroundColor="#1F252A"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="StartAndExpand"
+                    
+                    
+                    
                     Command="{Binding FilterCommand}"/>
         </VerticalStackLayout>
 
@@ -18,7 +24,7 @@
                         Margin="0,20,0,0">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Margin="0,5" Padding="15">
+                    <Frame BorderColor="#f4f4f4" Margin="0,5" Padding="15">
                         <Grid RowDefinitions="Auto,Auto">
                             <!-- Üst satır - Ürün adı ve Tarih -->
                             <Grid Grid.Row="0" 
@@ -42,11 +48,11 @@
                                        Text="{Binding Quantity, StringFormat='Adet: {0}'}"
                                        VerticalOptions="Center"/>
                                 <Label Grid.Column="1" 
-                                       Text="{Binding Price, StringFormat='Fiyat: {0:C}'}"
+                                       Text="{Binding Price, StringFormat='Fiyat: {0:N2} ₺'}"
                                        VerticalOptions="Center"
                                        Margin="15,0"/>
                                 <Label Grid.Column="2" 
-                                       Text="{Binding TotalAmount, StringFormat='Toplam: {0:C}'}"
+                                       Text="{Binding TotalAmount, StringFormat='Toplam: {0:N2} ₺'}"
                                        VerticalOptions="Center"
                                        HorizontalOptions="End"
                                        FontAttributes="Bold"/>
@@ -61,6 +67,7 @@
         <Frame Grid.Row="2" 
                Margin="0,10,0,0" 
                Padding="15"
+               BorderColor="Transparent"
                BackgroundColor="#f0f0f0">
             <Grid ColumnDefinitions="*,Auto">
                 <Label Grid.Column="0"
@@ -69,7 +76,7 @@
                        FontAttributes="Bold"
                        VerticalOptions="Center"/>
                 <Label Grid.Column="1"
-                       Text="{Binding DailyTotalAmount, StringFormat='{0:C}'}"
+                       Text="{Binding DailyTotalAmount, StringFormat='{0:N2} ₺'}"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="#2b5797"

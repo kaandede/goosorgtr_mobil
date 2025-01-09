@@ -1,6 +1,5 @@
 ﻿using GoosClient.InputModels;
 using GoosClient.Models;
-using GoosClient.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
@@ -170,7 +169,24 @@ namespace GoosClient.Services
         }
 
 
+        public static async Task<List<CourseScheduleModel>> GetDersProgramiAsync(string studentId= "cecab47b-f8b3-c4ca-a7b0-3a145cb90213")
+        {
 
+            var endpoint = $"/api/app/course-schedule/course-schedule-for-user?userIdstr={studentId}";
+            var token = Preferences.Get("token", string.Empty);
+
+            using (var client = new HttpClient(GetHttpClientHandler()))
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
+
+                var response = await client.GetStringAsync(BaseUrl + endpoint);
+
+                var objeccs = JsonConvert.DeserializeObject<List<CourseScheduleModel>>(response);
+
+                return objeccs;
+            }
+
+        }
 
 
 
