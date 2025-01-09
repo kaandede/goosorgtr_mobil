@@ -22,9 +22,13 @@ workflows:
         script: |
           $CM_BUILD_DIR/dotnet/dotnet workload install android maui --source https://api.nuget.org/v3/index.json
       
+      - name: List installed workloads
+        script: |
+          $CM_BUILD_DIR/dotnet/dotnet workload list
+
       - name: Build Android APK
         script: |
-          $CM_BUILD_DIR/dotnet/dotnet publish goosorgtr_mobil.csproj -f:net8.0-android -c:Release
+          $CM_BUILD_DIR/dotnet/dotnet publish goosorgtr_mobil.csproj -f:net8.0-android -c:Release -v:diagnostic
 
     artifacts:
       - bin/Release/**/goosorgtr_mobil*.apk
