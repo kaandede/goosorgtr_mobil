@@ -1,12 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace goosorgtr_mobil.ViewModels
 {
-
-
-
     public class ExpenseItem
     {
         public string ProductName { get; set; }
@@ -15,7 +13,6 @@ namespace goosorgtr_mobil.ViewModels
         public DateTime PurchaseDate { get; set; }
         public decimal TotalAmount => Quantity * Price;
     }
-
 
     public class HarcamaListViewModel : INotifyPropertyChanged
     {
@@ -61,12 +58,12 @@ namespace goosorgtr_mobil.ViewModels
         public HarcamaListViewModel()
         {
             _allExpenses = new ObservableCollection<ExpenseItem>
-        {
-            new ExpenseItem { ProductName = "Ekmek", Quantity = 2, Price = 7.5M, PurchaseDate = DateTime.Now.AddDays(-1) },
-            new ExpenseItem { ProductName = "Süt", Quantity = 1, Price = 25M, PurchaseDate = DateTime.Now },
-            new ExpenseItem { ProductName = "Yumurta", Quantity = 30, Price = 2M, PurchaseDate = DateTime.Now },
-            new ExpenseItem { ProductName = "Peynir", Quantity = 1, Price = 150M, PurchaseDate = DateTime.Now.AddDays(-2) }
-        };
+            {
+                new ExpenseItem { ProductName = "Çikolata", Quantity = 2, Price = 7.5M, PurchaseDate = DateTime.Now.AddDays(-1) },
+                new ExpenseItem { ProductName = "Süt", Quantity = 1, Price = 25M, PurchaseDate = DateTime.Now },
+                new ExpenseItem { ProductName = "Karışık Tost", Quantity = 1, Price = 100M, PurchaseDate = DateTime.Now },
+                new ExpenseItem { ProductName = "Ayran", Quantity = 1, Price = 20M, PurchaseDate = DateTime.Now.AddDays(-2) }
+            };
 
             Expenses = new ObservableCollection<ExpenseItem>(_allExpenses);
             FilterCommand = new Command(FilterExpenses);
@@ -98,8 +95,4 @@ namespace goosorgtr_mobil.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
-
-
-
 }
