@@ -13,8 +13,6 @@ public partial class ParentUser : ContentPage
        
     }
 
- 
-
     private async void lblBildirimAyar_Tapped(object sender, TappedEventArgs e)
     {
  

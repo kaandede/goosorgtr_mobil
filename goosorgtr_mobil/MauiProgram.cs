@@ -46,7 +46,6 @@ namespace goosorgtr_mobil
             builder.Services.AddSingleton<ParentViewModel>();
             builder.Services.AddSingleton<AnnouncementViewModel>();
             builder.Services.AddScoped<ParentMainPage>();
-            builder.Services.AddScoped<ParentUser>();
             builder.Services.AddScoped<ParentNotification>();
             builder.Services.AddScoped<ParentStudentHomeWorkDetails>();
             builder.Services.AddScoped<ParentStudentLocation>();
