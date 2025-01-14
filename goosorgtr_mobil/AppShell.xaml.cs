@@ -17,6 +17,7 @@ namespace goosorgtr_mobil
       
             Routing.RegisterRoute(nameof(ParentUser), typeof(ParentUser));   
             Routing.RegisterRoute(nameof(ParentStudentHomeWorkDetails), typeof(ParentStudentHomeWorkDetails));
+            Routing.RegisterRoute(nameof(DersDetay2), typeof(DersDetay2));
             Routing.RegisterRoute(nameof(ParentNotificationSettings), typeof(ParentNotificationSettings));            
             Routing.RegisterRoute(nameof(FirstView), typeof(FirstView));
             Routing.RegisterRoute(nameof(Login), typeof(Login));

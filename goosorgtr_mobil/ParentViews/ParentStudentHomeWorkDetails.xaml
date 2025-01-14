@@ -6,9 +6,7 @@
              xmlns:models="clr-namespace:goosorgtr_mobil.Models"
              BackgroundColor="#F3F2F7">
 
-    <ContentPage.BindingContext>
-        <models:ParentStudentHomeWorkViewModel/>
-    </ContentPage.BindingContext>
+
     <ScrollView>
         <Grid RowDefinitions="Auto,*"
               Padding="20"
@@ -68,7 +66,10 @@
                                 TextColor="White"
                                 FontAttributes="Bold"
                                 CornerRadius="20"
-                                Padding="20,0"/>
+                                Padding="20,0"
+                                Clicked="Ondersdetay2Clicked"
+                                /> 
+                                
                     </Grid>
                 </Border>
 
@@ -109,7 +110,8 @@
                                 TextColor="White"
                                 FontAttributes="Bold"
                                 CornerRadius="20"
-                                Padding="20,0"/>
+                                Padding="20,0"
+                                Clicked="Ondersdetay2Clicked"/>
                     </Grid>
                 </Border>
 
@@ -150,7 +152,8 @@
                                 TextColor="White"
                                 FontAttributes="Bold"
                                 CornerRadius="20"
-                                Padding="20,0"/>
+                                Padding="20,0"
+                              Clicked="Ondersdetay2Clicked"/>
                     </Grid>
                 </Border>
 
@@ -191,7 +194,8 @@
                                 TextColor="White"
                                 FontAttributes="Bold"
                                 CornerRadius="20"
-                                Padding="20,0"/>
+                                Padding="20,0"
+                               Clicked="Ondersdetay2Clicked"/>
                     </Grid>
                 </Border>
 
@@ -232,7 +236,8 @@
                                 TextColor="White"
                                 FontAttributes="Bold"
                                 CornerRadius="20"
-                                Padding="20,0"/>
+                                Padding="20,0"
+                               Clicked="Ondersdetay2Clicked"/>
                     </Grid>
                 </Border>
 

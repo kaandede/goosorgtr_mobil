@@ -12,26 +12,16 @@ public partial class ParentStudentHomeWorkDetails : ContentPage
         BindingContext = _parentStudentHomeWorkViewModel;
     }
 
-    protected async override void OnAppearing()
+    protected  override void OnAppearing()
     {
-        await Navigation.PopToRootAsync();
-        base.OnAppearing();
+ 
+         base.OnAppearing();
     }
-    private async void OnDersProgramiClicked(object sender, EventArgs e)
+  
+    private async void Ondersdetay2Clicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Ders Programý", "Ders Programý detaylarý gösterilecek.", "Tamam");
-        // Alternatif: await Navigation.PushAsync(new DersProgramiPage());
-    }
+        await Shell.Current.GoToAsync(nameof(DersDetay2));
 
-    private async void OnOdevlerClicked(object sender, EventArgs e)
-    {
-        await DisplayAlert("Ödevler", "Ödevler detaylarý gösterilecek.", "Tamam");
-        // Alternatif: await Navigation.PushAsync(new OdevlerPage());
     }
-
-    private async void OnDersNotlariClicked(object sender, EventArgs e)
-    {
-        await DisplayAlert("Ders Notlarý", "Ders Notlarý detaylarý gösterilecek.", "Tamam");
-        // Alternatif: await Navigation.PushAsync(new DersNotlariPage());
-    }
+   
 }
