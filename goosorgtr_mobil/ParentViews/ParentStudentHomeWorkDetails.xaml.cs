@@ -1,27 +1,22 @@
-using goosorgtr_mobil.Models;
+using goosorgtr_mobil.ViewModels;
 
-namespace goosorgtr_mobil.ParentViews;
-
-public partial class ParentStudentHomeWorkDetails : ContentPage
+namespace goosorgtr_mobil.ParentViews
 {
-    public ParentStudentHomeWorkViewModel _parentStudentHomeWorkViewModel;
-
-    public ParentStudentHomeWorkDetails()
+    public partial class ParentStudentHomeWorkDetails : ContentPage
     {
-        InitializeComponent();
-        BindingContext = _parentStudentHomeWorkViewModel;
-    }
+        private LessonDetailsViewModel _model;
 
-    protected  override void OnAppearing()
-    {
- 
-         base.OnAppearing();
-    }
-  
-    private async void Ondersdetay2Clicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync(nameof(DersDetay2));
+        public ParentStudentHomeWorkDetails()
+        {
+            InitializeComponent();
+            _model = new LessonDetailsViewModel();
+            BindingContext = _model;
+        }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await _model.DersleriDoldur();
+        }
     }
-   
 }
