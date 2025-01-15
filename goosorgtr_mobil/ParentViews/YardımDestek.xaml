@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.ParentViews.YardımDestek"
+             Title="YardımDestek">
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <!-- Sık Sorulan Sorular -->
+            <Label Text="Sık Sorulan Sorular"
+                   FontSize="24"
+                   Margin="0,0,0,20"/>
+
+            <Frame BorderColor="LightGray" 
+                   Margin="0,0,0,10" 
+                   Padding="15">
+                <Label Text="Şifremi nasıl değiştirebilirim?&#x0a;➜ Profil Ayarları > Güvenlik bölümünden şifrenizi değiştirebilirsiniz."
+                       TextType="Html"/>
+            </Frame>
+
+            <Frame BorderColor="LightGray" 
+                   Margin="0,0,0,10" 
+                   Padding="15">
+                <Label Text="Notlarımı nasıl görebilirim?&#x0a;➜ Ana sayfa > Notlarım bölümünden tüm notlarınızı görüntüleyebilirsiniz."/>
+            </Frame>
+
+            <Frame BorderColor="LightGray" 
+                   Margin="0,0,0,10" 
+                   Padding="15">
+                <Label Text="Devamsızlık bilgilerime nasıl ulaşabilirim?&#x0a;➜ Ana sayfa > Devamsızlık bölümünden kontrol edebilirsiniz."/>
+            </Frame>
+
+            <!-- Destek Mesajı -->
+            <Label Text="Destek Talebi"
+                   FontSize="24"
+                   Margin="0,20"/>
+
+            <Entry x:Name="subjectEntry"
+                   Placeholder="Konu"
+                   Margin="0,0,0,10"/>
+
+            <Editor x:Name="messageEditor"
+                    Placeholder="Mesajınız..."
+                    HeightRequest="100"
+                    Margin="0,0,0,10"/>
+
+            <Button Text="Gönder"
+                    Clicked="OnSendClicked"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    HorizontalOptions="Fill"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

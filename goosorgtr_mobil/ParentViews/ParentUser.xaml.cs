@@ -21,6 +21,9 @@ public partial class ParentUser : ContentPage
         //await Navigation.PushAsync(new ParentNotificationSettings());
     }
 
+
+
+
     private async void mesajlarlbl_Tapped(object sender, TappedEventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(ChatListPage));
@@ -32,5 +35,23 @@ public partial class ParentUser : ContentPage
         Preferences.Set("username", string.Empty);
   
         Shell.Current.GoToAsync($"//{nameof(Login)}");
+    }
+    private async void profilayarlar_Tapped(object sender, TappedEventArgs e)
+    {
+
+        await Shell.Current.GoToAsync(nameof(ProfileSettingsPage));
+
+    }
+    private async void yardimdestek_Tapped(object sender, TappedEventArgs e)
+    {
+
+        await Shell.Current.GoToAsync(nameof(YardýmDestek));
+
+    }
+    private async void gizlilik_Tapped(object sender, TappedEventArgs e)
+    {
+
+        await Shell.Current.GoToAsync(nameof(SecurityPage));
+
     }
 }

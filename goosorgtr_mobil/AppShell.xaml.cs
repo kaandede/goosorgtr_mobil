@@ -25,6 +25,9 @@ namespace goosorgtr_mobil
             Routing.RegisterRoute(nameof(ChatPage), typeof(ChatPage));
             //Routing.RegisterRoute(nameof(ServisHarita), typeof(ServisHarita));
             Routing.RegisterRoute(nameof(NewChatPage), typeof(NewChatPage));
+            Routing.RegisterRoute(nameof(YardımDestek), typeof(YardımDestek));
+            Routing.RegisterRoute(nameof(ProfileSettingsPage), typeof(ProfileSettingsPage));
+            Routing.RegisterRoute(nameof(SecurityPage), typeof(SecurityPage));
         }
 
         private void Button_Clicked(object sender, EventArgs e)

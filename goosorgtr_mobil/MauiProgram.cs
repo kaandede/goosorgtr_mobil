@@ -64,7 +64,9 @@ namespace goosorgtr_mobil
             builder.Services.AddScoped<MesajViewModel>();
             builder.Services.AddScoped<DersDetay2>();
             builder.Services.AddTransient<ServisHarita>();
-
+            builder.Services.AddTransient<ProfileSettingsPage>();
+            builder.Services.AddTransient<YardımDestek>();
+            builder.Services.AddTransient<SecurityPage>();
 
             builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<IPreferencesService, PreferencesService>();

@@ -463,7 +463,12 @@
                         <Label Grid.Column="1"
                                Text="Profil Ayarları"
                                VerticalOptions="Center"
-                               FontAttributes="Bold"/>
+                               FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="profilayarlar_Tapped"/>
+                            </Label.GestureRecognizers>
+                            
+                        </Label>
 
                         <Image Grid.Column="2"
                                Source="right.png"
@@ -542,7 +547,12 @@
                         <Label Grid.Column="1"
                                Text="Gizlilik ve Güvenlik"
                                VerticalOptions="Center"
-                               FontAttributes="Bold"/>
+                               FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="gizlilik_Tapped"/>
+                            </Label.GestureRecognizers>
+
+                        </Label>
                         <Image Grid.Column="2"
                                Source="right.png"
                                HeightRequest="20"
@@ -564,7 +574,12 @@
                         <Label Grid.Column="1"
                                Text="Yardım ve Destek"
                                VerticalOptions="Center"
-                               FontAttributes="Bold"/>
+                               FontAttributes="Bold">
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="yardimdestek_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                         <Image Grid.Column="2"
                                Source="right.png"
                                HeightRequest="20"
