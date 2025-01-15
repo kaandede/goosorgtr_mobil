@@ -23,6 +23,9 @@ public partial class Login : ContentPage
         }
 
         var sonuc = await UserService.Login(txtKullaniciAdi.Text, txtParola.Text);
+
+        //var examlar = await UserService.GetExamAsync();
+
         if (sonuc)
         {
             Preferences.Set("username", txtKullaniciAdi.Text);

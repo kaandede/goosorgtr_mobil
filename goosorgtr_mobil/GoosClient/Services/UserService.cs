@@ -9,7 +9,20 @@ namespace GoosClient.Services
     public static class UserService
     {
         public static string BaseUrl { get; set; } = $"https://okul.goos.org.tr";
+        private static HttpClientHandler GetHttpClientHandler()
+        {
+            // EXCEPTION: Javax.Net.Ssl.SSLHandshakeException: 'java.security.cert.CertPathValidatorException:
+            // Trust anchor for certification path not found.'
+            // SOLUTION: 
+            // ATTENTION: DO NOT USE IN PRODUCTION 
 
+            var httpClientHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+            };
+
+            return httpClientHandler;
+        }
         public static async Task<bool> RegisterUser(string userName, string password, string emailAdress)
         {
             var endpoint = "/api/account/register";
@@ -188,25 +201,6 @@ namespace GoosClient.Services
 
         }
 
-
-
-
-        private static HttpClientHandler GetHttpClientHandler()
-        {
-            // EXCEPTION: Javax.Net.Ssl.SSLHandshakeException: 'java.security.cert.CertPathValidatorException:
-            // Trust anchor for certification path not found.'
-            // SOLUTION: 
-            // ATTENTION: DO NOT USE IN PRODUCTION 
-
-            var httpClientHandler = new HttpClientHandler
-            {
-                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
-            };
-
-            return httpClientHandler;
-        }
-
-
         public static async Task<List<DuyuruModel>> GetDuyurularAsync()
         {
             var endpoint = "/api/app/announcement";
@@ -219,6 +213,23 @@ namespace GoosClient.Services
                 var response = await client.GetStringAsync(BaseUrl + endpoint);
 
                 var objeccs = JsonConvert.DeserializeObject<ListedResult<DuyuruModel>>(response).Items;
+
+                return objeccs;
+            }
+
+        }
+        public static async Task<List<ExamModel>> GetExamAsync()
+        {
+            var endpoint = "/api/app/exam";
+            var token = Preferences.Get("token", string.Empty);
+
+            using (var client = new HttpClient(GetHttpClientHandler()))
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
+
+                var response = await client.GetStringAsync(BaseUrl + endpoint);
+
+                var objeccs = JsonConvert.DeserializeObject<ListedResult<ExamModel>>(response).Items;
 
                 return objeccs;
             }
