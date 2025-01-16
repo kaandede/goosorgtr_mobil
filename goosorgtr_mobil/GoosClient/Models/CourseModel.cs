@@ -4,6 +4,8 @@ namespace GoosClient.Models
 {
     public class CourseModel
     {
+        [JsonProperty("id")]
+        public int CourseId { get; set; }
         [JsonProperty("courseName")]
         public string CourseName { get; set; }
         [JsonProperty("courseCode")]

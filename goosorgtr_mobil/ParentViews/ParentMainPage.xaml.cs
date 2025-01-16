@@ -9,24 +9,26 @@ public partial class ParentMainPage : ContentPage
     public ParentViewModel _parentViewModel;
 
     public ParentMainPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _parentViewModel = new ParentViewModel();
         BindingContext = _parentViewModel;
 
-        mrbKullaniciMesaj.Text = $"Merhaba, {Preferences.Get("username",string.Empty)}";
+        mrbKullaniciMesaj.Text = $"Merhaba, {Preferences.Get("username", string.Empty)}";
     }
     protected async override void OnAppearing()
     {
         await Navigation.PopToRootAsync(false);
         _parentViewModel.OgrenciGetir();
+
+     
         base.OnAppearing();
-    
+
     }
 
     private async void OnCounterClicked(object sender, EventArgs e)
     {
-  
+
         await Shell.Current.GoToAsync($"//{nameof(Login)}");
     }
 
@@ -38,7 +40,7 @@ public partial class ParentMainPage : ContentPage
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-       await Navigation.PushAsync(new ServisHarita());
+        await Navigation.PushAsync(new ServisHarita());
     }
 
     private async void Tapduyuru_Tapped(object sender, TappedEventArgs e)
@@ -48,5 +50,17 @@ public partial class ParentMainPage : ContentPage
     private async void Tapharcama_Tapped(object sender, TappedEventArgs e)
     {
         await Navigation.PushAsync(new ParentHarcama());
+    }
+
+    private void ogrenciListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+        if (e.CurrentSelection.Count > 0)
+        {
+            var ogrenci = (Profile)e.CurrentSelection[0];
+            Preferences.Set("seciliOgrenciUserId", ogrenci.userId);
+
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using GoosClient.Services;
 using goosorgtr_mobil.GoosClient.Models;
 using goosorgtr_mobil.ParentViews;
 
@@ -64,9 +65,17 @@ namespace goosorgtr_mobil.ViewModels
 
         private async Task<List<LessonModel>> GetLessonsFromAPI()
         {
-            return new List<LessonModel>
+
+            var seciliOgrenciId = Preferences.Get("seciliOgrenciId", string.Empty);
+
+            if (!string.IsNullOrEmpty(seciliOgrenciId))
             {
-                new LessonModel
+                var program = await UserService.GetDersProgramiAsync(seciliOgrenciId);
+
+
+                return new List<LessonModel>
+                {
+                    new LessonModel
                 {
                     LessonName = "Matematik",
                     TeacherName = "Ayşe Yılmaz",
@@ -75,7 +84,7 @@ namespace goosorgtr_mobil.ViewModels
                     LessonColor = "#EEF2FF",
                     ButtonColor = "#4F46E5"
                 },
-                new LessonModel
+                    new LessonModel
                 {
                     LessonName = "Fizik",
                     TeacherName = "Mehmet Demir",
@@ -83,9 +92,14 @@ namespace goosorgtr_mobil.ViewModels
                     LessonIcon = "atom.png",
                     LessonColor = "#FEF3C7",
                     ButtonColor = "#D97706"
-                },
-                // Diğer dersleri buraya ekleyebilirsiniz
-            };
+                }
+                };
+            }
+            else
+            {
+                return new List<LessonModel>();
+            }
+
         }
     }
 }

@@ -74,8 +74,10 @@ namespace goosorgtr_mobil.Models
                             Konum = "Okula Giriş Yapıldı",
                             Descreption = "Servisten İndi",
                             Saat = "08:30",
-                            ProfileImage = "kiz_ogrenci_1.jpg"
-
+                            ProfileImage = "kiz_ogrenci_1.jpg",
+                            Id = liste[i].Id,
+                            userId = liste[i].UserId,
+                            
                         });
 
                     }
