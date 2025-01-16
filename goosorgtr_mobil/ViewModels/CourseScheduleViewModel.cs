@@ -8,10 +8,10 @@ namespace goosorgtr_mobil.ViewModels;
 
 public partial class CourseScheduleViewModel : BaseViewModel
 {
-    
 
 
-    public ObservableCollection<DaySchedule> Days { get; set; }
+
+    public ObservableCollection<DaySchedule> Days { get; set; } = new();
 
     public CourseScheduleViewModel()
     {
@@ -27,7 +27,8 @@ public partial class CourseScheduleViewModel : BaseViewModel
         try
         {
             IsLoading = true;
-            var program = await UserService.GetDersProgramiAsync();
+            var ogrenciId = Preferences.Get("seciliOgrenciUserId", string.Empty);
+            var program = await UserService.GetDersProgramiAsync(ogrenciId);
             var dayliste = new List<DaySchedule>();
 
             foreach (var gun in program.OrderBy(p => p.DaysOfWeek).GroupBy(p => p.DaysOfWeek))
@@ -48,7 +49,8 @@ public partial class CourseScheduleViewModel : BaseViewModel
                     Lessons = lessonliste
                 });
 
-            }
+            }   
+            Days.Clear();
             Days = new ObservableCollection<DaySchedule>(dayliste);
             OnPropertyChanged(nameof(Days));
         }
