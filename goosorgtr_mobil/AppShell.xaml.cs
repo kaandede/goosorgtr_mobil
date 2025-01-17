@@ -28,6 +28,12 @@ namespace goosorgtr_mobil
             Routing.RegisterRoute(nameof(YardımDestek), typeof(YardımDestek));
             Routing.RegisterRoute(nameof(ProfileSettingsPage), typeof(ProfileSettingsPage));
             Routing.RegisterRoute(nameof(SecurityPage), typeof(SecurityPage));
+            Routing.RegisterRoute(nameof(ForgotPasswordPage), typeof(ForgotPasswordPage));
+            Routing.RegisterRoute(nameof(NewPasswordPage), typeof(NewPasswordPage));
+            Routing.RegisterRoute(nameof(VerificationCodePage), typeof(VerificationCodePage));
+             Routing.RegisterRoute(nameof(OkulOdemeleriPage), typeof(OkulOdemeleriPage));
+            Routing.RegisterRoute(nameof(OgretmenGorusmesiPage), typeof(OgretmenGorusmesiPage));
+            Routing.RegisterRoute(nameof(IzinTalebiPage), typeof(IzinTalebiPage));
         }
 
         private void Button_Clicked(object sender, EventArgs e)

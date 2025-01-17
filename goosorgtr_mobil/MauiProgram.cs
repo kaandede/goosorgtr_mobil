@@ -67,7 +67,12 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<ProfileSettingsPage>();
             builder.Services.AddTransient<YardımDestek>();
             builder.Services.AddTransient<SecurityPage>();
-
+            builder.Services.AddTransient<ForgotPasswordPage>();
+            builder.Services.AddTransient<VerificationCodePage>();
+            builder.Services.AddTransient<NewPasswordPage>();
+            builder.Services.AddTransient<OkulOdemeleriPage>();
+            builder.Services.AddTransient<IzinTalebiPage>(); 
+            builder.Services.AddTransient<OgretmenGorusmesiPage>();
             builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<IPreferencesService, PreferencesService>();
 

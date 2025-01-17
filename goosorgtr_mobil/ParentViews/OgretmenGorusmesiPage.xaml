@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.ParentViews.OgretmenGorusmesiPage"
+             Title="Öğretmen Görüşmesi">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <!-- Başlık ve Açıklama -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Öğretmen Görüşmesi Planla"
+                       FontSize="24"
+                       FontAttributes="Bold"/>
+                <Label Text="Öğretmenlerimiz ile görüşme randevusu oluşturmak için aşağıdaki adımları takip edin."
+                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"
+                       FontSize="14"/>
+            </VerticalStackLayout>
+
+            <!-- Katılımcılar -->
+            <Frame Padding="15"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="1. Görüşme Katılımcıları"
+                           FontAttributes="Bold"/>
+
+                    <Picker x:Name="ogrenciPicker"
+                            Title="Öğrenci seçiniz *"
+                            SelectedIndexChanged="OgrenciSecim_SelectedIndexChanged"/>
+
+                    <Picker x:Name="ogretmenPicker"
+                            Title="Öğretmen seçiniz *"
+                            SelectedIndexChanged="OgretmenSecim_SelectedIndexChanged"/>
+
+                    <Label x:Name="ogretmenBransLabel"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Görüşme Zamanı -->
+            <Frame Padding="15"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="2. Görüşme Zamanı"
+                           FontAttributes="Bold"/>
+
+                    <DatePicker x:Name="gorusmeTarihi"
+                               Format="dd/MM/yyyy"
+                               DateSelected="GorusmeTarihi_DateSelected"
+                               MinimumDate="{Binding MinimumTarih}"/>
+
+                    <Picker x:Name="gorusmeSaatiPicker"
+                            Title="Görüşme saati seçiniz *"
+                            SelectedIndexChanged="GorusmeSaati_SelectedIndexChanged"/>
+
+                    <Label Text="Not: Görüşmeler 30 dakika sürmektedir."
+                           FontSize="12"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Görüşme Detayları -->
+            <Frame Padding="15"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="3. Görüşme Detayları"
+                           FontAttributes="Bold"/>
+
+                    <Picker x:Name="gorusmeKonusuPicker"
+                            Title="Görüşme konusu seçiniz *">
+                        <Picker.Items>
+                            <x:String>Akademik Başarı</x:String>
+                            <x:String>Davranış ve Disiplin</x:String>
+                            <x:String>Sosyal Aktiviteler</x:String>
+                            <x:String>Aile Katılımı</x:String>
+                            <x:String>Diğer</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Editor x:Name="gorusmeNotuEditor"
+                            Placeholder="Notlarınızı buraya yazabilirsiniz..."
+                            AutoSize="TextChanges"
+                            HeightRequest="100"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource Gray900}}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Onay ve Gönder -->
+            <Button Text="Randevu Oluştur"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    Clicked="RandevuOlustur_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

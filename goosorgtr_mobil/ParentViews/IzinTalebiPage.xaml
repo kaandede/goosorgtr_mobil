@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.ParentViews.IzinTalebiPage"
+             Title="İzin Talebi">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <!-- Başlık ve Açıklama -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="İzin Talebi Oluştur"
+                       FontSize="24"
+                       FontAttributes="Bold"/>
+                <Label Text="Öğrenciniz için izin talebinde bulunmak için aşağıdaki formu doldurunuz."
+                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"
+                       FontSize="14"/>
+            </VerticalStackLayout>
+
+            <!-- Öğrenci Seçimi -->
+            <Frame Padding="15" 
+                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="1. Öğrenci Bilgileri"
+                           FontAttributes="Bold"/>
+                    <Picker x:Name="ogrenciPicker"
+                            Title="Öğrenci seçiniz *"
+                            SelectedIndexChanged="OgrenciSecim_SelectedIndexChanged"/>
+                    <Label x:Name="sinifLabel"
+                           Text="Sınıf: "
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+                    <Label x:Name="ogrenciNoLabel"
+                           Text="Öğrenci No: "
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- İzin Tarihleri -->
+            <Frame Padding="15"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="2. İzin Tarihleri"
+                           FontAttributes="Bold"/>
+                    <DatePicker x:Name="baslangicTarihi"
+                               Format="dd/MM/yyyy"
+                               DateSelected="TarihSecim_DateSelected"/>
+                    <Label Text="İzin Başlangıç Tarihi *"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+
+                    <DatePicker x:Name="bitisTarihi"
+                               Format="dd/MM/yyyy"
+                               DateSelected="TarihSecim_DateSelected"/>
+                    <Label Text="İzin Bitiş Tarihi *"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+
+                    <Label Text="Not: İzin tarihleri okul günlerini kapsamalıdır."
+                           FontSize="12"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- İzin Detayları -->
+            <Frame Padding="15"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="3. İzin Detayları"
+                           FontAttributes="Bold"/>
+
+                    <Picker x:Name="izinTuruPicker"
+                            Title="İzin Türü Seçiniz *">
+                        <Picker.Items>
+                            <x:String>Sağlık (Doktor/Hastane)</x:String>
+                            <x:String>Ailevi Sebepler</x:String>
+                            <x:String>Sportif Faaliyet</x:String>
+                            <x:String>Kültürel Etkinlik</x:String>
+                            <x:String>Diğer</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Editor x:Name="izinAciklamasi"
+                            Placeholder="İzin talebinizin detaylı açıklamasını yazınız... *"
+                            HeightRequest="100"
+                            AutoSize="TextChanges"/>
+
+                    <CheckBox x:Name="belgeOnayCheckBox"
+                             IsChecked="False"/>
+                    <Label Text="Gerekli belgeleri sisteme yükleyeceğimi onaylıyorum *"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Butonlar -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
+                <Button Text="Vazgeç"
+                        Clicked="Vazgec_Clicked"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
+                        TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}"/>
+
+                <Button Text="İzin Talebi Oluştur"
+                        Clicked="IzinTalebiOlustur_Clicked"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

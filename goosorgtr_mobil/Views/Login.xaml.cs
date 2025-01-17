@@ -40,6 +40,11 @@ public partial class Login : ContentPage
 
 
     }
+    private async void sifremiunuttum_Tapped(object sender, EventArgs e) 
+    {
+        await Shell.Current.GoToAsync(nameof(ForgotPasswordPage));
+        
+    }
 
 
 }

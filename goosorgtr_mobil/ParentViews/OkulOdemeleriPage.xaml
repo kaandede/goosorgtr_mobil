@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.ParentViews.OkulOdemeleriPage"
+             Title="Okul Ödemeleri">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <!-- Başlık ve Açıklama -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Okul Ödemeleri"
+                       FontSize="24"
+                       FontAttributes="Bold"/>
+                <Label Text="Ödeme durumunuzu kontrol edin ve ödemelerinizi gerçekleştirin."
+                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"
+                       FontSize="14"/>
+            </VerticalStackLayout>
+
+            <!-- Öğrenci Seçimi -->
+            <Frame Padding="15" 
+                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Öğrenci Seçiniz"
+                           FontSize="16"/>
+                    <Picker Title="Öğrenci seçin"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}">
+                        <Picker.Items>
+                            <x:String>Ahmet Yılmaz (10-A)</x:String>
+                            <x:String>Ayşe Demir (11-B)</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Toplam Borç Özeti -->
+            <Frame Padding="15"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Toplam Borç Durumu"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                        <Label Text="2023-2024 Eğitim Yılı"
+                               TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"
+                               FontSize="14"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                        <Label Text="15.000 TL"
+                               FontAttributes="Bold"
+                               FontSize="20"
+                               TextColor="{StaticResource Primary}"/>
+                        <Label Text="Toplam Borç"
+                               HorizontalOptions="End"
+                               TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"
+                               FontSize="12"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Ödemeler Listesi -->
+            <CollectionView SelectionMode="None">
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Eylül Taksiti</x:String>
+                        <x:String>Ekim Taksiti</x:String>
+                        <x:String>Kasım Taksiti</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,0,0,10"
+                               Padding="15"
+                               BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray800}}">
+                            <Grid ColumnDefinitions="*,Auto,Auto" 
+                                  RowDefinitions="Auto,Auto">
+                                <VerticalStackLayout Grid.Column="0">
+                                    <Label Text="{Binding .}"
+                                           FontAttributes="Bold"
+                                           FontSize="16"/>
+                                    <Label Text="Son Ödeme: 15.09.2023"
+                                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"
+                                           FontSize="12"/>
+                                </VerticalStackLayout>
+
+                                <Label Grid.Column="1" 
+                                       Text="2.500 TL"
+                                       VerticalOptions="Center"
+                                       Margin="10,0"
+                                       FontAttributes="Bold"/>
+
+                                <Button Grid.Column="2"
+                                        Text="Öde"
+                                        BackgroundColor="{StaticResource Primary}"
+                                        TextColor="White"
+                                        WidthRequest="80"
+                                        HeightRequest="40"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

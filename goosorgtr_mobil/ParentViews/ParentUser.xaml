@@ -259,14 +259,8 @@
             <Frame BorderColor="Transparent" Grid.Row="2" Style="{StaticResource CardStyle}">
                 <VerticalStackLayout Spacing="15">
                     <Grid ColumnDefinitions="*,Auto">
-                        <Label Text="Öğrencilerim"
-                               FontSize="20"
-                               FontAttributes="Bold"/>
-                        <Button Grid.Column="1"
-                                Text="Tümünü Gör"
-                                FontSize="14"
-                                TextColor="#4CAF50"
-                                BackgroundColor="Transparent"/>
+                       
+                        
                     </Grid>
 
                     <CollectionView ItemsSource="{Binding Profiles}">
@@ -370,7 +364,9 @@
                                         TextColor="White"
                                         CornerRadius="20"
                                         HeightRequest="36"
-                                        WidthRequest="95"/>
+                                        WidthRequest="95" 
+                                        Clicked="IzınTalepClicked"
+                                         />
                             </Grid>
                         </Frame>
 
@@ -404,7 +400,7 @@
                                         TextColor="White"
                                         CornerRadius="20"
                                         HeightRequest="36"
-                                        WidthRequest="91"/>
+                                        WidthRequest="91" Clicked="OgretmenGorusmeClicked"/>
                             </Grid>
                         </Frame>
 
@@ -438,7 +434,7 @@
                                         TextColor="White"
                                         CornerRadius="20"
                                         HeightRequest="36"
-                                        WidthRequest="95"/>
+                                        WidthRequest="95" Clicked="odemeClicked"/>
                             </Grid>
                         </Frame>
                     </Grid>

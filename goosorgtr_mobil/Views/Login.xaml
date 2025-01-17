@@ -37,7 +37,15 @@
 
                     <CheckBox IsChecked="False" Color="#383348"/>
                     <Label Text="Beni Hatırla" FontFamily="NexaLight" FontAttributes="Bold" TextColor="#1F252A" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                    <Label Text="Şifremi Unuttum" TextDecorations="Underline" TextColor="#408CF1" FontFamily="NexaLight" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Label Text="Şifremi Unuttum" TextDecorations="Underline" 
+                           TextColor="#408CF1" FontFamily="NexaLight" 
+                           FontAttributes="Bold" HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+
+                        <Label.GestureRecognizers >
+                            <TapGestureRecognizer Tapped="sifremiunuttum_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
                 <Button Text="Giriş" FontSize="18" BackgroundColor="#1F252A" FontFamily="NexaHeavy" TextColor="#fff" HeightRequest="50" CornerRadius="10" Margin="5,25,0,0" Clicked="Login_Button_Clicked"/>
 

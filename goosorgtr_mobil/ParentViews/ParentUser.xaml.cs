@@ -54,4 +54,25 @@ public partial class ParentUser : ContentPage
         await Shell.Current.GoToAsync(nameof(SecurityPage));
 
     }
+    private async void odemeClicked(object sender, EventArgs e)
+    {
+
+        await Navigation.PushAsync(new OkulOdemeleriPage());
+        //await Shell.Current.GoToAsync(nameof(ParentStudentHomeWorkDetails));
+
+    }private async void OgretmenGorusmeClicked(object sender, EventArgs e)
+    {
+
+        await Navigation.PushAsync(new OgretmenGorusmesiPage());
+        //await Shell.Current.GoToAsync(nameof(ParentStudentHomeWorkDetails));
+
+    }
+    private async void IzýnTalepClicked(object sender, EventArgs e)
+    {
+
+        await Navigation.PushAsync(new IzinTalebiPage());
+        //await Shell.Current.GoToAsync(nameof(ParentStudentHomeWorkDetails));
+
+    }
+
 }

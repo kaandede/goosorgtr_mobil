@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="goosorgtr_mobil.Views.VerificationCodePage"
+             Title="Doğrulama Sayfası"
+              BackgroundColor="#F3F2F7" 
+             Shell.TabBarIsVisible="False">
+    <VerticalStackLayout Padding="20" Spacing="20">
+        <Image 
+            Source="gmail.png"
+            HeightRequest="100"
+            WidthRequest="100"
+            HorizontalOptions="Center"
+            Margin="0,50,0,20"/>
+
+        <Label 
+            Text="Mail"
+            FontSize="24"
+            TextColor="#1F252A"
+            HorizontalOptions="Center"/>
+
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+            <Entry x:Name="code1" MaxLength="1" WidthRequest="40" HeightRequest="50"/>
+            <Entry x:Name="code2" MaxLength="1" WidthRequest="40" HeightRequest="50"/>
+            <Entry x:Name="code3" MaxLength="1" WidthRequest="40" HeightRequest="50"/>
+            <Entry x:Name="code4" MaxLength="1" WidthRequest="40" HeightRequest="50"/>
+            <Entry x:Name="code5" MaxLength="1" WidthRequest="40" HeightRequest="50"/>
+            <Entry x:Name="code6" MaxLength="1" WidthRequest="40" HeightRequest="50"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
