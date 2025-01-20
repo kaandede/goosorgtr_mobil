@@ -157,28 +157,21 @@ namespace GoosClient.Services
 
         }
 
-        public static async Task<List<AttendanceModel>> GetAttendanceAsync(AttendanceGetListInput input)
+        public static async Task<List<AttendanceModel>> GetAttendanceAsync(int studentId, int courseId=0, int classId=0)//değer verilmezse 0 olsun, etkilemez
         {
-            var endpoint = "/api/app/Attendance";
+            var endpoint = $"/api/app/attendance?StudentId={studentId}&CourseId={courseId}&ClassId={classId}";
             var token = Preferences.Get("token", string.Empty);
-
-
 
             using (var client = new HttpClient(GetHttpClientHandler()))
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
 
+                var response = await client.GetStringAsync(BaseUrl + endpoint);
 
-                string json = JsonConvert.SerializeObject(input);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(BaseUrl + endpoint, content);
-                var responseData = await response.Content.ReadAsStringAsync();
-
-                var objeccs = JsonConvert.DeserializeObject<ListedResult<AttendanceModel>>(responseData).Items;
+                var objeccs = JsonConvert.DeserializeObject<ListedResult<AttendanceModel>>(response).Items;
 
                 return objeccs;
             }
-
         }
 
 
