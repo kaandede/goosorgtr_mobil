@@ -1,3 +1,4 @@
+using GoosClient.InputModels;
 using GoosClient.Services;
 using goosorgtr_mobil.Models;
 using goosorgtr_mobil.ParentViews;
@@ -25,6 +26,7 @@ public partial class Login : ContentPage
         var sonuc = await UserService.Login(txtKullaniciAdi.Text, txtParola.Text);
 
         //var examlar = await UserService.GetExamAsync();
+        //var attandance = await UserService.GetAttendanceAsync(100);
 
         if (sonuc)
         {
