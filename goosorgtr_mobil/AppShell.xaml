@@ -115,15 +115,21 @@
     
     
     
-    <FlyoutItem Title="Ana Sayfa" Icon="home_ince.png" Route="ParentMainPage">
-        <ShellContent ContentTemplate="{DataTemplate views:ParentMainPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Lokasyon" Icon="location_icon.png" Route="ParentStudentLocation">
+    
+    <FlyoutItem Title="Ana Sayfa" Icon="home_ince.png" Route="ParentMainPage" >
         
-        <ShellContent ContentTemplate="{DataTemplate views:ParentStudentLocation}" />
+        <ShellContent ContentTemplate="{DataTemplate views:ParentMainPage}"  />
+    </FlyoutItem>
+    <FlyoutItem Title="Lokasyon" Icon="location_icon.png" Route="ParentStudentLocation"  >
+
+        <ShellContent ContentTemplate="{DataTemplate views:ParentStudentLocation}"   />
+    </FlyoutItem>
+    <FlyoutItem Title="Etkinlik" Icon="etkinlik_icon.png" Route="EventPage"  >
+
+        <ShellContent ContentTemplate="{DataTemplate views:EventPage}"  />
     </FlyoutItem>
     
-    
+
     <Shell.FlyoutFooter>
         
         <Grid Padding="15" BackgroundColor="#F3F2F7" RowDefinitions="Auto,Auto">

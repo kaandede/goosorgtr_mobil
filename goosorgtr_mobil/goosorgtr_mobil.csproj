@@ -133,6 +133,9 @@
 	  <MauiXaml Update="ParentViews\duyuru.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="ParentViews\EventPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ParentViews\IzinTalebiPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
