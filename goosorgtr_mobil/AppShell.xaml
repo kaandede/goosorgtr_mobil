@@ -105,20 +105,26 @@
 
     <!-- TabBar remains same -->
     <TabBar>
-        <ShellContent Icon="home_ince_beyaz.png" Route="ParentMainPage" ContentTemplate="{DataTemplate views:ParentMainPage}"/>
-        <ShellContent Icon="location.png" Route="ParentStudentLocation" ContentTemplate="{DataTemplate views:ParentStudentLocation}"/>
-        <ShellContent Icon="bell.png" Route="ParentNotification" ContentTemplate="{DataTemplate views:ParentNotification}"/>
-        <ShellContent Icon="file.png" Route="ParentStudentHomeWork" ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"/>
+        <Tab Title="Home" Icon="home_ince_beyaz.png">
+            <ShellContent Route="ParentMainPage" ContentTemplate="{DataTemplate views:ParentMainPage}"/>
+        </Tab>
+        <Tab Title="Konum" Icon="location.png">
+            <ShellContent Route="ParentStudentLocation" ContentTemplate="{DataTemplate views:ParentStudentLocation}"/>
+        </Tab>
+        <Tab Title="Bildirim" Icon="bell.png">
+            <ShellContent Route="ParentNotification" ContentTemplate="{DataTemplate views:ParentNotification}"/>
+        </Tab>
+        <Tab Title="Ders" Icon="file.png">
+            <ShellContent Route="ParentStudentHomeWork" ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"/>
+        </Tab>
+  
     </TabBar>
 
     <!-- Flyout Menu Items -->
-    
-    
-    
-    
     <FlyoutItem Title="Ana Sayfa" Icon="home_ince.png" Route="ParentMainPage" >
         
         <ShellContent ContentTemplate="{DataTemplate views:ParentMainPage}"  />
+     
     </FlyoutItem>
     <FlyoutItem Title="Lokasyon" Icon="location_icon.png" Route="ParentStudentLocation"  >
 
