@@ -59,6 +59,7 @@ public partial class ParentMainPage : ContentPage
         {
             var ogrenci = (Profile)e.CurrentSelection[0];
             Preferences.Set("seciliOgrenciUserId", ogrenci.userId);
+            Preferences.Set("seciliOgrenciId", ogrenci.Id);
 
         }
 

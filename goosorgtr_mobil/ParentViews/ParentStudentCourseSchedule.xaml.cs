@@ -15,7 +15,7 @@ public partial class ParentStudentCourseSchedule : ContentPage
     protected async override void OnAppearing()
     {
         await Navigation.PopToRootAsync();
-        _model.DersProgramiDoldur();
+        await _model.DersProgramiDoldur();
         base.OnAppearing();
     }
 }

@@ -31,7 +31,7 @@ public partial class CourseScheduleViewModel : BaseViewModel
             var program = await UserService.GetDersProgramiAsync(ogrenciId);
             var dayliste = new List<DaySchedule>();
 
-            foreach (var gun in program.OrderBy(p => p.DaysOfWeek).GroupBy(p => p.DaysOfWeek))
+            foreach (var gun in program.OrderBy(p => p.DaysOfWeek).ThenBy(p=>p.StartTime).GroupBy(p => p.DaysOfWeek))
             {
                 var lessonliste = new List<Lesson>();//her güne resetlenecek
                 foreach (var ders in program.Where(p => p.DaysOfWeek == gun.Key))
@@ -51,8 +51,13 @@ public partial class CourseScheduleViewModel : BaseViewModel
 
             }   
             Days.Clear();
-            Days = new ObservableCollection<DaySchedule>(dayliste);
-            OnPropertyChanged(nameof(Days));
+            foreach (var item in dayliste)
+            {
+                Days.Add(item);
+            }
+
+            //Days = new ObservableCollection<DaySchedule>(dayliste);
+            //OnPropertyChanged(nameof(Days));
         }
         catch (Exception ex)
         {

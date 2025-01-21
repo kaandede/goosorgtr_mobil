@@ -65,6 +65,7 @@ namespace goosorgtr_mobil.ViewModels
 
         private async Task<List<LessonModel>> GetLessonsFromAPI()
         {
+            var sonuc = new List<LessonModel>();
 
             var seciliOgrenciId = Preferences.Get("seciliOgrenciId", string.Empty);
 
@@ -73,27 +74,33 @@ namespace goosorgtr_mobil.ViewModels
                 var program = await UserService.GetDersProgramiAsync(seciliOgrenciId);
 
 
-                return new List<LessonModel>
-                {
-                    new LessonModel
-                {
-                    LessonName = "Matematik",
-                    TeacherName = "Ayşe Yılmaz",
-                    LessonDays = "Pazartesi - Çarşamba",
-                    LessonIcon = "calculator.png",
-                    LessonColor = "#EEF2FF",
-                    ButtonColor = "#4F46E5"
-                },
-                    new LessonModel
-                {
-                    LessonName = "Fizik",
-                    TeacherName = "Mehmet Demir",
-                    LessonDays = "Salı - Perşembe",
-                    LessonIcon = "atom.png",
-                    LessonColor = "#FEF3C7",
-                    ButtonColor = "#D97706"
-                }
-                };
+                //foreach (var item in program.DistinctBy(c=>c.CourseId))
+                //{
+                //    item
+                //}
+
+
+                return sonuc;
+                //{
+                //    new LessonModel
+                //{
+                //    LessonName = "Matematik",
+                //    TeacherName = "Ayşe Yılmaz",
+                //    LessonDays = "Pazartesi - Çarşamba",
+                //    LessonIcon = "calculator.png",
+                //    LessonColor = "#EEF2FF",
+                //    ButtonColor = "#4F46E5"
+                //},
+                //    new LessonModel
+                //{
+                //    LessonName = "Fizik",
+                //    TeacherName = "Mehmet Demir",
+                //    LessonDays = "Salı - Perşembe",
+                //    LessonIcon = "atom.png",
+                //    LessonColor = "#FEF3C7",
+                //    ButtonColor = "#D97706"
+                //}
+                //};
             }
             else
             {
