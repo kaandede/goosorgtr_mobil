@@ -34,6 +34,8 @@ namespace goosorgtr_mobil
              Routing.RegisterRoute(nameof(OkulOdemeleriPage), typeof(OkulOdemeleriPage));
             Routing.RegisterRoute(nameof(OgretmenGorusmesiPage), typeof(OgretmenGorusmesiPage));
             Routing.RegisterRoute(nameof(IzinTalebiPage), typeof(IzinTalebiPage));
+
+          
         }
 
         private void Button_Clicked(object sender, EventArgs e)
