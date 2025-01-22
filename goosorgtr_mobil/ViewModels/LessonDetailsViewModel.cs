@@ -60,7 +60,7 @@ namespace goosorgtr_mobil.ViewModels
             if (lesson == null)
                 return;
 
-            await Application.Current.MainPage.Navigation.PushAsync(new DersDetay2());
+            await Application.Current.MainPage.Navigation.PushAsync(new ParentStudentHomeWorkDetails());
         }
 
         private async Task<List<LessonModel>> GetLessonsFromAPI()

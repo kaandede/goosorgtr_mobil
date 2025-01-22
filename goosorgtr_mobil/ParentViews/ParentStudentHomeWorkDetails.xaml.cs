@@ -1,22 +1,17 @@
-using goosorgtr_mobil.ViewModels;
+using GoosClient.Models;
 
-namespace goosorgtr_mobil.ParentViews
+namespace goosorgtr_mobil.ParentViews;
+
+public partial class ParentStudentHomeWorkDetails : ContentPage
 {
-    public partial class ParentStudentHomeWorkDetails : ContentPage
+    public ParentStudentHomeWorkDetails()
     {
-        private LessonDetailsViewModel _model;
+        InitializeComponent();
 
-        public ParentStudentHomeWorkDetails()
-        {
-            InitializeComponent();
-            _model = new LessonDetailsViewModel();
-            BindingContext = _model;
-        }
 
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            await _model.DersleriDoldur();
-        }
+
+        var viewModel = new ParentStudentHomeWorkViewModel();
+
+        BindingContext = viewModel;
     }
 }

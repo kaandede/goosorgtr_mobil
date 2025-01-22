@@ -1,43 +1,34 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Threading.Tasks;
+using GoosClient.Models;
+using GoosClient.Services;
+using goosorgtr_mobil.ViewModels;
 
-namespace goosorgtr_mobil.Models
+public class ParentStudentHomeWorkViewModel : BaseViewModel
 {
-    public class ParentStudentHomeWorkViewModel : INotifyPropertyChanged
+  
+
+    public ObservableCollection<CourseModel> Courses { get; set; } = new ObservableCollection<CourseModel>();
+
+    public ParentStudentHomeWorkViewModel()
     {
-        public ObservableCollection<Ders> Dersler { get; set; } = new();
-
-        public ParentStudentHomeWorkViewModel()
-        {
-            Dersler = new ObservableCollection<Ders>
-            {
-                new Ders { Adi = "Matematik" },
-                new Ders { Adi = "Fen Bilgisi" },
-                new Ders { Adi = "İngilizce" }
-            };
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+     
+        Task.Run(LoadCoursesAsync);
     }
 
-    public class Ders : INotifyPropertyChanged
+    private async Task LoadCoursesAsync()
     {
-        public string? Adi { get; set; }
+        //var courseList = await GetStudentCoursesAsync(); // Örnek ID
+        Courses.Clear();
 
-        private bool isExpanded;
-        public bool IsExpanded
-        {
-            get => isExpanded;
-            set
-            {
-                if (isExpanded != value)
-                {
-                    isExpanded = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsExpanded)));
-                }
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        //foreach (var course in courseList)
+        //{
+        //    Courses.Add(course);
+        //}
     }
+
+    //private async Task<IEnumerable<CourseModel>> GetStudentCoursesAsync()
+    //{
+    //    return await UserService.GetOgrenciDersleriAsync(ogrenciId: 99);
+    //}
 }
