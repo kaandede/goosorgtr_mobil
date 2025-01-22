@@ -1,21 +1,19 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentLocation"
              xmlns:local="clr-namespace:goosorgtr_mobil.Models" 
-             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              BackgroundColor="#F3F2F7">
 
     <ContentPage.BindingContext>
         <local:ParentViewModel/>
     </ContentPage.BindingContext>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <!-- Renk Şeması -->
             <Color x:Key="PrimaryColor">#2563EB</Color>
             <Color x:Key="SecondaryColor">#16A34A</Color>
             <Color x:Key="WarningColor">#F59E0B</Color>
-            <Color x:Key="DangerColor">#DC2626</Color>
             <Color x:Key="GrayColor">#6B7280</Color>
 
             <!-- Kart Stili -->
@@ -30,93 +28,56 @@
     </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto,*">
+        <!-- Öğrenci Kartı -->
         <Frame Style="{StaticResource LocationCardStyle}"
                Margin="16,10,16,0">
-            <StackLayout>
-                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                    <!-- Öğrenci Fotoğrafı -->
-                    <Frame HeightRequest="50" 
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                <!-- Öğrenci Fotoğrafı -->
+                <Frame HeightRequest="50" 
                        WidthRequest="50"
                        CornerRadius="25"
                        BorderColor="Transparent"
                        Padding="0"
                        IsClippedToBounds="True">
-                        <Image Source="https://cdn.pixabay.com/photo/2024/08/14/17/34/ai-generated-8969238_640.jpg"
+                    <Image Source="https://cdn.pixabay.com/photo/2024/08/14/17/34/ai-generated-8969238_640.jpg"
                            Aspect="AspectFill"/>
-                    </Frame>
+                </Frame>
 
-                    <!-- Öğrenci Bilgileri -->
-                    <VerticalStackLayout Grid.Column="1" Spacing="4">
-                        <Label Text="Burak Yılmaz"
+                <!-- Öğrenci Bilgileri -->
+                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                    <Label Text="Burak Yılmaz"
                            FontAttributes="Bold"
                            FontSize="18"/>
-                        <Label Text="3-A Sınıfı"
+                    <Label Text="3-A Sınıfı"
                            TextColor="{StaticResource GrayColor}"
                            FontSize="14"/>
-                    </VerticalStackLayout>
+                </VerticalStackLayout>
 
-                    <!-- Durum İndikatörü -->
-                    <Frame Grid.Column="2"
+                <!-- Durum İndikatörü -->
+                <Frame Grid.Column="2"
                        BorderColor="Transparent"
                        BackgroundColor="#ECFDF5"
                        Padding="12,6"
                        CornerRadius="12">
-                        <Label Text="Okulda"
+                    <Label Text="Okulda"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            TextColor="{StaticResource SecondaryColor}"
                            FontAttributes="Bold"
                            FontSize="14"/>
-                    </Frame>
-                </Grid>
-                <Grid Grid.Row="1" Margin="0,10,0,0">
-                    <Frame BorderColor="Transparent" Padding="2" HeightRequest="250">
-                        <maps:Map x:Name="GoogleMap"
-                    MapType="Hybrid"
-                    IsShowingUser="False"
-                    IsTrafficEnabled="True"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="CenterAndExpand">
-                            <maps:Map.ItemTemplate>
-                                <DataTemplate x:DataType="maps:Pin">
-                                    <maps:Pin Location="{Binding Location}" Address="{Binding Address}" Label="{Binding Label}"/>
-
-                                </DataTemplate>
-                            </maps:Map.ItemTemplate>
-                        </maps:Map>
-                    </Frame>
-                </Grid>
-            </StackLayout>
-            
+                </Frame>
+            </Grid>
         </Frame>
-      
+
         <!-- Ana İçerik -->
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <Grid Margin="16,10,16,0" RowDefinitions="Auto,Auto,*" Padding="0">
-                <!-- Harita -->
-                <!--<Grid>
-                    <Frame BorderColor="Transparent" Padding="15" HeightRequest="250">
-                        <maps:Map x:Name="GoogleMap"
-                    MapType="Hybrid"
-                    IsShowingUser="False"
-                    IsTrafficEnabled="True"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="CenterAndExpand">
-                            <maps:Map.ItemTemplate>
-                                <DataTemplate x:DataType="maps:Pin">
-                                    <maps:Pin Location="{Binding Location}" Address="{Binding Address}" Label="{Binding Label}"/>
-
-                                </DataTemplate>
-                            </maps:Map.ItemTemplate>
-                        </maps:Map>
-                    </Frame>
-                </Grid>-->
 
                 <!-- Konum Detayları -->
-                <Frame Grid.Row="1" 
+                <Frame Grid.Row="0" 
                        Style="{StaticResource LocationCardStyle}"
                        Margin="0,10">
-                    <Grid RowSpacing="10" RowDefinitions="*,*">
+                    <Grid RowSpacing="10" RowDefinitions="Auto,*">
                         <!-- Başlık -->
                         <Label Text="Konum Detayları"
                                FontAttributes="Bold"
@@ -186,9 +147,26 @@
                 </Frame>
 
                 <!-- Geçmiş Hareketler -->
-                <Frame Grid.Row="2" 
+                <Frame Grid.Row="1" 
                        Style="{StaticResource LocationCardStyle}">
                     <VerticalStackLayout Spacing="16">
+                        <!-- Tarih Seçme -->
+                        <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,8">
+                            <DatePicker x:Name="DatePickerControl"
+                                        Format="dd.MM.yyyy"
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"/>
+                            <Button Text="Seç"
+                                    Command="{Binding GetHistoryCommand}"
+                                    FontSize="14"
+                                    BackgroundColor="{StaticResource PrimaryColor}"
+                                    TextColor="White"
+                                    Padding="8,4"
+                                    CornerRadius="12"
+                                    WidthRequest="100"
+                                    HorizontalOptions="End"/>
+                        </Grid>
+
                         <Label Text="Konum Geçmişi"
                                FontAttributes="Bold"
                                FontSize="18"/>
@@ -238,10 +216,5 @@
                 </Frame>
             </Grid>
         </ScrollView>
-
-        <!-- Servis Modu İçin Alternatif Görünüm -->
-        <Grid Grid.Row="1" IsVisible="False">
-            <!-- Benzer yapıda ancak servis rotası ve durağa varış süresini gösteren tasarım -->
-        </Grid>
     </Grid>
 </ContentPage>

@@ -35,7 +35,9 @@
                  FontSize="15"
                  HorizontalTextAlignment="Start"
                  VerticalTextAlignment="Center"
-                 Text="Lütfen giriş yapın veya yeni bir hesap oluşturun."
+                 Text="Lütfen giriş yapın
+                       
+                       ."
                  TextColor="#666376"/>
             </VerticalStackLayout>
 

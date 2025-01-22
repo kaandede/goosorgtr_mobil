@@ -31,7 +31,7 @@ namespace goosorgtr_mobil.ParentViews
 
 
             var zaferkolej = new Location(39.8975372596863, 32.67921761534151);
-            GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(zaferkolej, Distance.FromKilometers(0.1)));
+            //GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(zaferkolej, Distance.FromKilometers(0.1)));
 
             Pins.Add(new Pin
             {
@@ -42,7 +42,7 @@ namespace goosorgtr_mobil.ParentViews
             });
 
             var mevkolej = new Location(39.89783152118657, 32.686864328835384);
-            GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(mevkolej, Distance.FromKilometers(0.1)));
+            //GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(mevkolej, Distance.FromKilometers(0.1)));
 
             Pins.Add(new Pin
             {
@@ -59,8 +59,8 @@ namespace goosorgtr_mobil.ParentViews
             //    Label = "Öðrenci Þuan Okulda"
             //};
 
-            GoogleMap.Pins.Clear(); 
-            GoogleMap.ItemsSource = Pins;
+            //GoogleMap.Pins.Clear(); 
+            //GoogleMap.ItemsSource = Pins;
         }
        
     }
