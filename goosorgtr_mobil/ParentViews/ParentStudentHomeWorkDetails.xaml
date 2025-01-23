@@ -4,36 +4,80 @@
              xmlns:vm="clr-namespace:goosorgtr_mobil.ViewModels"
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentHomeWorkDetails"
              Title="Dersler"
-             BackgroundColor="#F3F2F7">
+             BackgroundColor="#F5F5F5">
 
     <ContentPage.BindingContext>
         <vm:LessonDetailsViewModel />
     </ContentPage.BindingContext>
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20">
-            <Label Text="Dersler"
-                 FontSize="28"
-                 FontAttributes="Bold"
-                 TextColor="#1a1a1a"
-                 Margin="0,0,0,20" />
+    <Grid RowDefinitions="Auto,Auto,*" Padding="0">
+        <!-- TabBar -->
+        <StackLayout Orientation="Horizontal" 
+                     BackgroundColor="#EFEFEF"
+                     Padding="10" 
+                     Spacing="20">
+            <Button Text="Sınavlar" 
+                    FontSize="14" 
+                    TextColor="White" 
+                    BackgroundColor="#3498DB"
+                    CornerRadius="10"
+                    Command="{Binding NavigateToExamsCommand}" Clicked="Button_Clicked"/>
 
-            <!-- Ders Listesi -->
-            <CollectionView ItemsSource="{Binding Courses}">
+            <Button Text="Ders Notları" 
+                    FontSize="14" 
+                    TextColor="White" 
+                    BackgroundColor="#2ECC71"
+                    CornerRadius="10"
+                    Command="{Binding NavigateToGradesCommand}" Clicked="Button_Clicked_1"/>
+
+            <Button Text="Karne" 
+                    FontSize="14" 
+                    TextColor="White" 
+                    BackgroundColor="#E74C3C"
+                    CornerRadius="10"
+                    Command="{Binding NavigateToReportCardCommand}" Clicked="Button_Clicked_2"/>
+        </StackLayout>
+
+        <!-- Başlık -->
+        <Label Grid.Row="1"
+               Text="Derslerim"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="#2C3E50"
+               HorizontalOptions="Start"
+               Margin="20,10,0,10"/>
+
+        <!-- İçerik -->
+        <RefreshView Grid.Row="2"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCoursesCommand}">
+            <CollectionView ItemsSource="{Binding Courses}"
+                            SelectionMode="Single"
+                            BackgroundColor="Transparent"
+                            SelectionChangedCommand="{Binding CourseSelectedCommand}"
+                            SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border StrokeShape="RoundRectangle 12" BackgroundColor="White" Margin="0,10">
-                            <Grid Padding="15" ColumnDefinitions="*,Auto">
+                        <Frame BorderColor="Transparent"
+                               BackgroundColor="White"
+                               Margin="15,10"
+                               Padding="15"
+                               CornerRadius="15"
+                               HasShadow="True">
+                            <StackLayout>
                                 <Label Text="{Binding CourseName}"
-                                     FontSize="18"
-                                     FontAttributes="Bold"
-                                     TextColor="#1a1a1a" />
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#1A1A1A"/>
 
-                            </Grid>
-                        </Border>
+                                <Label Text="{Binding CourseTeacher}"
+                                       FontSize="14"
+                                       TextColor="#666666"/>
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
+        </RefreshView>
+    </Grid>
 </ContentPage>

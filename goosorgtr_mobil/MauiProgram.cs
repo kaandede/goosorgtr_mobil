@@ -75,14 +75,17 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<OgretmenGorusmesiPage>();
             builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<IPreferencesService, PreferencesService>();
+            builder.Services.AddTransient<ExamsPage>(); 
+            builder.Services.AddTransient<ReportCardPage>();
+            builder.Services.AddTransient<GradesPage>();
 
-//#if ANDROID
-//    builder.ConfigureMauiHandlers(handlers =>
-//    {
-//        handlers.AddHandler(typeof(Microsoft.Maui.Controls.Maps.Map),
-//            typeof(Microsoft.Maui.Maps.Handlers.MapHandler));
-//    });
-//#endif
+            //#if ANDROID
+            //    builder.ConfigureMauiHandlers(handlers =>
+            //    {
+            //        handlers.AddHandler(typeof(Microsoft.Maui.Controls.Maps.Map),
+            //            typeof(Microsoft.Maui.Maps.Handlers.MapHandler));
+            //    });
+            //#endif
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

@@ -34,6 +34,10 @@ namespace goosorgtr_mobil
              Routing.RegisterRoute(nameof(OkulOdemeleriPage), typeof(OkulOdemeleriPage));
             Routing.RegisterRoute(nameof(OgretmenGorusmesiPage), typeof(OgretmenGorusmesiPage));
             Routing.RegisterRoute(nameof(IzinTalebiPage), typeof(IzinTalebiPage));
+            Routing.RegisterRoute(nameof(ExamsPage), typeof(ExamsPage));
+            Routing.RegisterRoute(nameof(ReportCardPage), typeof(ReportCardPage));
+            Routing.RegisterRoute(nameof(GradesPage), typeof(GradesPage));
+           
 
           
         }

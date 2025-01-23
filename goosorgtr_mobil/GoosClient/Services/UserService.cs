@@ -246,6 +246,10 @@ namespace GoosClient.Services
 
         }
 
+        internal static async Task<IEnumerable<object>> GetOgrenciDersleriAsync(string seciliOgrenciId)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

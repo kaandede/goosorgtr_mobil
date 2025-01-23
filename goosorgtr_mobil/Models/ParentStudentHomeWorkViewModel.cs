@@ -18,17 +18,18 @@ public class ParentStudentHomeWorkViewModel : BaseViewModel
 
     private async Task LoadCoursesAsync()
     {
-        //var courseList = await GetStudentCoursesAsync(); // Örnek ID
+        var courseList = await GetStudentCoursesAsync(); // Örnek ID
         Courses.Clear();
 
-        //foreach (var course in courseList)
-        //{
-        //    Courses.Add(course);
-        //}
+        foreach (var course in courseList)
+        {
+            Courses.Add(course);
+        }
     }
 
-    //private async Task<IEnumerable<CourseModel>> GetStudentCoursesAsync()
-    //{
-    //    return await UserService.GetOgrenciDersleriAsync(ogrenciId: 99);
-    //}
+    private async Task<IEnumerable<CourseModel>> GetStudentCoursesAsync()
+    {
+        return await UserService.GetOgrenciDersleriAsync(ogrenciId: 87);
+    }
+  
 }
