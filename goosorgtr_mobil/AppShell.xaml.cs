@@ -46,7 +46,7 @@ namespace goosorgtr_mobil
         {
             Preferences.Set("token", string.Empty);
             Preferences.Set("username", string.Empty);
-            Shell.Current.GoToAsync($"//{nameof(Login)}");
+            Shell.Current.GoToAsync(nameof(Login));
         }
     }
 }

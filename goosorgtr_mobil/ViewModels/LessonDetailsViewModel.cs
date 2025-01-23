@@ -8,19 +8,14 @@ namespace goosorgtr_mobil.ViewModels
     public class LessonDetailsViewModel : BaseViewModel
     {
         private ObservableCollection<CourseModel> _courses;
-        private bool _isRefreshing;
-
+   
         public ObservableCollection<CourseModel> Courses
         {
             get => _courses;
             set => SetProperty(ref _courses, value);
         }
 
-        public bool IsRefreshing
-        {
-            get => _isRefreshing;
-            set => SetProperty(ref _isRefreshing, value);
-        }
+     
 
         // Yeni Komutlar
         public ICommand RefreshCoursesCommand { get; }
@@ -40,15 +35,16 @@ namespace goosorgtr_mobil.ViewModels
             NavigateToExamsCommand = new Command(async () => await NavigateToPage("ExamsPage"));
             NavigateToGradesCommand = new Command(async () => await NavigateToPage("GradesPage"));
             NavigateToReportCardCommand = new Command(async () => await NavigateToPage("ReportCardPage"));
+           // LoadCoursesAsync().ConfigureAwait(true);
 
-            LoadCoursesAsync();
+
         }
 
         private async Task LoadCoursesAsync()
         {
-            if (IsRefreshing) return;
+            if (!IsRefreshing) return;
 
-            IsRefreshing = true;
+          
             try
             {
                 var seciliOgrenciId = Preferences.Get("seciliOgrenciId", string.Empty);
@@ -62,7 +58,7 @@ namespace goosorgtr_mobil.ViewModels
                     return;
                 }
 
-                var courses = await UserService.GetOgrenciDersleriAsync(seciliOgrenciId);
+                var courses = await UserService.GetOgrenciDersleriAsync(int.Parse(seciliOgrenciId));
 
                 Courses.Clear();
                 foreach (var course in courses)
@@ -80,7 +76,8 @@ namespace goosorgtr_mobil.ViewModels
             }
             finally
             {
-                IsRefreshing = false;
+                IsRefreshing = false;            
+                IsLoading = false;
             }
         }
 
@@ -115,7 +112,7 @@ namespace goosorgtr_mobil.ViewModels
             try
             {
                 // Shell ile sayfa geçişi
-                await Shell.Current.GoToAsync($"//{pageName}");
+                await Shell.Current.GoToAsync(pageName);
             }
             catch (Exception ex)
             {

@@ -34,7 +34,7 @@ public partial class ParentUser : ContentPage
         Preferences.Set("token",string.Empty);
         Preferences.Set("username", string.Empty);
   
-        Shell.Current.GoToAsync($"//{nameof(Login)}");
+        Shell.Current.GoToAsync(nameof(Login));
     }
     private async void profilayarlar_Tapped(object sender, TappedEventArgs e)
     {

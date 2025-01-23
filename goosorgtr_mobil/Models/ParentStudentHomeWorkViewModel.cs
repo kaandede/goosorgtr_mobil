@@ -1,8 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using GoosClient.Models;
+﻿using GoosClient.Models;
 using GoosClient.Services;
 using goosorgtr_mobil.ViewModels;
+using System.Collections.ObjectModel;
 
 public class ParentStudentHomeWorkViewModel : BaseViewModel
 {
@@ -18,18 +17,24 @@ public class ParentStudentHomeWorkViewModel : BaseViewModel
 
     private async Task LoadCoursesAsync()
     {
-        var courseList = await GetStudentCoursesAsync(); // Örnek ID
-        Courses.Clear();
-
-        foreach (var course in courseList)
+        try
         {
-            Courses.Add(course);
+
+            var courseList = await UserService.GetOgrenciDersleriAsync(ogrenciId: 87); // Örnek ID
+            Courses.Clear();
+
+            foreach (var course in courseList)
+            {
+                Courses.Add(course);
+            }
+        }
+        catch (Exception ex)
+        {
+
+            var d = ex;
         }
     }
 
-    private async Task<IEnumerable<CourseModel>> GetStudentCoursesAsync()
-    {
-        return await UserService.GetOgrenciDersleriAsync(ogrenciId: 87);
-    }
+
   
 }

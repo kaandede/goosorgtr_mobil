@@ -22,7 +22,7 @@ public partial class Login : ContentPage
         {
             await Shell.Current.DisplayAlert("Hata", "Kullanýcý adý ve parola giriniz", "Tamam");
         }
-
+        Preferences.Clear();
         var sonuc = await UserService.Login(txtKullaniciAdi.Text, txtParola.Text);
 
         //var examlar = await UserService.GetExamAsync();
@@ -30,9 +30,12 @@ public partial class Login : ContentPage
 
         if (sonuc)
         {
+
+        
+
             Preferences.Set("username", txtKullaniciAdi.Text);
 
-            await Shell.Current.GoToAsync($"//{nameof(ParentMainPage)}");
+            await Shell.Current.GoToAsync("///"+nameof(ParentMainPage));
         }
         else
         {

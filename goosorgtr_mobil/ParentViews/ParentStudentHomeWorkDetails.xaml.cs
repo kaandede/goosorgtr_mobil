@@ -1,5 +1,4 @@
-using System.Runtime.InteropServices.Marshalling;
-using GoosClient.Models;
+using goosorgtr_mobil.ViewModels;
 
 namespace goosorgtr_mobil.ParentViews;
 
@@ -11,7 +10,7 @@ public partial class ParentStudentHomeWorkDetails : ContentPage
 
 
 
-        var viewModel = new ParentStudentHomeWorkViewModel();
+        var viewModel = new LessonDetailsViewModel();
 
         BindingContext = viewModel;
     }

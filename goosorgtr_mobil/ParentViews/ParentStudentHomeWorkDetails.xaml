@@ -49,7 +49,7 @@
 
         <!-- İçerik -->
         <RefreshView Grid.Row="2"
-                     IsRefreshing="{Binding IsRefreshing}"
+                     IsRefreshing="{Binding IsRefreshing,Mode=TwoWay}"
                      Command="{Binding RefreshCoursesCommand}">
             <CollectionView ItemsSource="{Binding Courses}"
                             SelectionMode="Single"

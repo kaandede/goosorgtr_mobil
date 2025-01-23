@@ -29,7 +29,7 @@ public partial class ParentMainPage : ContentPage
     private async void OnCounterClicked(object sender, EventArgs e)
     {
 
-        await Shell.Current.GoToAsync($"//{nameof(Login)}");
+        await Shell.Current.GoToAsync(nameof(Login));
     }
 
     private async void User_Clicked(object sender, EventArgs e)
@@ -58,8 +58,8 @@ public partial class ParentMainPage : ContentPage
         if (e.CurrentSelection.Count > 0)
         {
             var ogrenci = (Profile)e.CurrentSelection[0];
-            Preferences.Set("seciliOgrenciUserId", ogrenci.userId);
-            Preferences.Set("seciliOgrenciId", ogrenci.Id);
+            Preferences.Set("seciliOgrenciUserId", ogrenci.userId.ToString());
+            Preferences.Set("seciliOgrenciId", ogrenci.Id.ToString());
 
         }
 
