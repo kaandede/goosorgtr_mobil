@@ -75,8 +75,11 @@ namespace goosorgtr_mobil
             builder.Services.AddTransient<OgretmenGorusmesiPage>();
             builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<IPreferencesService, PreferencesService>();
-            builder.Services.AddTransient<ExamsPage>(); 
+            
             builder.Services.AddTransient<ReportCardPage>();
+            builder.Services.AddTransient<ExamModel>();
+            builder.Services.AddTransient<GradeModel>();
+            builder.Services.AddTransient<ExamPageViewModel>();
             builder.Services.AddTransient<GradesPage>();
 
             //#if ANDROID

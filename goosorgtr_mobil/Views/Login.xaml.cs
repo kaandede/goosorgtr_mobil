@@ -25,8 +25,8 @@ public partial class Login : ContentPage
         Preferences.Clear();
         var sonuc = await UserService.Login(txtKullaniciAdi.Text, txtParola.Text);
 
-        //var examlar = await UserService.GetExamAsync();
-        //var attandance = await UserService.GetAttendanceAsync(100);
+       
+        var attandance = await UserService.GetAttendanceAsync(100);
 
         if (sonuc)
         {

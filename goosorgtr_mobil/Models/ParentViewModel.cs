@@ -60,30 +60,31 @@ namespace goosorgtr_mobil.Models
 
         public async void OgrenciGetir()
         {
-            if (Profiles.Count == 0)
+            Profiles.Clear();
+
+            var liste = await UserService.GetStudentsAsync(50);//veli id
+            if (liste.Count > 0)
             {
-                var liste = await UserService.GetStudentsAsync();
-                if (liste.Count > 0) {
 
-                    for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)
+                {
+                    Profiles.Add(new Profile()
                     {
-                        Profiles.Add(new Profile()
-                        {
-                            Name = liste[i].NameSurname,
-                            NoPhotos = int.Parse(liste[i].StudentNumber),
-                            Konum = "Okula Giriş Yapıldı",
-                            Descreption = "Servisten İndi",
-                            Saat = "08:30",
-                            ProfileImage = "kiz_ogrenci_1.jpg",
-                            Id = liste[i].Id,
-                            userId = liste[i].UserId,
-                            
-                        });
+                        Name = liste[i].NameSurname,
+                        NoPhotos = int.Parse(liste[i].StudentNumber),
+                        Konum = "Okula Giriş Yapıldı",
+                        Descreption = "Servisten İndi",
+                        Saat = "08:30",
+                        ProfileImage = "kiz_ogrenci_1.jpg",
+                        Id = liste[i].Id,
+                        studentId = liste[i].StudentId,
+                        userId = liste[i].UserId
 
-                    }
+                    });
+
                 }
-            
             }
+
 
         }
 

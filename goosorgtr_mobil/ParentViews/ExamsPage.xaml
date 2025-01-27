@@ -1,21 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:goosorgtr_mobil.ViewModels"
              x:Class="goosorgtr_mobil.ParentViews.ExamsPage"
-             Title="Sınavlar">
-    <StackLayout Padding="20">
-        <Label Text="Sınavlar Listesi"
-               FontSize="24"
-               FontAttributes="Bold" />
+             Title="{Binding Title}">
 
-        <CollectionView ItemsSource="{Binding Exams}">
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding RefreshCommand}">
+        <CollectionView ItemsSource="{Binding Exams}"
+                       ItemsLayout="VerticalList">
+            <CollectionView.EmptyView>
+                <StackLayout Padding="20">
+                    <Label Text="Henüz sınav bulunmamaktadır."
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="10" Margin="5" BorderColor="Gray">
-                        <Label Text="{Binding ExamName}" FontSize="20" />
-                        <Label Text="{Binding ExamDate}" FontSize="16" TextColor="Gray" />
+                    <Frame Margin="10,5" 
+                           Padding="15" 
+                           BorderColor="LightGray">
+                        <Grid RowSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" 
+                                   Text="{Binding ExamName}" 
+                                   FontAttributes="Bold"
+                                   FontSize="16"/>
+
+                            <Label Grid.Row="1" 
+                                   Text="{Binding CourseName}"
+                                   TextColor="Gray"/>
+
+                            <Label Grid.Row="2" 
+                                   Text="{Binding ExamDate, StringFormat='{0:dd.MM.yyyy HH:mm}'}"
+                                   TextColor="Gray"/>
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </RefreshView>
+
 </ContentPage>

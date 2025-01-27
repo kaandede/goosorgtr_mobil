@@ -1,4 +1,5 @@
 using goosorgtr_mobil.Models;
+using goosorgtr_mobil.ViewModels;
 using goosorgtr_mobil.Views;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -7,13 +8,14 @@ namespace goosorgtr_mobil.ParentViews;
 public partial class ParentMainPage : ContentPage
 {
     public ParentViewModel _parentViewModel;
+    private GradePageViewModel _grandewievmodel;
 
     public ParentMainPage()
     {
         InitializeComponent();
         _parentViewModel = new ParentViewModel();
+        _grandewievmodel = new GradePageViewModel(); // Initialize GradePageViewModel
         BindingContext = _parentViewModel;
-
         mrbKullaniciMesaj.Text = $"Merhaba, {Preferences.Get("username", string.Empty)}";
     }
     protected async override void OnAppearing()
@@ -51,17 +53,16 @@ public partial class ParentMainPage : ContentPage
     {
         await Navigation.PushAsync(new ParentHarcama());
     }
-
-    private void ogrenciListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void ogrenciListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-
         if (e.CurrentSelection.Count > 0)
         {
             var ogrenci = (Profile)e.CurrentSelection[0];
             Preferences.Set("seciliOgrenciUserId", ogrenci.userId.ToString());
-            Preferences.Set("seciliOgrenciId", ogrenci.Id.ToString());
+            Preferences.Set("seciliOgrenciId", ogrenci.studentId.ToString());
 
+            // Seçilen öðrencinin notlarýný çek
+            await _grandewievmodel.LoadStudentGrades(int.Parse(ogrenci.studentId.ToString()));
         }
-
     }
 }

@@ -6,14 +6,22 @@ namespace goosorgtr_mobil.ViewModels
 {
     public partial class BaseViewModel : ObservableObject
     {
-
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsNotLoading))]
         bool isLoading;
         public bool IsNotLoading => !isLoading;
 
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsNotBusy))]
+        bool isBusy;
+        public bool IsNotBusy => !isBusy;
+
+        [ObservableProperty]
         bool isRefreshing;
+
+        [ObservableProperty]
+        string title;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -24,9 +32,7 @@ namespace goosorgtr_mobil.ViewModels
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(storage, value))
-            {
                 return false;
-            }
 
             storage = value;
             OnPropertyChanged(propertyName);

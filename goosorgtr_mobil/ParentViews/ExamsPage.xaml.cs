@@ -1,10 +1,21 @@
-namespace goosorgtr_mobil.ParentViews;
+using goosorgtr_mobil.ViewModels;
 
-public partial class ExamsPage : ContentPage
+namespace goosorgtr_mobil.ParentViews
 {
-	public ExamsPage()
-	{
-		InitializeComponent();
-	}
-  
+    public partial class ExamsPage : ContentPage
+{
+    ExamPageViewModel _viewModel;
+        
+    public ExamsPage()
+    {
+            InitializeComponent();
+        BindingContext = _viewModel = new ExamPageViewModel();
+    }
+
+        protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.LoadExams();
+    }
+}
 }

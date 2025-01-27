@@ -5,7 +5,6 @@
              x:Class="goosorgtr_mobil.ParentViews.ParentStudentHomeWorkDetails"
              Title="Dersler"
              BackgroundColor="#F5F5F5">
-
     <ContentPage.BindingContext>
         <vm:LessonDetailsViewModel />
     </ContentPage.BindingContext>
@@ -14,38 +13,36 @@
         <!-- TabBar -->
         <StackLayout Orientation="Horizontal" 
                      BackgroundColor="#EFEFEF"
-                     Padding="10" 
-                     Spacing="20">
+                     Padding="16" 
+                     Spacing="16">
             <Button Text="Sınavlar" 
                     FontSize="14" 
                     TextColor="White" 
                     BackgroundColor="#3498DB"
                     CornerRadius="10"
-                    Command="{Binding NavigateToExamsCommand}" Clicked="Button_Clicked"/>
-
+                    Command="{Binding NavigateToExamsCommand}" />
             <Button Text="Ders Notları" 
                     FontSize="14" 
                     TextColor="White" 
                     BackgroundColor="#2ECC71"
                     CornerRadius="10"
-                    Command="{Binding NavigateToGradesCommand}" Clicked="Button_Clicked_1"/>
-
+                    Command="{Binding NavigateToGradesCommand}" />
             <Button Text="Karne" 
                     FontSize="14" 
                     TextColor="White" 
                     BackgroundColor="#E74C3C"
                     CornerRadius="10"
-                    Command="{Binding NavigateToReportCardCommand}" Clicked="Button_Clicked_2"/>
+                    Command="{Binding NavigateToReportCardCommand}" />
         </StackLayout>
 
         <!-- Başlık -->
         <Label Grid.Row="1"
                Text="Derslerim"
-               FontSize="28"
+               FontSize="24"
                FontAttributes="Bold"
                TextColor="#2C3E50"
                HorizontalOptions="Start"
-               Margin="20,10,0,10"/>
+               Margin="20,16,0,16"/>
 
         <!-- İçerik -->
         <RefreshView Grid.Row="2"
@@ -60,16 +57,15 @@
                     <DataTemplate>
                         <Frame BorderColor="Transparent"
                                BackgroundColor="White"
-                               Margin="15,10"
-                               Padding="15"
-                               CornerRadius="15"
+                               Margin="16,12"
+                               Padding="16"
+                               CornerRadius="16"
                                HasShadow="True">
                             <StackLayout>
                                 <Label Text="{Binding CourseName}"
-                                       FontSize="20"
+                                       FontSize="18"
                                        FontAttributes="Bold"
                                        TextColor="#1A1A1A"/>
-
                                 <Label Text="{Binding CourseTeacher}"
                                        FontSize="14"
                                        TextColor="#666666"/>

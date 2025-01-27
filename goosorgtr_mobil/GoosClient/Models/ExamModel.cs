@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
-
-namespace GoosClient.Models
+namespace goosorgtr_mobil.Models
 {
     public class ExamModel
     {
-
         [JsonProperty("examName")]
         public string ExamName { get; set; }
 
@@ -33,6 +32,4 @@ namespace GoosClient.Models
         [JsonProperty("id")]
         public int Id { get; set; }
     }
-
-
 }

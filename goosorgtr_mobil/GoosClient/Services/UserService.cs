@@ -1,7 +1,10 @@
-﻿using GoosClient.InputModels;
+﻿
 using GoosClient.Models;
+using goosorgtr_mobil.GoosClient.Models;
+using goosorgtr_mobil.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 
 namespace GoosClient.Services
@@ -49,7 +52,7 @@ namespace GoosClient.Services
             //var tokenVarmi = Preferences.Get("token",string.Empty);
             //if (!string.IsNullOrEmpty(tokenVarmi))
             //{
-            //    return true;//TOKEN VARSA DİREK GİRSİN
+            //   return true;//TOKEN VARSA DİREK GİRSİN
             //}
 
             var login = new LoginModel() { UserName = userName, Password = password };
@@ -72,7 +75,7 @@ namespace GoosClient.Services
                 }
                 var jsonResult = await response.Content.ReadAsStringAsync();
                 var token = JsonConvert.DeserializeObject<Token>(jsonResult);
-             
+
                 if (token == null)
                 {
                     return false;
@@ -80,6 +83,24 @@ namespace GoosClient.Services
                 else
                 {
                     Preferences.Set("token", token.AccessToken);
+
+                    //user id ile kullanıcı detaylarını çek
+
+
+
+                    try
+                    {
+                        await GetUserInfo("P-Stephanie60.");
+                    }
+                    catch (Exception e)
+                    {
+
+                        var s = e;
+                    }
+
+
+
+
                     return true;
                 }
 
@@ -88,18 +109,21 @@ namespace GoosClient.Services
                 //{
                 //    writer.WriteLine(token.AccessToken); // Write a line of text
                 //}
-          
 
-       
+
+
 
 
             }
 
 
         }
-        public static async Task<List<StudentModel>> GetStudentsAsync()
+
+
+
+        public static async Task<List<StudentParentModel>> GetStudentsAsync(int parentId)
         {
-            var endpoint = "/api/app/student";
+            var endpoint = $"/api/app/student-parent/students?parentId={parentId}&useUserId=false";
             var token = Preferences.Get("token", string.Empty);
 
             if (string.IsNullOrEmpty(token))
@@ -114,7 +138,7 @@ namespace GoosClient.Services
 
                 var response = await client.GetStringAsync(BaseUrl + endpoint);
 
-                var students = JsonConvert.DeserializeObject<ListedResult<StudentModel>>(response).Items;
+                var students = JsonConvert.DeserializeObject<List<StudentParentModel>>(response);
 
                 return students;
             }
@@ -138,7 +162,7 @@ namespace GoosClient.Services
             }
 
         }
- 
+
         public static async Task<List<SemesterModel>> GetSemestersAsync()
         {
             var endpoint = "/api/app/Semester";
@@ -157,7 +181,7 @@ namespace GoosClient.Services
 
         }
 
-        public static async Task<List<AttendanceModel>> GetAttendanceAsync(int studentId, int courseId=0, int classId=0)//değer verilmezse 0 olsun, etkilemez
+        public static async Task<List<AttendanceModel>> GetAttendanceAsync(int studentId, int courseId = 0, int classId = 0)//değer verilmezse 0 olsun, etkilemez
         {
             var endpoint = $"/api/app/attendance?StudentId={studentId}&CourseId={courseId}&ClassId={classId}";
             var token = Preferences.Get("token", string.Empty);
@@ -219,14 +243,10 @@ namespace GoosClient.Services
             using (var client = new HttpClient(GetHttpClientHandler()))
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
-
                 var response = await client.GetStringAsync(BaseUrl + endpoint);
-
-                var objeccs = JsonConvert.DeserializeObject<ListedResult<ExamModel>>(response).Items;
-
-                return objeccs;
+                var objects = JsonConvert.DeserializeObject<ListedResult<ExamModel>>(response).Items;
+                return objects;
             }
-
         }
         public static async Task<List<CourseModel>> GetOgrenciDersleriAsync(int ogrenciId)
         {
@@ -246,11 +266,46 @@ namespace GoosClient.Services
 
         }
 
-        internal static async Task<IEnumerable<object>> GetOgrenciDersleriAsync(string seciliOgrenciId)
+        public static async Task<List<GradeModel>> GetGradesAsync(int studentId, int courseId, double score, int examId)
         {
-            throw new NotImplementedException();
+            var endpoint = $"/api/app/grade?StudentId={studentId}&CourseId={courseId}&Score={score}&ExamId={examId}";
+            var token = Preferences.Get("token", string.Empty);
+
+            using (var client = new HttpClient(GetHttpClientHandler()))
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
+                var response = await client.GetStringAsync(BaseUrl + endpoint);
+                var objects = JsonConvert.DeserializeObject<ListedResult<GradeModel>>(response).Items;
+                return objects;
+            }
         }
+
+
+
+
+        public static async Task<bool> GetUserInfo(string userName)
+        {
+            var token = Preferences.Get("token", string.Empty);
+            var endpoint = $"/api/app/identity-user-app-service-custom/find-by-username?userName={userName}";
+            using (var client = new HttpClient(GetHttpClientHandler()))
+
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
+                var response = await client.PostAsync(BaseUrl + endpoint, null);
+                var data = await response.Content.ReadAsStringAsync();
+                var objects = JsonConvert.DeserializeObject<UserModel>(data);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        public class UserRequestDto
+        {
+            public string userName { get; set; }
+        }
+
     }
-
-
 }

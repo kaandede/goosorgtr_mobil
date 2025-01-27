@@ -16,6 +16,7 @@ namespace goosorgtr_mobil.Models
         public string? Saat { get; set; }
         public string? Descreption { get; set; }
 
-        public string userId { get; set; }
+        public int studentId { get; set; }
+        public int userId { get; set; }
     }
 }
