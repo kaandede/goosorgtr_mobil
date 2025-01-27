@@ -10,11 +10,7 @@ namespace GoosClient.Services
     {
         public static string BaseUrl { get; set; } = $"https://okul.goos.org.tr";
         private static HttpClientHandler GetHttpClientHandler()
-        {
-            // EXCEPTION: Javax.Net.Ssl.SSLHandshakeException: 'java.security.cert.CertPathValidatorException:
-            // Trust anchor for certification path not found.'
-            // SOLUTION: 
-            // ATTENTION: DO NOT USE IN PRODUCTION 
+        {       
 
             var httpClientHandler = new HttpClientHandler
             {
@@ -46,12 +42,7 @@ namespace GoosClient.Services
         }
         public static async Task<bool> Login(string userName, string password)
         {
-            //var tokenVarmi = Preferences.Get("token",string.Empty);
-            //if (!string.IsNullOrEmpty(tokenVarmi))
-            //{
-            //    return true;//TOKEN VARSA DİREK GİRSİN
-            //}
-
+      
             var login = new LoginModel() { UserName = userName, Password = password };
             var endpoint = "/connect/token";
 
