@@ -2,7 +2,6 @@
 using GoosClient.Models;
 using GoosClient.Services;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace goosorgtr_mobil.ViewModels;
 
