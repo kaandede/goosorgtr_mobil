@@ -78,9 +78,10 @@ namespace goosorgtr_mobil
             
             builder.Services.AddTransient<ReportCardPage>();
             builder.Services.AddTransient<ExamModel>();
-            builder.Services.AddTransient<GradeModel>();
             builder.Services.AddTransient<ExamPageViewModel>();
             builder.Services.AddTransient<GradesPage>();
+            builder.Services.AddTransient<GradePageViewModel>();
+            builder.Services.AddTransient<LessonDetailsViewModel>();
 
             //#if ANDROID
             //    builder.ConfigureMauiHandlers(handlers =>

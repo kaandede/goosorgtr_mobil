@@ -1,11 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using GoosClient.Services;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Diagnostics;
 
 namespace goosorgtr_mobil.Models
 {
     public partial class ParentViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private int selectedStudentId;
+
         public ObservableCollection<Profile> Profiles { get; set; } = new();
         public ObservableCollection<GeneratedImage> GeneratedImages { get; set; } = new();
 
@@ -18,29 +23,47 @@ namespace goosorgtr_mobil.Models
 
         public async void OgrenciGetir()
         {
-            Profiles.Clear();
-
-            var liste = await UserService.GetStudentsAsync(50);//veli id
-            if (liste.Count > 0)
+            try
             {
-                for (int i = 0; i < 2; i++)
+                Profiles.Clear();
+                var liste = await UserService.GetStudentsAsync(50);
+                
+                if (liste?.Count > 0)
                 {
-                    Profiles.Add(new Profile()
+                    foreach (var student in liste.Take(2))
                     {
-                        Name = liste[i].NameSurname,
-                        NoPhotos = int.Parse(liste[i].StudentNumber),
-                        Konum = "Okula Giriş Yapıldı",
-                        Descreption = "Servisten İndi",
-                        Saat = "08:30",
-                        ProfileImage = "kiz_ogrenci_1.jpg",
-                        Id = liste[i].Id,
-                        studentId = liste[i].StudentId,
-                        userId = liste[i].UserId
-                    });
+                        Profiles.Add(new Profile
+                        {
+                            Name = student.NameSurname,
+                            NoPhotos = int.Parse(student.StudentNumber),
+                            Konum = "Okula Giriş Yapıldı",
+                            Descreption = "Servisten İndi",
+                            Saat = "08:30",
+                            ProfileImage = "kiz_ogrenci_1.jpg",
+                            Id = student.Id,
+                            studentId = student.StudentId,
+                            userId = student.UserId
+                        });
+                    }
+                    
+                    // İlk öğrenciyi seç ve kaydet
+                    if (liste.Count == 1)
+                    {
+                        SelectedStudentId = liste[0].StudentId;
+                        Preferences.Set("SelectedStudentId", SelectedStudentId);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"OgrenciGetir Error: {ex}");
             }
         }
 
-
+        public void SelectStudent(int studentId)
+        {
+            SelectedStudentId = studentId;
+            Preferences.Set("SelectedStudentId", studentId);
+        }
     }
 }

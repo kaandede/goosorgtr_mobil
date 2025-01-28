@@ -59,9 +59,9 @@ public partial class ParentMainPage : ContentPage
         {
             var ogrenci = (Profile)e.CurrentSelection[0];
             Preferences.Set("seciliOgrenciUserId", ogrenci.userId.ToString());
-            Preferences.Set("seciliOgrenciId", ogrenci.studentId.ToString());
+            Preferences.Set("SelectedStudentId", ogrenci.studentId.ToString());
 
-            // Seçilen öðrencinin notlarýný çek
+            // Seï¿½ilen ï¿½ï¿½rencinin notlarï¿½nï¿½ ï¿½ek
             await _grandewievmodel.LoadStudentGrades(int.Parse(ogrenci.studentId.ToString()));
         }
     }

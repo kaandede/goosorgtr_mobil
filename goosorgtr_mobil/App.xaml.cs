@@ -7,19 +7,16 @@ namespace goosorgtr_mobil
 {
     public partial class App : Application
     {
-        ParentViewModel parentViewModel = new ParentViewModel();    
-        public App(ParentViewModel parentViewModel)
+        public App(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-
+            var parentViewModel = serviceProvider.GetRequiredService<ParentViewModel>();
             MainPage = new AppShell(parentViewModel);
-           
-
 
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(BorderlessEntry), (handler, view) =>
             {
 #if __ANDROID__
-                 handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
 #elif __IOS__
                 handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                 handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;

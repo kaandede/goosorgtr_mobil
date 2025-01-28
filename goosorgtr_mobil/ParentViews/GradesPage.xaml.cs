@@ -1,19 +1,45 @@
 namespace goosorgtr_mobil.ParentViews;
 using goosorgtr_mobil.ViewModels;
 
-    public partial class GradesPage : ContentPage
+[QueryProperty(nameof(StudentId), "StudentId")]
+public partial class GradesPage : ContentPage
+{
+    private int _studentId;
+    public int StudentId
     {
-        GradePageViewModel _viewModel;
-
-        public GradesPage()
+        get => _studentId;
+        set
         {
-            InitializeComponent();
-            BindingContext = _viewModel = new GradePageViewModel();
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-        await _viewModel.LoadGrades();
+            _studentId = value;
+            LoadGradesForStudent();
         }
     }
+
+    private readonly GradePageViewModel _viewModel;
+
+    public GradesPage(GradePageViewModel viewModel)
+    {
+        InitializeComponent();
+        _viewModel = viewModel;
+        BindingContext = viewModel;
+    }
+
+    private async void LoadGradesForStudent()
+    {
+        if (_studentId > 0)
+        {
+            await _viewModel.LoadStudentGrades(_studentId);
+        }
+    }
+
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+        var savedStudentId = Preferences.Get("SelectedStudentId", string.Empty);
+        if (savedStudentId == string.Empty)
+        {
+            _studentId = int.Parse(savedStudentId);
+            await _viewModel.LoadStudentGrades(_studentId);
+        }
+    }
+}

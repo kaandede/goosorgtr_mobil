@@ -267,15 +267,36 @@ namespace GoosClient.Services
 
         public static async Task<List<GradeModel>> GetGradesAsync(int studentId, int courseId, double score, int examId)
         {
-            var endpoint = $"/api/app/grade?StudentId={studentId}&CourseId={courseId}&Score={score}&ExamId={examId}";
-            var token = Preferences.Get("token", string.Empty);
-
-            using (var client = new HttpClient(GetHttpClientHandler()))
+            try
             {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
-                var response = await client.GetStringAsync(BaseUrl + endpoint);
-                var objects = JsonConvert.DeserializeObject<ListedResult<GradeModel>>(response).Items;
-                return objects;
+                var endpoint = $"/api/app/grade?StudentId={studentId}";
+                var token = Preferences.Get("token", string.Empty);
+
+                System.Diagnostics.Debug.WriteLine($"GetGradesAsync calling endpoint: {BaseUrl + endpoint}");
+                System.Diagnostics.Debug.WriteLine($"StudentId: {studentId}");
+
+                using (var client = new HttpClient(GetHttpClientHandler()))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
+                    
+                    var response = await client.GetAsync(BaseUrl + endpoint);
+                    var content = await response.Content.ReadAsStringAsync();
+                    
+                    System.Diagnostics.Debug.WriteLine($"Response Content: {content}");
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception($"API error: {response.StatusCode}");
+                    }
+
+                    var result = JsonConvert.DeserializeObject<ListedResult<GradeModel>>(content);
+                    return result?.Items ?? new List<GradeModel>();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"GetGradesAsync Error: {ex.Message}");
+                throw;
             }
         }
 

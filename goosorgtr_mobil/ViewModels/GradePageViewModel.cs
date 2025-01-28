@@ -2,18 +2,16 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GoosClient.Services;
+using GoosClient.Models;
 using goosorgtr_mobil.Models;
+using goosorgtr_mobil.GoosClient.Models;
 
 namespace goosorgtr_mobil.ViewModels
 {
     public partial class GradePageViewModel : BaseViewModel
     {
-        private ObservableCollection<GradeModel> _grades;
-        public ObservableCollection<GradeModel> Grades
-        {
-            get => _grades;
-            set => SetProperty(ref _grades, value);
-        }
+        [ObservableProperty]
+        private ObservableCollection<GradeModel> grades = new();
 
         [ObservableProperty]
         private int selectedStudentId;
@@ -24,34 +22,10 @@ namespace goosorgtr_mobil.ViewModels
         public GradePageViewModel()
         {
             Title = "Notlar";
-            Grades = new ObservableCollection<GradeModel>();
+
+         
             RefreshCommand = new AsyncRelayCommand(LoadGrades);
             LoadStudentGradesCommand = new AsyncRelayCommand<int>(LoadStudentGrades);
-        }
-
-        public async Task LoadGrades()
-        {
-            if (IsBusy) return;
-
-            try
-            {
-                IsBusy = true;
-                var gradeList = await UserService.GetGradesAsync(199, 0, 0, 0);
-                Grades.Clear();
-                foreach (var grade in gradeList)
-                {
-                    Grades.Add(grade);
-                }
-            }
-            catch (Exception ex)
-            {
-                await Shell.Current.DisplayAlert("Hata", "Notlar yüklenirken hata oluştu: " + ex.Message, "Tamam");
-            }
-            finally
-            {
-                IsBusy = false;
-                IsRefreshing = false;
-            }
         }
 
         public async Task LoadStudentGrades(int studentId)
@@ -61,8 +35,44 @@ namespace goosorgtr_mobil.ViewModels
             try
             {
                 IsBusy = true;
-                selectedStudentId = studentId;
+                System.Diagnostics.Debug.WriteLine($"Loading grades for student: {studentId}");
+                
                 var gradeList = await UserService.GetGradesAsync(studentId, 0, 0, 0);
+                
+                Grades.Clear();
+                
+                if (gradeList != null && gradeList.Any())
+                {
+                    foreach (var grade in gradeList)
+                    {
+                         Grades.Add(grade);
+                    }
+                    System.Diagnostics.Debug.WriteLine($"Loaded {gradeList.Count} grades");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("No grades found for student");
+                    await Shell.Current.DisplayAlert("Bilgi", "Bu öğrenci için not bulunamadı.", "Tamam");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Grade loading error: {ex}");
+                await Shell.Current.DisplayAlert("Hata", $"Notlar yüklenirken hata oluştu: {ex.Message}", "Tamam");
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRefreshing = false;
+            }
+        }
+
+        public async Task LoadGrades()
+        {
+            try
+            {
+                IsBusy = true;
+                var gradeList = await UserService.GetGradesAsync(selectedStudentId, 0, 0, 0);
                 Grades.Clear();
                 foreach (var grade in gradeList)
                 {

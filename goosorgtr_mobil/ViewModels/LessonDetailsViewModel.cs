@@ -2,10 +2,11 @@
 using System.Windows.Input;
 using GoosClient.Models;
 using GoosClient.Services;
+using System.Collections.Generic;
 
 namespace goosorgtr_mobil.ViewModels
 {
-    public class LessonDetailsViewModel : BaseViewModel
+    public partial class LessonDetailsViewModel : BaseViewModel
     {
         private ObservableCollection<CourseModel> _courses;
    
@@ -26,6 +27,7 @@ namespace goosorgtr_mobil.ViewModels
 
         public LessonDetailsViewModel()
         {
+            Title = "Ders Detayları";
             Courses = new ObservableCollection<CourseModel>();
 
             RefreshCoursesCommand = new Command(async () => await LoadCoursesAsync());
@@ -33,7 +35,7 @@ namespace goosorgtr_mobil.ViewModels
 
             // Yeni komutlar tanımlandı
             NavigateToExamsCommand = new Command(async () => await NavigateToPage("ExamsPage"));
-            NavigateToGradesCommand = new Command(async () => await NavigateToPage("GradesPage"));
+            NavigateToGradesCommand = new Command(async () => await NavigateToGradesPage());
             NavigateToReportCardCommand = new Command(async () => await NavigateToPage("ReportCardPage"));
            // LoadCoursesAsync().ConfigureAwait(true);
 
@@ -47,8 +49,8 @@ namespace goosorgtr_mobil.ViewModels
           
             try
             {
-                var seciliOgrenciId = Preferences.Get("seciliOgrenciId", string.Empty);
-                if (string.IsNullOrEmpty(seciliOgrenciId))
+                var SelectedStudentId = Preferences.Get("SelectedStudentId", string.Empty);
+                if (string.IsNullOrEmpty(SelectedStudentId))
                 {
                     await Application.Current.MainPage.DisplayAlert(
                         "Hata",
@@ -58,7 +60,7 @@ namespace goosorgtr_mobil.ViewModels
                     return;
                 }
 
-                var courses = await UserService.GetOgrenciDersleriAsync(int.Parse(seciliOgrenciId));
+                var courses = await UserService.GetOgrenciDersleriAsync(int.Parse(SelectedStudentId));
 
                 Courses.Clear();
                 foreach (var course in courses)
@@ -111,12 +113,48 @@ namespace goosorgtr_mobil.ViewModels
         {
             try
             {
-                // Shell ile sayfa geçişi
-                await Shell.Current.GoToAsync(pageName);
+                var selectedStudentId = Preferences.Get("SelectedStudentId", 0);
+                if (selectedStudentId == 0)
+                {
+                    await Shell.Current.DisplayAlert("Hata", "Öğrenci seçilmemiş", "Tamam");
+                    return;
+                }
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "StudentId", selectedStudentId }
+                };
+                await Shell.Current.GoToAsync($"{pageName}", parameters);
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Hata", ex.Message, "Tamam");
+                await Shell.Current.DisplayAlert("Hata", ex.Message, "Tamam");
+            }
+        }
+
+        private async Task NavigateToGradesPage()
+        {
+            try
+            {
+                var selectedStudentId = Preferences.Get("SelectedStudentId", string.Empty);
+                if (selectedStudentId == string.Empty)
+                {
+                    await Shell.Current.DisplayAlert("Hata", "Öğrenci seçilmemiş", "Tamam");
+                    return;
+                }
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "StudentId", selectedStudentId }
+                };
+                
+                System.Diagnostics.Debug.WriteLine($"Navigating to GradesPage with StudentId: {selectedStudentId}");
+                await Shell.Current.GoToAsync($"GradesPage", parameters);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Navigation Error: {ex}");
+                await Shell.Current.DisplayAlert("Hata", "Sayfa yüklenirken bir hata oluştu.", "Tamam");
             }
         }
     }

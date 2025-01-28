@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:goosorgtr_mobil.ViewModels"
+             xmlns:models="clr-namespace:goosorgtr_mobil.GoosClient.Models"
              x:Class="goosorgtr_mobil.ParentViews.GradesPage"
-             xmlns:models="clr-namespace:goosorgtr_mobil.Models"
              x:DataType="viewmodels:GradePageViewModel"
              Title="{Binding Title}">
 
@@ -22,13 +22,18 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" 
-                               Text="{Binding CourseId}" 
+                               Text="{Binding StudentName}" 
                                FontAttributes="Bold"/>
                         <Label Grid.Row="1" 
-                               Text="{Binding Score, StringFormat='Not: {0:F2}'}"
+                               Text="{Binding ExamName}"
                                TextColor="Gray"/>
+                        <Label Grid.Row="2" 
+                               Text="{Binding Score, StringFormat='Not: {0:F2}'}"
+                               TextColor="Green"
+                               FontAttributes="Bold"/>
                     </Grid>
                 </Frame>
             </DataTemplate>
