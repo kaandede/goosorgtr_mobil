@@ -12,18 +12,24 @@ namespace goosorgtr_mobil
         {
             InitializeComponent();
             BindingContext = parentViewModel;
-       
-          
-      
-            Routing.RegisterRoute(nameof(ParentUser), typeof(ParentUser));   
+
+            RegisterRoutes();
+
+            // Navigation event handler'ı ekle
+            Navigating += AppShell_Navigating;
+            Navigated += AppShell_Navigated;
+        }
+
+        private void RegisterRoutes()
+        {
+            // Mevcut route kayıtlarınız
+            Routing.RegisterRoute(nameof(ParentUser), typeof(ParentUser));
             Routing.RegisterRoute(nameof(ParentStudentHomeWorkDetails), typeof(ParentStudentHomeWorkDetails));
-            //Routing.RegisterRoute(nameof(DersDetay2), typeof(DersDetay2));
-            Routing.RegisterRoute(nameof(ParentNotificationSettings), typeof(ParentNotificationSettings));            
+            Routing.RegisterRoute(nameof(ParentNotificationSettings), typeof(ParentNotificationSettings));
             Routing.RegisterRoute(nameof(FirstView), typeof(FirstView));
             Routing.RegisterRoute(nameof(Login), typeof(Login));
             Routing.RegisterRoute(nameof(ChatListPage), typeof(ChatListPage));
             Routing.RegisterRoute(nameof(ChatPage), typeof(ChatPage));
-            //Routing.RegisterRoute(nameof(ServisHarita), typeof(ServisHarita));
             Routing.RegisterRoute(nameof(NewChatPage), typeof(NewChatPage));
             Routing.RegisterRoute(nameof(YardımDestek), typeof(YardımDestek));
             Routing.RegisterRoute(nameof(ProfileSettingsPage), typeof(ProfileSettingsPage));
@@ -35,12 +41,39 @@ namespace goosorgtr_mobil
             Routing.RegisterRoute(nameof(OgretmenGorusmesiPage), typeof(OgretmenGorusmesiPage));
             Routing.RegisterRoute(nameof(IzinTalebiPage), typeof(IzinTalebiPage));
             Routing.RegisterRoute(nameof(ExamsPage), typeof(ExamsPage));
-            
             Routing.RegisterRoute(nameof(ReportCardPage), typeof(ReportCardPage));
-          
             Routing.RegisterRoute("GradesPage", typeof(GradesPage));
+        }
 
+        private void AppShell_Navigating(object sender, ShellNavigatingEventArgs e)
+        {
+            if (IsMainPage(e.Target.Location.OriginalString))
+            {
+                SetValue(Shell.TabBarIsVisibleProperty, true);
+            }
+        }
 
+        private void AppShell_Navigated(object sender, ShellNavigatedEventArgs e)
+        {
+            // Navigation tamamlandıktan sonra TabBar kontrolü
+            if (IsMainPage(e.Current.Location.OriginalString))
+            {
+                SetValue(Shell.TabBarIsVisibleProperty, true);
+            }
+        }
+
+        private bool IsMainPage(string route)
+        {
+            var mainPages = new[]
+            {
+                "ParentMainPage",
+                "ParentStudentLocation",
+                "ParentNotification",
+                "ParentStudentHomeWork",
+                
+            };
+
+            return mainPages.Any(page => route.Contains(page));
         }
 
         private void Button_Clicked(object sender, EventArgs e)
