@@ -24,10 +24,20 @@ namespace goosorgtr_mobil.ParentViews
         protected async override void OnAppearing()
         {
             await Navigation.PopToRootAsync(false);
-            _parentViewModel.OgrenciGetir();
+
+            var role = Preferences.Get("UserRole", string.Empty);
+            if (role == "Parent")
+            {
+                _parentViewModel.OgrenciGetir(0, true);
+            }
+            else
+            {
+                //veli deðilse örnek için 50 ile çaðýr
+                _parentViewModel.OgrenciGetir(50);
+            }
             base.OnAppearing();
 
-           
+
 
 
             var zaferkolej = new Location(39.8975372596863, 32.67921761534151);
@@ -62,6 +72,6 @@ namespace goosorgtr_mobil.ParentViews
             //GoogleMap.Pins.Clear(); 
             //GoogleMap.ItemsSource = Pins;
         }
-       
+
     }
 }
