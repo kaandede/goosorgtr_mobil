@@ -3,7 +3,6 @@ using goosorgtr_mobil.GoosClient.Models;
 using goosorgtr_mobil.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text;
 
 namespace GoosClient.Services
@@ -13,11 +12,7 @@ namespace GoosClient.Services
         public static string BaseUrl { get; set; } = $"https://okul.goos.org.tr";
         private static HttpClientHandler GetHttpClientHandler()
         {
-            // EXCEPTION: Javax.Net.Ssl.SSLHandshakeException: 'java.security.cert.CertPathValidatorException:
-            // Trust anchor for certification path not found.'
-            // SOLUTION: 
-            // ATTENTION: DO NOT USE IN PRODUCTION 
-
+    
             var httpClientHandler = new HttpClientHandler
             {
                 ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }

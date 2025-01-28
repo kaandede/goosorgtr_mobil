@@ -112,11 +112,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="ParentViews\DuyuruPage.xaml.cs">
+	    <DependentUpon>DuyuruPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="ParentViews\ParentStudentHomeWorkDetails.xaml.cs">
 	    <DependentUpon>ParentStudentHomeWorkDetails.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="ParentViews\ServisHarita.xaml.cs">
 	    <DependentUpon>ServisHarita.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="ParentViews\YardimDestek.xaml.cs">
+	    <DependentUpon>YardimDestek.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -130,7 +136,7 @@
 	  <MauiXaml Update="ParentViews\ChatPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ParentViews\duyuru.xaml">
+	  <MauiXaml Update="ParentViews\DuyuruPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ParentViews\EventPage.xaml">
@@ -193,7 +199,7 @@
 	  <MauiXaml Update="ParentViews\ServisHarita.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ParentViews\YardımDestek.xaml">
+	  <MauiXaml Update="ParentViews\YardimDestek.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\FirstView.xaml">

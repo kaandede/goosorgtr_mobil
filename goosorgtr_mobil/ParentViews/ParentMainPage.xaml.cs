@@ -47,7 +47,7 @@ public partial class ParentMainPage : ContentPage
 
     private async void Tapduyuru_Tapped(object sender, TappedEventArgs e)
     {
-        await Navigation.PushAsync(new Duyuru());
+        await Navigation.PushAsync(new DuyuruPage());
     }
     private async void Tapharcama_Tapped(object sender, TappedEventArgs e)
     {
