@@ -1,5 +1,4 @@
-﻿
-using GoosClient.Models;
+﻿using GoosClient.Models;
 using goosorgtr_mobil.GoosClient.Models;
 using goosorgtr_mobil.Models;
 using Newtonsoft.Json;
@@ -287,18 +286,26 @@ namespace GoosClient.Services
         {
             var token = Preferences.Get("token", string.Empty);
             var endpoint = $"/api/app/identity-user-app-service-custom/find-by-username?userName={userName}";
+            
             using (var client = new HttpClient(GetHttpClientHandler()))
-
             {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
-                var response = await client.PostAsync(BaseUrl + endpoint, null);
-                var data = await response.Content.ReadAsStringAsync();
-                var objects = JsonConvert.DeserializeObject<UserModel>(data);
-                if (!response.IsSuccessStatusCode)
+                try 
                 {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
+                    var response = await client.PostAsync(BaseUrl + endpoint, null);
+                    var data = await response.Content.ReadAsStringAsync();
+                    
+                    // Debug için gelen veriyi kontrol et
+                    System.Diagnostics.Debug.WriteLine($"API Response: {data}");
+                    
+                    var objects = JsonConvert.DeserializeObject<UserModel>(data);
+                    return response.IsSuccessStatusCode;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"GetUserInfo Error: {ex}");
                     return false;
                 }
-                return true;
             }
         }
 

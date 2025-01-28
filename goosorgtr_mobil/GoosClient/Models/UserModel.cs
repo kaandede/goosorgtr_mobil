@@ -14,6 +14,9 @@ namespace goosorgtr_mobil.GoosClient.Models
 
     public class UserModel
     {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
         [JsonProperty("tenantId")]
         public object TenantId { get; set; }
 
@@ -79,9 +82,6 @@ namespace goosorgtr_mobil.GoosClient.Models
 
         [JsonProperty("creatorId")]
         public object CreatorId { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
 
         [JsonProperty("extraProperties")]
         public ExtraProperties ExtraProperties { get; set; }

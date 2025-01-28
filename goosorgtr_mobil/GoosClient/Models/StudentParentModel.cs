@@ -48,6 +48,6 @@ namespace goosorgtr_mobil.GoosClient.Models
         [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("userId")]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

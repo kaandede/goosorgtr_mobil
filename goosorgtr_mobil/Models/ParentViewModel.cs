@@ -23,7 +23,6 @@ namespace goosorgtr_mobil.Models
             var liste = await UserService.GetStudentsAsync(50);//veli id
             if (liste.Count > 0)
             {
-
                 for (int i = 0; i < 2; i++)
                 {
                     Profiles.Add(new Profile()
@@ -37,13 +36,9 @@ namespace goosorgtr_mobil.Models
                         Id = liste[i].Id,
                         studentId = liste[i].StudentId,
                         userId = liste[i].UserId
-
                     });
-
                 }
             }
-
-
         }
 
 
