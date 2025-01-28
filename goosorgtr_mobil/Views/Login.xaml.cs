@@ -25,17 +25,17 @@ public partial class Login : ContentPage
         Preferences.Clear();
         var sonuc = await UserService.Login(txtKullaniciAdi.Text, txtParola.Text);
 
-       
+
         var attandance = await UserService.GetAttendanceAsync(100);
 
         if (sonuc)
         {
 
-        
+
 
             Preferences.Set("username", txtKullaniciAdi.Text);
 
-            await Shell.Current.GoToAsync("///"+nameof(ParentMainPage));
+            await Shell.Current.GoToAsync("///" + nameof(ParentMainPage));
         }
         else
         {
@@ -45,11 +45,33 @@ public partial class Login : ContentPage
 
 
     }
-    private async void sifremiunuttum_Tapped(object sender, EventArgs e) 
+    private async void sifremiunuttum_Tapped(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(ForgotPasswordPage));
-        
+
     }
 
+    private void VeliGirisBtn_Clicked(object sender, EventArgs e)
+    {
+        txtKullaniciAdi.Text = "P-Stephanie60.";
+        txtParola.Text = "P-Stephanie60.";
+    }
 
+    private void OgretmenGirisBtn_Clicked(object sender, EventArgs e)
+    {
+        txtKullaniciAdi.Text = "T-Coralie13.";
+        txtParola.Text = "T-Coralie13.";
+    }
+
+    private void StudentGirisBtn_Clicked(object sender, EventArgs e)
+    {
+        txtKullaniciAdi.Text = "S-Rodrick325.";
+        txtParola.Text = "S-Rodrick325.";
+    }
+
+    private void AdminGirisBtn_Clicked(object sender, EventArgs e)
+    {
+        txtKullaniciAdi.Text = "Admin";
+        txtParola.Text = "1q2w3E*";
+    }
 }

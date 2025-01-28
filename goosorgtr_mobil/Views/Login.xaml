@@ -24,13 +24,13 @@
             <VerticalStackLayout Grid.Row="1" WidthRequest="300" Margin="0,40,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
                 <Frame BackgroundColor="#FAFAFC" BorderColor="#fff" Padding="0" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" CornerRadius="10">
                     <StackLayout Orientation="Horizontal">
-                        <local:BorderlessEntry x:Name="txtKullaniciAdi" Text="Kerem" Placeholder="Kullanıcı Adı veya E-Posta" PlaceholderColor="#908E9A" TextColor="#1F252A" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
+                        <local:BorderlessEntry x:Name="txtKullaniciAdi" Placeholder="Kullanıcı Adı veya E-Posta" PlaceholderColor="#908E9A" TextColor="#1F252A" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
                     </StackLayout>
                 </Frame>
                 <Frame  BackgroundColor="#FAFAFC" BorderColor="#fff" Padding="0" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" CornerRadius="10">
                     <StackLayout Orientation="Horizontal">
 
-                        <local:BorderlessEntry x:Name="txtParola" Text="Kerem.123" IsPassword="True" Placeholder="Parola" PlaceholderColor="#908E9A" TextColor="#1F252A" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
+                        <local:BorderlessEntry x:Name="txtParola"  IsPassword="True" Placeholder="Parola" PlaceholderColor="#908E9A" TextColor="#1F252A" FontFamily="NexaLight" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,5,20,5"/>
                     </StackLayout>
                 </Frame>
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0" Padding="0">
@@ -48,7 +48,10 @@
                     </Label>
                 </StackLayout>
                 <Button Text="Giriş" FontSize="18" BackgroundColor="#1F252A" FontFamily="NexaHeavy" TextColor="#fff" HeightRequest="50" CornerRadius="10" Margin="5,25,0,0" Clicked="Login_Button_Clicked"/>
-
+                <Button Text="Admin Bilgiler ile Gir" x:Name="AdminGirisBtn" Clicked="AdminGirisBtn_Clicked"/>
+                <Button Text="Veli Bilgiler ile Gir" x:Name="VeliGirisBtn" Clicked="VeliGirisBtn_Clicked"/>
+                <Button Text="Öğretmen Bilgiler ile Gir" x:Name="OgretmenGirisBtn" Clicked="OgretmenGirisBtn_Clicked"/>
+                <Button Text="Öğrenci Bilgiler ile Gir" x:Name="StudentGirisBtn" Clicked="StudentGirisBtn_Clicked"/>
             </VerticalStackLayout>
 
         </Grid>
