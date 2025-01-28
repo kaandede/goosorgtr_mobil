@@ -21,7 +21,7 @@ namespace goosorgtr_mobil.Models
 
         }
 
-        public async void OgrenciGetir()
+        public async void OgrenciGetir(int parentId, bool userIdMi=false)
         {
             try
             {

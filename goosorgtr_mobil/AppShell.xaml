@@ -104,38 +104,71 @@
                   Shell.FlyoutItemIsVisible="False"/>
 
     <!-- TabBar remains same -->
+    <!-- Original TabBar remains the same -->
     <TabBar>
         <Tab Title="Home" Icon="home_ince_beyaz.png">
-            <ShellContent Route="ParentMainPage" ContentTemplate="{DataTemplate views:ParentMainPage}"/>
+            <ShellContent Route="ParentMainPage" 
+                         ContentTemplate="{DataTemplate views:ParentMainPage}"
+                         Shell.TabBarIsVisible="True"/>
         </Tab>
         <Tab Title="Konum" Icon="location.png">
-            <ShellContent Route="ParentStudentLocation" ContentTemplate="{DataTemplate views:ParentStudentLocation}"/>
+            <ShellContent Route="ParentStudentLocation" 
+                         ContentTemplate="{DataTemplate views:ParentStudentLocation}"
+                         Shell.TabBarIsVisible="True"/>
         </Tab>
         <Tab Title="Bildirim" Icon="bell.png">
-            <ShellContent Route="ParentNotification" ContentTemplate="{DataTemplate views:ParentNotification}"/>
+            <ShellContent Route="ParentNotification" 
+                         ContentTemplate="{DataTemplate views:ParentNotification}"
+                         Shell.TabBarIsVisible="True"/>
         </Tab>
         <Tab Title="Ders" Icon="file.png">
-            <ShellContent Route="ParentStudentHomeWork" ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"/>
+            <ShellContent Route="ParentStudentHomeWork" 
+                         ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"
+                         Shell.TabBarIsVisible="True"/>
         </Tab>
-  
+       
     </TabBar>
 
-    <!-- Flyout Menu Items -->
-    <FlyoutItem Title="Ana Sayfa" Icon="home_ince.png" Route="ParentMainPage" >
-        
-        <ShellContent ContentTemplate="{DataTemplate views:ParentMainPage}"  />
-     
+    <FlyoutItem Title="Ana Sayfa" Icon="home_ince.png" Route="ParentMainPage">
+        <Tab Title="Home" Icon="home_ince_beyaz.png">
+            <ShellContent Route="ParentMainPage" 
+                     ContentTemplate="{DataTemplate views:ParentMainPage}"
+                     Shell.TabBarIsVisible="True"/>
+        </Tab>
+        <Tab Title="Konum" Icon="location.png">
+            <ShellContent Route="ParentStudentLocation" 
+                     ContentTemplate="{DataTemplate views:ParentStudentLocation}"
+                     Shell.TabBarIsVisible="True"/>
+        </Tab>
+        <Tab Title="Bildirim" Icon="bell.png">
+            <ShellContent Route="ParentNotification" 
+                     ContentTemplate="{DataTemplate views:ParentNotification}"
+                     Shell.TabBarIsVisible="True"/>
+        </Tab>
+        <Tab Title="Ders" Icon="file.png">
+            <ShellContent Route="ParentStudentHomeWork" 
+                     ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"
+                     Shell.TabBarIsVisible="True"/>
+        </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Lokasyon" Icon="location_icon.png" Route="ParentStudentLocation"  >
 
-        <ShellContent ContentTemplate="{DataTemplate views:ParentStudentLocation}"   />
+    <FlyoutItem Title="Lokasyon" Icon="location_icon.png" Route="ParentStudentLocation">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:ParentStudentLocation}"
+                     Shell.TabBarIsVisible="True"/>
+        </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Etkinlik" Icon="etkinlik_icon.png" Route="EventPage"  >
 
-        <ShellContent ContentTemplate="{DataTemplate views:EventPage}"  />
+    <FlyoutItem Title="Etkinlik" Icon="etkinlik_icon.png" Route="EventPage">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:EventPage}"
+                     Shell.TabBarIsVisible="True"/>
+        </Tab>
     </FlyoutItem>
+
+
     
-
+    
     <Shell.FlyoutFooter>
         
         <Grid Padding="15" BackgroundColor="#F3F2F7" RowDefinitions="Auto,Auto">

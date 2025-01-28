@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
+using GoosClient.Models;
 using goosorgtr_mobil.Models;
 using goosorgtr_mobil.ParentViews;
 using goosorgtr_mobil.ViewModels;
@@ -65,7 +66,7 @@ namespace goosorgtr_mobil
             //builder.Services.AddScoped<DersDetay2>();
             builder.Services.AddTransient<ServisHarita>();
             builder.Services.AddTransient<ProfileSettingsPage>();
-            builder.Services.AddTransient<YardımDestek>();
+            builder.Services.AddTransient<YardimDestek>();
             builder.Services.AddTransient<SecurityPage>();
             builder.Services.AddTransient<ForgotPasswordPage>();
             builder.Services.AddTransient<VerificationCodePage>();
