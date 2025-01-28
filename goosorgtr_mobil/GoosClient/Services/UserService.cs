@@ -231,7 +231,7 @@ namespace GoosClient.Services
         {
             try
             {
-                var endpoint = $"/api/app/exam";
+                var endpoint = $"/api/app/exam?ClassId={classId}";
                 var token = Preferences.Get("token", string.Empty);
 
 
