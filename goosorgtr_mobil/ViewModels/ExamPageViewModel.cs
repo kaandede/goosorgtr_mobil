@@ -1,47 +1,73 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using GoosClient.Services;
-using goosorgtr_mobil.Models;
-
+using GoosClient.Models;
+using goosorgtr_mobil.GoosClient.Models;
 
 namespace goosorgtr_mobil.ViewModels
 {
-    public class ExamPageViewModel : BaseViewModel
+    public partial class ExamPageViewModel : BaseViewModel
     {
-        private ObservableCollection<ExamModel> _exams;
-        public ObservableCollection<ExamModel> Exams
-        {
-            get => _exams;
-            set => SetProperty(ref _exams, value);
-        }
+        [ObservableProperty]
+        private ObservableCollection<ExamModel> exams = new();
 
-        private bool _isRefreshing;
-        public bool IsRefreshing
-        {
-            get => _isRefreshing;
-            set => SetProperty(ref _isRefreshing, value);
-        }
+        [ObservableProperty]
+        private int selectedStudentId;
 
-        public ICommand RefreshCommand { get; }
+        public IAsyncRelayCommand RefreshCommand { get; }
+        public IAsyncRelayCommand LoadStudentExamsCommand { get; }
 
         public ExamPageViewModel()
         {
             Title = "Sınavlar";
-            Exams = new ObservableCollection<ExamModel>();
-            RefreshCommand = new Command(async () => await ExecuteRefreshCommand());
+   
+            RefreshCommand = new AsyncRelayCommand(LoadExams);
+            LoadStudentExamsCommand = new AsyncRelayCommand(LoadStudentExams);
         }
 
-        async Task ExecuteRefreshCommand()
-        {
-            IsRefreshing = true;
-            await LoadExams();
-            IsRefreshing = false;
-        }
-
-        public async Task LoadExams()
+        public async Task LoadStudentExams()
         {
             if (IsBusy) return;
 
+            try
+            {
+                IsBusy = true;
+ 
+                
+                var examList = await UserService.GetExamAsync();
+                
+                Exams.Clear();
+                
+                if (examList != null && examList.Any())
+                {
+                    foreach (var exam in examList)
+                    {
+                        
+                        Exams.Add(exam);
+                    }
+                   
+                }
+                else
+                {
+                    
+                    await Shell.Current.DisplayAlert("Bilgi", "Bu öğrenci için sınav bulunamadı.", "Tamam");
+                }
+            }
+            catch (Exception ex)
+            {
+               
+                await Shell.Current.DisplayAlert("Hata", $"Sınavlar yüklenirken hata oluştu: {ex.Message}", "Tamam");
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRefreshing = false;
+            }
+        }
+
+        private async Task LoadExams()
+        {
             try
             {
                 IsBusy = true;
@@ -59,6 +85,7 @@ namespace goosorgtr_mobil.ViewModels
             finally
             {
                 IsBusy = false;
+                IsRefreshing = false;
             }
         }
     }

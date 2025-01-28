@@ -227,15 +227,31 @@ namespace GoosClient.Services
         }
         public static async Task<List<ExamModel>> GetExamAsync()
         {
-            var endpoint = "/api/app/exam";
-            var token = Preferences.Get("token", string.Empty);
-
-            using (var client = new HttpClient(GetHttpClientHandler()))
+            try
             {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
-                var response = await client.GetStringAsync(BaseUrl + endpoint);
-                var objects = JsonConvert.DeserializeObject<ListedResult<ExamModel>>(response).Items;
-                return objects;
+                var classId = Preferences.Get("SelectedStudentClassId", string.Empty);
+                var endpoint = $"/api/app/exam?ClassId={int.Parse(classId)}";
+                var token = Preferences.Get("token", string.Empty);
+
+                System.Diagnostics.Debug.WriteLine($"GetExamAsync calling endpoint: {BaseUrl + endpoint}");
+                System.Diagnostics.Debug.WriteLine($"ClassId: {classId}");
+
+                using (var client = new HttpClient(GetHttpClientHandler()))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
+                    
+                    var response = await client.GetStringAsync(BaseUrl + endpoint);
+         
+                    
+                 
+                    var result = JsonConvert.DeserializeObject<ListedResult<ExamModel>>(response);
+                    return result?.Items ?? new List<ExamModel>();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"GetExamAsync Error: {ex.Message}");
+                throw;
             }
         }
         public static async Task<List<CourseModel>> GetOgrenciDersleriAsync(int ogrenciId)

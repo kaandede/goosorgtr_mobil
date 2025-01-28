@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:goosorgtr_mobil.ViewModels"
+             xmlns:models="clr-namespace:goosorgtr_mobil.GoosClient.Models"
              x:Class="goosorgtr_mobil.ParentViews.ExamsPage"
+             x:DataType="viewmodels:ExamPageViewModel"
              Title="{Binding Title}">
 
     <RefreshView IsRefreshing="{Binding IsRefreshing}"
@@ -18,7 +20,7 @@
             </CollectionView.EmptyView>
 
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:ExamModel">
                     <Frame Margin="10,5" 
                            Padding="15" 
                            BorderColor="LightGray">

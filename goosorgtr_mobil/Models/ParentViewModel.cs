@@ -26,8 +26,8 @@ namespace goosorgtr_mobil.Models
             try
             {
                 Profiles.Clear();
-                var liste = await UserService.GetStudentsAsync(50);
-                
+                var liste = await UserService.GetStudentsAsync(parentId, userIdMi);//
+
                 if (liste?.Count > 0)
                 {
                     foreach (var student in liste.Take(2))
@@ -42,7 +42,8 @@ namespace goosorgtr_mobil.Models
                             ProfileImage = "kiz_ogrenci_1.jpg",
                             Id = student.Id,
                             studentId = student.StudentId,
-                            userId = student.UserId
+                            userId = student.UserId,
+                            classId = student.ClassId.ToString()
                         });
                     }
                     
@@ -60,10 +61,5 @@ namespace goosorgtr_mobil.Models
             }
         }
 
-        public void SelectStudent(int studentId)
-        {
-            SelectedStudentId = studentId;
-            Preferences.Set("SelectedStudentId", studentId);
-        }
     }
 }

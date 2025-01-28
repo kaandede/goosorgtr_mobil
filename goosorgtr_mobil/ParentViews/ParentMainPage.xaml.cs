@@ -85,6 +85,7 @@ public partial class ParentMainPage : ContentPage
             var ogrenci = (Profile)e.CurrentSelection[0];
             Preferences.Set("seciliOgrenciUserId", ogrenci.userId.ToString());
             Preferences.Set("SelectedStudentId", ogrenci.studentId.ToString());
+            Preferences.Set("SelectedStudentClassId", ogrenci.classId.ToString());
 
             // Se�ilen ��rencinin notlar�n� �ek
             await _grandewievmodel.LoadStudentGrades(int.Parse(ogrenci.studentId.ToString()));
