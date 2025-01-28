@@ -1,39 +1,21 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.ComponentModel;
-using goosorgtr_mobil.Models;
-using System.Windows.Input;
-using goosorgtr_mobil.ParentViews;
-using GoosClient.Services;
-using GoosClient.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Diagnostics;
-using CommunityToolkit.Mvvm.ComponentModel;
+using GoosClient.Models;
+using GoosClient.Services;
+using goosorgtr_mobil.ParentViews;
+using System.Collections.ObjectModel;
 
 namespace goosorgtr_mobil.ViewModels
 {
     public partial class AnnouncementViewModel : BaseViewModel
     {
 
-
         public ObservableCollection<DuyuruModel> Announcements { get; set; } = new();
         public ObservableCollection<string> Categories { get; set; }
-    
-        public ICommand ItemTappedCommand { get; }
-        private string selectedCategory;
-        public string SelectedCategory
-        {
-            get => selectedCategory;
-            set
-            {
-                if (selectedCategory != value)
-                {
-                    selectedCategory = value;
-                    FilterAnnouncements();
-                    OnPropertyChanged(nameof(SelectedCategory));
-                }
-            }
-        }
+
+        [ObservableProperty]
+        private string _selectedCategory;
+ 
 
         public AnnouncementViewModel()
         {
@@ -42,9 +24,7 @@ namespace goosorgtr_mobil.ViewModels
             Categories = new ObservableCollection<string> { "Tümü", "Spor", "Eğitim", "Kültür" };
             SelectedCategory = "Tümü";
 
-            ItemTappedCommand = new Command<DuyuruModel>(OnItemTapped);
-
-        
+      
         }
 
         private void FilterAnnouncements()
@@ -58,8 +38,8 @@ namespace goosorgtr_mobil.ViewModels
             //OnPropertyChanged(nameof(Announcements));
         }
 
-
-        private async void OnItemTapped(DuyuruModel selectedAnnouncement)
+        [RelayCommand]
+        private async void ItemTapped(DuyuruModel selectedAnnouncement)
         {
             if (selectedAnnouncement != null)
             {
