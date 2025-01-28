@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace goosorgtr_mobil.Models
+namespace goosorgtr_mobil.GoosClient.Models
 {
     public class ExamModel
     {

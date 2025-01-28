@@ -34,7 +34,7 @@ namespace goosorgtr_mobil.ViewModels
             CourseSelectedCommand = new Command<CourseModel>(OnCourseSelected);
 
             // Yeni komutlar tanımlandı
-            NavigateToExamsCommand = new Command(async () => await NavigateToPage("ExamsPage"));
+            NavigateToExamsCommand = new Command(async () => await NavigateToExamsPage());
             NavigateToGradesCommand = new Command(async () => await NavigateToGradesPage());
             NavigateToReportCardCommand = new Command(async () => await NavigateToPage("ReportCardPage"));
            // LoadCoursesAsync().ConfigureAwait(true);
@@ -150,6 +150,33 @@ namespace goosorgtr_mobil.ViewModels
                 
                 System.Diagnostics.Debug.WriteLine($"Navigating to GradesPage with StudentId: {selectedStudentId}");
                 await Shell.Current.GoToAsync($"GradesPage", parameters);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Navigation Error: {ex}");
+                await Shell.Current.DisplayAlert("Hata", "Sayfa yüklenirken bir hata oluştu.", "Tamam");
+            }
+        }
+
+        // Yeni ExamsPage navigasyon metodu
+        private async Task NavigateToExamsPage()
+        {
+            try
+            {
+                var selectedStudentId = Preferences.Get("SelectedStudentId", string.Empty);
+                if (selectedStudentId == string.Empty)
+                {
+                    await Shell.Current.DisplayAlert("Hata", "Öğrenci seçilmemiş", "Tamam");
+                    return;
+                }
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "StudentId", selectedStudentId }
+                };
+                
+                System.Diagnostics.Debug.WriteLine($"Navigating to ExamsPage with StudentId: {selectedStudentId}");
+                await Shell.Current.GoToAsync($"ExamsPage", parameters);
             }
             catch (Exception ex)
             {

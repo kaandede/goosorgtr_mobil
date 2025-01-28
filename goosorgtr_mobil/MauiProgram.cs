@@ -78,7 +78,7 @@ namespace goosorgtr_mobil
             builder.Services.AddScoped<IPreferencesService, PreferencesService>();
             
             builder.Services.AddTransient<ReportCardPage>();
-            builder.Services.AddTransient<ExamModel>();
+            builder.Services.AddTransient<ExamsPage>();
             builder.Services.AddTransient<ExamPageViewModel>();
             builder.Services.AddTransient<GradesPage>();
             builder.Services.AddTransient<GradePageViewModel>();
