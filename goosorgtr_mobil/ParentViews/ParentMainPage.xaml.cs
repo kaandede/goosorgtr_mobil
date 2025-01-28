@@ -21,7 +21,32 @@ public partial class ParentMainPage : ContentPage
     protected async override void OnAppearing()
     {
         await Navigation.PopToRootAsync(false);
-        _parentViewModel.OgrenciGetir();
+
+
+        var token = Preferences.Get("token", string.Empty);
+
+        if (string.IsNullOrEmpty(token))
+        {
+            //token yoksa-giriþ yapýlmamýþsa - giriþe yönlendir
+            await Shell.Current.GoToAsync("Login");
+        }
+
+        //kullanýcý rolünü al
+
+        //if veli veli ise bu þekilde çaðýr
+        var role = Preferences.Get("UserRole", string.Empty);
+
+
+        if (role == "Parent")
+        {
+           _parentViewModel.OgrenciGetir(0,true);
+        }
+        else
+        {
+            //veli deðilse örnek için 50 ile çaðýr
+            _parentViewModel.OgrenciGetir(50);
+        }
+
 
      
         base.OnAppearing();

@@ -7,12 +7,19 @@ using System.Text;
 
 namespace GoosClient.Services
 {
+    //servisin görevleri
+    //1. telefon hafızadan token al
+    //post yada get ile apiye istek at
+    //gelen veriyi desiserilize ederek class a çevir
+    //class modeli döndür
+
+
     public static class UserService
     {
         public static string BaseUrl { get; set; } = $"https://okul.goos.org.tr";
         private static HttpClientHandler GetHttpClientHandler()
         {
-    
+
             var httpClientHandler = new HttpClientHandler
             {
                 ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
@@ -43,12 +50,6 @@ namespace GoosClient.Services
         }
         public static async Task<bool> Login(string userName, string password)
         {
-            //var tokenVarmi = Preferences.Get("token",string.Empty);
-            //if (!string.IsNullOrEmpty(tokenVarmi))
-            //{
-            //   return true;//TOKEN VARSA DİREK GİRSİN
-            //}
-
             var login = new LoginModel() { UserName = userName, Password = password };
             var endpoint = "/connect/token";
 
@@ -77,14 +78,14 @@ namespace GoosClient.Services
                 else
                 {
                     Preferences.Set("token", token.AccessToken);
-
-                    //user id ile kullanıcı detaylarını çek
-
+                  
 
 
                     try
                     {
-                        await GetUserInfo("P-Stephanie60.");
+                        var userInfo = await GetUserInfo(userName);
+                        Preferences.Set("UserRole", userInfo.ExtraProperties.UserRole);
+                        Preferences.Set("UserId", userInfo.Id);
                     }
                     catch (Exception e)
                     {
@@ -115,17 +116,12 @@ namespace GoosClient.Services
 
 
 
-        public static async Task<List<StudentParentModel>> GetStudentsAsync(int parentId)
+        public static async Task<List<StudentParentModel>> GetStudentsAsync(int parentId, bool userIdKullan = false)
         {
-            var endpoint = $"/api/app/student-parent/students?parentId={parentId}&useUserId=false";
+            var endpoint = $"/api/app/student-parent/students?parentId={parentId}&useUserId={userIdKullan.ToString()}";
             var token = Preferences.Get("token", string.Empty);
 
-            if (string.IsNullOrEmpty(token))
-            {
-                //girişe yönlendir
-                await Shell.Current.GoToAsync("Login");
-            }
-
+      
             using (var client = new HttpClient(GetHttpClientHandler()))
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
@@ -277,31 +273,29 @@ namespace GoosClient.Services
 
 
 
-        public static async Task<bool> GetUserInfo(string userName)
+        public static async Task<UserModel> GetUserInfo(string userName)
         {
             var token = Preferences.Get("token", string.Empty);
             var endpoint = $"/api/app/identity-user-app-service-custom/find-by-username?userName={userName}";
-            
-            using (var client = new HttpClient(GetHttpClientHandler()))
+
+            var model = new UserModel();
+            try
             {
-                try 
+                using (var client = new HttpClient(GetHttpClientHandler()))
                 {
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim());
                     var response = await client.PostAsync(BaseUrl + endpoint, null);
                     var data = await response.Content.ReadAsStringAsync();
-                    
-                    // Debug için gelen veriyi kontrol et
-                    System.Diagnostics.Debug.WriteLine($"API Response: {data}");
-                    
-                    var objects = JsonConvert.DeserializeObject<UserModel>(data);
-                    return response.IsSuccessStatusCode;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"GetUserInfo Error: {ex}");
-                    return false;
+                    model = JsonConvert.DeserializeObject<UserModel>(data);
+
                 }
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"GetUserInfo Error: {ex}");
+
+            }
+            return model;
         }
 
         public class UserRequestDto

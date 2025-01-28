@@ -16,11 +16,11 @@ namespace goosorgtr_mobil.Models
 
         }
 
-        public async void OgrenciGetir()
+        public async void OgrenciGetir(int parentId, bool userIdMi=false)
         {
             Profiles.Clear();
 
-            var liste = await UserService.GetStudentsAsync(50);//veli id
+            var liste = await UserService.GetStudentsAsync(parentId,userIdMi);//veli id
             if (liste.Count > 0)
             {
                 for (int i = 0; i < 2; i++)

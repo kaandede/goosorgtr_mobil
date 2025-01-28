@@ -5,11 +5,14 @@ namespace goosorgtr_mobil.GoosClient.Models
 
     public class ExtraProperties
     {
-        [JsonProperty("parent")]
-        public string Parent { get; set; }
+        [JsonProperty("ProfilePictureId")]
+        public string ProfilePictureId { get; set; }
 
-        [JsonProperty("user")]
-        public string User { get; set; }
+        [JsonProperty("UserRole")]
+        public string UserRole { get; set; }
+
+
+
     }
 
     public class UserModel
