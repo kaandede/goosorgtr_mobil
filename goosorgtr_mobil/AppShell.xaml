@@ -8,7 +8,7 @@
     xmlns:views_login="clr-namespace:goosorgtr_mobil.Views"
     xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
-    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="True"
     Shell.TabBarIsVisible="True"
     FlyoutBackgroundColor="#F3F2F7">
@@ -19,13 +19,13 @@
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="#1F252A" />
                 <Setter Property="Shell.ForegroundColor" Value="#fff" />
-                <Setter Property="Shell.TitleColor" Value="#fff" />
-                <Setter Property="Shell.DisabledColor" Value="#fff" />
-                <Setter Property="Shell.UnselectedColor" Value="#fff" />
+                <Setter Property="Shell.TitleColor" Value="#1F252A" />
+                <Setter Property="Shell.DisabledColor" Value="#1F252A" />
+                <Setter Property="Shell.UnselectedColor" Value="#1F252A" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="#F3F2F7" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="#1F252A"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#b3b3b3"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="#fff"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="#1F252A"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
@@ -50,46 +50,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <Shell.FlyoutHeader>
-        <Grid BackgroundColor="#F3F2F7" Padding="20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <Frame CornerRadius="75" 
-                   HeightRequest="100" 
-                   WidthRequest="100"
-                   Padding="0"
-                   IsClippedToBounds="True"
-                   BorderColor="Transparent"
-                   BackgroundColor="Transparent"
-                   HorizontalOptions="Center">
-                <Image Source="https://png.pngtree.com/png-vector/20231019/ourlarge/pngtree-user-profile-avatar-png-image_10211467.png"
-                       Aspect="AspectFill"/>
-            </Frame>
-
-            <VerticalStackLayout Grid.Row="1" 
-                                Spacing="5" 
-                                Margin="0,15,0,0">
-                <Label Text="Ahmet Yılmaz"
-                       TextColor="#1F252A"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center"/>
-                <Label Text="Veli"
-                       TextColor="#78909C"
-                       FontSize="14"
-                       HorizontalOptions="Center"/>
-            </VerticalStackLayout>
-
-            <BoxView Grid.Row="2" HeightRequest="1"
-             Color="#ddd"
-             Margin="0,20,0,0"/>
-        </Grid>
-    </Shell.FlyoutHeader>
-
+   
     <!-- Login and First View ShellContent remain same -->
     <ShellContent ContentTemplate="{DataTemplate views_login:FirstView}"
                   Route="FirstView"
@@ -126,62 +87,7 @@
                          ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"
                          Shell.TabBarIsVisible="True"/>
         </Tab>
-       
+
     </TabBar>
-
-    <FlyoutItem Title="Ana Sayfa" Icon="home_ince.png" Route="ParentMainPage">
-        <Tab Title="Home" Icon="home_ince_beyaz.png">
-            <ShellContent Route="ParentMainPage" 
-                     ContentTemplate="{DataTemplate views:ParentMainPage}"
-                     Shell.TabBarIsVisible="True"/>
-        </Tab>
-        <Tab Title="Konum" Icon="location.png">
-            <ShellContent Route="ParentStudentLocation" 
-                     ContentTemplate="{DataTemplate views:ParentStudentLocation}"
-                     Shell.TabBarIsVisible="True"/>
-        </Tab>
-        <Tab Title="Bildirim" Icon="bell.png">
-            <ShellContent Route="ParentNotification" 
-                     ContentTemplate="{DataTemplate views:ParentNotification}"
-                     Shell.TabBarIsVisible="True"/>
-        </Tab>
-        <Tab Title="Ders" Icon="file.png">
-            <ShellContent Route="ParentStudentHomeWork" 
-                     ContentTemplate="{DataTemplate views:ParentStudentHomeWork}"
-                     Shell.TabBarIsVisible="True"/>
-        </Tab>
-    </FlyoutItem>
-
-    <FlyoutItem Title="Lokasyon" Icon="location_icon.png" Route="ParentStudentLocation">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:ParentStudentLocation}"
-                     Shell.TabBarIsVisible="True"/>
-        </Tab>
-    </FlyoutItem>
-
-    <FlyoutItem Title="Etkinlik" Icon="etkinlik_icon.png" Route="EventPage">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:EventPage}"
-                     Shell.TabBarIsVisible="True"/>
-        </Tab>
-    </FlyoutItem>
-
-
-    
-    
-    <Shell.FlyoutFooter>
-        
-        <Grid Padding="15" BackgroundColor="#F3F2F7" RowDefinitions="Auto,Auto">
-            <BoxView Grid.Row="0" HeightRequest="1"
-                     Color="#ddd"
-                      Margin="0,0,0,10"/>
-            <ImageButton Grid.Row="1" Source="shutdown.png" 
-                   HeightRequest="50" 
-                   WidthRequest="50" 
-                   Clicked="Button_Clicked"
-                   HorizontalOptions="Center"/>
-        </Grid>
-    </Shell.FlyoutFooter>
-
 
 </Shell>
