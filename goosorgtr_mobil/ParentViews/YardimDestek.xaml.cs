@@ -1,8 +1,8 @@
 namespace goosorgtr_mobil.ParentViews;
 
-public partial class YardımDestek : ContentPage
+public partial class YardimDestek : ContentPage
 {
-	public YardımDestek()
+	public YardimDestek()
 	{
 		InitializeComponent();
 	}

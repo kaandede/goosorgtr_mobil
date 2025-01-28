@@ -1,13 +1,12 @@
 using GoosClient.Models;
-using goosorgtr_mobil.Models;
 using goosorgtr_mobil.ViewModels;
 
 namespace goosorgtr_mobil.ParentViews
 {
-    public partial class Duyuru : ContentPage
+    public partial class DuyuruPage : ContentPage
     {
         public AnnouncementViewModel _model;
-        public Duyuru()
+        public DuyuruPage()
         {
             InitializeComponent();
             _model = new AnnouncementViewModel();

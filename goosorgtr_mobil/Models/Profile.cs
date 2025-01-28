@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace goosorgtr_mobil.Models
+﻿namespace goosorgtr_mobil.Models
 {
     public class Profile
     {

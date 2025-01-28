@@ -45,7 +45,7 @@ public partial class ParentUser : ContentPage
     private async void yardimdestek_Tapped(object sender, TappedEventArgs e)
     {
 
-        await Shell.Current.GoToAsync(nameof(YardýmDestek));
+        await Shell.Current.GoToAsync(nameof(YardimDestek));
 
     }
     private async void gizlilik_Tapped(object sender, TappedEventArgs e)
