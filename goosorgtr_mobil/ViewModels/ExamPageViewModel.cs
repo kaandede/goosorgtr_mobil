@@ -33,9 +33,9 @@ namespace goosorgtr_mobil.ViewModels
             try
             {
                 IsBusy = true;
- 
-                
-                var examList = await UserService.GetExamAsync();
+
+                var classId = Preferences.Get("SelectedStudentClassId", string.Empty);
+                var examList = await UserService.GetExamAsync(classId);
                 
                 Exams.Clear();
                 
@@ -71,7 +71,8 @@ namespace goosorgtr_mobil.ViewModels
             try
             {
                 IsBusy = true;
-                var examList = await UserService.GetExamAsync();
+                var classId = Preferences.Get("SelectedStudentClassId", string.Empty);
+                var examList = await UserService.GetExamAsync(classId);
                 Exams.Clear();
                 foreach (var exam in examList)
                 {

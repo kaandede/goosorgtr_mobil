@@ -170,13 +170,10 @@ namespace goosorgtr_mobil.ViewModels
                     return;
                 }
 
-                var parameters = new Dictionary<string, object>
-                {
-                    { "StudentId", selectedStudentId }
-                };
+            
                 
                 System.Diagnostics.Debug.WriteLine($"Navigating to ExamsPage with StudentId: {selectedStudentId}");
-                await Shell.Current.GoToAsync($"ExamsPage", parameters);
+                await Shell.Current.GoToAsync("ExamsPage");
             }
             catch (Exception ex)
             {
